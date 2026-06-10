@@ -2,19 +2,22 @@ using UnityEngine;
 
 public class Enemy_Movement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private Transform player;
+
     public float speed;
-    public float attackCooldown = 2;
-    public float playerDetectionRange = 3;
+    public float attackCooldown;
+    public float playerDetectionRange;
     public Transform detectionPoint;
     public LayerMask playerLayer;
+    public float attackRange;
+
     private float attackCooldownTimer;
     private int facingDirection = -1;
     private Animator anim;
     private EnemyState enemyState;
+    private Rigidbody2D rb;
+    private Transform player;
 
-    public float attackRange = 1.2F;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,13 +46,6 @@ public class Enemy_Movement : MonoBehaviour
     }
     public void Chase()
     {
-        if (player.position.x > transform.position.x && facingDirection == -1 ||
-               player.position.x < transform.position.x && facingDirection == 1
-            )
-        {
-            Flip();
-        }
-
         Vector2 direction = (player.position - transform.position).normalized;
         rb.linearVelocity = direction * speed;
     }
@@ -70,10 +66,16 @@ public class Enemy_Movement : MonoBehaviour
                 attackCooldownTimer = attackCooldown;
                 ChangeState(EnemyState.Attacking);
             }
-            else if (Vector2.Distance(transform.position, player.position) > attackRange)
+            else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Chasing);
             }
+            if (player.position.x > transform.position.x && facingDirection == -1 ||
+            player.position.x < transform.position.x && facingDirection == 1)
+            {
+                Flip();
+            }
+
         }
         else
         {
@@ -86,6 +88,9 @@ public class Enemy_Movement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(detectionPoint.position, playerDetectionRange);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     public void ChangeState(EnemyState newState)

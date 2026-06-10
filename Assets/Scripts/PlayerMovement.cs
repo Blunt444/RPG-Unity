@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
@@ -8,8 +9,17 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
 
+
+    private bool isKnockedBack;
+
     void FixedUpdate()
     {
+
+        if (isKnockedBack)
+        {
+            return;
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -28,5 +38,21 @@ public class PlayerMovement : MonoBehaviour
     {
         facingDirection *= -1;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void Knockback(Transform enemy, float force, float stunTime)
+    {
+        isKnockedBack = true;
+        Vector2 direction = (transform.position - enemy.position).normalized;
+        rb.linearVelocity = direction * force;
+        StartCoroutine(KnockbackCounter(stunTime));
+    }
+
+    IEnumerator KnockbackCounter(float stunTime)
+    {
+        yield return new WaitForSeconds(stunTime);
+        rb.linearVelocity = Vector2.zero;
+        isKnockedBack = false;
+
     }
 }
