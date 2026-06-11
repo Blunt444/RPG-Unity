@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
@@ -9,8 +10,13 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
 
-
+    private PlayerState playerState;
     private bool isKnockedBack;
+
+    void Start()
+    {
+        playerState = PlayerState.Idle;
+    }
 
     void FixedUpdate()
     {
@@ -28,8 +34,14 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        anim.SetFloat("horizontal", Mathf.Abs(horizontal));
-        anim.SetFloat("vertical", Mathf.Abs(vertical));
+        if (Mathf.Abs(horizontal) > 0 || Mathf.Abs(vertical) > 0)
+        {
+            ChangeState(PlayerState.Running);
+        }
+        else
+        {
+            ChangeState(PlayerState.Idle);
+        }
 
         rb.linearVelocity = new Vector2(horizontal, vertical) * speed;
     }
@@ -55,4 +67,43 @@ public class PlayerMovement : MonoBehaviour
         isKnockedBack = false;
 
     }
+
+    public void ChangeState(PlayerState newState)
+    {
+        if (playerState == PlayerState.Idle)
+        {
+            anim.SetBool("isIdle", false);
+        }
+        else if (playerState == PlayerState.Running)
+        {
+            anim.SetBool("isRunning", false);
+        }
+        else if (playerState == PlayerState.Attacking)
+        {
+            anim.SetBool("isAttacking", false);
+        }
+
+        playerState = newState;
+
+        if (newState == PlayerState.Idle)
+        {
+            anim.SetBool("isIdle", true);
+        }
+        else if (newState == PlayerState.Running)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else if (newState == PlayerState.Attacking)
+        {
+            anim.SetBool("isAttacking", true);
+        }
+
+    }
+}
+
+public enum PlayerState
+{
+    Attacking,
+    Idle,
+    Running
 }
