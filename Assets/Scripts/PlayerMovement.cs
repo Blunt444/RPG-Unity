@@ -1,21 +1,31 @@
 using System.Collections;
-using Unity.Mathematics;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
-    public int facingDirection = 1;
+    public float speed;
+    public int facingDirection;
     public Rigidbody2D rb;
     public Animator anim;
-
+    public float attackCooldown;
+    public float attackCooldownTimer; 
+    
     private PlayerState playerState;
     private bool isKnockedBack;
+    private Player_Combat playerCombat;
 
     void Start()
     {
         playerState = PlayerState.Idle;
+        playerCombat = GetComponent<Player_Combat>();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Slash") && playerState != PlayerState.Attacking)
+        {
+            playerCombat.Attack();
+        }
     }
 
     void FixedUpdate()
@@ -23,6 +33,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (isKnockedBack)
         {
+            return;
+        }
+
+        if(playerState == PlayerState.Attacking && attackCooldownTimer > 0)
+        {
+            attackCooldownTimer -= Time.deltaTime;
             return;
         }
 

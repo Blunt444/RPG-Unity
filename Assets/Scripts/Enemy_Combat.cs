@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 public class Enemy_Combat : MonoBehaviour
@@ -22,6 +21,6 @@ public class Enemy_Combat : MonoBehaviour
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position,weaponRange);
+        Gizmos.DrawWireSphere(attackPoint.position,weaponRange);
     }
 }

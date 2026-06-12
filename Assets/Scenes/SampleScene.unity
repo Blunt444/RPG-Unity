@@ -6826,6 +6826,7 @@ GameObject:
   - component: {fileID: 1840990460}
   - component: {fileID: 1840990461}
   - component: {fileID: 1840990462}
+  - component: {fileID: 1840990463}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -6987,6 +6988,8 @@ MonoBehaviour:
   facingDirection: 1
   rb: {fileID: 1840990456}
   anim: {fileID: 1840990461}
+  attackCooldown: 0.4
+  attackCooldownTimer: 0
 --- !u!95 &1840990461
 Animator:
   serializedVersion: 7
@@ -7025,6 +7028,18 @@ MonoBehaviour:
   maxHealth: 3
   healthText: {fileID: 1815772677}
   healthTextAnim: {fileID: 1815772679}
+--- !u!114 &1840990463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840990455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3042a96b974ab444b9603cac2c9625e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_Combat
 --- !u!1 &1870128092
 GameObject:
   m_ObjectHideFlags: 0
