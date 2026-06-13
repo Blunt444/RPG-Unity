@@ -3,12 +3,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
     public int facingDirection;
     public Rigidbody2D rb;
     public Animator anim;
-    public float attackCooldown;
-    public float attackCooldownTimer; 
     
     private PlayerState playerState;
     private bool isKnockedBack;
@@ -36,9 +33,9 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if(playerState == PlayerState.Attacking && attackCooldownTimer > 0)
+        if(playerState == PlayerState.Attacking && StatsManager.Instance.attackCooldownTimer > 0)
         {
-            attackCooldownTimer -= Time.deltaTime;
+            StatsManager.Instance.attackCooldownTimer -= Time.deltaTime;
             return;
         }
 
@@ -59,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             ChangeState(PlayerState.Idle);
         }
 
-        rb.linearVelocity = new Vector2(horizontal, vertical) * speed;
+        rb.linearVelocity = new Vector2(horizontal, vertical) * StatsManager.Instance.speed;
     }
 
     void Flip()

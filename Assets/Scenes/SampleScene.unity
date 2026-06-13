@@ -992,7 +992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 515485891}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1008,7 @@ Transform:
   m_GameObject: {fileID: 515485890}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -0.27, z: 0}
+  m_LocalPosition: {x: 0.15, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1235,6 +1235,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.0240784, y: 0.24997061}
   m_EdgeRadius: 0
+--- !u!1 &650125929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 650125930}
+  m_Layer: 8
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &650125930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650125929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.732, y: 0.021, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1840990459}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826265686
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,7 +5578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 926537533}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DetectionPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5563,11 +5594,42 @@ Transform:
   m_GameObject: {fileID: 926537532}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.71, y: -0.06, z: 0}
+  m_LocalPosition: {x: 2.53, y: -0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1870128096}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &978970104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978970105}
+  m_Layer: 0
+  m_Name: StatsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &978970105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978970104}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.22996, y: -0.78723, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1038323751
 GameObject:
@@ -6969,7 +7031,8 @@ Transform:
   m_LocalPosition: {x: 1.97, y: -0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 650125930}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1840990460
@@ -7040,6 +7103,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3042a96b974ab444b9603cac2c9625e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Combat
+  attackPoint: {fileID: 650125930}
+  weaponRange: 1.1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  damage: 1
+  knockbackForce: 8
+  knockbackTime: 0
+  stunTime: 0
 --- !u!1 &1870128092
 GameObject:
   m_ObjectHideFlags: 0
@@ -7056,7 +7128,9 @@ GameObject:
   - component: {fileID: 1870128098}
   - component: {fileID: 1870128099}
   - component: {fileID: 1870128100}
-  m_Layer: 0
+  - component: {fileID: 1870128101}
+  - component: {fileID: 1870128102}
+  m_Layer: 9
   m_Name: Goblin1
   m_TagString: Goblin1
   m_Icon: {fileID: 0}
@@ -7217,7 +7291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Combat
   damage: 1
   attackPoint: {fileID: 515485891}
-  weaponRange: 1.1
+  weaponRange: 0.9
   knockbackForce: 4
   playerLayer:
     serializedVersion: 2
@@ -7236,7 +7310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
   speed: 3
-  attackCooldown: 0.5
+  attackCooldown: 0.8
   playerDetectionRange: 4
   detectionPoint: {fileID: 926537533}
   playerLayer:
@@ -7250,7 +7324,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870128092}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -7301,6 +7375,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1870128101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870128092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d7909835bfcbd347a3834531d82b700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
+  currentHealth: 0
+  maxHealth: 3
+--- !u!114 &1870128102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870128092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29a513f7263e7149b37203db414a0f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Knockback
 --- !u!1 &1881792868
 GameObject:
   m_ObjectHideFlags: 0
@@ -7809,3 +7909,4 @@ SceneRoots:
   - {fileID: 1870128096}
   - {fileID: 1182953272}
   - {fileID: 1891285578}
+  - {fileID: 978970105}
