@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Collections.Generic;
 public class SkillSlot : MonoBehaviour
 {
     public SkillSO skillSO;
@@ -10,6 +11,7 @@ public class SkillSlot : MonoBehaviour
     public Button skillButton;
     public int currentLevel;
     public bool isUnlocked;
+    public List<SkillSlot> prerequisiteSkillSlots;
 
     public static event Action<SkillSlot> OnAbilityPointSpent;
     public static event Action<SkillSlot> OnSkillMaxed;
@@ -38,6 +40,18 @@ public class SkillSlot : MonoBehaviour
     {
         isUnlocked = true;
         UpdateUI();
+    }
+    public bool CanUnlockSkill()
+    {
+        foreach(SkillSlot slot in prerequisiteSkillSlots)
+        {
+            if(!slot.isUnlocked || slot.currentLevel < slot.skillSO.maxLevel)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
     private void UpdateUI()
     {

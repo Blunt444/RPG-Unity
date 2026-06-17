@@ -11,18 +11,24 @@ public class SkillTreeManager : MonoBehaviour
     {
         SkillSlot.OnAbilityPointSpent += HandlePoints;
         SkillSlot.OnSkillMaxed += HandleSkillMaxed;
+        ExpManager.OnLevelUp += UpdatePoints;
     }
 
     private void OnDisable()
     {
         SkillSlot.OnAbilityPointSpent -= HandlePoints;
         SkillSlot.OnSkillMaxed -= HandleSkillMaxed;
+        ExpManager.OnLevelUp -= UpdatePoints;
     }
 
     private void HandleSkillMaxed(SkillSlot skillSlot)
     {
         foreach (SkillSlot slot in skillSlots)
         {
+            if (!slot.isUnlocked && slot.CanUnlockSkill())
+            {
+                slot.Unlock();
+            }
         }
     }
 

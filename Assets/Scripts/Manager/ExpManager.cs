@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ExpManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ExpManager : MonoBehaviour
     public float expGrowthMultiplier;
     public Slider expSlider;
     public TMP_Text currentLevelTxt;
+
+    public static event Action<int> OnLevelUp;
 
 
     private void Start()
@@ -48,6 +51,7 @@ public class ExpManager : MonoBehaviour
         level++;
         currentExp -= expToLevel;
         expToLevel = Mathf.RoundToInt(expToLevel * expGrowthMultiplier);
+        OnLevelUp?.Invoke(1);
     }
     public void UpdateUI()
     {
