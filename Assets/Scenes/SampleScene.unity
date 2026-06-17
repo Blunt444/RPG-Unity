@@ -300,7 +300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -3}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &118106483
@@ -6888,6 +6888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f845e2772115944e96ed3942b3a96cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsManager
+  healthText: {fileID: 1815772677}
+  playerHealth: {fileID: 1840990462}
   damage: 1
   weaponRange: 1.1
   knockbackForce: 8
@@ -7932,7 +7934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 27, y: -21}
   m_SizeDelta: {x: 1200, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246328147
@@ -8652,7 +8654,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -770, y: 250}
+  m_AnchoredPosition: {x: -770, y: 355}
   m_SizeDelta: {x: 320, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1413892893
@@ -8719,6 +8721,7 @@ GameObject:
   - component: {fileID: 1425993648}
   - component: {fileID: 1425993647}
   - component: {fileID: 1425993650}
+  - component: {fileID: 1425993651}
   m_Layer: 0
   m_Name: SkillsCanvas
   m_TagString: Untagged
@@ -8817,10 +8820,25 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425993645}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1425993651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425993645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6c1a9ca51c19f4f91eae718d03c196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillTreeManager
+  skillSlots: []
+  pointsText: {fileID: 367710027}
+  availablePoints: 0
 --- !u!1 &1441317635
 GameObject:
   m_ObjectHideFlags: 0
@@ -8935,8 +8953,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 23.575, y: -78.755}
-  m_SizeDelta: {x: 1152.851, y: 1042.5}
+  m_AnchoredPosition: {x: 23.575, y: -20}
+  m_SizeDelta: {x: 1200, y: 1200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1442715290
 MonoBehaviour:
@@ -10745,6 +10763,10 @@ PrefabInstance:
     - target: {fileID: 5955007924930983400, guid: 6eaecdc6507812641869572621f4816b, type: 3}
       propertyPath: currentLevel
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736883121970088919, guid: 6eaecdc6507812641869572621f4816b, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6949751951072554884, guid: 6eaecdc6507812641869572621f4816b, type: 3}
       propertyPath: m_AnchorMax.y
