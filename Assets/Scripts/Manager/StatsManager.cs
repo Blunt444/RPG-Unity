@@ -40,6 +40,6 @@ public class StatsManager : MonoBehaviour
   {
     maxHealth += amount;
     playerHealth.ChangeHealth(amount);
-    healthText.text = "HP: " + currentHealth + "/" + maxHealth;
+    healthText.text = "HP: " + currentHealth + " / " + maxHealth;
   }
 }
