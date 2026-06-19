@@ -120,7 +120,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &914820570508663400
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -182,4 +182,11 @@ MonoBehaviour:
   rb: {fileID: 9182435072117617547}
   direction: {x: 1, y: 0}
   lifeSpawn: 2
-  speed: 3
+  speed: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  damage: 1
+  knockBackForce: 7
+  knockBackTime: 0.5
+  stunTime: 1
