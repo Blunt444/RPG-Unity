@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
     public int facingDirection;
     public Rigidbody2D rb;
     public Animator anim;
-    
+    public bool isShooting;
+
     private PlayerState playerState;
     private bool isKnockedBack;
     private Player_Combat playerCombat;
@@ -19,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Slash") && playerState != PlayerState.Attacking)
+
+        if (Input.GetButtonDown("Slash") && playerState != PlayerState.Attacking && playerCombat.enabled)
         {
             playerCombat.Attack();
         }
@@ -27,13 +29,18 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isShooting)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
 
         if (isKnockedBack)
         {
             return;
         }
 
-        if(playerState == PlayerState.Attacking && StatsManager.Instance.attackCooldownTimer > 0)
+        if (playerState == PlayerState.Attacking && StatsManager.Instance.attackCooldownTimer > 0)
         {
             StatsManager.Instance.attackCooldownTimer -= Time.deltaTime;
             return;
@@ -95,6 +102,10 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isAttacking", false);
         }
+        else if (playerState == PlayerState.Shooting)
+        {
+            anim.SetBool("isShooting", false);
+        }
 
         playerState = newState;
 
@@ -110,6 +121,10 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isAttacking", true);
         }
+        else if (newState == PlayerState.Shooting)
+        {
+            anim.SetBool("isShooting", true);
+        }
 
     }
 }
@@ -118,5 +133,6 @@ public enum PlayerState
 {
     Attacking,
     Idle,
-    Running
+    Running,
+    Shooting
 }

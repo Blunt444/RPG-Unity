@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Player_Bow : MonoBehaviour
@@ -9,12 +8,16 @@ public class Player_Bow : MonoBehaviour
     public GameObject arrowPrefab;
     public Vector2 aimDirection;
     public float shootCooldown;
+    public Animator anim;
+    public PlayerMovement playerMovement;
 
     private float shootTimer;
 
     private void Start()
     {
         currentLaunchPoint = launchPointHorizontal;
+        anim.SetFloat("aimX", aimDirection.x);
+        anim.SetFloat("aimY", aimDirection.y);
     }
 
     void Update()
@@ -23,14 +26,28 @@ public class Player_Bow : MonoBehaviour
         HandleAiming();
         if (Input.GetButtonDown("Shoot") && shootTimer <= 0)
         {
-            Shoot();
+            playerMovement.isShooting = true;
+            gameObject.GetComponent<PlayerMovement>().ChangeState(PlayerState.Shooting);
         }
+    }
+    private void OnEnable()
+    {
+        anim.SetLayerWeight(0, 0);
+        anim.SetLayerWeight(1, 1);
+    }
+    private void OnDisable()
+    {
+        anim.SetLayerWeight(0, 1);
+        anim.SetLayerWeight(1, 0);
     }
     public void Shoot()
     {
+        if (shootTimer > 0) return;
         Arrow arrow = Instantiate(arrowPrefab, currentLaunchPoint.position, Quaternion.identity).GetComponent<Arrow>();
         arrow.Launch(aimDirection);
         shootTimer = shootCooldown;
+        gameObject.GetComponent<PlayerMovement>().ChangeState(PlayerState.Idle);
+        playerMovement.isShooting = false;
 
         if (arrow == null)
         {
@@ -51,6 +68,8 @@ public class Player_Bow : MonoBehaviour
         if (horizontal != 0 || vertical != 0)
         {
             aimDirection = new Vector2(horizontal, vertical).normalized;
+            anim.SetFloat("aimX", aimDirection.x);
+            anim.SetFloat("aimY", aimDirection.y);
             if (vertical > 0)
             {
                 currentLaunchPoint = launchPointVertical;

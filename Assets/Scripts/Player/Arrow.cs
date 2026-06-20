@@ -6,11 +6,14 @@ public class Arrow : MonoBehaviour
     public Vector2 direction = Vector2.right;
     public float lifeSpawn;
     public float speed;
-    public LayerMask enemyLayer;
     public int damage;
     public float knockBackForce;
     public float knockBackTime;
     public float stunTime;
+    public LayerMask enemyLayer;
+    public LayerMask obstacleLayer;
+    public SpriteRenderer sr;
+    public Sprite buriedSprite;
 
     public void Launch(Vector2 dir)
     {
@@ -32,6 +35,19 @@ public class Arrow : MonoBehaviour
         {
             collision.gameObject.GetComponent<Enemy_Health>().ChangeHealth(-damage);
             collision.gameObject.GetComponent<Enemy_Knockback>().Knockback(transform, knockBackForce, knockBackTime, stunTime);
+            AttachToTarget(collision.gameObject.transform);
         }
+        else if((obstacleLayer.value & ( 1 << collision.gameObject.layer)) > 0)
+        {
+            AttachToTarget(collision.gameObject.transform);
+        }
+    }
+    public void AttachToTarget(Transform target)
+    {
+        sr.sprite = buriedSprite;
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+
+        transform.SetParent(target);        
     }
 }
