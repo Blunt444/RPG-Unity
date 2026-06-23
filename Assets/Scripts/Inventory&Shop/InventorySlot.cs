@@ -48,16 +48,20 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
             imageRectTransform = itemImage.GetComponent<RectTransform>();
         }
 
-        imageRectTransform.anchoredPosition = Vector2.zero;
-
-        imageRectTransform.sizeDelta = new Vector2(200, 200);
-
+        imageRectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        imageRectTransform.anchorMax = new Vector2(0.5f, 0.5f);
         imageRectTransform.pivot = new Vector2(0.5f, 0.5f);
 
+        imageRectTransform.anchoredPosition = itemSO.uiOffset;
+        imageRectTransform.sizeDelta = new Vector2(200, 200);
         itemImage.preserveAspect = true;
 
         RectTransform textRect = quantityText.GetComponent<RectTransform>();
-        textRect.anchoredPosition = new Vector2(80, -80); 
+        textRect.anchorMin = new Vector2(1f, 0f);
+        textRect.anchorMax = new Vector2(1f, 0f);
+        textRect.pivot = new Vector2(1f, 0f);
+
+        textRect.anchoredPosition = new Vector2(-10f, -5f);
     }
 
 }
