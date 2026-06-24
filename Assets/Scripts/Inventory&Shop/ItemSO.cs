@@ -6,6 +6,7 @@ public class ItemSO : ScriptableObject
    public string itemName;
    [TextArea]public string itemDescription;
    public Sprite icon;
+   public int stackSize;
    public Vector2 uiOffset;
 
    public bool isGold;

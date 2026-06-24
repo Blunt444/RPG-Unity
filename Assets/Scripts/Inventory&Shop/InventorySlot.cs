@@ -2,6 +2,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class InventorySlot : MonoBehaviour, IPointerDownHandler
 {
@@ -27,13 +28,17 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler
             {
                 inventoryManager.UseItem(this);
             }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                inventoryManager.DropItem(this);
+            }
         }
-        if (quantity <= 0)
-        {
-            itemSO = null;
-            itemImage = null;
-            quantityText.text = "";
-        }
+        // else if (quantity <= 0)
+        // {
+        //     itemSO = null;
+        //     itemImage = null;
+        //     quantityText.text = "";
+        // }
         Debug.Log(itemSO);
     }
 
