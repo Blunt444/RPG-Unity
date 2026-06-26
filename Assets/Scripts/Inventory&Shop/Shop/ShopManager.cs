@@ -4,6 +4,7 @@ using System;
 
 public class ShopManager : MonoBehaviour
 {
+    public static event Action<ShopManager, bool> OnShopStateChanged;
     [SerializeField] private List<ShopItems> shopItems;
 
     [SerializeField] private ShopSlot[] shopSlots;
@@ -13,6 +14,7 @@ public class ShopManager : MonoBehaviour
     public void Start()
     {
         PopulateShopItems();
+        OnShopStateChanged?.Invoke(this, true);
     }
 
     public void PopulateShopItems()
@@ -29,6 +31,21 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public void SellItems(ItemSO itemSO)
+    {
+        if(itemSO == null) return;
+
+        foreach (ShopSlot slot in shopSlots)
+        {
+            if(slot.itemSO == itemSO)
+            {
+                inventoryManager.gold += slot.price / 2;
+                inventoryManager.goldText.text = inventoryManager.gold.ToString();
+                return;
+            }
+        }
+    }
+
     public void TryBuyItem(ItemSO itemSO, int price)
     {
         if (itemSO == null || inventoryManager.gold < price) return;
@@ -38,7 +55,6 @@ public class ShopManager : MonoBehaviour
             inventoryManager.goldText.text = inventoryManager.gold.ToString();
             inventoryManager.AddItem(itemSO, 1);
         }
-
     }
 
     private bool HasSpaceForItem(ItemSO itemSO)

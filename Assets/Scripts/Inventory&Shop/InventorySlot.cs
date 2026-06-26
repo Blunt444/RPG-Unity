@@ -14,19 +14,46 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler
 
 
     private InventoryManager inventoryManager;
+    private static ShopManager activeShop;
 
     private void Start()
     {
         inventoryManager = GetComponentInParent<InventoryManager>();
     }
 
+    private void OnEnable()
+    {
+        ShopManager.OnShopStateChanged += HandleShopStateChange;
+    }
+
+    private void OnDisable()
+    {
+        ShopManager.OnShopStateChanged -= HandleShopStateChange;
+    }
+
+    private void HandleShopStateChange(ShopManager shopManager, bool isOpen)
+    {
+        activeShop = isOpen ? shopManager : null;
+
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if (quantity > 0)
         {
+
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                inventoryManager.UseItem(this);
+                if (activeShop != null)
+                {
+                    activeShop.SellItems(itemSO);
+                    quantity--;
+                    UpdateUI();
+                }
+                else
+                {
+                    inventoryManager.UseItem(this);
+                }
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
@@ -44,6 +71,10 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler
 
     public void UpdateUI()
     {
+        if (quantity <= 0)
+        {
+            itemSO = null;
+        }
         if (itemSO == null)
         {
             itemImage.gameObject.SetActive(false);
