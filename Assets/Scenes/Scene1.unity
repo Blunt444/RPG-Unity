@@ -2377,7 +2377,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760122181}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0ee6fc5d60acbe94b98458dca04f596e, type: 2}
   m_CullingMode: 0
@@ -2440,7 +2440,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7639785997168477344, guid: ae3efef1e7c527d41b7b7d89361b37a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2448,7 +2448,7 @@ SpriteRenderer:
   m_Size: {x: 0.171875, y: 0.171875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!4 &786919854 stripped
 Transform:
@@ -9381,7 +9381,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 971386190}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -10498,6 +10498,8 @@ GameObject:
   - component: {fileID: 1306084668}
   - component: {fileID: 1306084674}
   - component: {fileID: 1306084673}
+  - component: {fileID: 1306084676}
+  - component: {fileID: 1306084675}
   m_Layer: 11
   m_Name: NPC1
   m_TagString: Untagged
@@ -10528,7 +10530,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306084666}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a51a0b8558c14cc44a48dee0e96e7060, type: 3}
   m_Name: 
@@ -10690,7 +10692,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306084666}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cd21dc2d051ba041929f67a4f47c0bc, type: 3}
   m_Name: 
@@ -10703,7 +10705,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306084666}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 814896b2af1e7c945b087bcbd5f6ea17, type: 3}
   m_Name: 
@@ -10714,6 +10716,58 @@ MonoBehaviour:
   speed: 0
   target: {x: 0, y: 0}
   pauseDuration: 0
+--- !u!58 &1306084675
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306084666}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.021566749, y: -0.06469965}
+  m_Radius: 1.1405587
+--- !u!114 &1306084676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306084666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76205cb9d357c4047a1a232a710d81b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPC
+  currentState: 2
+  patrol: {fileID: 1306084668}
+  wander: {fileID: 1306084674}
+  talk: {fileID: 1306084673}
 --- !u!1 &1354419544
 GameObject:
   m_ObjectHideFlags: 0
@@ -14244,7 +14298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8368014250987977753, guid: f7376cd0d4fd1394096a627cdfae24a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4994078
+      value: -3.49955
       objectReference: {fileID: 0}
     - target: {fileID: 8368014250987977753, guid: f7376cd0d4fd1394096a627cdfae24a3, type: 3}
       propertyPath: m_LocalPosition.y
