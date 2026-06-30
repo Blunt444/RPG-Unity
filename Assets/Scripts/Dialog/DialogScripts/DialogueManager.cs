@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     public Image portrait;
     public TMP_Text actorName;
     public TMP_Text dialogueText;
+    public Button[] choiceBtns;
     public bool isDialogueActive;
 
     private DialogSO currentDialog;
@@ -30,6 +31,11 @@ public class DialogueManager : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+
+        foreach (Button btn in choiceBtns)
+        {
+            btn.gameObject.SetActive(false);
+        }
     }
 
 
@@ -49,18 +55,53 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            EndDialogue();
+            ShowChoices();
         }
     }
 
     private void EndDialogue()
     {
+        ClearChoices();
+
         isDialogueActive = false;
         currentDialog = null;
 
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+    }
+
+    private void ShowChoices()
+    {
+        ClearChoices();
+
+        if (currentDialog.options.Length > 0)
+        {
+            for (int i = 0; i < currentDialog.options.Length; i++)
+            {
+                var option = currentDialog.options[i];
+                choiceBtns[i].GetComponentInChildren<TMP_Text>().text = option.optionText;
+                choiceBtns[i].gameObject.SetActive(true);
+
+                choiceBtns[i].onClick.AddListener(()=> ChooseOption(option.nextDialog));
+            }
+        }
+        else
+        {
+            choiceBtns[0].gameObject.GetComponentInChildren<TMP_Text>().text = "End";
+            choiceBtns[0].onClick.AddListener(()=> EndDialogue());
+            choiceBtns[0].gameObject.SetActive(true);
+        }
+    }
+
+    private void ChooseOption(DialogSO dialogSO)
+    {
+        if(dialogSO == null) EndDialogue();
+        else
+        {
+            ClearChoices();
+            StartDialogue(dialogSO);
+        }
     }
 
     private void ShowDialogue()
@@ -77,5 +118,14 @@ public class DialogueManager : MonoBehaviour
         canvasGroup.interactable = true;
 
         dialogIdx++;
+    }
+
+    private void ClearChoices()
+    {
+        foreach(Button btn in choiceBtns)
+        {
+            btn.gameObject.SetActive(false);
+            btn.onClick.RemoveAllListeners();
+        }
     }
 }
