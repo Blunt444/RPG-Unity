@@ -7,5 +7,9 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BluePawnOvrride
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: d1fe6a73f4fa23a46b63af830044cc15, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: fa66fcac6661b0544b23bbb663ebeacf, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: af1a69222594be2469d0773691efc85e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ba013132a2eb4e74082ae928a549d083, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5fabf69398774fc46bcf72c16624d4bc, type: 2}

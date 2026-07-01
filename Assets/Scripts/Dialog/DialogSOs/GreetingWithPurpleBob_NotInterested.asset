@@ -10,17 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
-  m_Name: GreetingWithBob
+  m_Name: GreetingWithPurpleBob_NotInterested
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
   lines:
   - speaker: {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
-    text: Hello, Knight
+    text: Aww, bad bad.
   - speaker: {fileID: 11400000, guid: 1cccf1b6a7d519b4e8118f77c6cbd7ae, type: 2}
-    text: mm, sorry. Who are you.
-  - speaker: {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
-    text: I am BOB.
-  options:
-  - optionText: Tell me more!
-    nextDialog: {fileID: 11400000, guid: c088c965b0f495e4bb0c8b9159be5282, type: 2}
-  - optionText: Not interested
-    nextDialog: {fileID: 11400000, guid: 3a70d951020e495469b4a7a7834693e4, type: 2}
+    text: See you later.
+  options: []

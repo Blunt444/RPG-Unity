@@ -8,4 +8,8 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: YellowPawnOverride
   m_Controller: {fileID: 9100000, guid: d1fe6a73f4fa23a46b63af830044cc15, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: fa66fcac6661b0544b23bbb663ebeacf, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a15bc838ecd792349acf7599e1ea3cab, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ba013132a2eb4e74082ae928a549d083, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6e65cfe171eb05f43b778a36cd0d58de, type: 2}

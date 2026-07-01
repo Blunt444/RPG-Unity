@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NPC_Talk : MonoBehaviour
 {
 
-    public DialogSO dialogSO;
+    public DialogSO currentConvo;
+    public List<DialogSO> conversations;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -39,7 +41,21 @@ public class NPC_Talk : MonoBehaviour
             }
             else
             {
-                DialogueManager.Instance.StartDialogue(dialogSO);
+                CheckForNewConversation();
+                DialogueManager.Instance.StartDialogue(currentConvo );
+            }
+        }
+    }
+
+    private void CheckForNewConversation()
+    {
+        for (int i = 0; i < conversations.Count; i++)
+        {
+            var convo = conversations[i];
+            if(convo != null && convo.IsConditionMet())
+            {
+                conversations.RemoveAt(i);
+                currentConvo = convo;
             }
         }
     }

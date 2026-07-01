@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ada8ce47e7f4ac458e2209f884cd7c2, type: 3}
-  m_Name: PurpleBOB
+  m_Name: BlueBOB
   m_EditorClassIdentifier: Assembly-CSharp::ActorSO
-  actorName: Purple Bob
-  portrait: {fileID: -7151335025817718036, guid: 7d2d428d1643f5047ba7a3b1b53a499f, type: 3}
+  actorName: Blue Bob
+  portrait: {fileID: -2526443156231494169, guid: e4593637ad6e6744a96d06733dd621ba, type: 3}

@@ -108,6 +108,8 @@ public class DialogueManager : MonoBehaviour
     {
         DialogueLine line = currentDialog.lines[dialogIdx];
 
+        DialogHistoryTracker.Instance.RecordNPC(line.speaker);
+
         portrait.sprite = line.speaker.portrait;
         actorName.text = line.speaker.actorName;
 
