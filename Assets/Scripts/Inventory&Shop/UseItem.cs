@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class UseItem : MonoBehaviour
 {
+
+    private PlayerStatsUpgrade playerStatsUpgrade;
+
+    private void Awake()
+    {
+        playerStatsUpgrade = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsUpgrade>();
+    }
+
     public void ApplyItemEffects(ItemSO itemSO)
     {
         AdjustStats(itemSO, 1);
@@ -22,10 +30,10 @@ public class UseItem : MonoBehaviour
     private void AdjustStats(ItemSO itemSO, int multiplier)
     {
         if (itemSO.currentHealth > 0)
-            StatsManager.Instance.UpdateHealth(itemSO.currentHealth * multiplier);
+            playerStatsUpgrade.UpdateHealth(itemSO.currentHealth * multiplier);
         if (itemSO.maxHealth > 0)
-            StatsManager.Instance.UpdateMaxHealth(itemSO.maxHealth * multiplier);
+            playerStatsUpgrade.UpdateMaxHealth(itemSO.maxHealth * multiplier);
         if (itemSO.speed > 0)
-            StatsManager.Instance.UpdateSpeed(itemSO.speed * multiplier);
+            playerStatsUpgrade.UpdateSpeed(itemSO.speed * multiplier);
     }
 }

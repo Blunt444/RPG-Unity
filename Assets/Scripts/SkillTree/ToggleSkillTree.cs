@@ -14,12 +14,14 @@ public class ToggleSkillTree : MonoBehaviour
                 Time.timeScale = 1;
                 skillCanvas.alpha = 0;
                 skillCanvas.blocksRaycasts = false;
+                skillCanvas.interactable = false;
                 skillTreeOpen = false;
             }
             else
             {
                 Time.timeScale = 0;
                 skillCanvas.alpha = 1;
+                skillCanvas.interactable = true;
                 skillCanvas.blocksRaycasts = true;
                 skillTreeOpen = true;
             }

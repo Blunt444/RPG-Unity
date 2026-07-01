@@ -11,18 +11,17 @@ public class SkillSlot : MonoBehaviour
     public Button skillButton;
     public int currentLevel;
     public bool isUnlocked;
-    public List<SkillSlot> prerequisiteSkillSlots;
 
+    [NonSerialized] public List<SkillSlot> prerequisiteSkillSlots = new List<SkillSlot>();
     public static event Action<SkillSlot> OnAbilityPointSpent;
     public static event Action<SkillSlot> OnSkillMaxed;
 
-    private void OnValidate()
+    public void Setup(SkillSO skillSO)
     {
-        if (skillSO != null && skillLvlText != null)
-        {
-            UpdateUI();
-        }
+        this.skillSO = skillSO;
+        UpdateUI();
     }
+
     public void TryUpgradeSkill()
     {
         if (isUnlocked && currentLevel < skillSO.maxLevel)

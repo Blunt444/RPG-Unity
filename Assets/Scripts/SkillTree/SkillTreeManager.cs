@@ -43,6 +43,7 @@ public class SkillTreeManager : MonoBehaviour
 
     private void CheckAvailablePoints(SkillSlot slot)
     {
+
         if (availablePoints > 0)
         {
             slot.TryUpgradeSkill();

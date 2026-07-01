@@ -5,9 +5,6 @@ public class StatsManager : MonoBehaviour
 {
 
   public static StatsManager Instance;
-  public StatsUI statsUI;
-  public TMP_Text healthText;
-  public PlayerHealth playerHealth;
 
   [Header("Combat Stats")]
   public int damage;
@@ -37,20 +34,4 @@ public class StatsManager : MonoBehaviour
     }
   }
 
-  public void UpdateMaxHealth(int amount)
-  {
-    maxHealth += amount;
-    playerHealth.ChangeHealth(amount);
-    healthText.text = "HP: " + currentHealth + " / " + maxHealth;
-  }
-  public void UpdateHealth(int amount)
-  {
-    playerHealth.ChangeHealth(amount);
-    healthText.text = "HP: " + currentHealth + " / " + maxHealth;
-  }
-  public void UpdateSpeed(int amount)
-  {
-    speed += amount;
-    statsUI.UpdateAllStats();
-  }
 }
