@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: GreetingWithBlueBob
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  lines: []
+  lines:
+  - speaker: {fileID: 11400000, guid: 27ecb290d28ad294ea7f9d01efa66713, type: 2}
+    text: Hey I am blue bob.
   options: []
   requiredNPCs: []

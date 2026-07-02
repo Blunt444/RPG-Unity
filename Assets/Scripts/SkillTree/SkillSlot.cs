@@ -3,6 +3,14 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Collections.Generic;
+
+[System.Serializable]
+public class ReslovedPrerequisiteSkillSlots
+{
+    public SkillSlot slot;
+    public int requiredLevel;
+}
+
 public class SkillSlot : MonoBehaviour
 {
     public SkillSO skillSO;
@@ -12,7 +20,7 @@ public class SkillSlot : MonoBehaviour
     public int currentLevel;
     public bool isUnlocked;
 
-    [NonSerialized] public List<SkillSlot> prerequisiteSkillSlots = new List<SkillSlot>();
+    [NonSerialized] public List<ReslovedPrerequisiteSkillSlots> prerequisiteSkillSlots = new List<ReslovedPrerequisiteSkillSlots>();
     public static event Action<SkillSlot> OnAbilityPointSpent;
     public static event Action<SkillSlot> OnSkillMaxed;
 
@@ -28,10 +36,6 @@ public class SkillSlot : MonoBehaviour
         {
             currentLevel++;
             OnAbilityPointSpent?.Invoke(this);
-            if (currentLevel >= skillSO.maxLevel)
-            {
-                OnSkillMaxed?.Invoke(this);
-            }
             UpdateUI();
         }
     }
@@ -42,9 +46,9 @@ public class SkillSlot : MonoBehaviour
     }
     public bool CanUnlockSkill()
     {
-        foreach(SkillSlot slot in prerequisiteSkillSlots)
+        foreach(ReslovedPrerequisiteSkillSlots prereq in prerequisiteSkillSlots)
         {
-            if(!slot.isUnlocked || slot.currentLevel < slot.skillSO.maxLevel)
+            if(!prereq.slot.isUnlocked || prereq.slot.currentLevel < prereq.requiredLevel)
             {
                 return false;
             }

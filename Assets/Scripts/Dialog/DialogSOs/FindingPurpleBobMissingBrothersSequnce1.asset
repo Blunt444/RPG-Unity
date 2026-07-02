@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
   lines:
   - speaker: {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
-    text: Hey, Have you seen my brothers yellow bob and blue bob.
+    text: I see you have found blue bob! Please find blue bob.
   options: []
-  requiredNPCs: []
+  requiredNPCs:
+  - {fileID: 11400000, guid: 27ecb290d28ad294ea7f9d01efa66713, type: 2}
