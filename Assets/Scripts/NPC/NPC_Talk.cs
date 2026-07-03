@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class NPC_Talk : MonoBehaviour
 {
-
-    public DialogSO currentConvo;
-    public List<DialogSO> conversations;
-
+    public DialogSO dialogSO;
+    int currentIndex;
     private Rigidbody2D rb;
     private Animator anim;
     [SerializeField] private Animator interactionAnim;
@@ -15,6 +13,11 @@ public class NPC_Talk : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        currentIndex = dialogSO.returnStartIndex;
     }
 
     private void OnEnable()
@@ -35,28 +38,17 @@ public class NPC_Talk : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact"))
         {
-            if (DialogueManager.Instance.isDialogueActive)
+            Debug.Log("Line No:" + currentIndex);
+            if(currentIndex != -1 && DialogueManager.Instance.isOpened)
             {
-                DialogueManager.Instance.AdvanceDialogue();
+                Debug.Log("Advance");
             }
             else
             {
-                CheckForNewConversation();
-                DialogueManager.Instance.StartDialogue(currentConvo );
+                DialogueManager.Instance.ToggleVisibility();
             }
         }
     }
 
-    private void CheckForNewConversation()
-    {
-        for (int i = 0; i < conversations.Count; i++)
-        {
-            var convo = conversations[i];
-            if(convo != null && convo.IsConditionMet())
-            {
-                conversations.RemoveAt(i);
-                currentConvo = convo;
-            }
-        }
-    }
+
 }
