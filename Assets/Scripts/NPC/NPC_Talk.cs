@@ -39,12 +39,22 @@ public class NPC_Talk : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
         {
             Debug.Log("Line No:" + currentIndex);
-            if(currentIndex != -1 && DialogueManager.Instance.isOpened)
+            if (currentIndex != -1 && DialogueManager.Instance.isOpened)
             {
                 Debug.Log("Advance");
+                currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+                if (currentIndex == -1)
+                {
+                    currentIndex = DialogueManager.Instance.EndConversation(dialogSO);
+                }
+                else
+                {
+                    DialogueManager.Instance.DisplayDialogue(dialogSO, currentIndex);
+                }
             }
-            else
+            else if (!DialogueManager.Instance.isOpened)
             {
+                DialogueManager.Instance.DisplayDialogue(dialogSO, currentIndex);
                 DialogueManager.Instance.ToggleVisibility();
             }
         }
