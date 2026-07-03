@@ -5,43 +5,31 @@ using UnityEngine;
 public class DialogSO : ScriptableObject
 {
     public DialogueLine[] lines;
-    public DialogueOption[] options;
-
-    [Header("Conditional Requirements (Optional)")]
-    public ActorSO[] requiredNPCs;
-
-
-    public bool IsConditionMet()
-    {
-        if(requiredNPCs.Length > 0)
-        {
-            foreach (ActorSO npc in requiredNPCs)
-            {
-                if (!DialogHistoryTracker.Instance.HasSpokenWith(npc))
-                {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
+    public int returnStartIndex = 0;
 }
 
 [Serializable]
 public class DialogueLine
 {
-     public ActorSO speaker;
-     [TextArea(3,5)] public string text;
-     
+    public ActorSO speaker;
+    [TextArea(3, 5)] public string text;
+    public int nextLineIndex = -1;
 }
 
 [Serializable]
-public class DialogueOption
+public class DialogueTopic
 {
-    public string optionText;
-    public DialogSO nextDialog;
-
-
+    public string label;
+    [TextArea(3, 5)] public string text;
 }
+
+[Serializable]
+public class DialogueChoice
+{
+    public string label;
+    public int nextLineIndex;
+    public ChoiceOutcome choiceOutcome = ChoiceOutcome.None;
+    // public 
+}
+
+public enum ChoiceOutcome { None, Started, Completed, Declined }
