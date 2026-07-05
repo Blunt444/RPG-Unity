@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: Test1
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  lines: []
+  lines:
+  - speaker: {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
+    text: Hello, I am Purple Bob.
+    nextLineIndex: 1
+  - speaker: {fileID: 11400000, guid: 1cccf1b6a7d519b4e8118f77c6cbd7ae, type: 2}
+    text: Hello, I am Knight.
+    nextLineIndex: 2
+  - speaker: {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
+    text: Cool!
+    nextLineIndex: -1
   returnStartIndex: 0

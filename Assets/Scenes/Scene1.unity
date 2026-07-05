@@ -9810,17 +9810,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8b134a8e242844c863b93e67e280ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
-  canvasGroup: {fileID: 971386191}
-  portrait: {fileID: 1463643041}
+  isOpened: 0
   actorName: {fileID: 1436924009}
   dialogueText: {fileID: 1827091146}
-  choiceBtns:
-  - {fileID: 1562425557}
-  - {fileID: 1094408781}
-  - {fileID: 1614316977}
-  - {fileID: 655004367}
-  - {fileID: 626549198}
-  isDialogueActive: 0
+  actorSprite: {fileID: 1463643041}
+  dialogCanvas: {fileID: 971386191}
 --- !u!114 &971386200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10446,6 +10440,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1059937432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059937433}
+  m_Layer: 8
+  m_Name: LaunchPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059937433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059937432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.85, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1840990459}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1075587048
 GameObject:
   m_ObjectHideFlags: 0
@@ -11454,11 +11479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd21dc2d051ba041929f67a4f47c0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Talk
-  currentConvo: {fileID: 0}
-  conversations:
-  - {fileID: 11400000, guid: 69301356763169a4cb62a09b7d4d2d2b, type: 2}
-  - {fileID: 11400000, guid: dbbcc05dd43ba8145b195b0522467fb8, type: 2}
-  - {fileID: 11400000, guid: 5e516986a0964fd45885ea67cfc0ab6e, type: 2}
+  dialogSO: {fileID: 11400000, guid: 211523177ab9bc4408cc980fe0f1dff3, type: 2}
   interactionAnim: {fileID: 760122184}
 --- !u!114 &1306084674
 MonoBehaviour:
@@ -11940,9 +11961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd21dc2d051ba041929f67a4f47c0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Talk
-  currentConvo: {fileID: 0}
-  conversations:
-  - {fileID: 11400000, guid: f90d39f9dc639454a8be6fbc396f09eb, type: 2}
+  dialogSO: {fileID: 0}
   interactionAnim: {fileID: 1956659030}
 --- !u!114 &1526266248
 MonoBehaviour:
@@ -12563,10 +12582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd21dc2d051ba041929f67a4f47c0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Talk
-  currentConvo: {fileID: 0}
-  conversations:
-  - {fileID: 11400000, guid: 8ae050162cafc2e4d834900d53002932, type: 2}
-  - {fileID: 11400000, guid: 0797e059dfc2cfd4dad1ab32ae1b00e2, type: 2}
+  dialogSO: {fileID: 0}
   interactionAnim: {fileID: 2056607626}
 --- !u!114 &1819268604
 MonoBehaviour:
@@ -14242,9 +14258,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5882446259612895243, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882446259612895243, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
+      propertyPath: launchPoint
+      value: 
+      objectReference: {fileID: 1059937433}
+    - target: {fileID: 7577454587358853423, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 96747424046575657, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1059937433}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4446658945883243724, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
       insertIndex: -1
@@ -14548,7 +14579,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 65592988553236536, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 65592988553236536, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_Interactable

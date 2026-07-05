@@ -54,11 +54,10 @@ public class NPC_Talk : MonoBehaviour
             }
             else if (!DialogueManager.Instance.isOpened)
             {
+                currentIndex = DialogueManager.Instance.GetStartIndex(dialogSO);
                 DialogueManager.Instance.DisplayDialogue(dialogSO, currentIndex);
                 DialogueManager.Instance.ToggleVisibility();
             }
         }
     }
-
-
 }

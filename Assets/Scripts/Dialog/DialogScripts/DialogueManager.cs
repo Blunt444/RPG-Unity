@@ -46,6 +46,11 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Canvas state : " + isOpened);
     }
 
+    public int GetStartIndex(DialogSO dialogSO)
+    {
+        return dialogSO.returnStartIndex;
+    }
+
     public int EndConversation(DialogSO dialogSO)
     {
         if (isOpened)
@@ -70,5 +75,7 @@ public class DialogueManager : MonoBehaviour
         actorSprite.sprite = line.speaker.portrait;
 
         dialogueText.text = line.text;
+
+        dialogSO.returnStartIndex = line.checkpointIndex;
     }
 }

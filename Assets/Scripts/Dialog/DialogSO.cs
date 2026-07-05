@@ -14,6 +14,7 @@ public class DialogueLine
     public ActorSO speaker;
     [TextArea(3, 5)] public string text;
     public int nextLineIndex = -1;
+    public int checkpointIndex = 0;
 }
 
 [Serializable]
