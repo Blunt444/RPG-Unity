@@ -76,6 +76,18 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = line.text;
 
+        bool isThereTopics = CheckForTopics(dialogSO, currentIndex);
+
+        if (isThereTopics)
+        {
+            
+        }
+
         dialogSO.returnStartIndex = line.checkpointIndex;
+
+    }
+    public bool CheckForTopics(DialogSO dialogSO, int currentIndex)
+    {
+        return dialogSO.lines[currentIndex].topics.Count > 0;
     }
 }

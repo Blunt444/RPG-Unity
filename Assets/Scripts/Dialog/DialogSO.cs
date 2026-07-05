@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DialogSO")]
@@ -13,6 +14,9 @@ public class DialogueLine
 {
     public ActorSO speaker;
     [TextArea(3, 5)] public string text;
+
+    public List<DialogueTopic> topics = new List<DialogueTopic>();
+
     public int nextLineIndex = -1;
     public int checkpointIndex = 0;
 }
@@ -20,8 +24,10 @@ public class DialogueLine
 [Serializable]
 public class DialogueTopic
 {
-    public string label;
+    [TextArea(3, 5)] public string label;
     [TextArea(3, 5)] public string text;
+
+    public int nextLineIndex = 0;
 }
 
 [Serializable]
