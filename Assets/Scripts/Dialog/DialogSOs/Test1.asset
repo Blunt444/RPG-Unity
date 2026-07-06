@@ -15,11 +15,28 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
     text: Hello, I am Purple Bob.
+    topics: []
     nextLineIndex: 1
+    checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 1cccf1b6a7d519b4e8118f77c6cbd7ae, type: 2}
     text: Hello, I am Knight.
+    topics: []
     nextLineIndex: 2
+    checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
     text: Cool!
+    topics: []
+    nextLineIndex: 3
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
+    text: Do you wanna know about me more!!
+    topics:
+    - label: A Joke!
+      text: You look like a walking metal statue.
+      nextLineIndex: 0
+    - label: About my profession
+      text: I am a thief.
+      nextLineIndex: 0
     nextLineIndex: -1
+    checkpointIndex: 3
   returnStartIndex: 0

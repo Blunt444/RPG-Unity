@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 1128129218912458590}
   - component: {fileID: 2355649660521789036}
   - component: {fileID: 2188982234396269003}
+  - component: {fileID: 2117999509214928107}
   m_Layer: 5
   m_Name: TopicItem
   m_TagString: Untagged
@@ -241,6 +242,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2117999509214928107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071981592379691869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46dfa2d924fd20e4e826fc9123691146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TopicButton
+  topicText: {fileID: 0}
+  questionMark: {fileID: 0}
 --- !u!1 &7300860726336216319
 GameObject:
   m_ObjectHideFlags: 0

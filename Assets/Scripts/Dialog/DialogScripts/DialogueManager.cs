@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,8 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text actorName;
     public TMP_Text dialogueText;
     public Image actorSprite;
+    public GameObject topicItem;
+    public Transform topicBox;
 
 
     public CanvasGroup dialogCanvas;
@@ -80,11 +83,20 @@ public class DialogueManager : MonoBehaviour
 
         if (isThereTopics)
         {
-            
+
         }
 
         dialogSO.returnStartIndex = line.checkpointIndex;
 
+    }
+
+    public void CreateTopicInstance(List<DialogueTopic> topics)
+    {
+        foreach (DialogueTopic topic in topics)
+        {
+            GameObject obj = Instantiate(topicItem, topicBox);
+            
+        }
     }
     public bool CheckForTopics(DialogSO dialogSO, int currentIndex)
     {

@@ -119,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (newState == PlayerState.Attacking)
         {
+            anim.SetInteger("attackVariant",Random.Range(0,2));
             anim.SetBool("isAttacking", true);
         }
         else if (newState == PlayerState.Shooting)
