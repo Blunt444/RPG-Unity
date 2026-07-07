@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Player_Bow : MonoBehaviour
@@ -19,22 +20,18 @@ public class Player_Bow : MonoBehaviour
         {
             mainCamera = Camera.main;
         }
-
-        anim.SetFloat("aimX", aimDirection.x);
-        anim.SetFloat("aimY", aimDirection.y);
     }
 
     void Update()
     {
         shootTimer -= Time.deltaTime;
+
+        HandleAiming();
+
         if (Input.GetButtonDown("Shoot") && shootTimer <= 0)
         {
             playerMovement.isShooting = true;
             playerMovement.ChangeState(PlayerState.Shooting);
-        }
-        if (playerMovement.isShooting)
-        {
-            HandleAiming();
         }
     }
     private void OnEnable()
@@ -65,15 +62,46 @@ public class Player_Bow : MonoBehaviour
         mouseScreenPos.z = mainCamera.WorldToScreenPoint(transform.position).z;
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(mouseScreenPos);
 
-        aimDirection = (mouseWorldPos - launchPoint.position);
+        aimDirection = (mouseWorldPos - transform.position);
         aimDirection.Normalize();
 
-        anim.SetFloat("aimX", aimDirection.x);
-        anim.SetFloat("aimY", aimDirection.y);
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        if (aimDirection.x != 0)
+        if (Mathf.Abs(aimDirection.x) > 0.05f)
         {
-            transform.localScale = new Vector3(Math.Abs(transform.localScale.x) * (aimDirection.x > 0 ? 1 : -1), transform.localScale.y, transform.localScale.z);
+            if (aimDirection.x < 0)
+            {
+                transform.parent.localScale = new Vector3(
+                 -Math.Abs(transform.parent.localScale.x),
+                 transform.parent.localScale.y,
+                 transform.parent.localScale.z
+                );
+                transform.localRotation = Quaternion.Euler(0, 0, 180f - angle);
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                transform.parent.localScale = new Vector3(
+                 Math.Abs(transform.parent.localScale.x),
+                 transform.parent.localScale.y,
+                 transform.parent.localScale.z
+                );
+                transform.localRotation = Quaternion.Euler(0, 0, angle);
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+        }
+        else
+        {
+            if (aimDirection.x < 0)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, 180f - angle);
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, angle);
+                transform.localScale = new Vector3(1, 1, 1);
+            }
         }
     }
 }

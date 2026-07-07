@@ -12,6 +12,12 @@ public class Player_ChangeStance : MonoBehaviour
     private float waitForFadeOut = 1.0f;
     private bool isTransistioning = false;
 
+    void Start()
+    {
+        playerCombat.enabled = true;
+        playerBow.gameObject.SetActive(false);
+    }
+
     void Update()
     {
         if (Input.GetButtonDown("ToggleStance") && !isTransistioning)
@@ -25,17 +31,17 @@ public class Player_ChangeStance : MonoBehaviour
         isTransistioning = true;
         anim.Play("FadeIn");
         Time.timeScale = 0;
-        
+
         yield return new WaitForSecondsRealtime(transistionTime);
 
         playerCombat.enabled = !playerCombat.enabled;
-        playerBow.enabled = !playerBow.enabled;
+        playerBow.gameObject.SetActive(!playerBow.gameObject.activeSelf);
 
         anim.Play("FadeOut");
         Time.timeScale = 1;
 
         yield return new WaitForSecondsRealtime(waitForFadeOut);
-        
+
         isTransistioning = false;
     }
 }
