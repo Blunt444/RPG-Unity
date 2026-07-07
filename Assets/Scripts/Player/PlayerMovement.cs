@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
     public bool isShooting;
+    public bool isGuarding = false;
 
     private PlayerState playerState;
     private bool isKnockedBack;
@@ -21,9 +22,17 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Slash") && playerState != PlayerState.Attacking && playerCombat.enabled)
+        if (Input.GetButtonDown("Slash") && playerState != PlayerState.Attacking && playerCombat.enabled && !isGuarding)
         {
             playerCombat.Attack();
+        }
+        else if (Input.GetButtonDown("Guard") && !isGuarding)
+        {
+            ActivateGuard();
+        }
+        else if (Input.GetButtonUp("Guard") && isGuarding)
+        {
+            DeactivateGuard();
         }
     }
 
@@ -36,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (isKnockedBack)
+        {
+            return;
+        }
+
+        if (isGuarding)
         {
             return;
         }
@@ -72,6 +86,20 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 
+    public void ActivateGuard()
+    {
+        isGuarding = true;
+        ChangeState(PlayerState.Guard);
+        rb.linearVelocity = Vector2.zero;
+    }
+
+    public void DeactivateGuard()
+    {
+        isGuarding = false;
+        ChangeState(PlayerState.Idle);
+        rb.linearVelocity = Vector2.zero;
+    }
+
     public void Knockback(Transform enemy, float force, float stunTime)
     {
         isKnockedBack = true;
@@ -106,6 +134,10 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isShooting", false);
         }
+        else if (playerState == PlayerState.Guard)
+        {
+            anim.SetBool("isGuarding", false);
+        }
 
         playerState = newState;
 
@@ -119,12 +151,16 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (newState == PlayerState.Attacking)
         {
-            anim.SetInteger("attackVariant",Random.Range(0,2));
+            anim.SetInteger("attackVariant", Random.Range(0, 2));
             anim.SetBool("isAttacking", true);
         }
         else if (newState == PlayerState.Shooting)
         {
             anim.SetBool("isShooting", true);
+        }
+        else if (newState == PlayerState.Guard)
+        {
+            anim.SetBool("isGuarding", true);
         }
 
     }
@@ -135,5 +171,6 @@ public enum PlayerState
     Attacking,
     Idle,
     Running,
-    Shooting
+    Shooting,
+    Guard,
 }

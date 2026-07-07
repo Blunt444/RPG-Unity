@@ -14,6 +14,7 @@ public class Enemy_Combat : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, weaponRange, playerLayer);
         if (hits.Length > 0)
         {
+            if (hits[0].GetComponent<PlayerMovement>().isGuarding) return;
             hits[0].GetComponent<PlayerHealth>().ChangeHealth(-damage);
             hits[0].GetComponent<PlayerMovement>().Knockback(transform, knockbackForce, stunTime);
         }
@@ -21,6 +22,6 @@ public class Enemy_Combat : MonoBehaviour
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(attackPoint.position,weaponRange);
+        Gizmos.DrawWireSphere(attackPoint.position, weaponRange);
     }
 }
