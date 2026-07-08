@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerState playerState;
     private bool isKnockedBack;
     private Player_Combat playerCombat;
+    private float currentGuardCooldown;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerCombat.Attack();
         }
-        else if (Input.GetButtonDown("Guard") && !isGuarding)
+        else if (Input.GetButtonDown("Guard") && !isGuarding && currentGuardCooldown <= 0)
         {
             ActivateGuard();
         }
@@ -34,22 +35,22 @@ public class PlayerMovement : MonoBehaviour
         {
             DeactivateGuard();
         }
+
+        if (currentGuardCooldown > 0)
+        {
+            currentGuardCooldown -= Time.deltaTime;
+        }
     }
 
     void FixedUpdate()
     {
-        if (isShooting)
+        if (isShooting || isGuarding)
         {
             rb.linearVelocity = Vector2.zero;
             return;
         }
 
         if (isKnockedBack)
-        {
-            return;
-        }
-
-        if (isGuarding)
         {
             return;
         }
@@ -90,10 +91,9 @@ public class PlayerMovement : MonoBehaviour
     {
         isGuarding = true;
         ChangeState(PlayerState.Guard);
-        rb.linearVelocity = Vector2.zero;
     }
 
-    public void BreakGuard(int amount)
+    public void BreakGuard(int amount, Transform attacker)
     {
 
         StatsManager.Instance.currentGuardHit += amount;
@@ -101,17 +101,48 @@ public class PlayerMovement : MonoBehaviour
         if (StatsManager.Instance.currentGuardHit >= StatsManager.Instance.maxGuardHitNegate)
         {
             StatsManager.Instance.currentGuardHit = 0;
-            
-            ChangeState(PlayerState.Idle);
-            isGuarding = false;
+
+            currentGuardCooldown = StatsManager.Instance.maxGuardCooldown;
+
+            DeactivateGuard();
+
+            TriggerBreakGuardKnockback(attacker);
         }
+    }
+
+    public void TriggerBreakGuardKnockback(Transform attacker)
+    {
+        isKnockedBack = true;
+        Vector2 dir = (transform.position - attacker.position).normalized;
+
+        float maxForce = 10;
+        float duration = 0.15f;
+
+        StartCoroutine(GuardBreakKnockbackCounter(dir, maxForce, duration));
+    }
+
+    private IEnumerator GuardBreakKnockbackCounter(Vector2 dir, float maxForce, float duration)
+    {
+        float elapsed = 0;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float currentForce = Mathf.Lerp(maxForce, 0f, elapsed / duration);
+            rb.linearVelocity = dir * currentForce;
+
+            yield return null;
+        }
+
+        rb.linearVelocity = Vector2.zero;
+        isKnockedBack = false;
     }
 
     public void DeactivateGuard()
     {
         isGuarding = false;
         ChangeState(PlayerState.Idle);
-        rb.linearVelocity = Vector2.zero;
     }
 
     public void Knockback(Transform enemy, float force, float stunTime)

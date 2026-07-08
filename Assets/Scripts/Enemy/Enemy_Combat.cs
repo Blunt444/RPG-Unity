@@ -17,7 +17,7 @@ public class Enemy_Combat : MonoBehaviour
         {
             if (hits[0].GetComponent<PlayerMovement>().isGuarding)
             {
-                hits[0].GetComponent<PlayerMovement>().BreakGuard(guardDamage);
+                hits[0].GetComponent<PlayerMovement>().BreakGuard(guardDamage, transform);
                 return;
             }
             hits[0].GetComponent<PlayerHealth>().ChangeHealth(-damage);

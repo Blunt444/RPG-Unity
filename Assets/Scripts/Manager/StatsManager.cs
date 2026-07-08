@@ -16,6 +16,7 @@ public class StatsManager : MonoBehaviour
   public float attackCooldownTimer;
   public int currentGuardHit;
   public int maxGuardHitNegate;
+  public float maxGuardCooldown;
 
   [Header("Movement Stats")]
   public int speed;
