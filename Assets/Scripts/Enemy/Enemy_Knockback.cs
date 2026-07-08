@@ -15,16 +15,31 @@ public class Enemy_Knockback : MonoBehaviour
     public void Knockback(Transform forceTransform, float knockbackForce, float knockbackTime, float stunTime)
     {
         enemyMovement.ChangeState(EnemyState.Knockback);
-        StartCoroutine(StunTimer(knockbackTime, stunTime));
         Vector2 direction = (transform.position - forceTransform.position).normalized;
-        rb.linearVelocity = direction * knockbackForce;
+        StartCoroutine(knockBackCounter(direction, knockbackForce, knockbackTime, stunTime));
     }
 
-    IEnumerator StunTimer(float knockbackTime, float stunTime)
+    private IEnumerator knockBackCounter(Vector2 direction, float maxForce, float duration, float stunTime)
     {
-        yield return new WaitForSeconds(knockbackTime);
+        float elapsed = 0;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float currentForce = Mathf.Lerp(maxForce, 0f, elapsed / duration);
+
+            rb.linearVelocity = currentForce * direction;
+            yield return null;
+        }
         rb.linearVelocity = Vector2.zero;
-        yield return new WaitForSeconds(stunTime);
+        StartCoroutine(stunTimeCounter(stunTime));
+    }
+
+    private IEnumerator stunTimeCounter(float stunTime)
+    {
+        yield return new WaitForSecondsRealtime(stunTime);
+
         enemyMovement.ChangeState(EnemyState.Idle);
     }
 }

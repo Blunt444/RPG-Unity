@@ -5,9 +5,9 @@ public class Enemy_Combat : MonoBehaviour
     public int damage = 1;
     public Transform attackPoint;
     public float weaponRange;
-    public float knockbackForce;
     public LayerMask playerLayer;
-    public float stunTime = 1;
+    public float knockbackForce;
+    public float knockBackTime;
     public int guardDamage;
 
     public void Attack()
@@ -21,7 +21,7 @@ public class Enemy_Combat : MonoBehaviour
                 return;
             }
             hits[0].GetComponent<PlayerHealth>().ChangeHealth(-damage);
-            hits[0].GetComponent<PlayerMovement>().Knockback(transform, knockbackForce, stunTime);
+            hits[0].GetComponent<PlayerMovement>().Knockback(transform, knockbackForce, knockBackTime);
         }
     }
     public void OnDrawGizmosSelected()

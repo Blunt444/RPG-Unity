@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -118,10 +119,10 @@ public class PlayerMovement : MonoBehaviour
         float maxForce = 10;
         float duration = 0.15f;
 
-        StartCoroutine(GuardBreakKnockbackCounter(dir, maxForce, duration));
+        StartCoroutine(knockBackCounter(dir, maxForce, duration));
     }
 
-    private IEnumerator GuardBreakKnockbackCounter(Vector2 dir, float maxForce, float duration)
+    private IEnumerator knockBackCounter(Vector2 dir, float maxForce, float duration)
     {
         float elapsed = 0;
 
@@ -149,17 +150,9 @@ public class PlayerMovement : MonoBehaviour
     {
         isKnockedBack = true;
         Vector2 direction = (transform.position - enemy.position).normalized;
-        rb.linearVelocity = direction * force;
-        StartCoroutine(KnockbackCounter(stunTime));
+        StartCoroutine(knockBackCounter(direction, force, stunTime));
     }
 
-    IEnumerator KnockbackCounter(float stunTime)
-    {
-        yield return new WaitForSeconds(stunTime);
-        rb.linearVelocity = Vector2.zero;
-        isKnockedBack = false;
-
-    }
 
     public void ChangeState(PlayerState newState)
     {
