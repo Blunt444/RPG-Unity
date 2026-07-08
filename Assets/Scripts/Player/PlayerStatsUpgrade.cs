@@ -30,6 +30,11 @@ public class PlayerStatsUpgrade : MonoBehaviour
         statsUI.UpdateAllStats();
     }
 
+    public void UpdateGuardHitNegate(int amount)
+    {
+        statsManager.maxGuardHitNegate += amount;
+    }
+
 }
 
 

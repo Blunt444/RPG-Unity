@@ -8,13 +8,18 @@ public class Enemy_Combat : MonoBehaviour
     public float knockbackForce;
     public LayerMask playerLayer;
     public float stunTime = 1;
+    public int guardDamage;
 
     public void Attack()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, weaponRange, playerLayer);
         if (hits.Length > 0)
         {
-            if (hits[0].GetComponent<PlayerMovement>().isGuarding) return;
+            if (hits[0].GetComponent<PlayerMovement>().isGuarding)
+            {
+                hits[0].GetComponent<PlayerMovement>().BreakGuard(guardDamage);
+                return;
+            }
             hits[0].GetComponent<PlayerHealth>().ChangeHealth(-damage);
             hits[0].GetComponent<PlayerMovement>().Knockback(transform, knockbackForce, stunTime);
         }

@@ -93,6 +93,20 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
     }
 
+    public void BreakGuard(int amount)
+    {
+
+        StatsManager.Instance.currentGuardHit += amount;
+
+        if (StatsManager.Instance.currentGuardHit >= StatsManager.Instance.maxGuardHitNegate)
+        {
+            StatsManager.Instance.currentGuardHit = 0;
+            
+            ChangeState(PlayerState.Idle);
+            isGuarding = false;
+        }
+    }
+
     public void DeactivateGuard()
     {
         isGuarding = false;
