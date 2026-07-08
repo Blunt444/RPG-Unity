@@ -21,6 +21,9 @@ public class StatsManager : MonoBehaviour
   [Header("Movement Stats")]
   public int speed;
 
+  [Header("Archer Stats")]
+  public float speedDamp;
+
   [Header("Health Stats")]
   public int maxHealth;
   public int currentHealth;

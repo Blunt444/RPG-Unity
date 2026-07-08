@@ -26,14 +26,13 @@ public class Player_Bow : MonoBehaviour
     {
         shootTimer -= Time.deltaTime;
 
-        HandleAiming();
-
         if (Input.GetButtonDown("Shoot") && shootTimer <= 0)
         {
             playerMovement.isShooting = true;
             playerMovement.ChangeState(PlayerState.Shooting);
         }
     }
+
     private void OnEnable()
     {
         anim.SetLayerWeight(0, 0);
@@ -56,7 +55,7 @@ public class Player_Bow : MonoBehaviour
         playerMovement.ChangeState(PlayerState.Idle);
         playerMovement.isShooting = false;
     }
-    private void HandleAiming()
+    public void HandleAiming()
     {
         Vector3 mouseScreenPos = Input.mousePosition;
         mouseScreenPos.z = mainCamera.WorldToScreenPoint(transform.position).z;

@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,13 +8,15 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     public bool isShooting;
     public bool isGuarding = false;
+    public Player_Bow playerBow;
 
+    private float currentDamp = 1.0f;
     private PlayerState playerState;
     private bool isKnockedBack;
     private Player_Combat playerCombat;
     private float currentGuardCooldown;
 
-    void Start()
+    void Awake()
     {
         playerState = PlayerState.Idle;
         playerCombat = GetComponent<Player_Combat>();
@@ -62,12 +63,20 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        if(!playerCombat.enabled && playerBow.gameObject.activeInHierarchy)
+        {
+            playerBow.HandleAiming();
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        if (horizontal > 0 && transform.localScale.x < 0 || horizontal < 0 && transform.localScale.x > 0)
+        if (playerCombat.enabled || !playerBow.gameObject.activeInHierarchy)
         {
-            Flip();
+            if (horizontal > 0 && transform.localScale.x < 0 || horizontal < 0 && transform.localScale.x > 0)
+            {
+                Flip();
+            }
         }
 
         if (Mathf.Abs(horizontal) > 0 || Mathf.Abs(vertical) > 0)
@@ -78,8 +87,33 @@ public class PlayerMovement : MonoBehaviour
         {
             ChangeState(PlayerState.Idle);
         }
+        updateSpeed(horizontal, vertical);
+    }
 
-        rb.linearVelocity = new Vector2(horizontal, vertical) * StatsManager.Instance.speed;
+    public void updateSpeed(float horizontal, float vertical)
+    {
+
+
+        Vector2 moveInput = new Vector2(horizontal, vertical);
+
+        if (playerCombat.enabled || !playerBow.gameObject.activeInHierarchy)
+        {
+            rb.linearVelocity = moveInput * StatsManager.Instance.speed;
+            return;
+        }
+
+        Vector2 aimDirection = playerBow.aimDirection.normalized;
+        Vector2 normMoveInput = moveInput.normalized;
+
+        float dot = Vector2.Dot(normMoveInput, aimDirection);
+
+        Debug.Log($"move:{normMoveInput} aim:{aimDirection} dot:{dot}");
+
+        float targetDamp = (dot < -0.3f) ? StatsManager.Instance.speedDamp : 1.0f;
+
+        currentDamp = Mathf.Lerp(currentDamp, targetDamp, Time.fixedDeltaTime * 10f);
+
+        rb.linearVelocity = moveInput * StatsManager.Instance.speed * currentDamp;
     }
 
     void Flip()
