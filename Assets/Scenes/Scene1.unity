@@ -12253,11 +12253,12 @@ MonoBehaviour:
   damage: 1
   attackPoint: {fileID: 515485891}
   weaponRange: 0.9
-  knockbackForce: 4
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  stunTime: 1
+  knockbackForce: 6
+  knockBackTime: 0.15
+  guardDamage: 1
 --- !u!114 &1870128098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13451,6 +13452,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1246328149}
     - target: {fileID: 8510407843265130527, guid: ea92fc0091e038d408d5151903bf5bb4, type: 3}
+      propertyPath: speedDamp
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510407843265130527, guid: ea92fc0091e038d408d5151903bf5bb4, type: 3}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 1815772677}
@@ -13458,6 +13463,22 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1840990462}
+    - target: {fileID: 8510407843265130527, guid: ea92fc0091e038d408d5151903bf5bb4, type: 3}
+      propertyPath: knockbackTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510407843265130527, guid: ea92fc0091e038d408d5151903bf5bb4, type: 3}
+      propertyPath: knockbackForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510407843265130527, guid: ea92fc0091e038d408d5151903bf5bb4, type: 3}
+      propertyPath: maxGuardCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510407843265130527, guid: ea92fc0091e038d408d5151903bf5bb4, type: 3}
+      propertyPath: maxGuardHitNegate
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13626,6 +13647,14 @@ PrefabInstance:
     - target: {fileID: 161274999823922141, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707990478803571190, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
+      propertyPath: playerBow
+      value: 
+      objectReference: {fileID: 634455291}
+    - target: {fileID: 1707990478803571190, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
+      propertyPath: maxGuardHitNegate
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3757714797836626784, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
       propertyPath: healthText

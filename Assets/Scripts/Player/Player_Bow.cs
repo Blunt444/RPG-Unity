@@ -9,6 +9,7 @@ public class Player_Bow : MonoBehaviour
     public Vector2 aimDirection;
     public float shootCooldown;
     public Animator anim;
+    public Animator bowAnim;
     public PlayerMovement playerMovement;
     public Camera mainCamera;
 
@@ -29,6 +30,7 @@ public class Player_Bow : MonoBehaviour
         if (Input.GetButtonDown("Shoot") && shootTimer <= 0)
         {
             playerMovement.isShooting = true;
+            bowAnim.SetBool("isShooting", true);
             playerMovement.ChangeState(PlayerState.Shooting);
         }
     }
@@ -54,6 +56,7 @@ public class Player_Bow : MonoBehaviour
 
         playerMovement.ChangeState(PlayerState.Idle);
         playerMovement.isShooting = false;
+        bowAnim.SetBool("isShooting", false);
     }
     public void HandleAiming()
     {
