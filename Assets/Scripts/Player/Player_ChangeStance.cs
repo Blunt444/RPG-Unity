@@ -37,6 +37,11 @@ public class Player_ChangeStance : MonoBehaviour
         playerCombat.enabled = !playerCombat.enabled;
         playerBow.gameObject.SetActive(!playerBow.gameObject.activeSelf);
 
+        if (playerBow.gameObject.activeSelf)
+            ArrowQuantityManager.Instance.DisplayCanvas();
+        else
+            ArrowQuantityManager.Instance.HideCanvas();
+
         anim.Play("FadeOut");
         Time.timeScale = 1;
 

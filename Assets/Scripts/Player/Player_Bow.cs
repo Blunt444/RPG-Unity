@@ -29,9 +29,12 @@ public class Player_Bow : MonoBehaviour
 
         if (Input.GetButtonDown("Shoot") && shootTimer <= 0)
         {
-            playerMovement.isShooting = true;
-            bowAnim.SetBool("isShooting", true);
-            playerMovement.ChangeState(PlayerState.Shooting);
+            if (ArrowQuantityManager.Instance.GetQuantity() > 0)
+            {
+                playerMovement.isShooting = true;
+                bowAnim.SetBool("isShooting", true);
+                playerMovement.ChangeState(PlayerState.Shooting);
+            }
         }
     }
 
@@ -49,11 +52,16 @@ public class Player_Bow : MonoBehaviour
     {
         if (shootTimer > 0) return;
 
-        Arrow arrow = Instantiate(arrowPrefab, launchPoint.position, Quaternion.identity).GetComponent<Arrow>();
+        Arrow arrow = null;
 
-        arrow.Launch(aimDirection);
-        shootTimer = shootCooldown;
+        if (ArrowQuantityManager.Instance.GetQuantity() > 0)
+        {
+            arrow = Instantiate(arrowPrefab, launchPoint.position, Quaternion.identity).GetComponent<Arrow>();
+            arrow.Launch(aimDirection);
+            shootTimer = shootCooldown;
 
+            ArrowQuantityManager.Instance.SetQuantity(-1);
+        }
         playerMovement.ChangeState(PlayerState.Idle);
         playerMovement.isShooting = false;
         bowAnim.SetBool("isShooting", false);
