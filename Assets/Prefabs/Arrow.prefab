@@ -196,3 +196,6 @@ MonoBehaviour:
   sr: {fileID: 7170674071856058662}
   buriedSprite: {fileID: -6662812116773042688, guid: 1b1419c3a3ea911439a7f0741630c5f3, type: 3}
   dampSpeed: 0.5
+  gravity: 4
+  stopThreshold: 0.2
+  tiltAngle: 0.001
