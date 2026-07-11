@@ -19,6 +19,8 @@ public class SkillSlot : MonoBehaviour
     public Button skillButton;
     public int currentLevel;
     public bool isUnlocked;
+    public Image whiteBg;
+    public Image blackBg;
 
     [NonSerialized] public List<ReslovedPrerequisiteSkillSlots> prerequisiteSkillSlots = new List<ReslovedPrerequisiteSkillSlots>();
     public static event Action<SkillSlot> OnAbilityPointSpent;
@@ -27,6 +29,11 @@ public class SkillSlot : MonoBehaviour
     public void Setup(SkillSO skillSO)
     {
         this.skillSO = skillSO;
+        UpdateUI();
+    }
+
+    private void OnValidate()
+    {
         UpdateUI();
     }
 
@@ -46,9 +53,9 @@ public class SkillSlot : MonoBehaviour
     }
     public bool CanUnlockSkill()
     {
-        foreach(ReslovedPrerequisiteSkillSlots prereq in prerequisiteSkillSlots)
+        foreach (ReslovedPrerequisiteSkillSlots prereq in prerequisiteSkillSlots)
         {
-            if(!prereq.slot.isUnlocked || prereq.slot.currentLevel < prereq.requiredLevel)
+            if (!prereq.slot.isUnlocked || prereq.slot.currentLevel < prereq.requiredLevel)
             {
                 return false;
             }
@@ -64,14 +71,16 @@ public class SkillSlot : MonoBehaviour
             skillButton.interactable = true;
             skillLvlText.text = currentLevel.ToString() + "/" + skillSO.maxLevel.ToString();
             skillIcon.color = Color.white;
+            whiteBg.gameObject.SetActive(true);
+            blackBg.gameObject.SetActive(true);
         }
         else
         {
             skillButton.interactable = false;
-            skillLvlText.text = "Locked";
             skillIcon.color = Color.grey;
+            whiteBg.gameObject.SetActive(false);
+            blackBg.gameObject.SetActive(false);
         }
-
     }
 
 }

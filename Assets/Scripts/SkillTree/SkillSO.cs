@@ -10,7 +10,7 @@ public class SkillSO : ScriptableObject
     public SkillCategory category;
     public List<SkillPrerequisite> prerequisites;
 }
-public enum SkillCategory { Combat, Magic };
+public enum SkillCategory { Combat, Archery };
 
 [System.Serializable]
 public class SkillPrerequisite
