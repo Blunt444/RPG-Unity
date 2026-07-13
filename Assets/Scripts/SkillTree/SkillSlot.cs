@@ -23,21 +23,13 @@ public class SkillSlot : MonoBehaviour
     public Image blackBg;
 
     [NonSerialized] public List<ReslovedPrerequisiteSkillSlots> prerequisiteSkillSlots = new List<ReslovedPrerequisiteSkillSlots>();
-    
+
     public void Setup(SkillSO skillSO)
     {
         this.skillSO = skillSO;
         UpdateUI();
     }
-
-    // // private void Awake()
-    // // {
-    // //     if (skillButton != null)
-    // //     {
-    // //         skillButton.onClick.AddListener(TryUpgradeSkill);
-    // //     }
-    // // }
-
+    
     private void OnValidate()
     {
         UpdateUI();
@@ -67,6 +59,7 @@ public class SkillSlot : MonoBehaviour
         if (isUnlocked && currentLevel < skillSO.maxLevel && ReturnCurrentSkillCost() <= SkillTreeManager.Instance.GetCurrentPoints())
         {
             currentLevel++;
+            SkillManager.Instance.HandleSkillUpgrade(this);
             SkillTreeManager.Instance.DeductPoints(ReturnCurrentSkillCost());
         }
 
