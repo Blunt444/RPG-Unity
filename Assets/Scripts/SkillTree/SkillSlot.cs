@@ -4,7 +4,7 @@ using TMPro;
 using System;
 using System.Collections.Generic;
 
-[System.Serializable]
+[Serializable]
 public class ReslovedPrerequisiteSkillSlots
 {
     public SkillSlot slot;
@@ -23,9 +23,7 @@ public class SkillSlot : MonoBehaviour
     public Image blackBg;
 
     [NonSerialized] public List<ReslovedPrerequisiteSkillSlots> prerequisiteSkillSlots = new List<ReslovedPrerequisiteSkillSlots>();
-    // public static event Action<SkillSlot> OnAbilityPointSpent;
-    // public static event Action<SkillSlot> OnSkillMaxed;
-
+    
     public void Setup(SkillSO skillSO)
     {
         this.skillSO = skillSO;
@@ -45,6 +43,25 @@ public class SkillSlot : MonoBehaviour
         UpdateUI();
     }
 
+    public bool CanUnlockSkill()
+    {
+        foreach (ReslovedPrerequisiteSkillSlots rpss in prerequisiteSkillSlots)
+        {
+            if (!rpss.slot.isUnlocked || rpss.slot.currentLevel < rpss.requiredLevel)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public void UnlockSkill()
+    {
+        isUnlocked = true;
+        UpdateUI();
+    }
+
     public bool UpgradeSkill()
     {
         if (isUnlocked && currentLevel < skillSO.maxLevel && ReturnCurrentSkillCost() <= SkillTreeManager.Instance.GetCurrentPoints())
@@ -61,33 +78,6 @@ public class SkillSlot : MonoBehaviour
         return skillSO.initialCost + (currentLevel - 1) * skillSO.incrementValue;
     }
 
-    // public void TryUpgradeSkill()
-    // {
-    //     Debug.Log("click");
-    //     if (isUnlocked && currentLevel < skillSO.maxLevel)
-    //     {
-    //         currentLevel++;
-    //         OnAbilityPointSpent?.Invoke(this);
-    //         UpdateUI();
-    //     }
-    // }
-    // public void Unlock()
-    // {
-    //     isUnlocked = true;
-    //     UpdateUI();
-    // }
-    // public bool CanUnlockSkill()
-    // {
-    //     foreach (ReslovedPrerequisiteSkillSlots prereq in prerequisiteSkillSlots)
-    //     {
-    //         if (!prereq.slot.isUnlocked || prereq.slot.currentLevel < prereq.requiredLevel)
-    //         {
-    //             return false;
-    //         }
-    //     }
-
-    //     return true;
-    // }
     private void UpdateUI()
     {
         skillIcon.sprite = skillSO.skillIcon;
