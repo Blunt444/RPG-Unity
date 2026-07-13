@@ -23,8 +23,8 @@ public class SkillSlot : MonoBehaviour
     public Image blackBg;
 
     [NonSerialized] public List<ReslovedPrerequisiteSkillSlots> prerequisiteSkillSlots = new List<ReslovedPrerequisiteSkillSlots>();
-    public static event Action<SkillSlot> OnAbilityPointSpent;
-    public static event Action<SkillSlot> OnSkillMaxed;
+    // public static event Action<SkillSlot> OnAbilityPointSpent;
+    // public static event Action<SkillSlot> OnSkillMaxed;
 
     public void Setup(SkillSO skillSO)
     {
@@ -32,37 +32,62 @@ public class SkillSlot : MonoBehaviour
         UpdateUI();
     }
 
+    // // private void Awake()
+    // // {
+    // //     if (skillButton != null)
+    // //     {
+    // //         skillButton.onClick.AddListener(TryUpgradeSkill);
+    // //     }
+    // // }
+
     private void OnValidate()
     {
         UpdateUI();
     }
 
-    public void TryUpgradeSkill()
+    public bool UpgradeSkill()
     {
-        if (isUnlocked && currentLevel < skillSO.maxLevel)
+        if (isUnlocked && currentLevel < skillSO.maxLevel && ReturnCurrentSkillCost() <= SkillTreeManager.Instance.GetCurrentPoints())
         {
             currentLevel++;
-            OnAbilityPointSpent?.Invoke(this);
-            UpdateUI();
-        }
-    }
-    public void Unlock()
-    {
-        isUnlocked = true;
-        UpdateUI();
-    }
-    public bool CanUnlockSkill()
-    {
-        foreach (ReslovedPrerequisiteSkillSlots prereq in prerequisiteSkillSlots)
-        {
-            if (!prereq.slot.isUnlocked || prereq.slot.currentLevel < prereq.requiredLevel)
-            {
-                return false;
-            }
+            SkillTreeManager.Instance.DeductPoints(ReturnCurrentSkillCost());
         }
 
-        return true;
+        return false;
     }
+
+    public int ReturnCurrentSkillCost()
+    {
+        return skillSO.initialCost + (currentLevel - 1) * skillSO.incrementValue;
+    }
+
+    // public void TryUpgradeSkill()
+    // {
+    //     Debug.Log("click");
+    //     if (isUnlocked && currentLevel < skillSO.maxLevel)
+    //     {
+    //         currentLevel++;
+    //         OnAbilityPointSpent?.Invoke(this);
+    //         UpdateUI();
+    //     }
+    // }
+    // public void Unlock()
+    // {
+    //     isUnlocked = true;
+    //     UpdateUI();
+    // }
+    // public bool CanUnlockSkill()
+    // {
+    //     foreach (ReslovedPrerequisiteSkillSlots prereq in prerequisiteSkillSlots)
+    //     {
+    //         if (!prereq.slot.isUnlocked || prereq.slot.currentLevel < prereq.requiredLevel)
+    //         {
+    //             return false;
+    //         }
+    //     }
+
+    //     return true;
+    // }
     private void UpdateUI()
     {
         skillIcon.sprite = skillSO.skillIcon;
@@ -82,5 +107,4 @@ public class SkillSlot : MonoBehaviour
             blackBg.gameObject.SetActive(false);
         }
     }
-
 }

@@ -9,6 +9,8 @@ public class SkillSO : ScriptableObject
     public Sprite skillIcon;
     public SkillCategory category;
     public List<SkillPrerequisite> prerequisites;
+    public int initialCost;
+    public int incrementValue;
 }
 public enum SkillCategory { Combat, Archery };
 
