@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,13 +8,14 @@ public class SkillTreeManager : MonoBehaviour
 
     public static SkillTreeManager Instance;
 
-    public List<SkillSO> allSkills;
+    public List<SkillSO> allSkillSOs;
     public SkillSlot skillSlotPrefab;
     public Transform combatPanel;
     public Transform archeryPanel;
     public TMP_Text pointsText;
     public int availablePoints;
 
+    [NonSerialized] private Dictionary<string, SkillSlot> skillSlotDictionary = new Dictionary<string, SkillSlot>();
 
     private void Awake()
     {
@@ -38,87 +40,64 @@ public class SkillTreeManager : MonoBehaviour
             availablePoints -= amount;
     }
 
-    // private Dictionary<SkillSO, SkillSlot> slotDic = new Dictionary<SkillSO, SkillSlot>();
+    private void ReadyAllSkills()
+    {
 
-    // private void OnEnable()
-    // {
-    //     SkillSlot.OnAbilityPointSpent += HandlePoints;
-    //     ExpManager.OnLevelUp += UpdatePoints;
-    // }
+        foreach (SkillSO skillSO in allSkillSOs)
+        {
+            if (!skillSlotDictionary.ContainsKey(skillSO.skillName))
+            {
+                SkillSlot newSlot = InstantiateSkillSlot(skillSO.category);
 
-    // private void OnDisable()
-    // {
-    //     SkillSlot.OnAbilityPointSpent -= HandlePoints;
-    //     ExpManager.OnLevelUp -= UpdatePoints;
-    // }
+                newSlot.Setup(skillSO);
 
-    // private void Start()
-    // {
-    //     foreach (SkillSO skillSO in allSkills)
-    //     {
-    //         Transform parent = skillSO.category == SkillCategory.Combat ? combatPanel : archeryPanel;
-    //         SkillSlot slot = Instantiate(skillSlotPrefab, parent);
-    //         slot.Setup(skillSO);
-    //         slotDic.Add(skillSO, slot);
+                skillSlotDictionary[skillSO.skillName] = newSlot;
+            }
+        }
 
-    //     }
-    //     foreach (var item in slotDic)
-    //     {
-    //         SkillSO skillSO = item.Key;
-    //         SkillSlot slot = item.Value;
+        foreach (SkillSO skillSO in allSkillSOs)
+        {
 
-    //         foreach (SkillPrerequisite prereq in skillSO.prerequisites)
-    //         {
-    //             if (slotDic.TryGetValue(prereq.skillSO, out SkillSlot prereqSlot))
-    //             {
-    //                 slot.prerequisiteSkillSlots.Add(
-    //                     new ReslovedPrerequisiteSkillSlots
-    //                     {
-    //                         slot = prereqSlot,
-    //                         requiredLevel = prereq.requiredLevel
-    //                     }
-    //                 );
-    //             }
-    //         }
-    //     }
-    //     foreach (var slot in slotDic.Values)
-    //     {
-    //         if (slot.skillSO.prerequisites.Count == 0) slot.Unlock();
-    //         slot.skillButton.onClick.AddListener(() => CheckAvailablePoints(slot));
-    //     }
-    //     UpdatePoints(0);
-    // }
+            SkillSlot slot = skillSlotDictionary[skillSO.skillName];
 
-    // private void CheckAvailablePoints(SkillSlot slot)
-    // {
+            foreach (SkillPrerequisite prerequisite in skillSO.prerequisites)
+            {
+                SkillSlot prerequisiteSlot = null;
 
-    //     if (availablePoints <= 0) return;
+                if (!skillSlotDictionary.ContainsKey(prerequisite.skillSO.skillName))
+                {
+                    prerequisiteSlot = InstantiateSkillSlot(prerequisite.skillSO.category);
 
-    //     int before = slot.currentLevel;
-    //     slot.TryUpgradeSkill();
+                    prerequisiteSlot.Setup(prerequisite.skillSO);
 
-    //     int after = slot.currentLevel;
+                    skillSlotDictionary[prerequisite.skillSO.skillName] = prerequisiteSlot;
+                }
+                else
+                {
+                    prerequisiteSlot = skillSlotDictionary[prerequisite.skillSO.skillName];
+                }
 
-    //     if (before < after)
-    //     {
-    //         UpdatePoints(-1);
-    //     }
-    // }
+                ReslovedPrerequisiteSkillSlots rspp = new ReslovedPrerequisiteSkillSlots();
+                rspp.slot = prerequisiteSlot;
+                rspp.requiredLevel = prerequisite.requiredLevel;
 
-    // public void HandlePoints(SkillSlot skillSlot)
-    // {
-    //     foreach (SkillSlot slot in slotDic.Values)
-    //     {
-    //         if (!slot.isUnlocked && slot.CanUnlockSkill())
-    //         {
-    //             slot.Unlock();
-    //         }
-    //     }
-    // }
+                slot.prerequisiteSkillSlots.Add(rspp);
+            }
+        }
+    }
 
-    // public void UpdatePoints(int amount)
-    // {
-    //     availablePoints += amount;
-    //     pointsText.text = "Skill Points: " + availablePoints;
-    // }
+    private SkillSlot InstantiateSkillSlot(SkillCategory type)
+    {
+        return type == SkillCategory.Combat ? Instantiate(skillSlotPrefab, combatPanel) : Instantiate(skillSlotPrefab, archeryPanel);
+    }
+
+    private void UpdateUI()
+    {
+        UpdatePointsUI();
+    }
+
+    private void UpdatePointsUI()
+    {
+        pointsText.text = availablePoints.ToString();
+    }
 }

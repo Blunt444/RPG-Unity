@@ -7,10 +7,10 @@ public class SkillManager : MonoBehaviour
 
     private void Awake()
     {
-        playerStatsUpgrade = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsUpgrade>();
 
         if (Instance == null)
         {
+            playerStatsUpgrade = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsUpgrade>();
             Instance = this;
         }
         else
