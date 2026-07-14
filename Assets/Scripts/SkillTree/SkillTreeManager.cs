@@ -50,6 +50,7 @@ public class SkillTreeManager : MonoBehaviour
                 SkillSlot newSlot = InstantiateSkillSlot(skillSO.category);
 
                 newSlot.Setup(skillSO);
+                newSlot.AddOnClickToUpgrade();
 
                 skillSlotDictionary[skillSO.skillName] = newSlot;
             }
@@ -82,6 +83,28 @@ public class SkillTreeManager : MonoBehaviour
                 rspp.requiredLevel = prerequisite.requiredLevel;
 
                 slot.prerequisiteSkillSlots.Add(rspp);
+            }
+        }
+    }
+
+    public void TryUpgradeSkill(SkillSlot slot)
+    {
+        bool isUpgraded = slot.UpgradeSkill();
+        if (isUpgraded)
+        {
+            CheckForUnlockingSkills();
+        }
+    }
+
+    public void CheckForUnlockingSkills()
+    {
+        foreach (SkillSlot slot in skillSlotDictionary.Values)
+        {
+            if (slot.isUnlocked) continue;
+            
+            if (slot.CanUnlockSkill())
+            {
+                slot.UnlockSkill();
             }
         }
     }

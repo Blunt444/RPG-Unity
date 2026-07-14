@@ -29,7 +29,12 @@ public class SkillSlot : MonoBehaviour
         this.skillSO = skillSO;
         UpdateUI();
     }
-    
+
+    public void AddOnClickToUpgrade()
+    {
+        skillButton.onClick.AddListener(() => SkillTreeManager.Instance.TryUpgradeSkill(this));
+    }
+
     private void OnValidate()
     {
         UpdateUI();
