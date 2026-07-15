@@ -17,10 +17,8 @@ public class SkillSlot : MonoBehaviour
     public Image skillIcon;
     public TMP_Text skillLvlText;
     public Button skillButton;
-    public int currentLevel;
+    public int currentLevel = 0;
     public bool isUnlocked;
-    public Image whiteBg;
-    public Image blackBg;
 
     [NonSerialized] public List<ReslovedPrerequisiteSkillSlots> prerequisiteSkillSlots = new List<ReslovedPrerequisiteSkillSlots>();
 
@@ -30,8 +28,14 @@ public class SkillSlot : MonoBehaviour
         UpdateUI();
     }
 
+    private void Awake()
+    {
+        skillButton.onClick.AddListener(() => Debug.Log("RAW CLICK on: " + gameObject.name));
+    }
+
     public void AddOnClickToUpgrade()
     {
+        Debug.Log("Listener added for: " + (skillSO != null ? skillSO.skillName : "NULL skillSO"));
         skillButton.onClick.AddListener(() => SkillTreeManager.Instance.TryUpgradeSkill(this));
     }
 
@@ -66,6 +70,8 @@ public class SkillSlot : MonoBehaviour
             currentLevel++;
             SkillManager.Instance.HandleSkillUpgrade(this);
             SkillTreeManager.Instance.DeductPoints(ReturnCurrentSkillCost());
+            UpdateUI();
+            return true;
         }
 
         return false;
@@ -78,21 +84,21 @@ public class SkillSlot : MonoBehaviour
 
     private void UpdateUI()
     {
+
+        if (skillSO == null) return;
+
         skillIcon.sprite = skillSO.skillIcon;
         if (isUnlocked)
         {
             skillButton.interactable = true;
             skillLvlText.text = currentLevel.ToString() + "/" + skillSO.maxLevel.ToString();
             skillIcon.color = Color.white;
-            whiteBg.gameObject.SetActive(true);
-            blackBg.gameObject.SetActive(true);
         }
         else
         {
             skillButton.interactable = false;
+            skillLvlText.text = "Lock";
             skillIcon.color = Color.grey;
-            whiteBg.gameObject.SetActive(false);
-            blackBg.gameObject.SetActive(false);
         }
     }
 }

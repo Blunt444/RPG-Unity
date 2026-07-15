@@ -22,6 +22,7 @@ public class SkillTreeManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            ReadyAllSkills();
         }
         else
         {
@@ -50,7 +51,6 @@ public class SkillTreeManager : MonoBehaviour
                 SkillSlot newSlot = InstantiateSkillSlot(skillSO.category);
 
                 newSlot.Setup(skillSO);
-                newSlot.AddOnClickToUpgrade();
 
                 skillSlotDictionary[skillSO.skillName] = newSlot;
             }
@@ -85,14 +85,19 @@ public class SkillTreeManager : MonoBehaviour
                 slot.prerequisiteSkillSlots.Add(rspp);
             }
         }
+
+        CheckForUnlockingSkills();
     }
 
     public void TryUpgradeSkill(SkillSlot slot)
     {
+        Debug.Log("TryUpgradeSkill called for: " + slot.skillSO.skillName);
+
         bool isUpgraded = slot.UpgradeSkill();
         if (isUpgraded)
         {
             CheckForUnlockingSkills();
+            UpdateUI();
         }
     }
 
@@ -101,10 +106,11 @@ public class SkillTreeManager : MonoBehaviour
         foreach (SkillSlot slot in skillSlotDictionary.Values)
         {
             if (slot.isUnlocked) continue;
-            
+
             if (slot.CanUnlockSkill())
             {
                 slot.UnlockSkill();
+                slot.AddOnClickToUpgrade();
             }
         }
     }

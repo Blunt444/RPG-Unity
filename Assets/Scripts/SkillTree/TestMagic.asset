@@ -17,3 +17,5 @@ MonoBehaviour:
   skillIcon: {fileID: 21300000, guid: b43c97cbb5519694ab7e61d6b4b47a8f, type: 3}
   category: 1
   prerequisites: []
+  initialCost: 2
+  incrementValue: 2

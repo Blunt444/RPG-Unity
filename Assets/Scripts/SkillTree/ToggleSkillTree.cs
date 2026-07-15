@@ -19,7 +19,7 @@ public class ToggleSkillTree : MonoBehaviour
             }
             else
             {
-                Time.timeScale = 0;
+                Time .timeScale = 0;
                 skillCanvas.alpha = 1;
                 skillCanvas.interactable = true;
                 skillCanvas.blocksRaycasts = true;
