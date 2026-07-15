@@ -16,6 +16,8 @@ MonoBehaviour:
   maxLevel: 2
   skillIcon: {fileID: 21300000, guid: b43c97cbb5519694ab7e61d6b4b47a8f, type: 3}
   category: 1
-  prerequisites: []
+  prerequisites:
+  - skillSO: {fileID: 11400000, guid: 518c675bd89f7c94ab8d3c963fe7e338, type: 2}
+    requiredLevel: 2
   initialCost: 2
   incrementValue: 2

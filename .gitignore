@@ -30,3 +30,7 @@ UserSettings/
 # OS
 .DS_Store
 Thumbs.db
+
+
+// debugger which don't need to be pushed to the git.
+Assets/Scripts/ClickDebugger.cs

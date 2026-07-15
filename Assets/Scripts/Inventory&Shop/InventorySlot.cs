@@ -2,7 +2,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
 
 public class InventorySlot : MonoBehaviour, IPointerDownHandler
 {
@@ -19,6 +18,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler
     private void Start()
     {
         inventoryManager = GetComponentInParent<InventoryManager>();
+        Debug.Log(gameObject.name + " inventoryManager assigned: " + (inventoryManager != null));
     }
 
     private void OnEnable()
@@ -39,6 +39,8 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("RAW POINTER DOWN on: " + gameObject.name);
+
         if (quantity > 0)
         {
 

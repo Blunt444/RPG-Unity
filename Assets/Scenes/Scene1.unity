@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2179,7 +2179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2420,7 +2420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2734,7 +2734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9907,7 +9907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10018,7 +10018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12138,7 +12138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12232,7 +12232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -13245,7 +13245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -14213,7 +14213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -14958,12 +14958,20 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 1326674755685895192, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1351329742435749367, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
       propertyPath: m_Name
       value: DialogCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 4825408647294104041, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
       propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544152088629008122, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7863039385999733041, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
@@ -15044,6 +15052,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7863039385999733041, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111126287803766236, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -15315,12 +15327,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 65592988553236536, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 65592988553236536, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 65592988553236536, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 116046294140382220, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -15391,6 +15407,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 606447207134661260, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 968608950708283890, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016530644947393741, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1278367387274456570, guid: 9fc504922990416409b092fc150a43a7, type: 3}
@@ -15474,6 +15498,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1921875058893559618, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178222817423629627, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
@@ -15593,6 +15621,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3283113252945849947, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3785153494752710546, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_Name
       value: ArcherPanel
@@ -15637,6 +15669,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4763955965620942353, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4763955965620942353, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4958908026121953414, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -15683,6 +15723,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5064001866145082853, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314745213688847652, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5400115621874842647, guid: 9fc504922990416409b092fc150a43a7, type: 3}
@@ -15760,6 +15804,10 @@ PrefabInstance:
     - target: {fileID: 5682749466545771711, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_SortingOrder
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709103726720679578, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5840151364469427708, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -15869,6 +15917,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6327053689862893053, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6361619857255275836, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -15897,12 +15949,24 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6652852633484342950, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998355684538819216, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7486923230612227998, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7486923230612227998, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486923230612227998, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7496249304403921338, guid: 9fc504922990416409b092fc150a43a7, type: 3}
@@ -16071,6 +16135,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8350906335603905872, guid: 9fc504922990416409b092fc150a43a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433174729228306080, guid: 9fc504922990416409b092fc150a43a7, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455902900780585438, guid: 9fc504922990416409b092fc150a43a7, type: 3}
