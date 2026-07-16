@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 [Serializable]
 public class ReslovedPrerequisiteSkillSlots
@@ -11,7 +12,7 @@ public class ReslovedPrerequisiteSkillSlots
     public int requiredLevel;
 }
 
-public class SkillSlot : MonoBehaviour
+public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public SkillSO skillSO;
     public Image skillIcon;
@@ -71,6 +72,7 @@ public class SkillSlot : MonoBehaviour
             SkillManager.Instance.HandleSkillUpgrade(this);
             SkillTreeManager.Instance.DeductPoints(ReturnCurrentSkillCost());
             UpdateUI();
+            SkillInfo.Instance.SetCostText(ReturnCurrentSkillCost());
             return true;
         }
 
@@ -79,7 +81,7 @@ public class SkillSlot : MonoBehaviour
 
     public int ReturnCurrentSkillCost()
     {
-        return skillSO.initialCost + (currentLevel - 1) * skillSO.incrementValue;
+        return skillSO.initialCost + ((currentLevel) <= 0 ? 0 : currentLevel - 1) * skillSO.incrementValue;
     }
 
     private void UpdateUI()
@@ -100,5 +102,17 @@ public class SkillSlot : MonoBehaviour
             skillLvlText.text = "Lock";
             skillIcon.color = Color.grey;
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        SkillInfo.Instance.SetPanelPosition(eventData.position);
+        SkillInfo.Instance.SetPanelState(true);
+        SkillInfo.Instance.SetCostText(ReturnCurrentSkillCost());
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        SkillInfo.Instance.SetPanelState(false);
     }
 }
