@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Player_ChangeStance : MonoBehaviour
 {
-    public Player_Combat playerCombat;
-    public Player_Bow playerBow;
     public Animator anim;
 
 
@@ -12,17 +10,12 @@ public class Player_ChangeStance : MonoBehaviour
     private float waitForFadeOut = 1.0f;
     private bool isTransistioning = false;
 
-    void Start()
-    {
-        playerCombat.enabled = true;
-        playerBow.gameObject.SetActive(false);
-    }
-
     void Update()
     {
         if (Input.GetButtonDown("ToggleStance") && !isTransistioning)
         {
-            StartCoroutine(AnimationTransistion());
+            if (StanceManager.Instance.isSwitchingStanceAllowed())
+                StartCoroutine(AnimationTransistion());
         }
     }
 
@@ -34,13 +27,7 @@ public class Player_ChangeStance : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(transistionTime);
 
-        playerCombat.enabled = !playerCombat.enabled;
-        playerBow.gameObject.SetActive(!playerBow.gameObject.activeSelf);
-
-        if (playerBow.gameObject.activeSelf)
-            ArrowQuantityManager.Instance.DisplayCanvas();
-        else
-            ArrowQuantityManager.Instance.HideCanvas();
+        StanceManager.Instance.ChangeStance();
 
         anim.Play("FadeOut");
         Time.timeScale = 1;

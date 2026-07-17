@@ -30,7 +30,7 @@ public class SkillInfo : MonoBehaviour
     public void SetCostText(int amount)
     {
         upgradeCost.text = amount.ToString();
-    }
+    } // make this method to change to red and green depending on this cost and available points
 
     public void SetPanelPosition(Vector2 mouseTransfrom)
     {

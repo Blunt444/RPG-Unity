@@ -23,6 +23,7 @@ public class SkillTreeManager : MonoBehaviour
         {
             Instance = this;
             ReadyAllSkills();
+            UpdateUI();
         }
         else
         {
