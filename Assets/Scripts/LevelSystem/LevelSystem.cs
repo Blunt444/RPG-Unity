@@ -5,20 +5,22 @@ public class LevelSystem : MonoBehaviour
 {
     private int warriorLevel = 0;
     private int warriorCurrExp = 0;
-    private float warriorExpGrowth = 0;
+    private int warriorExpToLevel = 10;
+    private float warriorExpGrowth = 1.2f;
     private int archeryLevel = 0;
     private int archeryCurrExp = 0;
-    private float archeryExpGrowth = 0;
+    private int archeryExpToLevel = 10;
+    private float archeryExpGrowth = 1.2f;
 
     public void SetValueInExpManager(PlayerStance playerStance)
     {
         if (playerStance == PlayerStance.Warrior)
             ExpManager.Instance.SetValues(
-                warriorLevel, warriorCurrExp, warriorExpGrowth
+                warriorLevel, warriorCurrExp, warriorExpToLevel, warriorExpGrowth
             );
         else if (playerStance == PlayerStance.Archer)
             ExpManager.Instance.SetValues(
-                archeryLevel, archeryCurrExp, archeryExpGrowth
+                archeryLevel, archeryCurrExp, archeryExpToLevel, archeryExpGrowth
             );
     }
 
@@ -29,6 +31,7 @@ public class LevelSystem : MonoBehaviour
         {
             warriorLevel = (int)dict["level"];
             warriorCurrExp = (int)dict["currentExp"];
+            warriorExpToLevel = (int)dict["expToLevel"];
             warriorExpGrowth = dict["expGrowthMultiplier"];
 
         }
@@ -36,6 +39,7 @@ public class LevelSystem : MonoBehaviour
         {
             archeryLevel = (int)dict["level"];
             archeryCurrExp = (int)dict["currentExp"];
+            archeryExpToLevel = (int)dict["expToLevel"];
             archeryExpGrowth = dict["expGrowthMultiplier"];
         }
     }

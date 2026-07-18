@@ -25,12 +25,12 @@ public class ExpManager : MonoBehaviour
         }
     }
 
-    public void SetValues(int level, int currentExp, float expGrowthMultiplier)
+    public void SetValues(int level, int currentExp, int expToLevel, float expGrowthMultiplier)
     {
         this.level = level;
         this.currentExp = currentExp;
         this.expGrowthMultiplier = expGrowthMultiplier;
-        expToLevel = CalculateExpForNextLevel();
+        this.expToLevel = expToLevel;
 
         UpdateUI();
     }
@@ -40,6 +40,7 @@ public class ExpManager : MonoBehaviour
         Dictionary<string, float> dict = new Dictionary<string, float>();
         dict["level"] = level;
         dict["currentExp"] = currentExp;
+        dict["expToLevel"] = expToLevel;
         dict["expGrowthMultiplier"] = expGrowthMultiplier;
         return dict;
     }
