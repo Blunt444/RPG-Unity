@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
+using System.Collections.Generic;
 
 public class ExpManager : MonoBehaviour
 {
+    public static ExpManager Instance;
     public int level;
     public int currentExp;
     public int expToLevel;
@@ -12,8 +13,36 @@ public class ExpManager : MonoBehaviour
     public Slider expSlider;
     public TMP_Text currentLevelTxt;
 
-    public static event Action<int> OnLevelUp;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
+    public void SetValues(int level, int currentExp, float expGrowthMultiplier)
+    {
+        this.level = level;
+        this.currentExp = currentExp;
+        this.expGrowthMultiplier = expGrowthMultiplier;
+        expToLevel = CalculateExpForNextLevel();
+
+        UpdateUI();
+    }
+
+    public Dictionary<string, float> GetValues()
+    {
+        Dictionary<string, float> dict = new Dictionary<string, float>();
+        dict["level"] = level;
+        dict["currentExp"] = currentExp;
+        dict["expGrowthMultiplier"] = expGrowthMultiplier;
+        return dict;
+    }
 
     private void Start()
     {
@@ -50,9 +79,16 @@ public class ExpManager : MonoBehaviour
     {
         level++;
         currentExp -= expToLevel;
-        expToLevel = Mathf.RoundToInt(expToLevel * expGrowthMultiplier);
-        OnLevelUp?.Invoke(1);
+        expToLevel = CalculateExpForNextLevel();
+        UpdateUI();
+
     }
+
+    private int CalculateExpForNextLevel()
+    {
+        return Mathf.RoundToInt(expToLevel * expGrowthMultiplier);
+    }
+
     public void UpdateUI()
     {
         expSlider.maxValue = expToLevel;

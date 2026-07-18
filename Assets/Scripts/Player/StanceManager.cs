@@ -5,8 +5,6 @@ public class StanceManager : MonoBehaviour
     public static StanceManager Instance;
 
 
-
-
     private Player_Combat playerWarrior;
     private Player_Bow playerArcher;
     private GameObject bowObject;
@@ -49,6 +47,7 @@ public class StanceManager : MonoBehaviour
                 playerArcher.enabled = true;
                 bowObject.SetActive(true);
                 playerStance = PlayerStance.Archer;
+                LevelSwitcher.Instance.SwitchLevelMode(playerStance);
                 ArrowQuantityManager.Instance.DisplayCanvas();
                 break;
             case PlayerStance.Archer:
@@ -56,6 +55,7 @@ public class StanceManager : MonoBehaviour
                 playerArcher.enabled = false;
                 bowObject.SetActive(false);
                 playerStance = PlayerStance.Warrior;
+                LevelSwitcher.Instance.SwitchLevelMode(playerStance);
                 ArrowQuantityManager.Instance.HideCanvas();
                 break;
             default:
@@ -65,8 +65,8 @@ public class StanceManager : MonoBehaviour
 
     public bool isSwitchingStanceAllowed()
     {
-        if(isStanceChangerBlocked) return false;
-        else if(!isArcherStanceUnlocked) return false;
+        if (isStanceChangerBlocked) return false;
+        else if (!isArcherStanceUnlocked) return false;
 
         return true;
     }
