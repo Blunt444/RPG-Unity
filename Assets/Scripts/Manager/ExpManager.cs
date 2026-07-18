@@ -69,10 +69,12 @@ public class ExpManager : MonoBehaviour
     public void GainExperience(int amount)
     {
         currentExp += amount;
+        StanceManager.Instance.BlockSwitchingStance();
         if (currentExp >= expToLevel)
         {
             LevelUp();
         }
+        StanceManager.Instance.UnblockSwitchingStance();
         UpdateUI();
     }
 
@@ -81,6 +83,9 @@ public class ExpManager : MonoBehaviour
         level++;
         currentExp -= expToLevel;
         expToLevel = CalculateExpForNextLevel();
+
+        StanceManager.Instance.ChangePointToRespectiveStance(1);
+
         UpdateUI();
 
     }

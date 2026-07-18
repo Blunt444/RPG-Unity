@@ -5,6 +5,8 @@ public class StanceManager : MonoBehaviour
     public static StanceManager Instance;
 
 
+    private int warriorStancePoint = 0;
+    private int archeryStancePoint = 0;
     private Player_Combat playerWarrior;
     private Player_Bow playerArcher;
     private GameObject bowObject;
@@ -74,6 +76,28 @@ public class StanceManager : MonoBehaviour
     public void UnlockArcherStance()
     {
         isArcherStanceUnlocked = true;
+    }
+
+    public void BlockSwitchingStance()
+    {
+        isStanceChangerBlocked = true;
+    }
+
+    public void UnblockSwitchingStance()
+    {
+        isStanceChangerBlocked = false;
+    }
+
+    public void ChangePointToRespectiveStance(int amount)
+    {
+        if (playerStance == PlayerStance.Warrior)
+        {
+            warriorStancePoint += amount;
+        }
+        else if (playerStance == PlayerStance.Archer)
+        {
+            archeryStancePoint += amount;
+        }
     }
 }
 
