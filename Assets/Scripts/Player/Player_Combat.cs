@@ -17,6 +17,8 @@ public class Player_Combat : MonoBehaviour
     {
         playerMovement.ChangeState(PlayerState.Attacking);
 
+        playerMovement.SetPlayerSpeedToZero();
+
         StatsManager.Instance.attackCooldownTimer = StatsManager.Instance.attackCooldown;
 
     }

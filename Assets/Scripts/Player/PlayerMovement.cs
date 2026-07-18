@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if(!playerCombat.enabled && playerBow.gameObject.activeInHierarchy)
+        if (!playerCombat.enabled && playerBow.gameObject.activeInHierarchy)
         {
             playerBow.HandleAiming();
         }
@@ -120,6 +120,11 @@ public class PlayerMovement : MonoBehaviour
     {
         facingDirection *= -1;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void SetPlayerSpeedToZero()
+    {
+        rb.linearVelocity = Vector2.zero;
     }
 
     public void ActivateGuard()
