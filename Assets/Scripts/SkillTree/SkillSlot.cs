@@ -104,15 +104,24 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
+    public void ShowPrerequestOnHoverIfNotUnlocked()
+    {
+        if (!isUnlocked)
+            SkillInfo.Instance.ShowPrerequestOnHover(prerequisiteSkillSlots);
+        SkillInfo.Instance.SetCostYPos(prerequisiteSkillSlots.Count == 0);
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         SkillInfo.Instance.SetPanelPosition(eventData.position);
         SkillInfo.Instance.SetPanelState(true);
         SkillInfo.Instance.SetCostText(ReturnCurrentSkillCost());
+        ShowPrerequestOnHoverIfNotUnlocked();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         SkillInfo.Instance.SetPanelState(false);
+        SkillInfo.Instance.ClearPrerequestOnExitHover();
     }
 }
