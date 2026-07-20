@@ -5,13 +5,11 @@ public class PlayerStatsUpgrade : MonoBehaviour
 
     private StatsManager statsManager;
     private PlayerHealth playerHealth;
-    private StatsUI statsUI;
 
     private void Awake()
     {
         statsManager = StatsManager.Instance;
         playerHealth = GetComponent<PlayerHealth>();
-        statsUI = GameObject.FindGameObjectWithTag("StatsPanel").GetComponent<StatsUI>();
     }
 
     public void UpdateMaxHealth(int amount)
@@ -27,7 +25,7 @@ public class PlayerStatsUpgrade : MonoBehaviour
     public void UpdateSpeed(int amount)
     {
         statsManager.speed += amount;
-        statsUI.UpdateAllStats();
+        StatsUI.Instance.UpdateAllStats();
     }
 
     public void UpdateGuardHitNegate(int amount)

@@ -23,7 +23,7 @@ public class UseItem : MonoBehaviour
 
     private IEnumerator EffectTimer(ItemSO itemSO, float duration)
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);
         AdjustStats(itemSO, -1);
     }
 
@@ -35,5 +35,6 @@ public class UseItem : MonoBehaviour
             playerStatsUpgrade.UpdateMaxHealth(itemSO.maxHealth * multiplier);
         if (itemSO.speed > 0)
             playerStatsUpgrade.UpdateSpeed(itemSO.speed * multiplier);
+
     }
 }

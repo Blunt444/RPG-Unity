@@ -3,10 +3,23 @@ using TMPro;
 
 public class StatsUI : MonoBehaviour
 {
+    public static StatsUI Instance;
     public GameObject[] statsSlot;
     public CanvasGroup StatsCanvas;
 
     private bool statsOpen = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {

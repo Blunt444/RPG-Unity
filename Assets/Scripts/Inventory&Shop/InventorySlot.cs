@@ -62,12 +62,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler
                 inventoryManager.DropItem(this);
             }
         }
-        // else if (quantity <= 0)
-        // {
-        //     itemSO = null;
-        //     itemImage = null;
-        //     quantityText.text = "";
-        // }
         Debug.Log(itemSO);
     }
 
