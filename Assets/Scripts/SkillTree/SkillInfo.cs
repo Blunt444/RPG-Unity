@@ -41,7 +41,16 @@ public class SkillInfo : MonoBehaviour
     public void SetCostText(int amount)
     {
         upgradeCost.text = amount.ToString();
-    } // make this method to change to red and green depending on this cost and available points
+
+        if (amount <= StanceManager.Instance.GetPointsForRespectiveStance())
+        {
+            upgradeCost.color = new Color32(0, 147, 0, 255);
+        }
+        else
+        {
+            upgradeCost.color = new Color32(255, 0, 8, 255);
+        }
+    }
 
     public void SetPanelPosition(Vector2 mouseScreenPos)
     {

@@ -108,7 +108,7 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (!isUnlocked)
             SkillInfo.Instance.ShowPrerequestOnHover(prerequisiteSkillSlots);
-        SkillInfo.Instance.SetCostYPos(prerequisiteSkillSlots.Count == 0);
+        SkillInfo.Instance.SetCostYPos(isUnlocked);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

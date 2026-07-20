@@ -99,6 +99,15 @@ public class StanceManager : MonoBehaviour
             archeryStancePoint += amount;
         }
     }
+
+    public int GetPointsForRespectiveStance()
+    {
+        if (playerStance == PlayerStance.Warrior)
+        {
+            return warriorStancePoint;
+        }
+        return archeryStancePoint;
+    }
 }
 
 public enum PlayerStance
