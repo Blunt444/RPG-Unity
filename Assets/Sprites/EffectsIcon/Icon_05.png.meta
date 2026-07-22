@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 7adda5531e3d85646aa643ffbe7ddc30
+guid: 006a9a8e1099354419bee0c15cbfdc41
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5670534119694579364
-    second: Banner_Slots_0
-  - first:
-      213: 770904577187111221
-    second: Banner_Slots_1
+      213: 860910309584662230
+    second: Icon_05_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +52,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 64
-  spriteBorder: {x: 16, y: 18, z: 16, w: 14}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -116,45 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Banner_Slots_0
+      name: Icon_05_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 4
-        width: 187
-        height: 184
+        x: 2
+        y: 2
+        width: 59
+        height: 58
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a6b023fcb8c1be40800000000000000
-      internalID: 5670534119694579364
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Banner_Slots_1
-      rect:
-        serializedVersion: 2
-        x: 181
-        y: 3
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 531e5f6e0adc2ba00800000000000000
-      internalID: 770904577187111221
+      spriteID: 6dee3428d5192fb00800000000000000
+      internalID: 860910309584662230
       vertices: []
       indices: 
       edges: []
@@ -164,7 +139,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Banner_Slots_0: 5670534119694579364
-      Banner_Slots_1: 770904577187111221
+      Icon_05_0: 860910309584662230
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
