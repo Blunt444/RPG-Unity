@@ -7,6 +7,7 @@ TagManager:
   - Goblin1
   - Confiner
   - StatsPanel
+  - Torch
   layers:
   - Default
   - TransparentFX

@@ -145,5 +145,6 @@ public enum EnemyState
     Idle,
     Chasing,
     Attacking,
-    Knockback
+    Knockback,
+    ChasePlayerUncontrolled
 }
