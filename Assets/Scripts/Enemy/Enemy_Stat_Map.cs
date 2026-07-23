@@ -6,14 +6,10 @@ public struct EnemyStatStruct
     public float speed;
     public float attackCooldown;
     public float playerDetectionRange;
-    public Transform detectionPoint;
-    public LayerMask playerLayer;
     public float attackRange;
-    public int currentHealth;
     public int maxHealth;
     public int expReward;
     public int damage;
-    public Transform attackPoint;
     public float weaponRange;
     public float knockbackForce;
     public float knockBackTime;

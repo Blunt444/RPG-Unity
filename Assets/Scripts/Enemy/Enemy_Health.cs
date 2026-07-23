@@ -2,35 +2,28 @@ using UnityEngine;
 
 public class Enemy_Health : MonoBehaviour
 {
-    public int currentHealth;
-    public int maxHealth;
-    public int expReward;
-
     public delegate void MonsterDefeated(int exp);
     public static event MonsterDefeated OnMonsterDefeated;
 
-    void Start()
+    Enemy_Manager manager;
+
+    private void Awake()
     {
-        currentHealth = maxHealth;
+        manager = GetComponent<Enemy_Manager>();
     }
 
     public void ChangeHealth(int amount)
     {
-        currentHealth += amount;
+        manager.currentHealth += amount;
 
-        if(currentHealth > maxHealth)
+        if (manager.currentHealth > manager.maxHealth)
         {
-            currentHealth = maxHealth;
+            manager.currentHealth = manager.maxHealth;
         }
-        else if ( currentHealth <= 0)
+        else if (manager.currentHealth <= 0)
         {
-            OnMonsterDefeated(expReward);
+            OnMonsterDefeated(manager.expReward);
             Destroy(gameObject);
         }
-    }
-
-    void Update()
-    {
-        
     }
 }

@@ -2,14 +2,6 @@ using UnityEngine;
 
 public class Enemy_Movement : MonoBehaviour
 {
-
-    public float speed;
-    public float attackCooldown;
-    public float playerDetectionRange;
-    public Transform detectionPoint;
-    public LayerMask playerLayer;
-    public float attackRange;
-
     private float attackCooldownTimer;
     private int facingDirection = -1;
     private Animator anim;
@@ -17,18 +9,23 @@ public class Enemy_Movement : MonoBehaviour
     private Rigidbody2D rb;
     private Transform player;
 
+    public Enemy_Manager manager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        manager = GetComponent<Enemy_Manager>();
+    }
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
     }
-    // Update is called once per frame
     public void Update()
     {
-        if(enemyState == EnemyState.Knockback)
+        if (enemyState == EnemyState.Knockback)
         {
             return;
         }
@@ -52,7 +49,7 @@ public class Enemy_Movement : MonoBehaviour
     public void Chase()
     {
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction * speed;
+        rb.linearVelocity = direction * manager.speed;
     }
     void Flip()
     {
@@ -61,17 +58,17 @@ public class Enemy_Movement : MonoBehaviour
     }
     public void CheckForPlayer()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectionRange, playerLayer);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(manager.detectionPoint.position, manager.playerDetectionRange, manager.playerLayer);
 
         if (hits.Length > 0)
         {
             player = hits[0].transform;
-            if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCooldownTimer <= 0)
+            if (Vector2.Distance(transform.position, player.position) <= manager.attackRange && attackCooldownTimer <= 0)
             {
-                attackCooldownTimer = attackCooldown;
+                attackCooldownTimer = manager.attackCooldown;
                 ChangeState(EnemyState.Attacking);
             }
-            else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
+            else if (Vector2.Distance(transform.position, player.position) > manager.attackRange && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Chasing);
             }
@@ -92,10 +89,10 @@ public class Enemy_Movement : MonoBehaviour
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(detectionPoint.position, playerDetectionRange);
+        Gizmos.DrawWireSphere(manager.detectionPoint.position, manager.playerDetectionRange);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, manager.attackRange);
     }
 
     public void ChangeState(EnemyState newState)
