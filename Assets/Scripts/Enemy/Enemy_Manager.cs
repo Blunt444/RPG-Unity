@@ -22,13 +22,17 @@ public class Enemy_Manager : MonoBehaviour
    public LayerMask playerLayer;
    public Transform attackPoint;
 
+   private Animator anim;
+
 
    public void Awake()
    {
+      anim = GetComponent<Animator>();
       ChooseRandomType();
       ChooseRandomColor();
       SetStat();
       SetTransform();
+      SetOverrideAnimator();
    }
 
    public void ChooseRandomType()
@@ -38,6 +42,10 @@ public class Enemy_Manager : MonoBehaviour
    public void ChooseRandomColor()
    {
       enemyColor = Enemy_Color_Type_Map.Instance.RandomColor();
+   }
+   public void SetOverrideAnimator()
+   {
+      anim.runtimeAnimatorController = Enemy_Color_Type_Map.Instance.GetOverrideController(enemyType, enemyColor);
    }
    public void SetStat()
    {

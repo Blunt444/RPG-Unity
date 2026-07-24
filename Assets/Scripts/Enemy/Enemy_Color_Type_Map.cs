@@ -3,10 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+public struct ColorAnimationOverride
+{
+    public Enemy_Color color;
+    public AnimatorOverrideController overriderController;
+}
+
+[Serializable]
 public struct TypeStruct
 {
     public int key;
     public Enemy_Type type;
+    public List<ColorAnimationOverride> colorOverrides;
+
 }
 
 [Serializable]
@@ -26,6 +35,7 @@ public class Enemy_Color_Type_Map : MonoBehaviour
     private List<ColorStruct> colorList = new List<ColorStruct>();
     private Dictionary<int, Enemy_Type> typeMap = new Dictionary<int, Enemy_Type>();
     private Dictionary<int, Enemy_Color> colorMap = new Dictionary<int, Enemy_Color>();
+    private Dictionary<(Enemy_Type, Enemy_Color), AnimatorOverrideController> animatorMap = new Dictionary<(Enemy_Type, Enemy_Color), AnimatorOverrideController>();
 
     private void Awake()
     {
@@ -36,6 +46,11 @@ public class Enemy_Color_Type_Map : MonoBehaviour
             foreach (TypeStruct typeStruct in typeList)
             {
                 typeMap[typeStruct.key] = typeStruct.type;
+
+                foreach (ColorAnimationOverride colorAnimationOverride in typeStruct.colorOverrides)
+                {
+                    animatorMap[(typeStruct.type, colorAnimationOverride.color)] = colorAnimationOverride.overriderController;
+                }
             }
 
             foreach (ColorStruct colorStruct in colorList)
@@ -57,5 +72,10 @@ public class Enemy_Color_Type_Map : MonoBehaviour
     public Enemy_Color RandomColor()
     {
         return colorMap[UnityEngine.Random.Range(1, colorList.Count + 1)];
+    }
+
+    public AnimatorOverrideController GetOverrideController(Enemy_Type type, Enemy_Color color)
+    {
+        return animatorMap[(type, color)];
     }
 }
