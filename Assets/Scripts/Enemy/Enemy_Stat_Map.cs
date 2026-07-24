@@ -1,22 +1,32 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public struct EnemyStatStruct
 {
-    public float speed;
-    public float attackCooldown;
-    public float playerDetectionRange;
-    public float attackRange;
+    [Header("Health & Rewards")]
     public int maxHealth;
     public int expReward;
-    public int damage;
+
+    [Header("Movement & Detection")]
+    public float speed;
+    public float playerDetectionRange;
+
+    [Header("Combat Stats")]
+    public float attackCooldown;
+    public float attackRange;
     public float weaponRange;
+    public int damage;
+    public int guardDamage;
+
+    [Header("Knockback")]
     public float knockbackForce;
     public float knockBackTime;
-    public int guardDamage;
 
 }
 
+[Serializable]
 public struct EnemyStatEntry
 {
     public Enemy_Type key;

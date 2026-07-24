@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public struct EnemyTransform
 {
     public Transform detectionPoint;
@@ -8,6 +10,7 @@ public struct EnemyTransform
     public Transform attackPoint;
 }
 
+[Serializable]
 public struct EnemyTransfromEntry
 {
     public Enemy_Type key;

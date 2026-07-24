@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public struct TypeStruct
 {
     public int key;
     public Enemy_Type type;
 }
 
+[Serializable]
 public struct ColorStruct
 {
     public int key;
