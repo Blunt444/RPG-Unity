@@ -24,6 +24,21 @@ public class Enemy_Combat : MonoBehaviour
             hits[0].GetComponent<PlayerMovement>().Knockback(transform, manager.knockbackForce, manager.knockBackTime);
         }
     }
+
+    public void ResetAnimation()
+    {
+        Enemy_Movement movement = GetComponent<Enemy_Movement>();
+
+        if (movement.isChasingUncontrolled)
+        {
+            movement.ChangeState(EnemyState.Chasing);
+        }
+        else
+        {
+            movement.ChangeState(EnemyState.Idle);
+        }
+    }
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;

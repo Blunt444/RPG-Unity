@@ -7,5 +7,11 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Torch_Red_Override
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: d4c6d51e1b2283e4b8efa6095d1cdd03, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: b7f7335b334f33d448af1b50ffed331f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b7f7335b334f33d448af1b50ffed331f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: daed66253d6190a46a8c203c42cacc37, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: daed66253d6190a46a8c203c42cacc37, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9d2a5b25fb7306b41837097f4004951f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9d2a5b25fb7306b41837097f4004951f, type: 2}

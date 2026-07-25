@@ -7,22 +7,28 @@ public class Enemy_Movement : MonoBehaviour
     private Animator anim;
     private EnemyState enemyState;
     private Rigidbody2D rb;
-    private Transform player;
 
+    public Transform player;
+    public bool isChasingUncontrolled;
     public Enemy_Manager manager;
 
     private void Awake()
     {
         manager = GetComponent<Enemy_Manager>();
-    }
-
-
-    void Start()
-    {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.transform;
+        else Destroy(gameObject);
     }
+
+    public void SetChaseUncontrolled()
+    {
+        isChasingUncontrolled = true;
+    }
+
     public void Update()
     {
         if (enemyState == EnemyState.Knockback)
@@ -37,13 +43,13 @@ public class Enemy_Movement : MonoBehaviour
             attackCooldownTimer -= Time.deltaTime;
         }
 
-        if (enemyState == EnemyState.Chasing)
-        {
-            Chase();
-        }
-        else if (enemyState == EnemyState.Attacking)
+        if (enemyState == EnemyState.Attacking)
         {
             rb.linearVelocity = Vector2.zero;
+        }
+        else if (enemyState == EnemyState.Chasing || isChasingUncontrolled)
+        {
+            Chase();
         }
     }
     public void Chase()
@@ -62,13 +68,12 @@ public class Enemy_Movement : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            player = hits[0].transform;
             if (Vector2.Distance(transform.position, player.position) <= manager.attackRange && attackCooldownTimer <= 0)
             {
                 attackCooldownTimer = manager.attackCooldown;
                 ChangeState(EnemyState.Attacking);
             }
-            else if (Vector2.Distance(transform.position, player.position) > manager.attackRange && enemyState != EnemyState.Attacking)
+            else if (Vector2.Distance(transform.position, player.position) > manager.attackRange && enemyState != EnemyState.Attacking && !isChasingUncontrolled)
             {
                 ChangeState(EnemyState.Chasing);
             }
@@ -143,5 +148,4 @@ public enum EnemyState
     Chasing,
     Attacking,
     Knockback,
-    ChasePlayerUncontrolled
 }

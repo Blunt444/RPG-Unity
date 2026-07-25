@@ -178,15 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18055f1ae1c2e04097da52e719a2e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Combat
-  damage: 1
-  attackPoint: {fileID: 5275271697399765214}
-  weaponRange: 0.9
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  knockbackForce: 6
-  knockBackTime: 0.15
-  guardDamage: 1
+  manager: {fileID: 0}
 --- !u!114 &196728852620218429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,14 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d38bccc79c23744a314dda13772697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
-  speed: 3
-  attackCooldown: 0.8
-  playerDetectionRange: 4
-  detectionPoint: {fileID: 2547394132859972714}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  attackRange: 1
+  player: {fileID: 0}
+  isChasingUncontrolled: 0
+  manager: {fileID: 0}
 --- !u!58 &3027020753496028541
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -277,9 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7909835bfcbd347a3834531d82b700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  currentHealth: 0
-  maxHealth: 3
-  expReward: 5
 --- !u!114 &5447771484106974228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,8 +288,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022602c765d0ae94db65fce5f50bca8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Manager
-  enemyColor: 0
   enemyType: 0
+  enemyColor: 0
+  speed: 4
+  attackCooldown: 0.4
+  playerDetectionRange: 0.7
+  attackRange: 1
+  currentHealth: 0
+  maxHealth: 3
+  expReward: 20
+  damage: 1
+  weaponRange: 2
+  knockbackForce: 1
+  knockBackTime: 0.2
+  guardDamage: 1
+  detectionPoint: {fileID: 2547394132859972714}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  attackPoint: {fileID: 5275271697399765214}
 --- !u!1 &7812529097406208731
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +363,7 @@ Transform:
   m_GameObject: {fileID: 8078182387247742670}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.53, y: -0.26, z: 0}
+  m_LocalPosition: {x: 1.83, y: -0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
