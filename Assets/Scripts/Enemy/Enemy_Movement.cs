@@ -64,6 +64,27 @@ public class Enemy_Movement : MonoBehaviour
     }
     public void CheckForPlayer()
     {
+        if (isChasingUncontrolled)
+        {
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            if (distanceToPlayer <= manager.attackRange && attackCooldownTimer <= 0)
+            {
+                attackCooldownTimer = manager.attackCooldown;
+                ChangeState(EnemyState.Attacking);
+            }
+            else if (distanceToPlayer > manager.attackRange && enemyState != EnemyState.Attacking)
+            {
+                ChangeState(EnemyState.Chasing);
+            }
+
+            if (player.position.x > transform.position.x && facingDirection == -1 ||
+                player.position.x < transform.position.x && facingDirection == 1)
+            {
+                Flip();
+            }
+            return;
+        }
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(manager.detectionPoint.position, manager.playerDetectionRange, manager.playerLayer);
 
         if (hits.Length > 0)
@@ -73,7 +94,7 @@ public class Enemy_Movement : MonoBehaviour
                 attackCooldownTimer = manager.attackCooldown;
                 ChangeState(EnemyState.Attacking);
             }
-            else if (Vector2.Distance(transform.position, player.position) > manager.attackRange && enemyState != EnemyState.Attacking && !isChasingUncontrolled)
+            else if (Vector2.Distance(transform.position, player.position) > manager.attackRange && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Chasing);
             }

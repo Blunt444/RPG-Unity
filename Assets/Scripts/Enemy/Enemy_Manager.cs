@@ -33,6 +33,15 @@ public class Enemy_Manager : MonoBehaviour
       SetStat();
       SetTransform();
       SetOverrideAnimator();
+
+      detectionPoint = transform.Find("DetectionPoint");
+      attackPoint = transform.Find("AttackPoint");
+
+      if (detectionPoint == null || attackPoint == null)
+      {
+         Destroy(gameObject);
+         return;
+      }
    }
 
    public void ChooseRandomType()
@@ -67,14 +76,6 @@ public class Enemy_Manager : MonoBehaviour
    {
       EnemyTransform transforms = Enemy_Transform_Map.Instance.GetTransform(enemyType);
       playerLayer = transforms.playerLayer;
-      if (transforms.detectionPoint != null)
-      {
-         detectionPoint = transforms.detectionPoint;
-      }
-      if (transforms.attackPoint != null)
-      {
-         attackPoint = transforms.attackPoint;
-      }
    }
 
 }

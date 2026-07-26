@@ -5,9 +5,7 @@ using UnityEngine;
 [Serializable]
 public struct EnemyTransform
 {
-    public Transform detectionPoint;
     public LayerMask playerLayer;
-    public Transform attackPoint;
 }
 
 [Serializable]
