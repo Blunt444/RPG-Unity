@@ -1,10 +1,13 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
     public TMP_Text healthText;
     public Animator healthTextAnim;
+
+    public static event Action OnPlayerDeath;
 
     private void Start()
     {
@@ -25,10 +28,16 @@ public class PlayerHealth : MonoBehaviour
 
         if (StatsManager.Instance.currentHealth <= 0)
         {
-            gameObject.SetActive(false);
+            Die();
         }
 
         UpdateHealthUI();
+    }
+
+    public void Die()
+    {
+        OnPlayerDeath?.Invoke();
+        gameObject.SetActive(false);
     }
 
     public void UpdateHealthUI()

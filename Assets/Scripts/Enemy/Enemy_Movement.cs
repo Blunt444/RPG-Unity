@@ -29,10 +29,25 @@ public class Enemy_Movement : MonoBehaviour
         isChasingUncontrolled = true;
     }
 
+    public void ResetChaseUncontrolled()
+    {
+        isChasingUncontrolled = false;
+    }
+
     public void Update()
     {
         if (enemyState == EnemyState.Knockback)
         {
+            return;
+        }
+
+        if (!player.gameObject.activeInHierarchy)
+        {
+            if (enemyState != EnemyState.Idle)
+            {
+                rb.linearVelocity = Vector2.zero;
+                ChangeState(EnemyState.Idle);
+            }
             return;
         }
 
