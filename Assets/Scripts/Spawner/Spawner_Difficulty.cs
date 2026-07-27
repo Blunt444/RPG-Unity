@@ -28,11 +28,11 @@ public struct Spawner_Stat_Difficulty_Map
 
 public class Spawner_Difficulty : MonoBehaviour
 {
+    public static Spawner_Difficulty Instance;
+    
 
     [SerializeField]
     private List<Spawner_Stat_Difficulty_Map> typeStatList = new List<Spawner_Stat_Difficulty_Map>();
-
-    private static Spawner_Difficulty Instance;
     private Dictionary<Spawner_Difficulty_Type, Spawner_Stat> statMap = new Dictionary<Spawner_Difficulty_Type, Spawner_Stat>();
 
     private void Awake()

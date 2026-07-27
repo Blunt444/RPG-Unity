@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy_Health : MonoBehaviour
@@ -22,8 +24,19 @@ public class Enemy_Health : MonoBehaviour
         }
         else if (manager.currentHealth <= 0)
         {
-            OnMonsterDefeated(manager.expReward);
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        OnMonsterDefeated?.Invoke(manager.expReward);
+
+        if (manager.spawnerHut != null)
+        {
+            manager.spawnerHut.DecrementSpawnCount();
+        }
+
+        Destroy(gameObject);
     }
 }

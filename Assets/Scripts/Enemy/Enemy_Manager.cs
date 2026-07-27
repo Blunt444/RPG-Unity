@@ -18,6 +18,8 @@ public class Enemy_Manager : MonoBehaviour
    public float knockBackTime;
    public int guardDamage;
 
+   public Spawner_Spawn spawnerHut;
+
    public Transform detectionPoint;
    public LayerMask playerLayer;
    public Transform attackPoint;
