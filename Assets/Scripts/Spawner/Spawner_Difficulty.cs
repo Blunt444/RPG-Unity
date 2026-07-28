@@ -17,6 +17,8 @@ public struct Spawner_Stat
     public float minSec;
     public float maxSec;
     public GameObject[] prefabs;
+    public float shakeDuration;
+    public float shakeForce;
 }
 
 [Serializable]
@@ -29,7 +31,7 @@ public struct Spawner_Stat_Difficulty_Map
 public class Spawner_Difficulty : MonoBehaviour
 {
     public static Spawner_Difficulty Instance;
-    
+
 
     [SerializeField]
     private List<Spawner_Stat_Difficulty_Map> typeStatList = new List<Spawner_Stat_Difficulty_Map>();

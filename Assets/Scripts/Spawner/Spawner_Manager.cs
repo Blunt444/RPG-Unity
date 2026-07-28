@@ -11,6 +11,10 @@ public class Spawner_Manager : MonoBehaviour
     public GameObject[] prefabs;
     public float minSec;
     public float maxSec;
+    public float shakeDuration;
+    public float shakeForce;
+
+    public bool isDead = false;
 
     private void Awake()
     {
@@ -28,6 +32,8 @@ public class Spawner_Manager : MonoBehaviour
         this.prefabs = stat.prefabs;
         this.minSec = stat.minSec;
         this.maxSec = stat.maxSec;
+        this.shakeDuration = stat.shakeDuration;
+        this.shakeForce = stat.shakeForce;
     }
 
     private void GetSpawnPoints()
