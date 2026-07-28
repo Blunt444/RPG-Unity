@@ -1,5 +1,10 @@
 using UnityEngine;
 
+public interface Damageable
+{
+    void TakeDamage(int damageAmount, Transform attacker);
+}
+
 public class Player_Combat : MonoBehaviour
 {
 
@@ -28,8 +33,10 @@ public class Player_Combat : MonoBehaviour
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, StatsManager.Instance.weaponRange, enemyLayer);
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHealth(-StatsManager.Instance.damage);
-            enemies[0].GetComponent<Enemy_Knockback>().Knockback(transform, StatsManager.Instance.knockbackForce, StatsManager.Instance.knockbackTime, StatsManager.Instance.stunTime);
+            if (enemies[0].TryGetComponent<Damageable>(out Damageable target))
+            {
+                target.TakeDamage(StatsManager.Instance.damage, transform);
+            }
         }
     }
 

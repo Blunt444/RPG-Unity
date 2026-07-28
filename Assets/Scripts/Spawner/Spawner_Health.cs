@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Spawner_Health : MonoBehaviour
+public class Spawner_Health : MonoBehaviour, Damageable
 {
     private Spawner_Manager manager;
 
@@ -26,5 +26,10 @@ public class Spawner_Health : MonoBehaviour
     public void Die()
     {
         GetComponent<Spawner_Destroyed>().OnDestroyed();
+    }
+
+    public void TakeDamage(int damageAmount, Transform attacker)
+    {
+       ChangeHealth(-damageAmount);
     }
 }

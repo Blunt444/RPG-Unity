@@ -1,8 +1,6 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy_Health : MonoBehaviour
+public class Enemy_Health : MonoBehaviour, Damageable
 {
     public delegate void MonsterDefeated(int exp);
     public static event MonsterDefeated OnMonsterDefeated;
@@ -38,5 +36,15 @@ public class Enemy_Health : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    public void TakeDamage(int damageAmount, Transform attacker)
+    {
+        ChangeHealth(-damageAmount);
+
+        if (TryGetComponent<Enemy_Knockback>(out Enemy_Knockback knockback))
+        {
+            knockback.Knockback(attacker, StatsManager.Instance.knockbackForce, StatsManager.Instance.knockbackTime, StatsManager.Instance.stunTime);
+        }
     }
 }

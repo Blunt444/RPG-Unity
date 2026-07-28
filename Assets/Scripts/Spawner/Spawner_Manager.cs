@@ -35,6 +35,7 @@ public class Spawner_Manager : MonoBehaviour
         spawnPoints.Add(transform.Find("SpawnPoint1"));
         spawnPoints.Add(transform.Find("SpawnPoint2"));
         spawnPoints.Add(transform.Find("SpawnPoint3"));
+        spawnPoints.Add(transform.Find("SpawnPoint4"));
     }
 
 }

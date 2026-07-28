@@ -21,6 +21,12 @@ public class Arrow : MonoBehaviour
     public float tiltAngle;
     private bool isInAir = false;
     private bool isDestroyedStarted = false;
+    private Collider2D collider;
+
+    private void Awake()
+    {
+        collider = GetComponent<Collider2D>();
+    }
 
     public void Launch(Vector2 dir)
     {
@@ -111,6 +117,7 @@ public class Arrow : MonoBehaviour
         sr.sprite = buriedSprite;
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
+        collider.enabled = false;
 
         transform.SetParent(target);
 
