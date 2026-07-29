@@ -46,6 +46,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        fillImage.fillAmount = StatsManager.Instance.currentHealth / StatsManager.Instance.maxHealth;
+        fillImage.fillAmount = (float)StatsManager.Instance.currentHealth / StatsManager.Instance.maxHealth;
     }
 }
