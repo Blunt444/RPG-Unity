@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
 
@@ -6,6 +7,9 @@ public class PlayerHealth : MonoBehaviour
 {
     public TMP_Text healthText;
     public Animator healthTextAnim;
+
+    [SerializeField]
+    private Image fillImage;
 
     public static event Action OnPlayerDeath;
 
@@ -42,6 +46,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        healthText.text = "HP: " + StatsManager.Instance.currentHealth + " / " + StatsManager.Instance.maxHealth;
+        fillImage.fillAmount = StatsManager.Instance.currentHealth / StatsManager.Instance.maxHealth;
     }
 }
