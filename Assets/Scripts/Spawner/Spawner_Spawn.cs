@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Spawner_Spawn : MonoBehaviour
 {
-
     public Transform playerInRadius;
     public int currSpawned;
     public int maxSpawned;
@@ -50,7 +49,8 @@ public class Spawner_Spawn : MonoBehaviour
 
         GameObject enemy = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
 
-        enemy.GetComponent<Enemy_Manager>().spawnerHut = this;
+        enemy.GetComponentInChildren<Enemy_Manager>().spawnerHut = this;
+        enemy.GetComponentInChildren<Enemy_Health>().enemyContainer = enemy;
 
         currSpawned++;
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy_Movement : MonoBehaviour
@@ -7,6 +8,10 @@ public class Enemy_Movement : MonoBehaviour
     private Animator anim;
     private EnemyState enemyState;
     private Rigidbody2D rb;
+    [SerializeField]
+    private Transform healthCanvas;
+    [SerializeField]
+    private Vector3 healthCanvasOffset;
 
     public Transform player;
     public bool isChasingUncontrolled;
@@ -32,6 +37,18 @@ public class Enemy_Movement : MonoBehaviour
     public void ResetChaseUncontrolled()
     {
         isChasingUncontrolled = false;
+    }
+
+    private void LateUpdate()
+    {
+        if (healthCanvas == null) return;
+        healthCanvas.position = transform.position + healthCanvasOffset;
+    }
+
+    private void OnValidate()
+    {
+        if (healthCanvas == null) return;
+        healthCanvas.position = transform.position + healthCanvasOffset;
     }
 
     public void Update()
@@ -67,6 +84,7 @@ public class Enemy_Movement : MonoBehaviour
             Chase();
         }
     }
+
     public void Chase()
     {
         Vector2 direction = (player.position - transform.position).normalized;
@@ -76,6 +94,7 @@ public class Enemy_Movement : MonoBehaviour
     {
         facingDirection *= -1;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+
     }
     public void CheckForPlayer()
     {
@@ -129,6 +148,7 @@ public class Enemy_Movement : MonoBehaviour
 
     public void OnDrawGizmosSelected()
     {
+        if (manager == null || manager.detectionPoint == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(manager.detectionPoint.position, manager.playerDetectionRange);
 

@@ -39,8 +39,10 @@ public class Enemy_Random_Spawn : MonoBehaviour
         Vector3 spawnPoint = GetRandomSpawnPoint();
 
         GameObject spawnedEnemy = Instantiate(enemy, spawnPoint, Quaternion.identity);
-        Enemy_Movement movement = spawnedEnemy.GetComponent<Enemy_Movement>();
+        Enemy_Movement movement = spawnedEnemy.GetComponentInChildren<Enemy_Movement>();
+        Enemy_Health health = spawnedEnemy.GetComponentInChildren<Enemy_Health>();
 
+        health.enemyContainer = spawnedEnemy;
         movement.SetChaseUncontrolled();
         movement.ChangeState(EnemyState.Chasing);
 

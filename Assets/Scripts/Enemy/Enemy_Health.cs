@@ -1,15 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy_Health : MonoBehaviour, Damageable
 {
     public delegate void MonsterDefeated(int exp);
     public static event MonsterDefeated OnMonsterDefeated;
+    public GameObject enemyContainer;
 
-    Enemy_Manager manager;
+
+    [SerializeField]
+    private Image fillImage;
+    private Enemy_Manager manager;
 
     private void Awake()
     {
         manager = GetComponent<Enemy_Manager>();
+
+        if(enemyContainer == null)
+        {
+            enemyContainer = transform.root.gameObject;
+        }
     }
 
     public void ChangeHealth(int amount)
@@ -24,6 +34,9 @@ public class Enemy_Health : MonoBehaviour, Damageable
         {
             Die();
         }
+
+        UpdateHealthUI();
+
     }
 
     private void Die()
@@ -35,7 +48,7 @@ public class Enemy_Health : MonoBehaviour, Damageable
             manager.spawnerHut.DecrementSpawnCount();
         }
 
-        Destroy(gameObject);
+        Destroy(enemyContainer);
     }
 
     public void TakeDamage(int damageAmount, Transform attacker)
@@ -46,5 +59,10 @@ public class Enemy_Health : MonoBehaviour, Damageable
         {
             knockback.Knockback(attacker, StatsManager.Instance.knockbackForce, StatsManager.Instance.knockbackTime, StatsManager.Instance.stunTime);
         }
+    }
+
+    public void UpdateHealthUI()
+    {
+        fillImage.fillAmount = (float)manager.currentHealth / manager.maxHealth;
     }
 }
