@@ -10,8 +10,9 @@ public class ExpManager : MonoBehaviour
     public int currentExp;
     public int expToLevel;
     public float expGrowthMultiplier;
-    public Slider expSlider;
-    public TMP_Text currentLevelTxt;
+
+    [SerializeField]
+    private Image fillImage;
 
     private void Awake()
     {
@@ -97,8 +98,6 @@ public class ExpManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        expSlider.maxValue = expToLevel;
-        expSlider.value = currentExp;
-        currentLevelTxt.text = "Level: " + level;
+        fillImage.fillAmount = (float)currentExp / expToLevel;
     }
 }
