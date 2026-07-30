@@ -19,7 +19,7 @@ public class Spawner_Spawn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currSpawned >= maxSpawned)
+        if (currSpawned >= maxSpawned || GameObject.FindGameObjectWithTag("Player") == null)
         {
             return;
         }

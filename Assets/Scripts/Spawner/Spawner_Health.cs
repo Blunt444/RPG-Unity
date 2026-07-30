@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner_Health : MonoBehaviour, Damageable
 {
@@ -7,11 +9,15 @@ public class Spawner_Health : MonoBehaviour, Damageable
     private Vector3 originalLocalPos;
     private Coroutine shakeCoroutine;
 
+    [SerializeField]
+    private Image fillImage;
+
 
     private void Awake()
     {
         manager = GetComponent<Spawner_Manager>();
         originalLocalPos = transform.localPosition;
+        UpdateHealthUI();
     }
 
     public void ChangeHealth(int amount)
@@ -26,12 +32,19 @@ public class Spawner_Health : MonoBehaviour, Damageable
         {
             Die();
         }
+
+        UpdateHealthUI();
     }
 
     public void Die()
     {
         GetComponent<Spawner_Destroyed>().OnDestroyed();
         manager.isDead = true;
+    }
+
+    private void UpdateHealthUI()
+    {
+        fillImage.fillAmount = (float)manager.currentHealth / manager.maxHealth;
     }
 
     public void TakeDamage(int damageAmount, Transform attacker)
@@ -59,8 +72,8 @@ public class Spawner_Health : MonoBehaviour, Damageable
 
         while (elapsed < manager.shakeDuration)
         {
-            float x = Random.Range(-1f, 1f) * manager.shakeForce;
-            float y = Random.Range(-1f, 1f) * manager.shakeForce;
+            float x = UnityEngine.Random.Range(-1f, 1f) * manager.shakeForce;
+            float y = UnityEngine.Random.Range(-1f, 1f) * manager.shakeForce;
 
             transform.localPosition = originalLocalPos + new Vector3(x, y, 0f);
 

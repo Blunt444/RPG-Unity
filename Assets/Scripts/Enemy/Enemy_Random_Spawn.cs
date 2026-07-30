@@ -18,6 +18,7 @@ public class Enemy_Random_Spawn : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(GameObject.FindGameObjectWithTag("Player") == null) return;
         if (currentCooldown > 0)
         {
             currentCooldown -= Time.fixedDeltaTime;
