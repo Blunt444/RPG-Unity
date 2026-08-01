@@ -1,14 +1,16 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : MonoBehaviour, Damageable
+public class TreeScript : MonoBehaviour, Damageable
 {
     public int currentHit = 0;
     public int MaxHit = 0;
 
+    private Sprite latestSprite;
     private Sprite stump;
     private Animator anim;
     private SpriteRenderer sr;
+    private PolygonCollider2D polygonCollider2D;
 
     public void TakeDamage(int damageAmount, Transform attacker)
     {
@@ -25,10 +27,9 @@ public class Tree : MonoBehaviour, Damageable
         anim.enabled = false;
         sr.sprite = stump;
 
-        PolygonCollider2D collider = GetComponent<PolygonCollider2D>();
-        if (collider != null)
+        if (polygonCollider2D == null)
         {
-            collider.pathCount = 0;
+            polygonCollider2D.pathCount = 0;
         }
 
         this.enabled = false;
@@ -49,13 +50,42 @@ public class Tree : MonoBehaviour, Damageable
 
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        polygonCollider2D = GetComponent<PolygonCollider2D>();
 
         TreeOverrides tree = TreeManager.Instance.RandomTreeVariant();
 
         stump = tree.choppedSprite[Random.Range(0, tree.choppedSprite.Length)];
         anim.runtimeAnimatorController = tree.overrider;
 
+
         anim.Play("TreeSway", -1, Random.Range(0f, 1f));
         anim.speed = Random.Range(0.85f, 1.15f);
+    }
+
+    private void LateUpdate()
+    {
+        if (sr.sprite != latestSprite)
+        {
+            UpdateColliderShape(sr.sprite);
+            latestSprite = sr.sprite;
+        }
+    }
+
+    private void UpdateColliderShape(Sprite sprite)
+    {
+        if (polygonCollider2D == null || sprite == null) return;
+
+        int shapeCount = sprite.GetPhysicsShapeCount();
+        polygonCollider2D.pathCount = shapeCount;
+
+        List<Vector2> path = new List<Vector2>();
+
+        for (int i = 0; i < shapeCount; i++)
+        {
+            path.Clear();
+            sprite.GetPhysicsShape(i, path);
+            polygonCollider2D.SetPath(i, path);
+        }
+
     }
 }

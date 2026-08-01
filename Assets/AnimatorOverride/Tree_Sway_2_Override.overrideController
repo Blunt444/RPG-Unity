@@ -7,5 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tree_Sway_2_Override
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: ef70e0f8589d7bf4896abaa231b8adb8, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 51d3d0a5429417b4b98788c79cfc1107, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cc536e5e76a23184796f9e6d5b6e8630, type: 2}
