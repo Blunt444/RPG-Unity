@@ -4,6 +4,7 @@ public class Enemy_Manager : MonoBehaviour
 {
    public Enemy_Type enemyType;
    public Enemy_Color enemyColor;
+   public Enemy_Difficulty enemyDiffculty;
 
    public float speed;
    public float attackCooldown;
@@ -49,6 +50,7 @@ public class Enemy_Manager : MonoBehaviour
    public void ChooseRandomType()
    {
       enemyType = Enemy_Color_Type_Map.Instance.RandomType();
+      enemyDiffculty = Enemy_Color_Type_Map.Instance.RandomDifficulty();
    }
    public void ChooseRandomColor()
    {
@@ -60,7 +62,7 @@ public class Enemy_Manager : MonoBehaviour
    }
    public void SetStat()
    {
-      EnemyStatStruct stats = Enemy_Stat_Map.Instance.GetEnemyStat(enemyType);
+      EnemyStatStruct stats = Enemy_Stat_Map.Instance.GetEnemyStat(enemyType, enemyDiffculty);
       speed = stats.speed;
       attackCooldown = stats.attackCooldown;
       playerDetectionRange = stats.playerDetectionRange;

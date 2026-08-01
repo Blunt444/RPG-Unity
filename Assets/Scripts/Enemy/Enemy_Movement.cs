@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class Enemy_Movement : MonoBehaviour
 {
+    public EnemyState enemyState;
+
+    
     private float attackCooldownTimer;
     private int facingDirection = -1;
     private Animator anim;
-    private EnemyState enemyState;
     private Rigidbody2D rb;
     [SerializeField]
     private Transform healthCanvas;

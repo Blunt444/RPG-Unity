@@ -4,3 +4,10 @@ public enum Enemy_Type
     Tnt,
     Barrel
 }
+
+public enum Enemy_Difficulty
+{
+    easy,
+    medium,
+    hard
+}

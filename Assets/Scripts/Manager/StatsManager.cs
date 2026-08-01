@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class StatsManager : MonoBehaviour
 {
-
   public static StatsManager Instance;
 
   [Header("Combat Stats")]
@@ -38,6 +37,12 @@ public class StatsManager : MonoBehaviour
     {
       Destroy(gameObject);
     }
+  }
+  private void OnValidate()
+  {
+    GameObject obj = GameObject.FindGameObjectWithTag("Player");
+    if (obj == null) return;
+    obj.GetComponent<Player_Combat>().OnDrawGizmosSelected();
   }
 
 }

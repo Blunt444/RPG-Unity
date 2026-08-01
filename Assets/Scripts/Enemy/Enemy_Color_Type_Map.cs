@@ -69,6 +69,11 @@ public class Enemy_Color_Type_Map : MonoBehaviour
         return typeMap[UnityEngine.Random.Range(1, typeList.Count + 1)];
     }
 
+    public Enemy_Difficulty RandomDifficulty()
+    {
+        return (Enemy_Difficulty)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(Enemy_Difficulty)).Length);
+    }
+
     public Enemy_Color RandomColor()
     {
         return colorMap[UnityEngine.Random.Range(1, colorList.Count + 1)];

@@ -29,7 +29,8 @@ public struct EnemyStatStruct
 [Serializable]
 public struct EnemyStatEntry
 {
-    public Enemy_Type key;
+    public Enemy_Type type;
+    public Enemy_Difficulty difficulty;
     public EnemyStatStruct stat;
 }
 
@@ -40,7 +41,7 @@ public class Enemy_Stat_Map : MonoBehaviour
     [SerializeField]
     private List<EnemyStatEntry> entryList = new List<EnemyStatEntry>();
 
-    private Dictionary<Enemy_Type, EnemyStatStruct> statDict = new Dictionary<Enemy_Type, EnemyStatStruct>();
+    private Dictionary<(Enemy_Type, Enemy_Difficulty), EnemyStatStruct> statDict = new Dictionary<(Enemy_Type, Enemy_Difficulty), EnemyStatStruct>();
 
 
     private void Awake()
@@ -51,7 +52,7 @@ public class Enemy_Stat_Map : MonoBehaviour
 
             foreach (EnemyStatEntry entry in entryList)
             {
-                statDict[entry.key] = entry.stat;
+                statDict[(entry.type, entry.difficulty)] = entry.stat;
             }
         }
         else
@@ -60,9 +61,9 @@ public class Enemy_Stat_Map : MonoBehaviour
         }
     }
 
-    public EnemyStatStruct GetEnemyStat(Enemy_Type enemyType)
+    public EnemyStatStruct GetEnemyStat(Enemy_Type enemyType, Enemy_Difficulty difficulty)
     {
-        return statDict[enemyType];
+        return statDict[(enemyType, difficulty)];
     }
 
     public void UpdateEnemyStat(Enemy_Type enemyType)
