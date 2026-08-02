@@ -349,14 +349,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Stat_Map
   entryList:
-  - key: 0
+  - type: 0
+    difficulty: 0
     stat:
       maxHealth: 3
       expReward: 20
       speed: 4
       playerDetectionRange: 10
-      attackCooldown: 0.4
-      attackRange: 1.4
+      attackCooldown: 1
+      attackRange: 1.5
+      weaponRange: 1.6
+      damage: 1
+      guardDamage: 1
+      knockbackForce: 10
+      knockBackTime: 0.3
+  - type: 0
+    difficulty: 1
+    stat:
+      maxHealth: 3
+      expReward: 20
+      speed: 4
+      playerDetectionRange: 10
+      attackCooldown: 0.8
+      attackRange: 1.5
+      weaponRange: 1.6
+      damage: 1
+      guardDamage: 1
+      knockbackForce: 10
+      knockBackTime: 0.3
+  - type: 0
+    difficulty: 2
+    stat:
+      maxHealth: 3
+      expReward: 20
+      speed: 4
+      playerDetectionRange: 10
+      attackCooldown: 0.65
+      attackRange: 1.5
       weaponRange: 1.6
       damage: 1
       guardDamage: 1
@@ -1665,7 +1694,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.9939446
+      m_AnimationSpeed: 3.8229165
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: -12, z: 0}
@@ -1680,7 +1709,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.8430736
+      m_AnimationSpeed: 2.2880661
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -2394,16 +2423,6 @@ MonoBehaviour:
     choppedSprite:
     - {fileID: 21300000, guid: 8d17e1e86d683d349912d01f1bfde911, type: 3}
     - {fileID: 21300000, guid: aa4a189dc366ba14f80baf28a2c70de0, type: 3}
-  - key: tree2
-    overrider: {fileID: 22100000, guid: 92a904cdaf712f04aa61b07dcd900c03, type: 2}
-    choppedSprite:
-    - {fileID: 21300000, guid: 8d17e1e86d683d349912d01f1bfde911, type: 3}
-    - {fileID: 21300000, guid: aa4a189dc366ba14f80baf28a2c70de0, type: 3}
-  - key: tree3
-    overrider: {fileID: 22100000, guid: 295b908ea58c9ba4584be315a07e7dd5, type: 2}
-    choppedSprite:
-    - {fileID: 21300000, guid: f8b4760ff63d82549aaf6a9e68593566, type: 3}
-    - {fileID: 21300000, guid: fb2690f3c37406742bdae63868de0b14, type: 3}
 --- !u!1 &634455288
 GameObject:
   m_ObjectHideFlags: 0
@@ -11871,7 +11890,7 @@ Tilemap:
       - {fileID: -8604352155094888535, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
       - {fileID: 219539661368650802, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
       - {fileID: -8376323821268461911, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
-      m_AnimationSpeed: 2.178834
+      m_AnimationSpeed: 3.3589587
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 10, y: 1, z: 0}
@@ -11886,7 +11905,7 @@ Tilemap:
       - {fileID: 9050774589780060452, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
       - {fileID: -4024382073413787549, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
       - {fileID: 8143098205146776124, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
-      m_AnimationSpeed: 5.297584
+      m_AnimationSpeed: 3.3097332
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 14, y: 4, z: 0}
@@ -11901,7 +11920,7 @@ Tilemap:
       - {fileID: 5002216177705252053, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
       - {fileID: -5242237701343363396, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
       - {fileID: -1336393745153393164, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
-      m_AnimationSpeed: 3.2398407
+      m_AnimationSpeed: 4.004645
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -13780,6 +13799,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2624507784145940608}
     - target: {fileID: 8510407843265130527, guid: ea92fc0091e038d408d5151903bf5bb4, type: 3}
+      propertyPath: weaponRange
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510407843265130527, guid: ea92fc0091e038d408d5151903bf5bb4, type: 3}
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1840990462}
@@ -13954,11 +13977,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 111368896619577451, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.71
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 111368896619577451, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 161274999823922141, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
       propertyPath: m_AnimatePhysics
