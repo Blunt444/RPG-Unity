@@ -6,8 +6,10 @@ public class Enemy_Manager : MonoBehaviour
    public Enemy_Color enemyColor;
    public Enemy_Difficulty enemyDiffculty;
 
+   public bool isManuallySpawned = false;
+
    public float speed;
-   public float attackCooldown;
+   public float attackCooldownBuffer;
    public float playerDetectionRange;
    public float attackRange;
    public int currentHealth;
@@ -17,6 +19,8 @@ public class Enemy_Manager : MonoBehaviour
    public float weaponRange;
    public float knockbackForce;
    public float knockBackTime;
+   public float knockBackTimeResistance;
+   public float stuntResistance;
    public int guardDamage;
 
    public Spawner_Spawn spawnerHut;
@@ -31,19 +35,35 @@ public class Enemy_Manager : MonoBehaviour
    public void Awake()
    {
       anim = GetComponent<Animator>();
-      ChooseRandomType();
-      ChooseRandomColor();
+      if (!isManuallySpawned)
+      {
+         ChooseRandomType();
+         ChooseRandomColor();
+         SetOverrideAnimator();
+      }
+
       SetStat();
       SetTransform();
-      SetOverrideAnimator();
-
-      detectionPoint = transform.Find("DetectionPoint");
-      attackPoint = transform.Find("AttackPoint");
+      SetCombatTransform();
 
       if (detectionPoint == null || attackPoint == null)
       {
          Destroy(gameObject);
          return;
+      }
+   }
+
+   private void SetCombatTransform()
+   {
+      if (enemyType == Enemy_Type.Torch)
+      {
+         detectionPoint = transform.Find("DetectionPoint");
+         attackPoint = transform.Find("AttackPoint");
+      }
+      else if (enemyType == Enemy_Type.Tnt)
+      {
+         detectionPoint = transform.Find("DetectionPoint");
+         attackPoint = transform.Find("AttackPoint");
       }
    }
 
@@ -64,7 +84,7 @@ public class Enemy_Manager : MonoBehaviour
    {
       EnemyStatStruct stats = Enemy_Stat_Map.Instance.GetEnemyStat(enemyType, enemyDiffculty);
       speed = stats.speed;
-      attackCooldown = stats.attackCooldown;
+      attackCooldownBuffer = stats.attackCooldownBuffer;
       playerDetectionRange = stats.playerDetectionRange;
       attackRange = stats.attackRange;
       maxHealth = stats.maxHealth;
@@ -74,6 +94,8 @@ public class Enemy_Manager : MonoBehaviour
       weaponRange = stats.weaponRange;
       knockbackForce = stats.knockbackForce;
       knockBackTime = stats.knockBackTime;
+      knockBackTimeResistance = stats.knockBackTimeResistance;
+      stuntResistance = stats.stuntResistance;
       guardDamage = stats.guardDamage;
    }
    public void SetTransform()

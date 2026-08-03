@@ -25,10 +25,15 @@ public class Enemy_Combat : MonoBehaviour
             if (hits[0].GetComponent<PlayerMovement>().isGuarding)
             {
                 hits[0].GetComponent<PlayerMovement>().BreakGuard(manager.guardDamage, transform);
-                return;
             }
-            hits[0].GetComponent<PlayerHealth>().ChangeHealth(-manager.damage);
-            hits[0].GetComponent<PlayerMovement>().Knockback(transform, manager.knockbackForce, manager.knockBackTime);
+            else
+            {
+                hits[0].GetComponent<PlayerHealth>().ChangeHealth(-manager.damage);
+                hits[0].GetComponent<PlayerMovement>().Knockback(transform, manager.knockbackForce, manager.knockBackTime);
+            }
+
+            GetComponent<Enemy_Movement_Abstract>().attackCooldownTimer = manager.attackCooldownBuffer;
+             
         }
     }
 

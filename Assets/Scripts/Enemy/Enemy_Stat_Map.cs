@@ -14,7 +14,7 @@ public struct EnemyStatStruct
     public float playerDetectionRange;
 
     [Header("Combat Stats")]
-    public float attackCooldown;
+    public float attackCooldownBuffer;
     public float attackRange;
     public float weaponRange;
     public int damage;
@@ -23,6 +23,8 @@ public struct EnemyStatStruct
     [Header("Knockback")]
     public float knockbackForce;
     public float knockBackTime;
+    public float knockBackTimeResistance;
+    public float stuntResistance;
 
 }
 

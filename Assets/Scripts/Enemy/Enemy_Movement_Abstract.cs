@@ -7,7 +7,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
     public bool isChasingUncontrolled;
     public Enemy_Manager manager;
 
-    protected float attackCooldownTimer;
+    public float attackCooldownTimer;
     protected int facingDirection = -1;
     protected Animator anim;
     protected Rigidbody2D rb;
@@ -46,20 +46,32 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
             return;
         }
 
-        CheckForPlayer();
-
         if (attackCooldownTimer > 0)
         {
             attackCooldownTimer -= Time.deltaTime;
         }
 
-        if (enemyState == EnemyState.Attacking)
+        if (enemyState != EnemyState.Attacking)
+        {
+            CheckForPlayer();
+        }
+
+        if (enemyState == EnemyState.Attacking || enemyState == EnemyState.Idle)
         {
             rb.linearVelocity = Vector2.zero;
         }
-        else if (enemyState == EnemyState.Chasing || isChasingUncontrolled)
+        else if (enemyState == EnemyState.Chasing)
         {
             Chase();
+        }
+    }
+
+    public void HandleFlip()
+    {
+        if (player.position.x > transform.position.x && facingDirection == -1 ||
+            player.position.x < transform.position.x && facingDirection == 1)
+        {
+            Flip();
         }
     }
 
@@ -108,6 +120,21 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
         }
     }
 
+    public float GetAnimationLen()
+    {
+        RuntimeAnimatorController controller = anim.runtimeAnimatorController;
+
+        foreach (AnimationClip clip in controller.animationClips)
+        {
+            if (clip.name == "AttackLeft")
+            {
+                return clip.length;
+            }
+        }
+
+        return 2.0f;
+    }
+
     public void SetChaseUncontrolled()
     {
         isChasingUncontrolled = true;
@@ -130,7 +157,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
         healthCanvas.position = transform.position + healthCanvasOffset;
     }
 
-    public abstract void CheckForPlayer();
+    public abstract void CheckForPlayer(); // this method will be purely for animator changing
     public abstract void OnDrawGizmosSelected();
     public abstract void Chase();
 }

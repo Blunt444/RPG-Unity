@@ -6,48 +6,33 @@ public class Enemy_Movement : Enemy_Movement_Abstract
     {
         Vector2 direction = (player.position - transform.position).normalized;
         rb.linearVelocity = direction * manager.speed;
+
+        HandleFlip();
     }
-    
+
     public override void CheckForPlayer()
     {
-        if (isChasingUncontrolled)
-        {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            if (distanceToPlayer <= manager.attackRange && attackCooldownTimer <= 0)
-            {
-                attackCooldownTimer = manager.attackCooldown;
-                ChangeState(EnemyState.Attacking);
-            }
-            else if (distanceToPlayer > manager.attackRange && enemyState != EnemyState.Attacking)
-            {
-                ChangeState(EnemyState.Chasing);
-            }
-
-            if (player.position.x > transform.position.x && facingDirection == -1 ||
-                player.position.x < transform.position.x && facingDirection == 1)
-            {
-                Flip();
-            }
-            return;
-        }
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(manager.detectionPoint.position, manager.playerDetectionRange, manager.playerLayer);
 
-        if (hits.Length > 0)
+        if (hits.Length > 0 || isChasingUncontrolled)
         {
-            if (Vector2.Distance(transform.position, player.position) <= manager.attackRange && attackCooldownTimer <= 0)
+
+            if (attackCooldownTimer > 0)
             {
-                attackCooldownTimer = manager.attackCooldown;
+                ChangeState(EnemyState.Idle);
+                return;
+            }
+
+            if (distanceToPlayer <= manager.attackRange)
+            {
+                //got confused with frame added method this is just for the attack animation
                 ChangeState(EnemyState.Attacking);
             }
-            else if (Vector2.Distance(transform.position, player.position) > manager.attackRange && enemyState != EnemyState.Attacking)
+            else if (distanceToPlayer > manager.attackRange)
             {
                 ChangeState(EnemyState.Chasing);
-            }
-            if (player.position.x > transform.position.x && facingDirection == -1 ||
-            player.position.x < transform.position.x && facingDirection == 1)
-            {
-                Flip();
             }
 
         }
