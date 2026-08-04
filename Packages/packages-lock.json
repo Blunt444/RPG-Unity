@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "5ac210a9a287428cb876ce9ea4ef14fe31e115b7"
     },
+    "com.h8man.2d.navmeshplus": {
+      "version": "https://github.com/h8man/NavMeshPlus.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8fb73cc139cbb468524bc1862fcd0fbcccad44f4"
+    },
     "com.unity.2d.animation": {
       "version": "13.0.2",
       "depth": 1,
@@ -150,6 +157,15 @@
         "com.unity.collections": "2.4.3",
         "com.unity.nuget.newtonsoft-json": "3.2.1",
         "com.unity.modules.imageconversion": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ai.navigation": {
+      "version": "2.0.14",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.ai": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },

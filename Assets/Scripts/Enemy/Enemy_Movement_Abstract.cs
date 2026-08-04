@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class Enemy_Movement_Abstract : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
     public Transform player;
     public bool isChasingUncontrolled;
     public Enemy_Manager manager;
+    public NavMeshAgent agent;
 
     public float attackCooldownTimer;
     protected int facingDirection = -1;
@@ -20,10 +22,19 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
     protected virtual void Awake()
     {
         manager = GetComponent<Enemy_Manager>();
+
         rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Kinematic;
+
         anim = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
         ChangeState(EnemyState.Idle);
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+
         if (playerObj != null)
             player = playerObj.transform;
         else Destroy(gameObject);
@@ -40,7 +51,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
         {
             if (enemyState != EnemyState.Idle)
             {
-                rb.linearVelocity = Vector2.zero;
+                agent.ResetPath();
                 ChangeState(EnemyState.Idle);
             }
             return;
@@ -58,7 +69,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
 
         if (enemyState == EnemyState.Attacking || enemyState == EnemyState.Idle)
         {
-            rb.linearVelocity = Vector2.zero;
+            agent.ResetPath();
         }
         else if (enemyState == EnemyState.Chasing)
         {

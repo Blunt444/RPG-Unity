@@ -55,7 +55,8 @@ public class Enemy_Knockback : MonoBehaviour
             rb.linearVelocity = currentForce * direction;
             yield return null;
         }
-        rb.linearVelocity = Vector2.zero;
+        
+        enemyMovement.agent.ResetPath();
 
         if (stunTime > 0f)
             StartCoroutine(stunTimeCounter(stunTime));

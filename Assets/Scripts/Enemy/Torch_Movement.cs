@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy_Movement : Enemy_Movement_Abstract
 {
     public override void Chase()
     {
-        Vector2 direction = (player.position - transform.position).normalized;
-        rb.linearVelocity = direction * manager.speed;
+        agent.speed = manager.speed;
+        agent.SetDestination(player.position);
 
         HandleFlip();
     }
@@ -38,7 +39,7 @@ public class Enemy_Movement : Enemy_Movement_Abstract
         }
         else
         {
-            rb.linearVelocity = Vector2.zero;
+            agent.ResetPath();
             ChangeState(EnemyState.Idle);
         }
     }
