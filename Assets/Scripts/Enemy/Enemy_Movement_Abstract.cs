@@ -31,6 +31,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.stoppingDistance = manager.attackRange * 0.8f;
 
         ChangeState(EnemyState.Idle);
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");

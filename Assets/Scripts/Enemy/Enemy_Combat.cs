@@ -32,8 +32,7 @@ public class Enemy_Combat : MonoBehaviour
                 hits[0].GetComponent<PlayerMovement>().Knockback(transform, manager.knockbackForce, manager.knockBackTime);
             }
 
-            GetComponent<Enemy_Movement_Abstract>().attackCooldownTimer = manager.attackCooldownBuffer;
-             
+            GetComponent<Enemy_Movement_Abstract>().attackCooldownTimer = manager.attackCooldownBuffer; 
         }
     }
 
