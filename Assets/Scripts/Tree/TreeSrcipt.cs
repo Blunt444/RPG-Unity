@@ -14,6 +14,7 @@ public class TreeScript : MonoBehaviour, Damageable
     private PolygonCollider2D polygonCollider2D;
     private Vector3 localPos;
     private bool isShaking = false;
+    private bool isDead = false;
 
     private void Start()
     {
@@ -49,6 +50,8 @@ public class TreeScript : MonoBehaviour, Damageable
 
     public void TakeDamage(int damageAmount, Transform attacker)
     {
+        if(isDead) return;
+        
         currentHit++;
         Shake();
         if (currentHit >= MaxHit)
@@ -67,7 +70,7 @@ public class TreeScript : MonoBehaviour, Damageable
             polygonCollider2D.pathCount = 0;
         }
 
-        this.enabled = false;
+        isDead = true;
     }
 
     private void Shake()

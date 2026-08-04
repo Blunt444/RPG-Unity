@@ -7,6 +7,7 @@ public class StatsManager : MonoBehaviour
 
   [Header("Combat Stats")]
   public int damage;
+  public Vector2 attackBoxSize = new Vector2(1.5f, 2.5f);
   public float weaponRange;
   public float knockbackForce;
   public float knockbackTime;
@@ -38,11 +39,18 @@ public class StatsManager : MonoBehaviour
       Destroy(gameObject);
     }
   }
-  private void OnValidate()
+  private void OnDrawGizmos()
   {
-    GameObject obj = GameObject.FindGameObjectWithTag("Player");
-    if (obj == null) return;
-    obj.GetComponent<Player_Combat>().OnDrawGizmosSelected();
+    GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+    if (playerObj == null) return;
+
+    if (playerObj.TryGetComponent<Player_Combat>(out Player_Combat combat))
+    {
+      if (combat.attackPoint == null) return;
+
+      Gizmos.color = Color.green;
+      Gizmos.DrawWireCube(combat.attackPoint.position, attackBoxSize);
+    }
   }
 
 }
