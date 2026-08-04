@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,34 +12,8 @@ public class TreeScript : MonoBehaviour, Damageable
     private Animator anim;
     private SpriteRenderer sr;
     private PolygonCollider2D polygonCollider2D;
-
-    public void TakeDamage(int damageAmount, Transform attacker)
-    {
-        currentHit++;
-        Shake();
-        if (currentHit >= MaxHit)
-        {
-            Die();
-        }
-    }
-
-    public void Die()
-    {
-        anim.enabled = false;
-        sr.sprite = stump;
-
-        if (polygonCollider2D == null)
-        {
-            polygonCollider2D.pathCount = 0;
-        }
-
-        this.enabled = false;
-    }
-
-    public void Shake()
-    {
-
-    }
+    private Vector3 localPos;
+    private bool isShaking = false;
 
     private void Start()
     {
@@ -56,6 +31,7 @@ public class TreeScript : MonoBehaviour, Damageable
 
         stump = tree.choppedSprite[Random.Range(0, tree.choppedSprite.Length)];
         anim.runtimeAnimatorController = tree.overrider;
+        localPos = transform.localPosition;
 
 
         anim.Play("TreeSway", -1, Random.Range(0f, 1f));
@@ -69,6 +45,58 @@ public class TreeScript : MonoBehaviour, Damageable
             UpdateColliderShape(sr.sprite);
             latestSprite = sr.sprite;
         }
+    }
+
+    public void TakeDamage(int damageAmount, Transform attacker)
+    {
+        currentHit++;
+        Shake();
+        if (currentHit >= MaxHit)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        anim.enabled = false;
+        sr.sprite = stump;
+
+        if (polygonCollider2D == null)
+        {
+            polygonCollider2D.pathCount = 0;
+        }
+
+        this.enabled = false;
+    }
+
+    private void Shake()
+    {
+        if (isShaking)
+        {
+            return;
+        }
+
+        isShaking = true;
+        StartCoroutine(StartShaking());
+    }
+
+    private IEnumerator StartShaking()
+    {
+        float elapsed = 0f;
+        while (elapsed < TreeManager.Instance.maxShakeTime)
+        {
+            elapsed += Time.deltaTime;
+
+            float x = Random.Range(-1f, 1f) * TreeManager.Instance.shakeMagnitude;
+            float y = Random.Range(-1f, 1f) * TreeManager.Instance.shakeMagnitude;
+
+            transform.localPosition = localPos + new Vector3(x, y, 0);
+
+            yield return null;
+        }
+        isShaking = false;
+        transform.localPosition = localPos;
     }
 
     private void UpdateColliderShape(Sprite sprite)
@@ -86,6 +114,5 @@ public class TreeScript : MonoBehaviour, Damageable
             sprite.GetPhysicsShape(i, path);
             polygonCollider2D.SetPath(i, path);
         }
-
     }
 }

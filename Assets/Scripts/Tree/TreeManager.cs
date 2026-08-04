@@ -18,6 +18,10 @@ public class TreeManager : MonoBehaviour
     [SerializeField]
     List<TreeOverrides> list = new List<TreeOverrides>();
 
+    public float maxShakeTime = 0f;
+    public float shakeMagnitude = 0.3f;
+
+
     public void Awake()
     {
         if (Instance == null)
