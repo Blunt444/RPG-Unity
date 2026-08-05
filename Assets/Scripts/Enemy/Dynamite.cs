@@ -1,19 +1,36 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Dynamite : MonoBehaviour
 {
     public float radius = 2f;
+    public float reachTime;
     public float detonateTime;
     public Vector2 playerPos;
     public int damageAmount = 1;
 
     [SerializeField]
     private LayerMask playerLayer;
+    [SerializeField]
+    private SpriteRenderer sr;
+    [SerializeField]
+    private Color fadeRed = new Color(1f, 0f, 0f, 0.2f);
+    [SerializeField]
+    private Color brightRed = new Color(1f, 0f, 0f, 0.8f);
+    [SerializeField]
+    private float startBlinkSpeed = 4f;
+    [SerializeField]
+    private float maxBlinkSpeed = 20f;
 
     public void StartDetonation(Vector2 playerPos)
     {
         this.playerPos = playerPos;
+
+        if (sr == null) return;
+
+        sr.gameObject.SetActive(false);
+
         StartCoroutine(Countdown());
     }
 
@@ -22,15 +39,50 @@ public class Dynamite : MonoBehaviour
         float elapsed = 0f;
         Vector3 startPos = transform.position;
 
-        while (elapsed < detonateTime)
+        while (elapsed < reachTime)
         {
 
             elapsed += Time.deltaTime;
 
-            transform.position = Vector3.Lerp(startPos, playerPos, elapsed / detonateTime);
+            float progress = elapsed / reachTime;
+
+            transform.position = Vector3.Lerp(startPos, playerPos, progress);
 
             yield return null;
         }
+
+        transform.position = playerPos;
+
+        sr.gameObject.SetActive(true);
+
+        sr.transform.position = transform.position;
+        sr.transform.localScale = new Vector3(radius * 2f, radius * 2f, 1f);
+
+        StartCoroutine(Detonate());
+
+    }
+
+    private IEnumerator Detonate()
+    {
+        float elapsed = 0f;
+        float blinkTimer = 0f;
+
+        while (elapsed < detonateTime)
+        {
+            elapsed += Time.deltaTime;
+
+            float progress = elapsed / detonateTime;
+
+            float currentBlinSpeed = Mathf.Lerp(startBlinkSpeed, maxBlinkSpeed, progress);
+            blinkTimer += Time.deltaTime * currentBlinSpeed;
+
+
+            float blink = Mathf.PingPong(blinkTimer, 1f);
+            sr.color = Color.Lerp(fadeRed, brightRed, blink);
+
+            yield return null;
+        }
+
         CheckPlayerInBlastRadius();
     }
 

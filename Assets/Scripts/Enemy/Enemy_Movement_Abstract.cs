@@ -95,6 +95,9 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
 
     public void ChangeState(EnemyState newState)
     {
+
+        if(enemyState == newState) return;
+
         if (enemyState == EnemyState.Idle)
         {
             anim.SetBool("isIdle", false);

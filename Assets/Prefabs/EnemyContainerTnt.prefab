@@ -366,6 +366,7 @@ GameObject:
   - component: {fileID: 9106919311564113638}
   - component: {fileID: 937020938352850502}
   - component: {fileID: 9141770235927413108}
+  - component: {fileID: 5551671085341879821}
   m_Layer: 9
   m_Name: Tnt
   m_TagString: Untagged
@@ -639,3 +640,17 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5551671085341879821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8678438860609657596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a12f357459ab284787df26a65b2773a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tnt_Combat
+  manager: {fileID: 0}
+  TntPrefab: {fileID: 2235189947067382707, guid: e1e224e9534c7344288d2584eb767164, type: 3}

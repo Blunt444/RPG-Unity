@@ -366,7 +366,8 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2935328040516412926, guid: 02f929eb730d17e43bc724c9bafe013b, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5219593444195315399, guid: 02f929eb730d17e43bc724c9bafe013b, type: 3}
     m_AddedGameObjects: []
@@ -374,6 +375,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3090555240768655482, guid: 02f929eb730d17e43bc724c9bafe013b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4093188703622173564}
+    - targetCorrespondingSourceObject: {fileID: 3090555240768655482, guid: 02f929eb730d17e43bc724c9bafe013b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 618625553168498501}
   m_SourcePrefab: {fileID: 100100000, guid: 02f929eb730d17e43bc724c9bafe013b, type: 3}
 --- !u!4 &4276275360216599667 stripped
 Transform:
@@ -407,3 +411,16 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &618625553168498501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888000430677799234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee73f01c40d8aa48854f82473fa8123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Torch_Combat
+  manager: {fileID: 0}

@@ -13,12 +13,16 @@ public class Tnt_Combat : Enemy_Combat_Abstract
             return;
         }
 
+        movement.HandleFlip();
+
         ThrowDynamite();
+
+        movement.attackCooldownTimer = manager.attackCooldownBuffer;
     }
 
     public void ThrowDynamite()
     {
-        GameObject dynamite = Instantiate(TntPrefab, transform);
+        GameObject dynamite = Instantiate(TntPrefab, transform.position, Quaternion.identity);
         dynamite.GetComponent<Dynamite>().StartDetonation(GameObject.FindGameObjectWithTag("Player").transform.position);
     }
 

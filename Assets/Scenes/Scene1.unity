@@ -409,8 +409,8 @@ MonoBehaviour:
       expReward: 20
       speed: 4
       playerDetectionRange: 10
-      attackCooldownBuffer: 1
-      attackRange: 1.5
+      attackCooldownBuffer: 0.8
+      attackRange: 6
       weaponRange: 1.6
       damage: 1
       guardDamage: 1
@@ -425,8 +425,8 @@ MonoBehaviour:
       expReward: 20
       speed: 4
       playerDetectionRange: 10
-      attackCooldownBuffer: 0.8
-      attackRange: 1.5
+      attackCooldownBuffer: 0.7
+      attackRange: 6
       weaponRange: 1.6
       damage: 1
       guardDamage: 1
@@ -442,7 +442,7 @@ MonoBehaviour:
       speed: 4
       playerDetectionRange: 10
       attackCooldownBuffer: 0.6
-      attackRange: 1.5
+      attackRange: 6
       weaponRange: 1.6
       damage: 1
       guardDamage: 1
@@ -1754,7 +1754,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.883367
+      m_AnimationSpeed: 3.4310246
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: -12, z: 0}
@@ -1769,7 +1769,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.3430245
+      m_AnimationSpeed: 2.8452792
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -12153,7 +12153,7 @@ Tilemap:
       - {fileID: -8604352155094888535, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
       - {fileID: 219539661368650802, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
       - {fileID: -8376323821268461911, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
-      m_AnimationSpeed: 3.3973098
+      m_AnimationSpeed: 3.3399615
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 10, y: 1, z: 0}
@@ -12168,7 +12168,7 @@ Tilemap:
       - {fileID: 9050774589780060452, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
       - {fileID: -4024382073413787549, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
       - {fileID: 8143098205146776124, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
-      m_AnimationSpeed: 2.0402603
+      m_AnimationSpeed: 3.621593
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 14, y: 4, z: 0}
@@ -12183,7 +12183,7 @@ Tilemap:
       - {fileID: 5002216177705252053, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
       - {fileID: -5242237701343363396, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
       - {fileID: -1336393745153393164, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
-      m_AnimationSpeed: 5.5969944
+      m_AnimationSpeed: 3.9577699
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
