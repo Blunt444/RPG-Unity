@@ -33,9 +33,12 @@ public class Player_Combat : MonoBehaviour
         Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, StatsManager.Instance.attackBoxSize, enemyLayer);
         if (enemies.Length > 0)
         {
-            if (enemies[0].TryGetComponent<Damageable>(out Damageable target))
+            foreach (Collider2D enemy in enemies)
             {
-                target.TakeDamage(StatsManager.Instance.damage, transform);
+                if (enemy.TryGetComponent<Damageable>(out Damageable target))
+                {
+                    target.TakeDamage(StatsManager.Instance.damage, transform);
+                }
             }
         }
     }

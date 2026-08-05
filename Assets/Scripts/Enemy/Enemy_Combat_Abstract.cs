@@ -1,19 +1,19 @@
 using UnityEngine;
 
-public class Enemy_Combat : MonoBehaviour
+public abstract class Enemy_Combat_Abstract : MonoBehaviour
 {
 
     public Enemy_Manager manager;
 
-    private void Awake()
+    protected void Awake()
     {
         manager = GetComponent<Enemy_Manager>();
     }
 
-    public void Attack()
+    public virtual void Attack()
     {
 
-        Enemy_Movement movement = GetComponent<Enemy_Movement>();
+        Enemy_Movement_Abstract  movement = GetComponent<Enemy_Movement_Abstract >();
         if (movement.enemyState == EnemyState.Knockback)
         {
             return;
