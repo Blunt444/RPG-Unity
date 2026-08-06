@@ -22,8 +22,22 @@ public class Tnt_Combat : Enemy_Combat_Abstract
 
     public void ThrowDynamite()
     {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObj == null) return;
+
         GameObject dynamite = Instantiate(TntPrefab, transform.position, Quaternion.identity);
+
+        if (playerObj == null)
+        {
+            Destroy(dynamite);
+            return;
+        }
+
         dynamite.GetComponent<Dynamite>().StartDetonation(GameObject.FindGameObjectWithTag("Player").transform.position);
+
+        dynamite.GetComponent<Dynamite>().knockbackTime = manager.knockBackTime;
+        dynamite.GetComponent<Dynamite>().knockbackForce = manager.knockbackForce;
     }
 
 }

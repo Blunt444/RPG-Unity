@@ -9,6 +9,10 @@ public class Dynamite : MonoBehaviour
     public float detonateTime;
     public Vector2 playerPos;
     public int damageAmount = 1;
+    [HideInInspector]
+    public float knockbackTime;
+    [HideInInspector]
+    public float knockbackForce;
 
     [SerializeField]
     private LayerMask playerLayer;
@@ -94,9 +98,9 @@ public class Dynamite : MonoBehaviour
         {
             foreach (Collider2D hit in hits)
             {
-                if (hit.TryGetComponent<Damageable>(out Damageable taregt))
+                if (hit.TryGetComponent<Damageable>(out Damageable target))
                 {
-                    taregt.TakeDamage(damageAmount, transform);
+                    target.TakeDamage(damageAmount, transform);
                 }
             }
         }
@@ -107,6 +111,14 @@ public class Dynamite : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(sr.transform.position, radius);
+    }
+
+    private void OnValidate()
+    {
+        if (sr != null)
+        {
+            sr.transform.localScale = new Vector3(radius * 2f, radius * 2f, 1f);
+        }
     }
 }

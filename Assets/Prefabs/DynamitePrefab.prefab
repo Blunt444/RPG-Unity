@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.14157932, z: -0, w: 0.989927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8080849370012606083}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -2413806693520163455, guid: 45392d92cb8c5474fb00c744162837e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -219,11 +219,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc833719046d464d9a5f22058468a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dynamite
-  radius: 5
+  radius: 2
   reachTime: 1.2
   detonateTime: 3
   playerPos: {x: 0, y: 0}
   damageAmount: 2
+  knockbackTime: 0
+  knockbackForce: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
