@@ -26,12 +26,17 @@ public class Dynamite : MonoBehaviour
     private float startBlinkSpeed = 4f;
     [SerializeField]
     private float maxBlinkSpeed = 20f;
+    private bool isDetonating = false;
 
     public void StartDetonation(Vector2 playerPos)
     {
+
+        if (isDetonating) return;
+        isDetonating = true;
+
         this.playerPos = playerPos;
 
-        if (sr == null) return;
+        if (sr == null) Destroy(gameObject);
 
         sr.gameObject.SetActive(false);
 
@@ -92,20 +97,29 @@ public class Dynamite : MonoBehaviour
 
     private void CheckPlayerInBlastRadius()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
-
-        if (hits.Length > 0)
+        try
         {
-            foreach (Collider2D hit in hits)
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
+
+            if (hits.Length > 0)
             {
-                if (hit.TryGetComponent<Damageable>(out Damageable target))
+                foreach (Collider2D hit in hits)
                 {
-                    target.TakeDamage(damageAmount, transform);
+                    if (hit.TryGetComponent<Damageable>(out Damageable target))
+                    {
+                        target.TakeDamage(damageAmount, transform);
+                    }
                 }
             }
         }
-
-        Destroy(gameObject);
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+        }
+        finally
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDrawGizmosSelected()

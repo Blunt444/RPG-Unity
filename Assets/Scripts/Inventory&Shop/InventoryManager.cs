@@ -90,7 +90,7 @@ public class InventoryManager : MonoBehaviour
 
     public void UseItem(InventorySlot inventorySlot)
     {
-        if (inventorySlot.itemSO != null && inventorySlot.quantity > 0)
+        if (inventorySlot.itemSO != null && inventorySlot.quantity > 0 && inventorySlot.itemSO.isUsable)
         {
             useItem.ApplyItemEffects(inventorySlot.itemSO);
             inventorySlot.quantity--;

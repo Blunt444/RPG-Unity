@@ -12,6 +12,7 @@ public class ItemSO : ScriptableObject
    public Vector2 shopUIItemSize = new Vector2(120,120);
 
    public bool isGold;
+   public bool isUsable = true;
 
    [Header("Stats")]
    public int currentHealth;

@@ -30,7 +30,7 @@ public class Player_Combat : MonoBehaviour
 
     public void DealDamage()
     {
-        Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, StatsManager.Instance.attackBoxSize, enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapBoxAll(attackPoint.position, StatsManager.Instance.attackBoxSize, 0f, enemyLayer);
         if (enemies.Length > 0)
         {
             foreach (Collider2D enemy in enemies)

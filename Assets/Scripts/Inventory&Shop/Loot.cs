@@ -47,4 +47,9 @@ public class Loot : MonoBehaviour
         canBePickedup = false;
         UpdateAppearnace();
     }
+
+    public void DropWoodAnimation()
+    {
+        anim.Play("DropWood");
+    }
 }

@@ -65,6 +65,8 @@ public class TreeScript : MonoBehaviour, Damageable
         anim.enabled = false;
         sr.sprite = stump;
 
+        TreeManager.Instance.DropWood(transform);
+
         if (polygonCollider2D == null)
         {
             polygonCollider2D.pathCount = 0;
