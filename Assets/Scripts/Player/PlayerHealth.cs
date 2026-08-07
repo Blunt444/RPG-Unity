@@ -54,9 +54,15 @@ public class PlayerHealth : MonoBehaviour, Damageable
         //this inteface only serves one purpose which is
         //when multiple area/volume damage is dealth it is easier to use this.
         ChangeHealth(-damageAmount);
-        
-        Dynamite dynamite = attacker.GetComponent<Dynamite>();
 
-        GetComponent<PlayerMovement>().Knockback(attacker, dynamite.knockbackForce, dynamite.knockbackTime);
+        if (attacker == null) return;
+        else if (attacker.TryGetComponent<Dynamite>(out Dynamite dynamite))
+        {
+            GetComponent<PlayerMovement>().Knockback(attacker, dynamite.knockbackForce, dynamite.knockbackTime);
+        }
+        else if (attacker.TryGetComponent<Barrel>(out Barrel barrel))
+        {
+            GetComponent<PlayerMovement>().Knockback(attacker, barrel.knockbackForce, barrel.knockbackTime);
+        }
     }
 }

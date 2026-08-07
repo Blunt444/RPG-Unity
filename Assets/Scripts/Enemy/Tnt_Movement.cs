@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Tnt_Movement : Enemy_Movement_Abstract
 {
+    [SerializeField]
+    private float safeDistance;
+    [SerializeField]
+    private float maxTimeToFindSafeDistance;
+
     public override void Chase()
     {
         agent.speed = manager.speed;
@@ -41,6 +46,33 @@ public class Tnt_Movement : Enemy_Movement_Abstract
             agent.ResetPath();
             ChangeState(EnemyState.Idle);
         }
+    }
+
+    public void FindASafeDistance()
+    {
+        isFindingASafeDistance = true;
+        float currTimeToFindSafeDistance = maxTimeToFindSafeDistance;
+
+        ChangeState(EnemyState.Chasing);
+
+        while (currTimeToFindSafeDistance > 0)
+        {
+            currTimeToFindSafeDistance -= Time.deltaTime;
+
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, safeDistance, manager.playerLayer);
+
+            if (hits.Length > 0)
+            {
+                
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        isFindingASafeDistance = false;
+
     }
 
     public override void OnDrawGizmosSelected()

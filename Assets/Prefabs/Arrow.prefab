@@ -189,7 +189,7 @@ MonoBehaviour:
   stunTime: 0.1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 16896
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 1024

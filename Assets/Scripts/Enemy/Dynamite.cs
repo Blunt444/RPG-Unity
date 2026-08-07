@@ -92,7 +92,7 @@ public class Dynamite : MonoBehaviour
 
     private void CheckPlayerInBlastRadius()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, playerLayer);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
 
         if (hits.Length > 0)
         {

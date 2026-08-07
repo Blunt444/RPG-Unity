@@ -17,6 +17,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
     protected Transform healthCanvas;
     [SerializeField]
     protected Vector3 healthCanvasOffset;
+    protected bool isFindingASafeDistance = false;
 
 
     protected virtual void Awake()
@@ -63,7 +64,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
             attackCooldownTimer -= Time.deltaTime;
         }
 
-        if (enemyState != EnemyState.Attacking)
+        if (enemyState != EnemyState.Attacking || !isFindingASafeDistance)
         {
             CheckForPlayer();
         }
@@ -72,7 +73,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
         {
             agent.ResetPath();
         }
-        else if (enemyState == EnemyState.Chasing)
+        else if (enemyState == EnemyState.Chasing || !isFindingASafeDistance)
         {
             Chase();
         }
@@ -96,7 +97,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
     public void ChangeState(EnemyState newState)
     {
 
-        if(enemyState == newState) return;
+        if (enemyState == newState) return;
 
         if (enemyState == EnemyState.Idle)
         {
