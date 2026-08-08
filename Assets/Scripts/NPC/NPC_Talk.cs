@@ -55,9 +55,15 @@ public class NPC_Talk : MonoBehaviour
             else if (!DialogueManager.Instance.isOpened)
             {
                 currentIndex = DialogueManager.Instance.GetStartIndex(dialogSO);
+                DialogueManager.Instance.npc = this;
                 DialogueManager.Instance.DisplayDialogue(dialogSO, currentIndex);
                 DialogueManager.Instance.ToggleVisibility();
             }
         }
+    }
+
+    public void SetLineIndex(int index)
+    {
+        currentIndex = index;
     }
 }

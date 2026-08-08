@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     public Image actorSprite;
     public GameObject topicItem;
     public Transform topicBox;
+    public NPC_Talk npc;
 
 
     public CanvasGroup dialogCanvas;
@@ -59,6 +60,7 @@ public class DialogueManager : MonoBehaviour
         if (isOpened)
         {
             ToggleVisibility();
+            npc = null;
             return dialogSO.returnStartIndex;
         }
         return 0;
@@ -81,9 +83,16 @@ public class DialogueManager : MonoBehaviour
 
         bool isThereTopics = CheckForTopics(dialogSO, currentIndex);
 
+        ClearTopicInstance();
+
         if (isThereTopics)
         {
-
+            topicBox.gameObject.SetActive(true);
+            CreateTopicInstance(line.topics);
+        }
+        else
+        {
+            topicBox.gameObject.SetActive(false);
         }
 
         dialogSO.returnStartIndex = line.checkpointIndex;
@@ -95,11 +104,36 @@ public class DialogueManager : MonoBehaviour
         foreach (DialogueTopic topic in topics)
         {
             GameObject obj = Instantiate(topicItem, topicBox);
-            
+            TopicButton button = obj.GetComponent<TopicButton>();
+
+            button.SetUp(topic.label, topic.nextLineIndex, OnButtonClicked);
         }
     }
     public bool CheckForTopics(DialogSO dialogSO, int currentIndex)
     {
         return dialogSO.lines[currentIndex].topics.Count > 0;
+    }
+
+    public void ClearTopicInstance()
+    {
+        foreach (Transform child in topicBox.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    public void OnButtonClicked(int nextLineIndex)
+    {
+        if (npc == null) return;
+
+        if (nextLineIndex == -1)
+        {
+            npc.SetLineIndex(EndConversation(npc.dialogSO));
+        }
+        else
+        {
+            npc.SetLineIndex(nextLineIndex);
+            DisplayDialogue(npc.dialogSO, nextLineIndex);
+        }
     }
 }

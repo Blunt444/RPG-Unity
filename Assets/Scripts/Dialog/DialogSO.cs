@@ -25,8 +25,6 @@ public class DialogueLine
 public class DialogueTopic
 {
     [TextArea(3, 5)] public string label;
-    [TextArea(3, 5)] public string text;
-
     public int nextLineIndex = 0;
 }
 
