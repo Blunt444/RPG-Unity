@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701ba618ca65e5240a8e2d7bb2d22bbe, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemName: 
-  itemDescription: 
-  icon: {fileID: 0}
-  stackSize: 0
-  uiOffset: {x: 0, y: 0}
+  itemName: Wood
+  itemDescription: Wood.... it feels hard!!!
+  icon: {fileID: 21300000, guid: ddefe0813720d05438ae46ba9bdd2907, type: 3}
+  stackSize: 64
+  uiOffset: {x: 0, y: 35}
   shopUIOffset: {x: 0, y: 0}
   shopUIItemSize: {x: 120, y: 120}
   isGold: 0
+  isUsable: 1
   currentHealth: 0
   maxHealth: 0
   speed: 0
