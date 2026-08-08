@@ -4,6 +4,7 @@ using UnityEngine;
 public class NPC_Talk : MonoBehaviour
 {
     public DialogSO dialogSO;
+    public List<ActorSO> requiredActors = new List<ActorSO>();
     int currentIndex;
     private Rigidbody2D rb;
     private Animator anim;
@@ -22,8 +23,12 @@ public class NPC_Talk : MonoBehaviour
 
     private void OnEnable()
     {
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        if (anim == null) anim = GetComponent<Animator>();
+
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
+
         anim.SetBool("isWalking", false);
         interactionAnim.Play("OpenIcon");
     }
@@ -39,10 +44,17 @@ public class NPC_Talk : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
         {
             Debug.Log("Line No:" + currentIndex);
+
+            if (DialogueManager.Instance == null || dialogSO == null) return;
+
             if (currentIndex != -1 && DialogueManager.Instance.isOpened)
             {
                 Debug.Log("Advance");
-                currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+
+                if (DialogHistoryTracker.Instance.CanTalkToNpc(this))
+                    currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+
+
                 if (currentIndex == -1)
                 {
                     currentIndex = DialogueManager.Instance.EndConversation(dialogSO);
