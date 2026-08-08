@@ -25,7 +25,8 @@ public class DialogueLine
 public class DialogueTopic
 {
     [TextArea(3, 5)] public string label;
-    public int nextLineIndex = 0;
+    public TextFor textFor = TextFor.Topic; // just so it is easy to interpretup in the inspector
+    public int nextLineIndex = -1;
 }
 
 [Serializable]
@@ -38,3 +39,8 @@ public class DialogueChoice
 }
 
 public enum ChoiceOutcome { None, Started, Completed, Declined }
+public enum TextFor
+{
+    Topic,
+    Quest
+}
