@@ -4,8 +4,9 @@ using UnityEngine;
 public class NPC_Talk : MonoBehaviour
 {
     public DialogSO dialogSO;
-    public List<ActorSO> requiredActors = new List<ActorSO>();
-    int currentIndex;
+    public int currentIndex;
+    public ActorSO actorSO;
+
     private Rigidbody2D rb;
     private Animator anim;
     [SerializeField] private Animator interactionAnim;
@@ -51,8 +52,10 @@ public class NPC_Talk : MonoBehaviour
             {
                 Debug.Log("Advance");
 
-                if (DialogHistoryTracker.Instance.CanTalkToNpc(this))
+                if (DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]))
                     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+                else
+                    currentIndex = DialogueManager.Instance.EndConversation(dialogSO);
 
 
                 if (currentIndex == -1)
@@ -68,8 +71,14 @@ public class NPC_Talk : MonoBehaviour
             {
                 currentIndex = DialogueManager.Instance.GetStartIndex(dialogSO);
                 DialogueManager.Instance.npc = this;
+
+                if (dialogSO.lines[currentIndex].requiredActors.Count > 0 && DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]))
+                    currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+
                 DialogueManager.Instance.DisplayDialogue(dialogSO, currentIndex);
+
                 DialogueManager.Instance.ToggleVisibility();
+                DialogHistoryTracker.Instance.AddToTalkedNpc(actorSO);
             }
         }
     }

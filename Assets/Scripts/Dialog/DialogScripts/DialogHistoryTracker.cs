@@ -23,6 +23,7 @@ public class DialogHistoryTracker : MonoBehaviour
     {
         if (actorSO != null)
             talkedNpcs.Add(actorSO);
+        Debug.Log(actorSO);
     }
 
     public bool HasTalkedToNpc(ActorSO actorSO)
@@ -30,14 +31,14 @@ public class DialogHistoryTracker : MonoBehaviour
         return actorSO != null && talkedNpcs.Contains(actorSO);
     }
 
-    public bool CanTalkToNpc(NPC_Talk npc)
+    public bool CanShowNextLine(DialogueLine line)
     {
 
-        if (npc == null || npc.requiredActors == null) return true;
+        if (line.requiredActors == null) return true;
 
-        foreach (ActorSO requiredActor in npc.requiredActors)
+        foreach (ActorSO requiredActor in line.requiredActors)
         {
-            if (requiredActor != null && !talkedNpcs.Contains(requiredActor))
+            if (!HasTalkedToNpc(requiredActor))
             {
                 return false;
             }
