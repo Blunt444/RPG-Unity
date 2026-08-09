@@ -16,6 +16,11 @@ public class TopicButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     private void Awake()
     {
+        if (questionMark == null)
+        {
+            questionMark = transform.Find("QuestionMark").gameObject;
+            topicText = transform.Find("Label").gameObject.GetComponent<TMP_Text>();
+        }
         if (questionMark != null)
         {
             questionMark.SetActive(false);

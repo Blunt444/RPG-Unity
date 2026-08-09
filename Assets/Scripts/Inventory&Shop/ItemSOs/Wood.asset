@@ -20,7 +20,7 @@ MonoBehaviour:
   shopUIOffset: {x: 0, y: 0}
   shopUIItemSize: {x: 120, y: 120}
   isGold: 0
-  isUsable: 1
+  isUsable: 0
   currentHealth: 0
   maxHealth: 0
   speed: 0
