@@ -12,5 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: Test2
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  lines: []
-  returnStartIndex: 0
+  lines:
+  - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
+    text: Hi, i am yellow bob
+    topics: []
+    requiredActors: []
+    nextLineIndex: 1
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
+    text: Find My brothers before talking to me!!
+    topics: []
+    requiredActors:
+    - {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
+    nextLineIndex: 2
+    checkpointIndex: 1
+  - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
+    text: Thank you for your help
+    topics: []
+    requiredActors: []
+    nextLineIndex: -1
+    checkpointIndex: 2
+  returnStartIndex: 2

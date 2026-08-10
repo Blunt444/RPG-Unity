@@ -11,15 +11,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     public Image itemImage;
     public RectTransform imageRectTransform;
 
-
-    private InventoryManager inventoryManager;
     private static ShopManager activeShop;
-
-    private void Start()
-    {
-        inventoryManager = GetComponentInParent<InventoryManager>();
-        Debug.Log(gameObject.name + " inventoryManager assigned: " + (inventoryManager != null));
-    }
 
     private void OnEnable()
     {
@@ -54,12 +46,12 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
                 }
                 else
                 {
-                    inventoryManager.UseItem(this);
+                    InventoryManager.Instance.UseItem(this);
                 }
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                inventoryManager.DropItem(this);
+                InventoryManager.Instance.DropItem(this);
             }
         }
         Debug.Log(itemSO);

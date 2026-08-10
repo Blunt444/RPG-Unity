@@ -1,14 +1,29 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance;
+
     public InventorySlot[] inventorySlots;
     public UseItem useItem;
     public int gold;
     public TMP_Text goldText;
     public GameObject lootPrefab;
     public Transform playerTransform;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -99,6 +114,38 @@ public class InventoryManager : MonoBehaviour
                 inventorySlot.itemSO = null;
             }
             inventorySlot.UpdateUI();
+        }
+    }
+
+    public int GetItemCount(ItemSO itemSO)
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            if (slot.itemSO != null && slot.itemSO == itemSO)
+            {
+                return slot.quantity;
+            }
+        }
+
+        return 0;
+    }
+    public void ReduceItemCount(ItemSO itemSO, int count)
+    {
+        int remaining = count;
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            if (remaining <= 0) break;
+
+            if (slot.itemSO != null && slot.itemSO == itemSO)
+            {
+                int reduceAmount = Mathf.Min(slot.quantity, remaining);
+                slot.quantity -= reduceAmount;
+                remaining -= reduceAmount;
+
+                if (slot.quantity <= 0) slot.itemSO = null;
+
+                slot.UpdateUI();
+            }
         }
     }
 }
