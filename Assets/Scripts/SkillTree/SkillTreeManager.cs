@@ -92,7 +92,7 @@ public class SkillTreeManager : MonoBehaviour
 
     public void TryUpgradeSkill(SkillSlot slot)
     {
-        Debug.Log("TryUpgradeSkill called for: " + slot.skillSO.skillName);
+        // Debug.Log("TryUpgradeSkill called for: " + slot.skillSO.skillName);
 
         bool isUpgraded = slot.UpgradeSkill();
         if (isUpgraded)

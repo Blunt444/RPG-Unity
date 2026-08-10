@@ -30,7 +30,7 @@ public class Arrow : MonoBehaviour
 
     public void Launch(Vector2 dir)
     {
-        Debug.Log("Launch called with direction: " + dir);
+        // Debug.Log("Launch called with direction: " + dir);
         direction = dir;
         rb.linearVelocity = direction * speed;
         isInAir = true;

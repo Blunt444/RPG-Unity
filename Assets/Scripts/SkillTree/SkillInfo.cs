@@ -73,7 +73,7 @@ public class SkillInfo : MonoBehaviour
 
     public void SetCostYPos(bool isPrerequestTextEmpty)
     {
-        Debug.Log(isPrerequestTextEmpty);
+        // Debug.Log(isPrerequestTextEmpty);
         if (isPrerequestTextEmpty)
         {
             costRectTransform.anchoredPosition = new Vector2(costDefaultX, costDefaultY);

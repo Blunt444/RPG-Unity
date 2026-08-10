@@ -65,7 +65,8 @@ public class EnemyRequirement : QuestRequirement
     }
     public override void Progress()
     {
-        count++;
+        killCount++;
+        Debug.Log(killCount);
     }
 }
 

@@ -32,11 +32,22 @@ public class QuestManager : MonoBehaviour
     {
         foreach (QuestSO questSO in quests)
         {
-            foreach (EnemyRequirement requirement in questSO.enemyRequirements)
+            if (questSO.questState == QuestState.Accepted)
             {
-                if (requirement.type == type)
+                bool changeHappened = false;
+                foreach (EnemyRequirement requirement in questSO.enemyRequirements)
                 {
-                    requirement.Progress();
+                    if (requirement.type == type)
+                    {
+                        requirement.Progress();
+                        changeHappened = true;
+                    }
+                }
+                if (changeHappened)
+                {
+                    bool questCompletion = questSO.IsQuestCompleted();
+                    if (questCompletion)
+                        questSO.MarkQuestCompleted();
                 }
             }
         }

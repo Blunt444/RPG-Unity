@@ -36,7 +36,7 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Initialize(ItemSO newItemSO, int price)
     {
-        Debug.Log(newItemSO);
+        // Debug.Log(newItemSO);
         itemSO = newItemSO;
         itemImage.sprite = itemSO.icon;
         itemNameText.text = itemSO.itemName;

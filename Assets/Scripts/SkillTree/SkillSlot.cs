@@ -29,14 +29,14 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         UpdateUI();
     }
 
-    private void Awake()
-    {
-        skillButton.onClick.AddListener(() => Debug.Log("RAW CLICK on: " + gameObject.name));
-    }
+    // private void Awake()
+    // {
+    //     skillButton.onClick.AddListener(() => Debug.Log("RAW CLICK on: " + gameObject.name));
+    // }
 
     public void AddOnClickToUpgrade()
     {
-        Debug.Log("Listener added for: " + (skillSO != null ? skillSO.skillName : "NULL skillSO"));
+        // Debug.Log("Listener added for: " + (skillSO != null ? skillSO.skillName : "NULL skillSO"));
         skillButton.onClick.AddListener(() => SkillTreeManager.Instance.TryUpgradeSkill(this));
     }
 

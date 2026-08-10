@@ -6,6 +6,7 @@ public class NPC_Talk : MonoBehaviour
     public DialogSO dialogSO;
     public int currentIndex;
     public ActorSO actorSO;
+    public QuestSO questSO;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -44,15 +45,15 @@ public class NPC_Talk : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact"))
         {
-            Debug.Log("Line No:" + currentIndex);
+            // Debug.Log("Line No:" + currentIndex);
 
             if (DialogueManager.Instance == null || dialogSO == null) return;
 
             if (currentIndex != -1 && DialogueManager.Instance.isOpened)
             {
-                Debug.Log("Advance");
+                // Debug.Log("Advance");
 
-                if (DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]))
+                if (DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]) && (questSO == null || questSO.questState == QuestState.Completed))
                     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
                 else
                     currentIndex = DialogueManager.Instance.EndConversation(dialogSO);
@@ -74,6 +75,12 @@ public class NPC_Talk : MonoBehaviour
 
                 if (dialogSO.lines[currentIndex].requiredActors.Count > 0 && DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]))
                     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+
+                if (questSO != null && questSO.questState == QuestState.Completed)
+                {
+                    currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+                    questSO = null;
+                }
 
                 DialogueManager.Instance.DisplayDialogue(dialogSO, currentIndex);
 

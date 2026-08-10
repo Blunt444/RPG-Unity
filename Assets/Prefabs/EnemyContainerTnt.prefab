@@ -275,7 +275,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &3562989391393336580
 MonoBehaviour:
@@ -606,6 +606,8 @@ MonoBehaviour:
   attackCooldownTimer: 0
   healthCanvas: {fileID: 1799016281573533652}
   healthCanvasOffset: {x: -3.2, y: 4, z: 0}
+  safeDistance: 0
+  maxTimeToFindSafeDistance: 0
 --- !u!114 &937020938352850502
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("RAW POINTER DOWN on: " + gameObject.name);
+        // Debug.Log("RAW POINTER DOWN on: " + gameObject.name);
 
         if (quantity > 0)
         {
@@ -54,7 +54,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
                 InventoryManager.Instance.DropItem(this);
             }
         }
-        Debug.Log(itemSO);
+        // Debug.Log(itemSO);
     }
 
     public void UpdateUI()

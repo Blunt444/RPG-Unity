@@ -42,7 +42,7 @@ public abstract class Enemy_Combat_Abstract : MonoBehaviour
 
         Enemy_Movement_Abstract movement = GetComponent<Enemy_Movement_Abstract>();
 
-        Debug.Log("Enemy initial state" + movement.enemyState);
+        // Debug.Log("Enemy initial state" + movement.enemyState);
 
         if (movement.isChasingUncontrolled)
         {
@@ -53,7 +53,7 @@ public abstract class Enemy_Combat_Abstract : MonoBehaviour
             movement.ChangeState(EnemyState.Idle);
         }
 
-        Debug.Log("Enemy Changed State" + movement.enemyState);
+        // Debug.Log("Enemy Changed State" + movement.enemyState);
     }
 
     // public void OnDrawGizmosSelected()

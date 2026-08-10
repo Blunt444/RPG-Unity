@@ -47,7 +47,7 @@ public class DialogueManager : MonoBehaviour
 
             isOpened = true;
         }
-        Debug.Log("Canvas state : " + isOpened);
+        // Debug.Log("Canvas state : " + isOpened);
     }
 
     public int GetStartIndex(DialogSO dialogSO)
@@ -95,7 +95,29 @@ public class DialogueManager : MonoBehaviour
             topicBox.gameObject.SetActive(false);
         }
 
+        if (line.quest != null)
+        {
+            topicBox.gameObject.SetActive(true);
+            CreateQuestAcceptReject(line.questAcceptNextLineIndex, line.questDeclineNextLineIndex, currentIndex);
+        }
+        else
+        {
+            topicBox.gameObject.SetActive(false);
+        }
+
         dialogSO.returnStartIndex = line.checkpointIndex;
+
+    }
+
+    public void CreateQuestAcceptReject(int acceptNextLineIndex, int declineNextLineIndex, int currentIndex)
+    {
+        GameObject accept = Instantiate(topicItem, topicBox);
+        TopicButton acceptBtn = accept.GetComponent<TopicButton>();
+        acceptBtn.SetUp("Accept", acceptNextLineIndex, OnButtonClicked, currentIndex, QuestState.Accepted);
+
+        GameObject decline = Instantiate(topicItem, topicBox);
+        TopicButton declineBtn = decline.GetComponent<TopicButton>();
+        declineBtn.SetUp("Decline", declineNextLineIndex, OnButtonClicked, currentIndex, QuestState.Declined);
 
     }
 
@@ -119,6 +141,28 @@ public class DialogueManager : MonoBehaviour
         foreach (Transform child in topicBox.transform)
         {
             Destroy(child.gameObject);
+        }
+    }
+
+    public void OnButtonClicked(int nextLineIndex, QuestState questState, int currentIndex)
+    {
+        if (npc == null) return;
+
+
+        npc.dialogSO.lines[currentIndex].quest.questState = questState;
+
+        if (questState == QuestState.Accepted) npc.questSO = npc.dialogSO.lines[currentIndex].quest;
+
+        Debug.Log(npc.dialogSO.lines[currentIndex].quest.questState);
+
+        if (nextLineIndex == -1)
+        {
+            npc.SetLineIndex(EndConversation(npc.dialogSO));
+        }
+        else
+        {
+            npc.SetLineIndex(nextLineIndex);
+            DisplayDialogue(npc.dialogSO, nextLineIndex);
         }
     }
 

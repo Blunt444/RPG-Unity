@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
 
         float dot = Vector2.Dot(normMoveInput, aimDirection);
 
-        Debug.Log($"move:{normMoveInput} aim:{aimDirection} dot:{dot}");
+        // Debug.Log($"move:{normMoveInput} aim:{aimDirection} dot:{dot}");
 
         float targetDamp = (dot < -0.3f) ? StatsManager.Instance.speedDamp : 1.0f;
 

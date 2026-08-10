@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.Multiplayer.PlayMode;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,7 +13,10 @@ public class TopicButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     private string label;
     private int targetIndex;
-    private Action<int> onSelectCallBack;
+    private int currentIndex;
+    private QuestState questState = QuestState.None;
+    private Action<int> onSelectSimpleCallBack;
+    private Action<int, QuestState, int> onSelectQuestCallBack;
 
     private void Awake()
     {
@@ -32,12 +36,27 @@ public class TopicButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         this.label = label;
         topicText.text = label;
         this.targetIndex = targetIndex;
-        onSelectCallBack = onSelect;
+        onSelectSimpleCallBack = onSelect;
+        onSelectQuestCallBack = null;
+    }
+
+    public void SetUp(string label, int targetIndex, Action<int, QuestState, int> onSelect, int currentIndex, QuestState questState)
+    {
+        this.label = label;
+        topicText.text = label;
+        this.targetIndex = targetIndex;
+        this.currentIndex = currentIndex;
+        this.questState = questState;
+        onSelectQuestCallBack = onSelect;
+        onSelectSimpleCallBack = null;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        onSelectCallBack?.Invoke(targetIndex);
+        if (onSelectSimpleCallBack != null)
+            onSelectSimpleCallBack?.Invoke(targetIndex);
+        else
+            onSelectQuestCallBack?.Invoke(targetIndex, questState, currentIndex);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

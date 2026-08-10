@@ -23,7 +23,7 @@ public class DialogHistoryTracker : MonoBehaviour
     {
         if (actorSO != null)
             talkedNpcs.Add(actorSO);
-        Debug.Log(actorSO);
+        // Debug.Log(actorSO);
     }
 
     public bool HasTalkedToNpc(ActorSO actorSO)

@@ -48,7 +48,7 @@ public class TreeManager : MonoBehaviour
     public void DropWood(Transform tree)
     {
 
-        Debug.Log("dropwoodf");
+        // Debug.Log("dropwoodf");
 
         Loot loot = Instantiate(lootPrefab, tree.position, Quaternion.identity).GetComponent<Loot>();
         loot.Initialize(itemSO, UnityEngine.Random.Range(minWoodDrop, maxWoodDrop + 1));

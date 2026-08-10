@@ -129,7 +129,7 @@ public class SlotItemInfoManager : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         LayoutRebuilder.ForceRebuildLayoutImmediate(effectPanel);
 
-        Debug.Log("EffectPanel height after clear: " + effectPanel.rect.height);
+        // Debug.Log("EffectPanel height after clear: " + effectPanel.rect.height);
     }
 
 }
