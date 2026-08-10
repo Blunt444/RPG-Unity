@@ -65,7 +65,7 @@ public class EnemyRequirement : QuestRequirement
     }
     public override void Progress()
     {
-        throw new NotImplementedException();
+        count++;
     }
 }
 

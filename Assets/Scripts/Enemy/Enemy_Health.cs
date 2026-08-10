@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class Enemy_Health : MonoBehaviour, Damageable
     public delegate void MonsterDefeated(int exp);
     public static event MonsterDefeated OnMonsterDefeated;
     public GameObject enemyContainer;
+    public static event Action<Enemy_Type> OnEnemyKilled;
 
 
     [SerializeField]
@@ -16,7 +18,7 @@ public class Enemy_Health : MonoBehaviour, Damageable
     {
         manager = GetComponent<Enemy_Manager>();
 
-        if(enemyContainer == null)
+        if (enemyContainer == null)
         {
             enemyContainer = transform.root.gameObject;
         }
@@ -42,6 +44,7 @@ public class Enemy_Health : MonoBehaviour, Damageable
     private void Die()
     {
         OnMonsterDefeated?.Invoke(manager.expReward);
+        OnEnemyKilled?.Invoke(manager.enemyType);
 
         if (manager.spawnerHut != null)
         {
