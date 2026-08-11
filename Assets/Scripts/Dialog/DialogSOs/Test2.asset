@@ -16,20 +16,65 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
     text: Hi, i am yellow bob
     topics: []
+    quest: {fileID: 0}
     requiredActors: []
     nextLineIndex: 1
+    questAcceptNextLineIndex: -1
+    questDeclineNextLineIndex: -1
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
     text: Find My brothers before talking to me!!
     topics: []
+    quest: {fileID: 0}
     requiredActors:
     - {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
     nextLineIndex: 2
+    questAcceptNextLineIndex: -1
+    questDeclineNextLineIndex: -1
     checkpointIndex: 1
   - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
     text: Thank you for your help
     topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: 3
+    questAcceptNextLineIndex: -1
+    questDeclineNextLineIndex: -1
+    checkpointIndex: 2
+  - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
+    text: A Quest for you
+    topics: []
+    quest: {fileID: 11400000, guid: 7c4d966e18257cc4681d8665a1a3bde5, type: 2}
     requiredActors: []
     nextLineIndex: -1
-    checkpointIndex: 2
-  returnStartIndex: 2
+    questAcceptNextLineIndex: 4
+    questDeclineNextLineIndex: 5
+    checkpointIndex: 3
+  - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
+    text: Finish and See me
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: 6
+    questAcceptNextLineIndex: -1
+    questDeclineNextLineIndex: -1
+    checkpointIndex: 4
+  - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
+    text: sad!!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: -1
+    questDeclineNextLineIndex: -1
+    checkpointIndex: 3
+  - speaker: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
+    text: Thank you for your help once again
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: -1
+    questDeclineNextLineIndex: -1
+    checkpointIndex: 6
+  returnStartIndex: 6

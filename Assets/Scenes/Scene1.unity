@@ -1754,7 +1754,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.9791806
+      m_AnimationSpeed: 3.339491
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: -12, z: 0}
@@ -1769,7 +1769,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.3581073
+      m_AnimationSpeed: 3.9575849
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -11339,6 +11339,7 @@ MonoBehaviour:
   dialogSO: {fileID: 11400000, guid: 211523177ab9bc4408cc980fe0f1dff3, type: 2}
   currentIndex: 0
   actorSO: {fileID: 11400000, guid: 9f2f4997e20470e4a8eb5a1213ad65a7, type: 2}
+  questSO: {fileID: 0}
   interactionAnim: {fileID: 760122184}
 --- !u!114 &1306084674
 MonoBehaviour:
@@ -11802,6 +11803,7 @@ MonoBehaviour:
   dialogSO: {fileID: 0}
   currentIndex: 0
   actorSO: {fileID: 0}
+  questSO: {fileID: 0}
   interactionAnim: {fileID: 1956659030}
 --- !u!114 &1526266248
 MonoBehaviour:
@@ -12124,7 +12126,7 @@ Tilemap:
       - {fileID: -8604352155094888535, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
       - {fileID: 219539661368650802, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
       - {fileID: -8376323821268461911, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
-      m_AnimationSpeed: 4.4064593
+      m_AnimationSpeed: 2.743534
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 10, y: 1, z: 0}
@@ -12139,7 +12141,7 @@ Tilemap:
       - {fileID: 9050774589780060452, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
       - {fileID: -4024382073413787549, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
       - {fileID: 8143098205146776124, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
-      m_AnimationSpeed: 3.289127
+      m_AnimationSpeed: 2.9758134
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 14, y: 4, z: 0}
@@ -12154,7 +12156,7 @@ Tilemap:
       - {fileID: 5002216177705252053, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
       - {fileID: -5242237701343363396, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
       - {fileID: -1336393745153393164, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
-      m_AnimationSpeed: 3.1073968
+      m_AnimationSpeed: 3.584517
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -12395,6 +12397,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6728958259792555262, guid: 6fb9c5f927b6b0d49b1670a40744f1c7, type: 3}
   m_PrefabInstance: {fileID: 9183234852230749637}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1718961947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1718961948}
+  - component: {fileID: 1718961949}
+  m_Layer: 0
+  m_Name: QuestSingleton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1718961948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718961947}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1867045467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1718961949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718961947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8189b4a32bb6ee04b8151ef4422d9e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestManager
+  quests:
+  - {fileID: 11400000, guid: 7c4d966e18257cc4681d8665a1a3bde5, type: 2}
 --- !u!1 &1748051657
 GameObject:
   m_ObjectHideFlags: 0
@@ -12534,6 +12582,7 @@ MonoBehaviour:
   dialogSO: {fileID: 11400000, guid: 1a92fdad94d54204aa3fead2b3062ee5, type: 2}
   currentIndex: 0
   actorSO: {fileID: 11400000, guid: da4f5cb47ee85d346a1ab9a71a52178b, type: 2}
+  questSO: {fileID: 0}
   interactionAnim: {fileID: 2056607626}
 --- !u!114 &1819268604
 MonoBehaviour:
@@ -12809,6 +12858,7 @@ Transform:
   - {fileID: 1582956041}
   - {fileID: 126148628}
   - {fileID: 787423557}
+  - {fileID: 1718961948}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1881792868
@@ -14307,7 +14357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1421263066467838181, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
       propertyPath: m_SortingOrder
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1707990478803571190, guid: ec82ffe1c16206f498272733e53096c3, type: 3}
       propertyPath: playerBow
