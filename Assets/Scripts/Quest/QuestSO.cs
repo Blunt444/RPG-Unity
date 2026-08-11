@@ -7,7 +7,7 @@ public class QuestSO : ScriptableObject
 {
     [TextArea(3, 5)] public string label;
     [TextArea(3, 5)] public string about;
-    [NonSerialized] public QuestState questState = QuestState.None;
+    public QuestState questState = QuestState.None;
 
     public List<EnemyRequirement> enemyRequirements = new List<EnemyRequirement>();
     public List<CollectableRequirement> collectableRequirements = new List<CollectableRequirement>();
@@ -79,6 +79,7 @@ public class EnemyRequirement : QuestRequirement
     public Enemy_Type type;
     public int count;
     public int killCount;
+    public string label;
 
     public override bool IsComplete()
     {
@@ -96,6 +97,7 @@ public class CollectableRequirement : QuestRequirement
 {
     public ItemSO itemSO;
     public int count;
+    public string label;
 
     public override bool IsComplete()
     {
@@ -117,6 +119,7 @@ public class CollectableRequirement : QuestRequirement
 public class TalkToActor : QuestRequirement
 {
     public ActorSO actorSO;
+    public string label;
     public override bool IsComplete()
     {
         return DialogHistoryTracker.Instance.HasTalkedToNpc(actorSO);

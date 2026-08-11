@@ -1,14 +1,31 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestDisplay : MonoBehaviour
 {
+    public static QuestDisplay Instance;
     public Transform questBox;
     public GameObject questPrefab;
     public Transform questContainer;
     public Transform questInfoContainer;
     public CanvasGroup canvas;
+    public GridLayoutGroup questGrid;
+    public TMP_Text noQuestText;
 
     private bool questOpen = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Update()
     {
@@ -41,10 +58,13 @@ public class QuestDisplay : MonoBehaviour
     public void Display()
     {
 
-        foreach(Transform child in questContainer.transform)
+        foreach (Transform child in questContainer.transform)
         {
             Destroy(child.gameObject);
         }
+
+        bool hasVisibleQuest = false;
+
 
         foreach (QuestSO questSO in QuestManager.Instance.quests)
         {
@@ -52,16 +72,22 @@ public class QuestDisplay : MonoBehaviour
             {
                 QuestBox box = Instantiate(questPrefab, questBox).GetComponent<QuestBox>();
                 box.Setup(questSO, OnQuestClick);
+                hasVisibleQuest = true;
             }
         }
+
+        noQuestText.gameObject.SetActive(!hasVisibleQuest);
+        questGrid.enabled = hasVisibleQuest;
     }
 
     public void OnQuestClick(QuestSO questSO)
     {
-        if (questContainer == null) return;
+        if (questContainer == null || questInfoContainer == null) return;
 
         questContainer.gameObject.SetActive(false);
         questInfoContainer.gameObject.SetActive(true);
-
+        QuestInfo.Instance.Setup(questSO);
     }
+
+
 }

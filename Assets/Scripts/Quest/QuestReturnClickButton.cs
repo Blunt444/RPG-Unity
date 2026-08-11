@@ -5,16 +5,24 @@ using UnityEngine.EventSystems;
 
 public class QuestRetrunClickButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Action onClick;
     public TMP_Text box;
     public string text;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (onClick != null)
-        {
-            onClick?.Invoke();
-        }
+        OnReturnClicked();
+        box.text = text;
+    }
+
+    public void OnReturnClicked()
+    {
+        QuestDisplay questDisplay = QuestDisplay.Instance;
+        if (questDisplay.questContainer == null || questDisplay == null) return;
+
+        questDisplay.questContainer.gameObject.SetActive(true);
+        questDisplay.questInfoContainer.gameObject.SetActive(false);
+
+        questDisplay.Display();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -26,10 +34,4 @@ public class QuestRetrunClickButton : MonoBehaviour, IPointerDownHandler, IPoint
     {
         box.text = text;
     }
-
-    public void Setup(Action onClick)
-    {
-        this.onClick = onClick;
-    }
-
 }
