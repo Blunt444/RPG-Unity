@@ -23,8 +23,8 @@ public class QuestBox : MonoBehaviour, IPointerDownHandler
 
     public void Setup(QuestSO questSO, Action<QuestSO> onClick)
     {
-        questLabel.text = TruncateAndEllipse(questSO.label, 30);
-        questDesc.text = TruncateAndEllipse(questSO.about, 100);
+        questLabel.text = TruncateAndEllipse(questSO.label, 60);
+        questDesc.text = TruncateAndEllipse(questSO.about, 200);
         fillImage.fillAmount = questSO.Progress();
         this.questSO = questSO;
 
@@ -33,8 +33,9 @@ public class QuestBox : MonoBehaviour, IPointerDownHandler
 
     private string TruncateAndEllipse(string text, int letters)
     {
-        int length = text.Length;
-        int reduceBy = length > letters ? letters : length;
-        return text.Substring(0, reduceBy - 3) + "...";
+        if (text.Length <= letters)
+            return text;
+        int reduceby = Math.Max(letters - 3, 0);
+        return text.Substring(0, reduceby) + "...";
     }
 }
