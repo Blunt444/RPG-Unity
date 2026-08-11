@@ -31,6 +31,27 @@ public class QuestSO : ScriptableObject
         return true;
     }
 
+    public float Progress()
+    {
+        int total = enemyRequirements.Count + collectableRequirements.Count + talkToActors.Count;
+        int completed = 0;
+
+        foreach (EnemyRequirement enemyRequirement in enemyRequirements)
+        {
+            if (enemyRequirement.IsComplete()) completed++; ;
+        }
+        foreach (CollectableRequirement collectableRequirement in collectableRequirements)
+        {
+            if (collectableRequirement.IsComplete()) completed++;
+        }
+        foreach (TalkToActor actor in talkToActors)
+        {
+            if (actor.IsComplete()) completed++;
+        }
+
+        return (float) completed / total;
+    }
+
     public void MarkQuestCompleted()
     {
         foreach (CollectableRequirement collectableRequirement in collectableRequirements)
