@@ -122,6 +122,16 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 
+    public void ResetMovements()
+    {
+        StopAllCoroutines();
+        isKnockedBack = false;
+        isShooting = false;
+        isGuarding = false;
+
+        ChangeState(PlayerState.Idle);
+    }
+
     public void SetPlayerSpeedToZero()
     {
         rb.linearVelocity = Vector2.zero;

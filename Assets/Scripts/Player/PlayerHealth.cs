@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour, Damageable
 {
     public TMP_Text healthText;
     public Animator healthTextAnim;
+    public Vector3 respawnPosition;
 
     [SerializeField]
     private Image fillImage;
@@ -16,6 +17,7 @@ public class PlayerHealth : MonoBehaviour, Damageable
     private void Start()
     {
         UpdateHealthUI();
+        respawnPosition = transform.position;
     }
     public void ChangeHealth(int amount)
     {
@@ -42,6 +44,7 @@ public class PlayerHealth : MonoBehaviour, Damageable
     {
         OnPlayerDeath?.Invoke();
         gameObject.SetActive(false);
+        DeathCanvasScript.Instance.OnDie();
     }
 
     public void UpdateHealthUI()
