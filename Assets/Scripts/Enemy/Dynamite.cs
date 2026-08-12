@@ -13,6 +13,7 @@ public class Dynamite : MonoBehaviour
     public float knockbackTime;
     [HideInInspector]
     public float knockbackForce;
+    public Animator anim;
 
     [SerializeField]
     private LayerMask playerLayer;
@@ -84,6 +85,8 @@ public class Dynamite : MonoBehaviour
 
             float currentBlinSpeed = Mathf.Lerp(startBlinkSpeed, maxBlinkSpeed, progress);
             blinkTimer += Time.deltaTime * currentBlinSpeed;
+
+            if (progress > 0.95) anim.Play("Explosion2");
 
 
             float blink = Mathf.PingPong(blinkTimer, 1f);

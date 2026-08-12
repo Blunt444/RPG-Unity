@@ -226,6 +226,7 @@ MonoBehaviour:
   damageAmount: 2
   knockbackTime: 0
   knockbackForce: 0
+  anim: {fileID: 2691563077968721461}
   playerLayer:
     serializedVersion: 2
     m_Bits: 256

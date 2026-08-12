@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestSO
   label: Kill 5 torch
   about: Kill 5 torch enemies in order to complete the quest
+  questState: 1
   enemyRequirements:
   - type: 0
     count: 2
-    killCount: 2
+    killCount: 0
+    label: Kill 5 torch
   collectableRequirements: []
   talkToActors: []

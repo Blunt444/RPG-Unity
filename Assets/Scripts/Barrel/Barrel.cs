@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class Barrel : MonoBehaviour, Damageable
     public Color brightRed = new Color(1f, 0f, 0f, 0.8f);
     public float startBlinkSpeed = 4f;
     public float maxBlinkSpeed = 20f;
+    public Animator anim;
 
 
     [SerializeField]
@@ -86,34 +88,50 @@ public class Barrel : MonoBehaviour, Damageable
             {
                 sr.sprite = igniteFrame;
             }
-            else if (progress < 0.9)
+            else if (progress < 0.85)
             {
                 sr.sprite = burningFrame;
             }
-            else
+            else if (progress < 0.93)
             {
                 sr.sprite = explodeFrame;
             }
+            else
+            {
+                anim.Play("Explosion2");
+            }
+
+
         }
 
         CheckForDamageble();
 
-        Destroy(gameObject);
     }
 
     private void CheckForDamageble()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
-
-        foreach (Collider2D hit in hits)
+        try
         {
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
 
-            if(hit.gameObject == gameObject) continue;
-
-            if (hit.TryGetComponent<Damageable>(out Damageable target))
+            if (hits.Length > 0)
             {
-                target.TakeDamage(damageAmount, transform);
+                foreach (Collider2D hit in hits)
+                {
+                    if (hit.TryGetComponent<Damageable>(out Damageable target))
+                    {
+                        target.TakeDamage(damageAmount, transform);
+                    }
+                }
             }
+        }
+        catch (Exception e)
+        {
+            // Debug.Log(e.Message);
+        }
+        finally
+        {
+            Destroy(gameObject);
         }
     }
 

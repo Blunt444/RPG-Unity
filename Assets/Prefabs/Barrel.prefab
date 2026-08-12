@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4068586822044557102}
   - component: {fileID: 5755659701668554643}
   - component: {fileID: 8158193495310527653}
+  - component: {fileID: 7363081779385067409}
   m_Layer: 14
   m_Name: Barrel
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3353186640333796508}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.04528, y: -3.93285, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -165,8 +166,31 @@ MonoBehaviour:
   brightRed: {r: 1, g: 0, b: 0, a: 0.8}
   startBlinkSpeed: 4
   maxBlinkSpeed: 20
+  anim: {fileID: 7363081779385067409}
   sr: {fileID: 0}
   blastZone: {fileID: 3717650840015726127}
+--- !u!95 &7363081779385067409
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353186640333796508}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ffbbe9b363807f429801ea1e08790c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6808484477742935148
 GameObject:
   m_ObjectHideFlags: 0
