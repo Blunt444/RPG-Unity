@@ -32,11 +32,9 @@ public class DeathCanvasScript : MonoBehaviour
 
     public void Respawn()
     {
-        PlayerHealth playerHealth = playerTransform.gameObject.GetComponent<PlayerHealth>();
-
         playerTransform.gameObject.GetComponent<PlayerStatsUpgrade>().UpdateHealth(StatsManager.Instance.maxHealth);
 
-        playerTransform.position = playerHealth.respawnPosition;
+        playerTransform.position = RespawnPointManager.Instance.respawnPoint.transform.position;
         playerTransform.gameObject.SetActive(true);
 
         playerTransform.GetComponent<PlayerMovement>().ResetMovements();
