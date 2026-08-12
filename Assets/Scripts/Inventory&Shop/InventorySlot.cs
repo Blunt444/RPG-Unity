@@ -57,6 +57,14 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
         // Debug.Log(itemSO);
     }
 
+    public void ResetSlot()
+    {
+        quantity = 0;
+        itemSO = null;
+        quantityText.text = "";
+        itemImage.gameObject.SetActive(false);
+    }
+
     public void UpdateUI()
     {
         if (quantity <= 0)
@@ -97,7 +105,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(itemSO == null) return; 
+        if (itemSO == null) return;
         SlotItemInfoManager.Instance.SetItemDesc(itemSO.itemDescription);
         SlotItemInfoManager.Instance.CreateEffectSlots(itemSO);
         SlotItemInfoManager.Instance.SetInfoPanelVisibleState(true);

@@ -157,6 +157,7 @@ public class InventoryManager : MonoBehaviour
             {
                 Loot loot = Instantiate(lootPrefab, pos, Quaternion.identity).GetComponent<Loot>();
                 loot.Initialize(slot.itemSO, slot.quantity);
+                slot.ResetSlot();
             }
         }
     }

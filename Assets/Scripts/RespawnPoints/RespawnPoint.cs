@@ -2,15 +2,36 @@ using UnityEngine;
 
 public class RespawnPoint : MonoBehaviour
 {
-    public void OnTriggerEnter2D(Collider2D collision)
+    private bool isPlayerInRange = false;
+
+    private void Update()
     {
-        if (collision.CompareTag("Player"))
+        if (isPlayerInRange)
         {
-            SetAsCheckPoint();
+            if (Input.GetButtonDown("Enter"))
+            {
+                SetAsCheckPoint();
+            }
         }
     }
 
-    public void SetAsCheckPoint()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isPlayerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isPlayerInRange = false;
+        }
+    }
+
+    private void SetAsCheckPoint()
     {
         RespawnPointManager.Instance.SetRespawnPoint(this);
     }
