@@ -148,4 +148,16 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
+    public void PlayerDied(Vector3 pos)
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            if (slot.itemSO != null && slot.quantity > 0)
+            {
+                Loot loot = Instantiate(lootPrefab, pos, Quaternion.identity).GetComponent<Loot>();
+                loot.Initialize(slot.itemSO, slot.quantity);
+            }
+        }
+    }
 }

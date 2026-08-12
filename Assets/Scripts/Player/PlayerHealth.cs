@@ -41,6 +41,7 @@ public class PlayerHealth : MonoBehaviour, Damageable
     {
         OnPlayerDeath?.Invoke();
         gameObject.SetActive(false);
+        InventoryManager.Instance.PlayerDied(transform.position);
         DeathCanvasScript.Instance.OnDie();
     }
 
