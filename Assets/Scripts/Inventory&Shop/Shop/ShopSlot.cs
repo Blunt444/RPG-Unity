@@ -12,7 +12,6 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public RectTransform imageRectTransform;
     public int price;
 
-    [SerializeField] private ShopManager shopManager = ShopManager.Instance;
     [SerializeField] private ShopInfo shopInfo;
 
     private void Start()
@@ -24,12 +23,18 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (itemSO == null) return;
         shopInfo.ShowItemInfo(itemSO);
+        Color color = itemImage.color;
+        color.a = 0.5f;
+        itemImage.color = color;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (itemSO == null) return;
         shopInfo.HideItemInfo();
+        Color color = itemImage.color;
+        color.a = 1f;
+        itemImage.color = color;
     }
 
     public void OnPointerMove(PointerEventData eventData)
@@ -67,7 +72,8 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnBuyButtonClicked()
     {
-        shopManager.TryBuyItem(itemSO, price);
+        Debug.Log("shop item");
+        ShopManager.Instance.TryBuyItem(itemSO, price, this);
     }
 
 }

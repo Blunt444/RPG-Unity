@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class ArrowQuantityManager : MonoBehaviour
     public int currentAmount;
     public TMP_Text quantityText;
     public CanvasGroup canvas;
+    public float displayTime = 2f;
 
     private void Awake()
     {
@@ -59,5 +61,12 @@ public class ArrowQuantityManager : MonoBehaviour
     {
         quantityText.text = "x " + (currentAmount < 0 ? 0 : currentAmount);
     }
+
+    // private IEnumerator DisplayMessage()
+    // {
+    //     float elapsed = 0f;
+
+    //     while(elapsed < )
+    // }
 
 }

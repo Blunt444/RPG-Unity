@@ -27,6 +27,11 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     {
         activeShop = isOpen ? shopManager : null;
 
+        if (!isOpen)
+        {
+            shopManager.ClearShop();
+        }
+
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -8,6 +8,7 @@ TagManager:
   - Confiner
   - StatsPanel
   - Torch
+  - ShopInfoPanel
   layers:
   - Default
   - TransparentFX

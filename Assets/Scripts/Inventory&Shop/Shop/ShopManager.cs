@@ -6,6 +6,7 @@ public class ShopManager : MonoBehaviour
     public static ShopManager Instance;
     public GameObject shopSlotPrefab;
     public Transform shopBox;
+    public Transform emptyMessage;
     [SerializeField] private List<ShopSlot> shopSlots = new List<ShopSlot>();
 
     [SerializeField] private InventoryManager inventoryManager;
@@ -24,14 +25,8 @@ public class ShopManager : MonoBehaviour
 
     public void PopulateShopItems(List<ShopItems> shopItems)
     {
-        foreach (ShopSlot slot in shopSlots)
-        {
-            if (slot == null) continue;
 
-            Destroy(slot.gameObject);
-        }
-
-        shopSlots.Clear();
+        ClearShop();
 
         for (int i = 0; i < shopItems.Count; i++)
         {
@@ -46,6 +41,19 @@ public class ShopManager : MonoBehaviour
             shopSlots.Add(script);
         }
 
+        emptyMessage.gameObject.SetActive(shopSlots.Count <= 0);
+
+    }
+
+    public void ClearShop()
+    {
+        foreach (ShopSlot slot in shopSlots)
+        {
+            if (slot == null) continue;
+
+            Destroy(slot.gameObject);
+        }
+        shopSlots.Clear();
     }
 
     public void SellItems(ItemSO itemSO)
@@ -63,9 +71,21 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void TryBuyItem(ItemSO itemSO, int price)
+    public void TryBuyItem(ItemSO itemSO, int price, ShopSlot slot)
     {
+        Debug.Log("shop item buy");
+
         if (itemSO == null || inventoryManager.gold < price) return;
+
+        if (itemSO.isArrow)
+        {
+            Debug.Log("arrow");
+            ArrowQuantityManager.Instance.SetQuantity(1);
+            inventoryManager.gold -= price;
+            inventoryManager.goldText.text = inventoryManager.gold.ToString();
+            return;
+        }
+
         if (HasSpaceForItem(itemSO))
         {
             inventoryManager.gold -= price;

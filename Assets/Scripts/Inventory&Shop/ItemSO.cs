@@ -13,6 +13,7 @@ public class ItemSO : ScriptableObject
 
    public bool isGold;
    public bool isUsable = true;
+   public bool isArrow = false;
 
    [Header("Stats")]
    public int currentHealth;
