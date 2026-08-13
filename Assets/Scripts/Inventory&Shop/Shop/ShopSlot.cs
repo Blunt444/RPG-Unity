@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,8 +12,13 @@ public class ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public RectTransform imageRectTransform;
     public int price;
 
-    [SerializeField] private ShopManager shopManager;
+    [SerializeField] private ShopManager shopManager = ShopManager.Instance;
     [SerializeField] private ShopInfo shopInfo;
+
+    private void Start()
+    {
+        shopInfo = GameObject.FindGameObjectWithTag("ShopInfoPanel").GetComponent<ShopInfo>();
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {

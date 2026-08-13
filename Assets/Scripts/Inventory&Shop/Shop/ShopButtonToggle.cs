@@ -2,6 +2,36 @@ using UnityEngine;
 
 public class ShopButtonToggle : MonoBehaviour
 {
+    public static ShopButtonToggle Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void ClickedShopButton(string type)
+    {
+        if (type == "items")
+        {
+            OpenItemShop();
+        }
+        else if (type == "weapons")
+        {
+            OpenWeaponShop();
+        }
+        else
+        {
+            OpenEatablesShop();
+        }
+    }
+
     public void OpenItemShop()
     {
         if (ShopKeeper.currentShopKeeper == null) return;
@@ -14,9 +44,9 @@ public class ShopButtonToggle : MonoBehaviour
         ShopKeeper.currentShopKeeper.OpenWeaponShop();
     }
 
-    public void OpenArmourShop()
+    public void OpenEatablesShop()
     {
         if (ShopKeeper.currentShopKeeper == null) return;
-        ShopKeeper.currentShopKeeper.OpenArmourShop();
+        ShopKeeper.currentShopKeeper.OpenEatablesShop();
     }
 }

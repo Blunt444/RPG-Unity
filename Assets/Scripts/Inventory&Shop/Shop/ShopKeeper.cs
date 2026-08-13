@@ -11,9 +11,9 @@ public class ShopKeeper : MonoBehaviour
     public CanvasGroup shopCanvasGroup;
     public ShopManager shopManager;
 
-    [SerializeField] private List<ShopItems> shopItems;
+    [SerializeField] private List<ShopItems> shopEatables;
     [SerializeField] private List<ShopItems> shopWeapons;
-    [SerializeField] private List<ShopItems> shopArmours;
+    [SerializeField] private List<ShopItems> shopItems;
     [SerializeField] private Camera shopKeeperCam;
     [SerializeField] private Vector3 cameraOffset = new Vector3(0, 0, -1);
     public static event Action<ShopManager, bool> OnShopStateChanged;
@@ -71,9 +71,9 @@ public class ShopKeeper : MonoBehaviour
         shopManager.PopulateShopItems(shopWeapons);
     }
 
-    public void OpenArmourShop()
+    public void OpenEatablesShop()
     {
-        shopManager.PopulateShopItems(shopArmours);
+        shopManager.PopulateShopItems(shopEatables);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

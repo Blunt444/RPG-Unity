@@ -3,28 +3,49 @@ using System.Collections.Generic;
 
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] private ShopSlot[] shopSlots;
+    public static ShopManager Instance;
+    public GameObject shopSlotPrefab;
+    public Transform shopBox;
+    [SerializeField] private List<ShopSlot> shopSlots = new List<ShopSlot>();
 
     [SerializeField] private InventoryManager inventoryManager;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void PopulateShopItems(List<ShopItems> shopItems)
     {
+        foreach (ShopSlot slot in shopSlots)
+        {
+            if (slot == null) continue;
 
-        int activeSlots = 0;
+            Destroy(slot.gameObject);
+        }
+
+        shopSlots.Clear();
 
         for (int i = 0; i < shopItems.Count; i++)
         {
-            if(activeSlots >= shopSlots.Length) break;
             if (shopItems[i] == null || shopItems[i].itemSO == null) continue;
+
             ShopItems shopItem = shopItems[i];
-            shopSlots[i].Initialize(shopItem.itemSO, shopItem.price);
-            shopSlots[i].gameObject.SetActive(true);
-            activeSlots++;
+            GameObject slot = Instantiate(shopSlotPrefab, shopBox);
+            ShopSlot script = slot.GetComponent<ShopSlot>();
+
+            script.Initialize(shopItem.itemSO, shopItem.price);
+
+            shopSlots.Add(script);
         }
-        for (int i = activeSlots; i < shopSlots.Length; i++)
-        {
-            shopSlots[i].gameObject.SetActive(false);
-        }
+
     }
 
     public void SellItems(ItemSO itemSO)
