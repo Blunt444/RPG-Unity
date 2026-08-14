@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+using Unity.AppUI.Core;
 
 public class ShopManager : MonoBehaviour
 {
@@ -7,10 +9,12 @@ public class ShopManager : MonoBehaviour
     public GameObject shopSlotPrefab;
     public Transform shopBox;
     public Transform emptyMessage;
+    public int messageTimer = 4;
+    public static event Action<string, int> Message;
+
     [SerializeField] private List<ShopSlot> shopSlots = new List<ShopSlot>();
 
     [SerializeField] private InventoryManager inventoryManager;
-
     private void Awake()
     {
         if (Instance == null)
@@ -75,13 +79,26 @@ public class ShopManager : MonoBehaviour
     {
         Debug.Log("shop item buy");
 
-        if (itemSO == null || inventoryManager.gold < price) return;
+        if (itemSO == null)
+        {
+            Message?.Invoke("Invalid Item.", messageTimer);
+            return;
+        }
+
+        if (inventoryManager.gold < price)
+        {
+            Message?.Invoke("Not enough Money.", messageTimer);
+            return;
+        }
 
         if (itemSO.isArrow)
         {
             Debug.Log("arrow");
-            ArrowQuantityManager.Instance.SetQuantity(1);
-            inventoryManager.gold -= price;
+            bool bought = ArrowQuantityManager.Instance.SetQuantity(1);
+            if (bought)
+                inventoryManager.gold -= price;
+            else
+                Message?.Invoke("Maximum Capacity Reached", messageTimer);
             inventoryManager.goldText.text = inventoryManager.gold.ToString();
             return;
         }
@@ -91,6 +108,10 @@ public class ShopManager : MonoBehaviour
             inventoryManager.gold -= price;
             inventoryManager.goldText.text = inventoryManager.gold.ToString();
             inventoryManager.AddItem(itemSO, 1);
+        }
+        else
+        {
+            Message?.Invoke("Not Enough Space", messageTimer);
         }
     }
 

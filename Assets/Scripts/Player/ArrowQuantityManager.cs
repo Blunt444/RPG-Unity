@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class ArrowQuantityManager : MonoBehaviour
     public TMP_Text quantityText;
     public CanvasGroup canvas;
     public float displayTime = 2f;
+    public int messageTimer = 4;
+    public static event Action<string, int> Message;
 
     private void Awake()
     {
@@ -43,18 +46,23 @@ public class ArrowQuantityManager : MonoBehaviour
         return currentAmount < 0 ? 0 : currentAmount;
     }
 
-    public void SetQuantity(int amount)
+    public bool SetQuantity(int amount)
     {
         currentAmount += amount;
         if (currentAmount > maxAmount)
         {
             currentAmount = maxAmount;
+            return false;
+
         }
         else if (currentAmount < 0)
         {
             currentAmount = 0;
+            Message?.Invoke("Out of Arrow",messageTimer);
+            return false;
         }
         UpdateQuantityText();
+        return true;
     }
 
     private void UpdateQuantityText()
