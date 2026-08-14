@@ -36,22 +36,22 @@ public class QuestSO : ScriptableObject
     public float Progress()
     {
         int total = enemyRequirements.Count + collectableRequirements.Count + talkToActors.Count;
-        int completed = 0;
+        float progress = 0;
 
         foreach (EnemyRequirement enemyRequirement in enemyRequirements)
         {
-            if (enemyRequirement.IsComplete()) completed++; ;
+            progress += enemyRequirement.ProgressRatio();
         }
         foreach (CollectableRequirement collectableRequirement in collectableRequirements)
         {
-            if (collectableRequirement.IsComplete()) completed++;
+            progress += collectableRequirement.ProgressRatio();
         }
         foreach (TalkToActor actor in talkToActors)
         {
-            if (actor.IsComplete()) completed++;
+            progress += actor.ProgressRatio();
         }
 
-        return (float)completed / total;
+        return (float)progress / total;
     }
 
     public void MarkQuestCompleted()
@@ -77,6 +77,7 @@ public abstract class QuestRequirement
 {
     public abstract bool IsComplete();
     public abstract void Progress();
+    public abstract float ProgressRatio();
 }
 
 [Serializable]
@@ -97,6 +98,10 @@ public class EnemyRequirement : QuestRequirement
         killCount++;
         Debug.Log(killCount);
     }
+    public override float ProgressRatio()
+    {
+        return (float)killCount / count;
+    }
 }
 
 [Serializable]
@@ -116,6 +121,11 @@ public class CollectableRequirement : QuestRequirement
         throw new NotImplementedException();
     }
 
+    public override float ProgressRatio()
+    {
+        return (float)InventoryManager.Instance.GetItemCount(itemSO) / count;
+    }
+
     public void ReduceItemCountQuestCompleted()
     {
         InventoryManager.Instance.ReduceItemCount(itemSO, count);
@@ -130,6 +140,11 @@ public class TalkToActor : QuestRequirement
     public override bool IsComplete()
     {
         return DialogHistoryTracker.Instance.HasTalkedToNpc(actorSO);
+    }
+
+    public override float ProgressRatio()
+    {
+        return IsComplete() ? 1f : 0f;
     }
 
     public override void Progress()

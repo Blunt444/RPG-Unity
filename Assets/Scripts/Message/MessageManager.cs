@@ -14,11 +14,13 @@ public class MessageManager : MonoBehaviour
     {
         ShopManager.Message += HandleMessage;
         ArrowQuantityManager.Message += HandleMessage;
+        QuestManager.Message += HandleMessage;
     }
     private void OnDisable()
     {
         ShopManager.Message -= HandleMessage;
         ArrowQuantityManager.Message -= HandleMessage;
+        QuestManager.Message -= HandleMessage;
     }
 
     private void HandleMessage(string text, int timer)

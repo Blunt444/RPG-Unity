@@ -69,7 +69,10 @@ public class ExpManager : MonoBehaviour
 
     public void GainExperience(int amount)
     {
+        // Debug.Log(amount);
         currentExp += amount;
+        // Debug.Log(currentExp);
+
         StanceManager.Instance.BlockSwitchingStance();
         if (currentExp >= expToLevel)
         {

@@ -26,6 +26,9 @@ public class QuestBox : MonoBehaviour, IPointerDownHandler
         questLabel.text = TruncateAndEllipse(questSO.label, 60);
         questDesc.text = TruncateAndEllipse(questSO.about, 200);
         fillImage.fillAmount = questSO.Progress();
+
+        // Debug.Log(questSO.Progress());
+
         this.questSO = questSO;
 
         this.onClick = onClick;

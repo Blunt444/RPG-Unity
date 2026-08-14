@@ -7,6 +7,7 @@ public class QuestInfo : MonoBehaviour
     public TMP_Text label;
     public TMP_Text about;
     public Transform requirement;
+    public QuestSO questSO;
     public GameObject reqPrefab;
 
     private void Awake()
@@ -25,6 +26,7 @@ public class QuestInfo : MonoBehaviour
     {
         label.text = questSO.label;
         about.text = questSO.about;
+        this.questSO = questSO;
 
         foreach (Transform child in requirement.transform)
         {
@@ -35,6 +37,9 @@ public class QuestInfo : MonoBehaviour
         {
             QuestRequirementScript script = Instantiate(reqPrefab, requirement).GetComponent<QuestRequirementScript>();
             string progress = ": " + enemyRequirement.killCount + "/" + enemyRequirement.count;
+
+            // Debug.Log(progress);
+
             script.Setup(enemyRequirement.label, progress, enemyRequirement.IsComplete());
         }
 

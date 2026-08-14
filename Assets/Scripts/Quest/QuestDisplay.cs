@@ -12,6 +12,7 @@ public class QuestDisplay : MonoBehaviour
     public CanvasGroup canvas;
     public GridLayoutGroup questGrid;
     public TMP_Text noQuestText;
+    public QuestPanelOpenType type = QuestPanelOpenType.Quests;
 
     private bool questOpen = false;
 
@@ -58,6 +59,13 @@ public class QuestDisplay : MonoBehaviour
     public void Display()
     {
 
+        if (type != QuestPanelOpenType.Quests)
+        {
+            if (QuestInfo.Instance != null && QuestInfo.Instance.questSO != null)
+                QuestInfo.Instance.Setup(QuestInfo.Instance.questSO);
+            return;
+        }
+
         foreach (Transform child in questContainer.transform)
         {
             Destroy(child.gameObject);
@@ -87,7 +95,14 @@ public class QuestDisplay : MonoBehaviour
         questContainer.gameObject.SetActive(false);
         questInfoContainer.gameObject.SetActive(true);
         QuestInfo.Instance.Setup(questSO);
+
+        type = QuestPanelOpenType.Info;
     }
 
+}
 
+public enum QuestPanelOpenType
+{
+    Quests,
+    Info
 }

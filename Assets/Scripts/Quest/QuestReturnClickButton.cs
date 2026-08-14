@@ -22,6 +22,8 @@ public class QuestRetrunClickButton : MonoBehaviour, IPointerDownHandler, IPoint
         questDisplay.questContainer.gameObject.SetActive(true);
         questDisplay.questInfoContainer.gameObject.SetActive(false);
 
+        questDisplay.type = QuestPanelOpenType.Quests;
+
         questDisplay.Display();
     }
 
