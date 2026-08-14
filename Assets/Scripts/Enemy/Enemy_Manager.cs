@@ -29,6 +29,8 @@ public class Enemy_Manager : MonoBehaviour
    public LayerMask playerLayer;
    public Transform attackPoint;
 
+   public Death deathPrefab;
+
    private Animator anim;
 
 
@@ -45,6 +47,8 @@ public class Enemy_Manager : MonoBehaviour
       SetStat();
       SetTransform();
       SetCombatTransform();
+
+      deathPrefab = Enemy_Color_Type_Map.Instance.GetDeathPrefab();
 
       if (detectionPoint == null || attackPoint == null)
       {

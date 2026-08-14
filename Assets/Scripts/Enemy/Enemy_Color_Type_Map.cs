@@ -28,6 +28,8 @@ public struct ColorStruct
 public class Enemy_Color_Type_Map : MonoBehaviour
 {
     public static Enemy_Color_Type_Map Instance;
+    public Death deathPrefab;
+
 
     [SerializeField]
     private List<TypeStruct> typeList = new List<TypeStruct>();
@@ -77,6 +79,11 @@ public class Enemy_Color_Type_Map : MonoBehaviour
     public Enemy_Color RandomColor()
     {
         return colorMap[UnityEngine.Random.Range(1, colorList.Count + 1)];
+    }
+
+    public Death GetDeathPrefab()
+    {
+        return deathPrefab;
     }
 
     public AnimatorOverrideController GetOverrideController(Enemy_Type type, Enemy_Color color)

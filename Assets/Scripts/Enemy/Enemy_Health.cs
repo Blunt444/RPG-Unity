@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Enemy_Health : MonoBehaviour, Damageable
 {
+    public int timeToDecay = 7;
     public delegate void MonsterDefeated(int exp);
     public static event MonsterDefeated OnMonsterDefeated;
     public GameObject enemyContainer;
@@ -45,6 +46,9 @@ public class Enemy_Health : MonoBehaviour, Damageable
     {
         OnMonsterDefeated?.Invoke(manager.expReward);
         OnEnemyKilled?.Invoke(manager.enemyType);
+
+        Death death = Instantiate(manager.deathPrefab, transform.position, Quaternion.identity);
+        death.Setup(timeToDecay);
 
         if (manager.spawnerHut != null)
         {

@@ -60,7 +60,7 @@ public class MessageManager : MonoBehaviour
 
             float progress = elapsed / timer;
 
-            Debug.Log(elapsed);
+            // Debug.Log(elapsed);
 
             message.alpha = Mathf.Lerp(1f, 0f, progress);
 
