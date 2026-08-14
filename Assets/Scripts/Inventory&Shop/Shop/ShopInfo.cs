@@ -20,6 +20,9 @@ public class ShopInfo : MonoBehaviour
 
     public void ShowItemInfo(ItemSO itemSO)
     {
+
+        CleanUpStatBlock();
+
         infoPanel.alpha = 1;
         // infoPanel.interactable = true;
         // infoPanel.blocksRaycasts = true;
@@ -47,8 +50,14 @@ public class ShopInfo : MonoBehaviour
                 statsText[i].gameObject.SetActive(false);
             }
         }
+    }
 
-
+    private void CleanUpStatBlock()
+    {
+        for (int i = 0; i < statsText.Length; i++)
+        {
+            statsText[i].gameObject.SetActive(false);
+        }
     }
 
     public void HideItemInfo()

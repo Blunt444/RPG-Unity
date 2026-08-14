@@ -9,6 +9,8 @@ public class QuestSO : ScriptableObject
     [TextArea(3, 5)] public string about;
     public QuestState questState = QuestState.None;
 
+    public List<Reward> rewards = new List<Reward>();
+
     public List<EnemyRequirement> enemyRequirements = new List<EnemyRequirement>();
     public List<CollectableRequirement> collectableRequirements = new List<CollectableRequirement>();
     public List<TalkToActor> talkToActors = new List<TalkToActor>();
@@ -49,7 +51,7 @@ public class QuestSO : ScriptableObject
             if (actor.IsComplete()) completed++;
         }
 
-        return (float) completed / total;
+        return (float)completed / total;
     }
 
     public void MarkQuestCompleted()
@@ -60,6 +62,11 @@ public class QuestSO : ScriptableObject
         }
 
         questState = QuestState.Completed;
+
+        foreach (Reward reward in rewards)
+        {
+            InventoryManager.Instance.AddItem(reward.itemSO, reward.quantity);
+        }
     }
 }
 
@@ -129,4 +136,11 @@ public class TalkToActor : QuestRequirement
     {
         throw new NotImplementedException();
     }
+}
+
+[Serializable]
+public class Reward
+{
+    public int quantity;
+    public ItemSO itemSO;
 }
