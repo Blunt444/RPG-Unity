@@ -77,4 +77,4 @@ MonoBehaviour:
     questAcceptNextLineIndex: -1
     questDeclineNextLineIndex: -1
     checkpointIndex: 6
-  returnStartIndex: 6
+  returnStartIndex: 4

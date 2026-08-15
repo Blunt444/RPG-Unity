@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillInfo : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class SkillInfo : MonoBehaviour
     public RectTransform panel;
     public Transform prerequestPanel;
     public GameObject prerequestTextPrefab;
+    public GameObject effectBoxPrefab;
+    public Transform effectTransform;
     public RectTransform costRectTransform;
     public RectTransform canvasRectTransform;
     public Camera uiCamera;
@@ -74,14 +77,7 @@ public class SkillInfo : MonoBehaviour
     public void SetCostYPos(bool isPrerequestTextEmpty)
     {
         // Debug.Log(isPrerequestTextEmpty);
-        if (isPrerequestTextEmpty)
-        {
-            costRectTransform.anchoredPosition = new Vector2(costDefaultX, costDefaultY);
-        }
-        else
-        {
-            costRectTransform.anchoredPosition = new Vector2(costDefaultX, costTransformedY);
-        }
+        costRectTransform.anchoredPosition = new Vector2(costDefaultX, costTransformedY);
     }
 
     public void ShowPrerequestOnHover(List<ReslovedPrerequisiteSkillSlots> reslovedPrerequisiteSkillSlot)
@@ -91,6 +87,16 @@ public class SkillInfo : MonoBehaviour
             var newTextBlock = Instantiate(prerequestTextPrefab, prerequestPanel);
             PrerequestTextBlock textBlock = newTextBlock.GetComponent<PrerequestTextBlock>();
             textBlock.SetPrerequestSkillName(rs.slot.skillSO.skillName, rs.requiredLevel);
+        }
+    }
+
+    public void ShowEffectInfo(List<SkillEffect> skillEffects)
+    {
+        foreach (SkillEffect effect in skillEffects)
+        {
+            GameObject effectBox = Instantiate(effectBoxPrefab, effectTransform);
+            effectBox.GetComponent<TMP_Text>().text = effect.amount >= 0 ? "+" : "-" + effect.amount.ToString();
+            effectBox.GetComponent<Image>().sprite = effect.icon;
         }
     }
 

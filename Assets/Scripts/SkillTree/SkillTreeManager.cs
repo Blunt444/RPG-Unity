@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class SkillTreeManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class SkillTreeManager : MonoBehaviour
     public Transform combatPanel;
     public Transform archeryPanel;
     public TMP_Text pointsText;
+    public TMP_Text title;
     public int availablePoints;
 
     [NonSerialized] private Dictionary<string, SkillSlot> skillSlotDictionary = new Dictionary<string, SkillSlot>();
@@ -116,6 +118,22 @@ public class SkillTreeManager : MonoBehaviour
         }
     }
 
+    public void ShowSkills(SkillCategory type)
+    {
+        if (type == SkillCategory.Combat)
+        {
+            combatPanel.gameObject.SetActive(true);
+            archeryPanel.gameObject.SetActive(false);
+            title.text = "Combat Skills";
+        }
+        else
+        {
+            combatPanel.gameObject.SetActive(false);
+            archeryPanel.gameObject.SetActive(true);
+            title.text = "Archery Skills";
+        }
+    }
+
     private SkillSlot InstantiateSkillSlot(SkillCategory type)
     {
         return type == SkillCategory.Combat ? Instantiate(skillSlotPrefab, combatPanel) : Instantiate(skillSlotPrefab, archeryPanel);
@@ -123,6 +141,7 @@ public class SkillTreeManager : MonoBehaviour
 
     private void UpdateUI()
     {
+        ShowSkills(SkillCategory.Combat);
         UpdatePointsUI();
     }
 
