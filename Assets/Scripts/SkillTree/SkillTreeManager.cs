@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class SkillTreeManager : MonoBehaviour
 {
@@ -15,7 +14,7 @@ public class SkillTreeManager : MonoBehaviour
     public Transform archeryPanel;
     public TMP_Text pointsText;
     public TMP_Text title;
-    public int availablePoints;
+    SkillCategory currentType = SkillCategory.Combat;
 
     [NonSerialized] private Dictionary<string, SkillSlot> skillSlotDictionary = new Dictionary<string, SkillSlot>();
 
@@ -35,13 +34,13 @@ public class SkillTreeManager : MonoBehaviour
 
     public int GetCurrentPoints()
     {
-        return availablePoints;
+        return StanceManager.Instance.GetPointsForRespectiveStance(currentType);
     }
 
     public void DeductPoints(int amount)
     {
-        if (amount <= availablePoints)
-            availablePoints -= amount;
+        if (amount <= StanceManager.Instance.GetPointsForRespectiveStance(currentType))
+            StanceManager.Instance.ChangePointToRespectiveStance(currentType, -amount);
     }
 
     private void ReadyAllSkills()
@@ -125,13 +124,17 @@ public class SkillTreeManager : MonoBehaviour
             combatPanel.gameObject.SetActive(true);
             archeryPanel.gameObject.SetActive(false);
             title.text = "Combat Skills";
+            currentType = type;
         }
         else
         {
             combatPanel.gameObject.SetActive(false);
             archeryPanel.gameObject.SetActive(true);
             title.text = "Archery Skills";
+            currentType = type;
         }
+
+        UpdatePointsUI();
     }
 
     private SkillSlot InstantiateSkillSlot(SkillCategory type)
@@ -147,6 +150,7 @@ public class SkillTreeManager : MonoBehaviour
 
     private void UpdatePointsUI()
     {
-        pointsText.text = availablePoints.ToString();
+        string text = currentType == SkillCategory.Combat ? "Combat Points" : "Archery Points";
+        pointsText.text = text + " : " + StanceManager.Instance.GetPointsForRespectiveStance(currentType);
     }
 }

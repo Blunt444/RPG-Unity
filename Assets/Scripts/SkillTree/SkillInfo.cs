@@ -41,13 +41,13 @@ public class SkillInfo : MonoBehaviour
         panel.gameObject.SetActive(isActive);
     }
 
-    public void SetCostText(int amount)
+    public void SetCostText(int amount, SkillCategory type)
     {
         upgradeCost.text = amount.ToString();
 
-        if (amount <= StanceManager.Instance.GetPointsForRespectiveStance())
+        if (amount <= StanceManager.Instance.GetPointsForRespectiveStance(type))
         {
-            upgradeCost.color = new Color32(0, 147, 0, 255);
+            upgradeCost.color = new Color32(56, 142, 60, 255);
         }
         else
         {

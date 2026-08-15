@@ -5,8 +5,8 @@ public class StanceManager : MonoBehaviour
     public static StanceManager Instance;
 
 
-    private int warriorStancePoint = 0;
-    private int archeryStancePoint = 0;
+    private int warriorStancePoint = 1;
+    private int archeryStancePoint = 5;
     private Player_Combat playerWarrior;
     private Player_Bow playerArcher;
     private GameObject bowObject;
@@ -100,13 +100,25 @@ public class StanceManager : MonoBehaviour
         }
     }
 
-    public int GetPointsForRespectiveStance()
+    public int GetPointsForRespectiveStance(SkillCategory type)
     {
-        if (playerStance == PlayerStance.Warrior)
+        if (type == SkillCategory.Combat)
         {
             return warriorStancePoint;
         }
         return archeryStancePoint;
+    }
+
+    public void ChangePointToRespectiveStance(SkillCategory type, int amount)
+    {
+        if (type == SkillCategory.Combat)
+        {
+            warriorStancePoint += amount;
+        }
+        else
+        {
+            archeryStancePoint += amount;
+        }
     }
 }
 

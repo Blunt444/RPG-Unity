@@ -72,7 +72,7 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             SkillManager.Instance.HandleSkillUpgrade(this);
             SkillTreeManager.Instance.DeductPoints(ReturnCurrentSkillCost());
             UpdateUI();
-            SkillInfo.Instance.SetCostText(ReturnCurrentSkillCost());
+            SkillInfo.Instance.SetCostText(ReturnCurrentSkillCost(), skillSO.category);
             return true;
         }
 
@@ -124,7 +124,7 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         SkillInfo.Instance.SetPanelPosition(eventData.position);
         SkillInfo.Instance.SetPanelState(true);
         SkillInfo.Instance.SetCostYPos(isUnlocked);
-        SkillInfo.Instance.SetCostText(ReturnCurrentSkillCost());
+        SkillInfo.Instance.SetCostText(ReturnCurrentSkillCost(), skillSO.category);
         ShowPrerequestOnHoverIfNotUnlocked();
     }
 
