@@ -88,6 +88,7 @@ public class NPC_Talk : MonoBehaviour
                 DialogHistoryTracker.Instance.AddToTalkedNpc(actorSO);
             }
         }
+        rb.linearVelocity = Vector2.zero;
     }
 
     public void SetLineIndex(int index)

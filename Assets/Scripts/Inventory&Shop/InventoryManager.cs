@@ -77,7 +77,11 @@ public class InventoryManager : MonoBehaviour
                 slot.quantity += amountToAdd;
                 quantity -= amountToAdd;
                 slot.UpdateUI();
-                return;
+
+                if (quantity <= 0)
+                {
+                    return;
+                }
             }
         }
         if (quantity > 0)

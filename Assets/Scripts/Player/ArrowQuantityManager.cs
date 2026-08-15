@@ -49,20 +49,21 @@ public class ArrowQuantityManager : MonoBehaviour
     public bool SetQuantity(int amount)
     {
         currentAmount += amount;
+        bool isArrowAdded = true;
         if (currentAmount > maxAmount)
         {
             currentAmount = maxAmount;
-            return false;
+            isArrowAdded = false;
 
         }
         else if (currentAmount < 0)
         {
             currentAmount = 0;
-            Message?.Invoke("Out of Arrow",messageTimer);
-            return false;
+            Message?.Invoke("Out of Arrow", messageTimer);
+            isArrowAdded = false;
         }
         UpdateQuantityText();
-        return true;
+        return isArrowAdded;
     }
 
     private void UpdateQuantityText()
