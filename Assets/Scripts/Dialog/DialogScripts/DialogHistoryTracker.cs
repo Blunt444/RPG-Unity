@@ -31,6 +31,18 @@ public class DialogHistoryTracker : MonoBehaviour
         return actorSO != null && talkedNpcs.Contains(actorSO);
     }
 
+    public List<string> GetTalkedNPCNames()
+    {
+        List<string> names = new List<string>();
+
+        foreach (ActorSO actorSO in talkedNpcs)
+        {
+            names.Add(actorSO.actorName);
+        }
+
+        return names;
+    }
+
     public bool CanShowNextLine(DialogueLine line)
     {
 

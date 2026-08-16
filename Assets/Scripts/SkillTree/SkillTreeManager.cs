@@ -32,6 +32,11 @@ public class SkillTreeManager : MonoBehaviour
         }
     }
 
+    public Dictionary<string, SkillSlot> GetAllSkills()
+    {
+        return skillSlotDictionary;
+    }
+
     public int GetCurrentPoints()
     {
         return StanceManager.Instance.GetPointsForRespectiveStance(currentType);

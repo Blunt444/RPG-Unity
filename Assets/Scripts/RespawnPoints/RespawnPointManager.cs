@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,13 @@ public class RespawnPointManager : MonoBehaviour
     public RespawnPoint respawnPoint;
     public TMP_Text message;
     public int countdown = 3;
+
+    [SerializeField] private List<RespawnPoint> respawnPoints = new List<RespawnPoint>();
+
+    public string GetCurrentRespawnPointId()
+    {
+        return respawnPoint.GetRespawnPointId();
+    }
 
     private void Awake()
     {

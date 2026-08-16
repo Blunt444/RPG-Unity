@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
+
+    public static LevelSystem Instance;
+
     private int warriorLevel = 0;
     private int warriorCurrExp = 0;
     private int warriorExpToLevel = 10;
@@ -11,6 +14,12 @@ public class LevelSystem : MonoBehaviour
     private int archeryCurrExp = 0;
     private int archeryExpToLevel = 10;
     private float archeryExpGrowth = 1.2f;
+
+    private void Awake()
+    {
+        if(Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     public void SetValueInExpManager(PlayerStance playerStance)
     {
@@ -42,5 +51,26 @@ public class LevelSystem : MonoBehaviour
             archeryExpToLevel = (int)dict["expToLevel"];
             archeryExpGrowth = dict["expGrowthMultiplier"];
         }
+    }
+
+    public Dictionary<string, float> GetValuesFromSystem(PlayerStance playerStance)
+    {
+        Dictionary<string, float> dict = new Dictionary<string, float>();
+        if (playerStance == PlayerStance.Warrior)
+        {
+            dict["level"] = warriorLevel;
+            dict["currentExp"] = warriorCurrExp;
+            dict["expToLevel"] = warriorExpToLevel;
+            dict["expGrowthMultiplier"] = warriorExpGrowth;
+        }
+        else
+        {
+            dict["level"] = archeryLevel;
+            dict["currentExp"] = archeryCurrExp;
+            dict["expToLevel"] = archeryExpToLevel;
+            dict["expGrowthMultiplier"] = archeryExpGrowth;
+        }
+
+        return dict;
     }
 }

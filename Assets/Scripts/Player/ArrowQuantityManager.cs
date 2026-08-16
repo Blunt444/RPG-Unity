@@ -6,8 +6,8 @@ using UnityEngine;
 public class ArrowQuantityManager : MonoBehaviour
 {
     public static ArrowQuantityManager Instance;
-    public int maxAmount;
-    public int currentAmount;
+    private int maxAmount;
+    private int currentAmount;
     public TMP_Text quantityText;
     public CanvasGroup canvas;
     public float displayTime = 2f;
@@ -44,6 +44,11 @@ public class ArrowQuantityManager : MonoBehaviour
     public int GetQuantity()
     {
         return currentAmount < 0 ? 0 : currentAmount;
+    }
+
+    public int GetMaxArrowCount()
+    {
+        return maxAmount;
     }
 
     public bool SetQuantity(int amount)
