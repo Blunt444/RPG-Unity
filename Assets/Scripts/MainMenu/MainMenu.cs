@@ -16,6 +16,9 @@ public class MainMenu : MonoBehaviour
     public Transform GuidePanel;
     public Transform PlayPanel;
     public Transform LoadPanel;
+    public Transform LoadContent;
+    public Transform LoadNoContent;
+    public LoadBox LoadBoxPrefab;
     public Transform currentPanel;
     public Transform previousPanel;
 
@@ -51,6 +54,32 @@ public class MainMenu : MonoBehaviour
                 return;
             default:
                 return;
+        }
+    }
+
+    public void ShowAllSaves()
+    {
+        List<string> files = SaveManager.Instance.GetAllSaves();
+
+        if (files.Count <= 0)
+        {
+            LoadNoContent.gameObject.SetActive(true);
+            LoadContent.gameObject.SetActive(false);
+            return;
+        }
+
+        LoadNoContent.gameObject.SetActive(false);
+        LoadContent.gameObject.SetActive(true);
+
+        foreach (Transform child in LoadContent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (string file in files)
+        {
+            LoadBox loadBox = Instantiate(LoadBoxPrefab, LoadContent);
+            loadBox.Setup(file);
         }
     }
 

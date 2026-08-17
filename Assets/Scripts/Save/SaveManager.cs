@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class SaveManager : MonoBehaviour
     public List<QuestSO> allQuests;
     public List<ItemSO> allItems;
     public List<SkillSO> allSkills;
+    public string sceneName;
 
     public string savePath = Path.Combine(Application.persistentDataPath, "Saves");
+    public static event Action<string, LoadButtonAction, bool> buttonResponse;
 
 
     private void Awake()
@@ -102,6 +105,90 @@ public class SaveManager : MonoBehaviour
 
         File.WriteAllText(fullPath, json);
     }
+
+    public List<string> GetAllSaves()
+    {
+        string[] files = Directory.GetFiles(savePath, "*.json");
+
+        List<string> fileNames = new List<string>();
+
+        foreach (string file in files)
+        {
+            fileNames.Add(Path.GetFileNameWithoutExtension(file));
+        }
+
+        return fileNames;
+    }
+
+    private void OnEnable()
+    {
+        LoadButton.LoadButtonClicked += ButtonClicked;
+    }
+
+    private void OnDisable()
+    {
+        LoadButton.LoadButtonClicked -= ButtonClicked;
+    }
+
+    public void ButtonClicked(LoadButtonAction action, string fileName)
+    {
+        if (action == LoadButtonAction.Load)
+        {
+            LoadFile(fileName);
+        }
+        else
+        {
+            DeleteFile(fileName);
+        }
+    }
+
+    public void LoadGame()
+    {
+
+    }
+
+    public void LoadFile(string fileName)
+    {
+        string path = Path.Combine(savePath, fileName);
+        if (File.Exists(path))
+        {
+            buttonResponse?.Invoke(fileName, LoadButtonAction.Load, true);
+        }
+        else
+        {
+            buttonResponse?.Invoke(fileName, LoadButtonAction.Load, false);
+        }
+    }
+
+    public void LoadGame(string fileName)
+    {
+        string path = Path.Combine(savePath, fileName);
+
+        string json = File.ReadAllText(path);
+        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+
+
+        
+
+
+
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void DeleteFile(string fileName)
+    {
+        string path = Path.Combine(savePath, fileName);
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            buttonResponse?.Invoke(fileName, LoadButtonAction.Delete, true);
+        }
+        else
+        {
+            buttonResponse?.Invoke(fileName, LoadButtonAction.Delete, false);
+        }
+    }
+
 }
 
 [Serializable]
