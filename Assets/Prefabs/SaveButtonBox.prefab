@@ -229,6 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LoadBox
   fileName: 
   text: {fileID: 4931228703943146459}
+  deleteButton: {fileID: 9079823392685273919}
+  loadButton: {fileID: 4944274671036219806}
 --- !u!1 &3924738908798609711
 GameObject:
   m_ObjectHideFlags: 0

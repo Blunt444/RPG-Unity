@@ -8,6 +8,7 @@ public class MainMenuButton : MonoBehaviour, IPointerDownHandler, IPointerEnterH
     public ButtonAction action;
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("Clicked button");
         MainMenu.Instance.ButtonClicked(this);
         text.alpha = 1f;
     }

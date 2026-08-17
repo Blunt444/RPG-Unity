@@ -36,10 +36,22 @@ public class LoadBox : MonoBehaviour
                 SaveManager.Instance.LoadGame(fileName);
                 return;
             case LoadButtonAction.Delete:
-                Destroy(gameObject);
+                DeleteChild(fileName);
                 return;
             default:
                 return;
+        }
+    }
+
+    private void DeleteChild(string fileName)
+    {
+        if(this.fileName == fileName)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            
         }
     }
 }

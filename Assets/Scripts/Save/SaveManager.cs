@@ -7,13 +7,9 @@ using UnityEngine.SceneManagement;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
-
-    public List<QuestSO> allQuests;
-    public List<ItemSO> allItems;
-    public List<SkillSO> allSkills;
     public string sceneName;
 
-    public string savePath = Path.Combine(Application.persistentDataPath, "Saves");
+    public string savePath;
     public static event Action<string, LoadButtonAction, bool> buttonResponse;
     private SaveData data;
 
@@ -23,12 +19,19 @@ public class SaveManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+            SetSavePath();
             if (!Directory.Exists(savePath))
             {
                 Directory.CreateDirectory(savePath);
             }
         }
         else Destroy(gameObject);
+    }
+
+    private void SetSavePath()
+    {
+        savePath = Path.Combine(Application.persistentDataPath, "Saves");
     }
 
     public void SaveGame()
@@ -143,14 +146,10 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public void LoadGame()
-    {
-
-    }
-
     public void LoadFile(string fileName)
     {
-        string path = Path.Combine(savePath, fileName);
+        string fullFileName = fileName + ".json";
+        string path = Path.Combine(savePath, fullFileName);
         if (File.Exists(path))
         {
             buttonResponse?.Invoke(fileName, LoadButtonAction.Load, true);
@@ -163,7 +162,8 @@ public class SaveManager : MonoBehaviour
 
     public void LoadGame(string fileName)
     {
-        string path = Path.Combine(savePath, fileName);
+        string fullFileName = fileName + ".json";
+        string path = Path.Combine(savePath, fullFileName);
 
         string json = File.ReadAllText(path);
         data = JsonUtility.FromJson<SaveData>(json);
@@ -214,7 +214,8 @@ public class SaveManager : MonoBehaviour
 
     public void DeleteFile(string fileName)
     {
-        string path = Path.Combine(savePath, fileName);
+        string fullFileName = fileName + ".json";
+        string path = Path.Combine(savePath, fullFileName);
         if (File.Exists(path))
         {
             File.Delete(path);

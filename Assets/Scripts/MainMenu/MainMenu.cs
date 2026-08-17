@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
 
     public string newScene = "Scene1";
 
+    public Stack<Transform> stack = new Stack<Transform>();
+
     public Transform MainPanel;
     public Transform GuidePanel;
     public Transform PlayPanel;
@@ -20,12 +22,20 @@ public class MainMenu : MonoBehaviour
     public Transform LoadNoContent;
     public LoadBox LoadBoxPrefab;
     public Transform currentPanel;
-    public Transform previousPanel;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
         else Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        stack.Clear();
+        OpenPanel(MainPanel);
     }
 
     public void ButtonClicked(MainMenuButton button)
@@ -35,10 +45,10 @@ public class MainMenu : MonoBehaviour
         switch (button.action)
         {
             case ButtonAction.Guide:
-                SetActivePanel(GuidePanel);
+                OpenPanel(GuidePanel);
                 return;
             case ButtonAction.Play:
-                SetActivePanel(PlayPanel);
+                OpenPanel(PlayPanel);
                 return;
             case ButtonAction.Exit:
                 QuitGame();
@@ -47,10 +57,11 @@ public class MainMenu : MonoBehaviour
                 SceneManager.LoadScene(newScene);
                 return;
             case ButtonAction.LoadGame:
-                SetActivePanel(LoadPanel);
+                ShowAllSaves();
+                OpenPanel(LoadPanel);
                 return;
             case ButtonAction.Back:
-                SetActivePanel(previousPanel != null ? previousPanel : MainPanel);
+                Back();
                 return;
             default:
                 return;
@@ -83,15 +94,28 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    private void SetActivePanel(Transform paneltoShow)
+    private void ShowPanel(Transform paneltoShow)
     {
-        previousPanel = currentPanel;
-        currentPanel = paneltoShow;
-
         MainPanel.gameObject.SetActive(paneltoShow == MainPanel);
         GuidePanel.gameObject.SetActive(paneltoShow == GuidePanel);
         PlayPanel.gameObject.SetActive(paneltoShow == PlayPanel);
         LoadPanel.gameObject.SetActive(paneltoShow == LoadPanel);
+    }
+
+    private void OpenPanel(Transform panelToShow)
+    {
+        if (panelToShow == null || panelToShow == currentPanel) return;
+
+        stack.Push(currentPanel);
+        currentPanel = panelToShow;
+        ShowPanel(currentPanel);
+    }
+
+    private void Back()
+    {
+        Transform panel = stack.Pop();
+        currentPanel = panel;
+        ShowPanel(currentPanel);
     }
 
     public void QuitGame()

@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject obj in persistentObjects)
         {
-            if(obj == null) continue;
+            if (obj == null) continue;
             DontDestroyOnLoad(obj);
         }
     }
@@ -34,8 +34,18 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject obj in persistentObjects)
         {
-            Destroy(obj);
+            if (obj != null) Destroy(obj);
         }
         Destroy(gameObject);
+    }
+
+    public void CleanUpPersistentObject()
+    {
+        foreach (GameObject obj in persistentObjects)
+        {
+            if (obj != null) Destroy(obj);
+        }
+        Destroy(gameObject);
+        Instance = null;
     }
 }
