@@ -2,15 +2,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MainMenuButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class MainMenuButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public TMP_Text text;
     public ButtonAction action;
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Clicked button");
         MainMenu.Instance.ButtonClicked(this);
-        text.alpha = 1f;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -43,11 +43,13 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator SuppressEventSystem()
     {
-        EventSystem.current.enabled = false;
+        EventSystem es = EventSystem.current;
+        if (es == null) yield break;
+        es.enabled = false;
         yield return null;
         yield return null;
         yield return null;
-        EventSystem.current.enabled = true;
+        es.enabled = true;
     }
 
     public void ButtonClicked(MainMenuButton button)
@@ -126,7 +128,7 @@ public class MainMenu : MonoBehaviour
 
     private void Back()
     {
-        if(stack.Count == 0)
+        if (stack.Count == 0)
         {
             currentPanel = MainPanel;
             ShowPanel(currentPanel);

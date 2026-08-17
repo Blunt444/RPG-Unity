@@ -3,16 +3,15 @@ using UnityEngine.EventSystems;
 using System;
 using TMPro;
 
-public class PauseButton : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class PauseButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public TMP_Text textBox;
     public PauseButtonAction action;
     public static event Action<PauseButtonAction> onClick;
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         onClick?.Invoke(action);
-        textBox.alpha = 1f;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
