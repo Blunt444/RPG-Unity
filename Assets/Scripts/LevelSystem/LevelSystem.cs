@@ -17,7 +17,7 @@ public class LevelSystem : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null) Instance = this;
+        if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
 
@@ -50,6 +50,24 @@ public class LevelSystem : MonoBehaviour
             archeryCurrExp = (int)dict["currentExp"];
             archeryExpToLevel = (int)dict["expToLevel"];
             archeryExpGrowth = dict["expGrowthMultiplier"];
+        }
+    }
+
+    public void GetAndSetValueInSystem(PlayerStance playerStance, ExpData expData)
+    {
+        if (playerStance == PlayerStance.Warrior)
+        {
+            warriorLevel = expData.lvl;
+            warriorCurrExp = expData.currentExp;
+            warriorExpToLevel = expData.expToLevel;
+            warriorExpGrowth = expData.expGrowthMultiplier;
+        }
+        else
+        {
+            archeryLevel = expData.lvl;
+            archeryCurrExp = expData.currentExp;
+            archeryExpToLevel = expData.expToLevel;
+            archeryExpGrowth = expData.expGrowthMultiplier;
         }
     }
 

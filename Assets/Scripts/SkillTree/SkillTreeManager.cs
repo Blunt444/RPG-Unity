@@ -37,6 +37,15 @@ public class SkillTreeManager : MonoBehaviour
         return skillSlotDictionary;
     }
 
+    public void SetSKillData(SkillData skillData)
+    {
+        if(skillSlotDictionary.TryGetValue(skillData.skillName, out SkillSlot slot))
+        {
+            slot.currentLevel = skillData.lvl;
+            slot.isUnlocked = skillData.isUnlocked;
+        }
+    }
+
     public int GetCurrentPoints()
     {
         return StanceManager.Instance.GetPointsForRespectiveStance(currentType);

@@ -20,6 +20,7 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public Button skillButton;
     public int currentLevel = 0;
     public bool isUnlocked;
+    public bool listenerAdded = false;
 
     [NonSerialized] public List<ReslovedPrerequisiteSkillSlots> prerequisiteSkillSlots = new List<ReslovedPrerequisiteSkillSlots>();
 
@@ -37,6 +38,8 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void AddOnClickToUpgrade()
     {
         // Debug.Log("Listener added for: " + (skillSO != null ? skillSO.skillName : "NULL skillSO"));
+        if(listenerAdded) return;
+        listenerAdded = true;
         skillButton.onClick.AddListener(() => SkillTreeManager.Instance.TryUpgradeSkill(this));
     }
 

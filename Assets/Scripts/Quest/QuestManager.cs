@@ -21,6 +21,24 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public void SetQuestData(QuestData questData)
+    {
+        foreach (QuestSO questSO in quests)
+        {
+            if (questSO.label == questData.questName)
+            {
+                questSO.questState = questData.questState;
+                
+                int len = Mathf.Min(questData.killCounts.Count, questSO.enemyRequirements.Count);
+                for (int i = 0; i < len; i++)
+                {
+                    questSO.enemyRequirements[i].killCount = questData.killCounts[i];
+                }
+                return;
+            }
+        }
+    }
+
     private void OnEnable()
     {
         Enemy_Health.OnEnemyKilled += HandleKilled;

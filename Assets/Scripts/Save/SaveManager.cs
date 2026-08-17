@@ -184,6 +184,20 @@ public class SaveManager : MonoBehaviour
             DialogHistoryTracker.Instance.AddToTalkedNpc(actorName);
         }
 
+        foreach(QuestData questData in data.quests)
+        {
+            QuestManager.Instance.SetQuestData(questData);
+        }
+
+        foreach (SkillData skillData in data.skills)
+        {
+            SkillTreeManager.Instance.SetSKillData(skillData);
+        }
+        SkillTreeManager.Instance.CheckForUnlockingSkills();
+
+        LevelSystem.Instance.GetAndSetValueInSystem(PlayerStance.Warrior, data.warriorData);
+        LevelSystem.Instance.GetAndSetValueInSystem(PlayerStance.Archer, data.archeryData);
+
         SceneManager.LoadScene(sceneName);
     }
 
