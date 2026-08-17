@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -64,11 +66,21 @@ public class PauseMenu : MonoBehaviour
     private void ExitToMainMenu()
     {
         Time.timeScale = 1;
+        StartCoroutine(ExitCoroutine());
+    }
+
+    private IEnumerator ExitCoroutine()
+    {
+        yield return null;
+        Debug.Log("Clean");
         GameManager.Instance.CleanUpPersistentObject();
+        Debug.Log("Exit");
         SceneManager.LoadScene("MainMenu");
     }
 }
 
+
+[Serializable]
 public enum PauseButtonAction
 {
     Resume,

@@ -16,8 +16,12 @@ public class ConfinerFinder : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        GameObject obj = GameObject.FindWithTag("Confiner");
+        if(obj == null) return;
+
         CinemachineConfiner2D confiner = GetComponent<CinemachineConfiner2D>();
-        confiner.BoundingShape2D = GameObject.FindWithTag("Confiner").GetComponent<PolygonCollider2D>();
+        if(confiner == null) return;
+        confiner.BoundingShape2D = obj.GetComponent<PolygonCollider2D>();
     }
 }
 

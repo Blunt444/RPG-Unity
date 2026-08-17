@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.AppUI.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -36,6 +38,16 @@ public class MainMenu : MonoBehaviour
     {
         stack.Clear();
         OpenPanel(MainPanel);
+        StartCoroutine(SuppressEventSystem());
+    }
+
+    private IEnumerator SuppressEventSystem()
+    {
+        EventSystem.current.enabled = false;
+        yield return null;
+        yield return null;
+        yield return null;
+        EventSystem.current.enabled = true;
     }
 
     public void ButtonClicked(MainMenuButton button)
@@ -106,13 +118,20 @@ public class MainMenu : MonoBehaviour
     {
         if (panelToShow == null || panelToShow == currentPanel) return;
 
-        stack.Push(currentPanel);
+        if (currentPanel != null)
+            stack.Push(currentPanel);
         currentPanel = panelToShow;
         ShowPanel(currentPanel);
     }
 
     private void Back()
     {
+        if(stack.Count == 0)
+        {
+            currentPanel = MainPanel;
+            ShowPanel(currentPanel);
+            return;
+        }
         Transform panel = stack.Pop();
         currentPanel = panel;
         ShowPanel(currentPanel);
@@ -120,6 +139,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        Debug.Log("Quit");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
