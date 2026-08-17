@@ -87,7 +87,7 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         return skillSO.initialCost + ((currentLevel) <= 0 ? 0 : currentLevel - 1) * skillSO.incrementValue;
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
 
         if (skillSO == null) return;

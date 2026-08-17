@@ -15,6 +15,7 @@ public class SaveManager : MonoBehaviour
 
     public string savePath = Path.Combine(Application.persistentDataPath, "Saves");
     public static event Action<string, LoadButtonAction, bool> buttonResponse;
+    private SaveData data;
 
 
     private void Awake()
@@ -165,8 +166,20 @@ public class SaveManager : MonoBehaviour
         string path = Path.Combine(savePath, fileName);
 
         string json = File.ReadAllText(path);
-        SaveData data = JsonUtility.FromJson<SaveData>(json);
+        data = JsonUtility.FromJson<SaveData>(json);
 
+        SceneManager.sceneLoaded += OnGameplaySceneLoaded;
+        SceneManager.LoadScene(sceneName);
+    }
+
+    private void OnGameplaySceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnGameplaySceneLoaded;
+        ApplySaveData(data);
+    }
+
+    public void ApplySaveData(SaveData data)
+    {
         InventoryManager.Instance.gold = data.gold;
         StanceManager.Instance.SetPointsToStance(SkillCategory.Combat, data.warriorStancePoint);
         StanceManager.Instance.SetPointsToStance(SkillCategory.Archery, data.archeryStancePoint);
@@ -184,7 +197,7 @@ public class SaveManager : MonoBehaviour
             DialogHistoryTracker.Instance.AddToTalkedNpc(actorName);
         }
 
-        foreach(QuestData questData in data.quests)
+        foreach (QuestData questData in data.quests)
         {
             QuestManager.Instance.SetQuestData(questData);
         }
@@ -197,8 +210,6 @@ public class SaveManager : MonoBehaviour
 
         LevelSystem.Instance.GetAndSetValueInSystem(PlayerStance.Warrior, data.warriorData);
         LevelSystem.Instance.GetAndSetValueInSystem(PlayerStance.Archer, data.archeryData);
-
-        SceneManager.LoadScene(sceneName);
     }
 
     public void DeleteFile(string fileName)

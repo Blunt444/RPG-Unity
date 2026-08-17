@@ -43,6 +43,7 @@ public class SkillTreeManager : MonoBehaviour
         {
             slot.currentLevel = skillData.lvl;
             slot.isUnlocked = skillData.isUnlocked;
+            slot.UpdateUI();
         }
     }
 
