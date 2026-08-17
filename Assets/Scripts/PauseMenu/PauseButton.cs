@@ -7,11 +7,11 @@ public class PauseButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 {
     public TMP_Text textBox;
     public PauseButtonAction action;
-    public static event Action<PauseButtonAction> onClick;
+    public static event Action<PauseButtonAction, PauseButton> onClick;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        onClick?.Invoke(action);
+        onClick?.Invoke(action, this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

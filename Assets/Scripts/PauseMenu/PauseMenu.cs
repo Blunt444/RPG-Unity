@@ -8,6 +8,9 @@ public class PauseMenu : MonoBehaviour
 {
     public bool isOpen;
     public CanvasGroup canvas;
+    public bool isSaveClicked = false;
+    public int messageTime = 4;
+    public static event Action<string, int> Message;
     private void OnEnable()
     {
         PauseButton.onClick += Response;
@@ -28,6 +31,8 @@ public class PauseMenu : MonoBehaviour
 
     private void TogglePauseMenu()
     {
+        if (isSaveClicked) return;
+
         if (isOpen)
         {
             canvas.alpha = 0;
@@ -46,8 +51,10 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    private void Response(PauseButtonAction action)
+    private void Response(PauseButtonAction action, PauseButton pauseButton)
     {
+        if (isSaveClicked) return;
+
         switch (action)
         {
             case PauseButtonAction.Exit:
@@ -57,11 +64,43 @@ public class PauseMenu : MonoBehaviour
                 TogglePauseMenu();
                 return;
             case PauseButtonAction.Save:
-                SaveManager.Instance.SaveGame();
+                // isSaveClicked = true;
+                // pauseButton.textBox.text = "Saving..";
+                // bool saved = SaveManager.Instance.SaveGame();
+                // pauseButton.textBox.text = "Save";
+                // if (saved)
+                // {
+                //     Message?.Invoke("Game Saved", messageTime);
+                // }
+                // isSaveClicked = false;
+                StartCoroutine(SaveCoroutine(pauseButton));
                 return;
             default:
                 return;
         }
+    }
+
+    private IEnumerator SaveCoroutine(PauseButton pauseButton)
+    {
+        isSaveClicked = true;
+
+        pauseButton.textBox.text = "Saving..";
+
+        bool saved = SaveManager.Instance.SaveGame();
+
+        yield return new WaitForSecondsRealtime(2);
+
+        if (saved)
+        {
+            Message?.Invoke("Game Saved.", messageTime);
+        }
+        else
+        {
+            Message?.Invoke("Faild To Save Game.", messageTime);
+        }
+
+        pauseButton.textBox.text = "Save";
+        isSaveClicked = false;
     }
 
     private void ExitToMainMenu()

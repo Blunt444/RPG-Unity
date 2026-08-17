@@ -42,6 +42,14 @@ public class DeathCanvasScript : MonoBehaviour
         ToggleVisibility();
     }
 
+    public void SpawnAtCheckPoint()
+    {
+        playerTransform.position = RespawnPointManager.Instance.respawnPoint.transform.position;
+        playerTransform.gameObject.SetActive(true);
+
+        playerTransform.GetComponent<PlayerMovement>().ResetMovements();
+    }
+
     public void OnDie()
     {
         ToggleVisibility();

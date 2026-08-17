@@ -336,11 +336,13 @@ MonoBehaviour:
       playerLayer:
         serializedVersion: 2
         m_Bits: 256
+      LootPrefab: {fileID: 3932919981206716231, guid: 6fb9c5f927b6b0d49b1670a40744f1c7, type: 3}
   - key: 1
     transform:
       playerLayer:
         serializedVersion: 2
         m_Bits: 256
+      LootPrefab: {fileID: 3932919981206716231, guid: 6fb9c5f927b6b0d49b1670a40744f1c7, type: 3}
 --- !u!114 &126148626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +372,13 @@ MonoBehaviour:
       knockBackTime: 0.3
       knockBackTimeResistance: 0
       stuntResistance: 0.2
+      minDrop: 0
+      maxDrop: 2
+      minQuantity: 0
+      maxQuantity: 2
+      loots:
+      - {fileID: 11400000, guid: 5659d0b4f9cd3cc4591f4370bda7766f, type: 2}
+      - {fileID: 11400000, guid: 421dde164514960428efe69cb10cfb5f, type: 2}
   - type: 0
     difficulty: 1
     stat:
@@ -386,6 +395,13 @@ MonoBehaviour:
       knockBackTime: 0.3
       knockBackTimeResistance: 0.3
       stuntResistance: 0.4
+      minDrop: 1
+      maxDrop: 3
+      minQuantity: 1
+      maxQuantity: 3
+      loots:
+      - {fileID: 11400000, guid: 5659d0b4f9cd3cc4591f4370bda7766f, type: 2}
+      - {fileID: 11400000, guid: 421dde164514960428efe69cb10cfb5f, type: 2}
   - type: 0
     difficulty: 2
     stat:
@@ -402,6 +418,14 @@ MonoBehaviour:
       knockBackTime: 0.3
       knockBackTimeResistance: 0.6
       stuntResistance: 0.7
+      minDrop: 2
+      maxDrop: 4
+      minQuantity: 2
+      maxQuantity: 6
+      loots:
+      - {fileID: 11400000, guid: 5659d0b4f9cd3cc4591f4370bda7766f, type: 2}
+      - {fileID: 11400000, guid: 5d42c41d87998dd4c8fc84ecaabec365, type: 2}
+      - {fileID: 11400000, guid: 421dde164514960428efe69cb10cfb5f, type: 2}
   - type: 1
     difficulty: 0
     stat:
@@ -418,6 +442,13 @@ MonoBehaviour:
       knockBackTime: 0.3
       knockBackTimeResistance: 0
       stuntResistance: 0
+      minDrop: 0
+      maxDrop: 2
+      minQuantity: 2
+      maxQuantity: 4
+      loots:
+      - {fileID: 11400000, guid: 1ca0c8c1b0e41c94faae314bfc08e19c, type: 2}
+      - {fileID: 11400000, guid: 5659d0b4f9cd3cc4591f4370bda7766f, type: 2}
   - type: 1
     difficulty: 1
     stat:
@@ -434,6 +465,14 @@ MonoBehaviour:
       knockBackTime: 0.3
       knockBackTimeResistance: 0
       stuntResistance: 0
+      minDrop: 1
+      maxDrop: 3
+      minQuantity: 2
+      maxQuantity: 6
+      loots:
+      - {fileID: 11400000, guid: 5659d0b4f9cd3cc4591f4370bda7766f, type: 2}
+      - {fileID: 11400000, guid: 1ca0c8c1b0e41c94faae314bfc08e19c, type: 2}
+      - {fileID: 11400000, guid: 4429557e0a9420647b6337bc32a1ffbb, type: 2}
   - type: 1
     difficulty: 1
     stat:
@@ -450,6 +489,15 @@ MonoBehaviour:
       knockBackTime: 0.3
       knockBackTimeResistance: 0
       stuntResistance: 0
+      minDrop: 2
+      maxDrop: 4
+      minQuantity: 2
+      maxQuantity: 8
+      loots:
+      - {fileID: 11400000, guid: 5d42c41d87998dd4c8fc84ecaabec365, type: 2}
+      - {fileID: 11400000, guid: 5659d0b4f9cd3cc4591f4370bda7766f, type: 2}
+      - {fileID: 11400000, guid: 421dde164514960428efe69cb10cfb5f, type: 2}
+      - {fileID: 11400000, guid: 4429557e0a9420647b6337bc32a1ffbb, type: 2}
 --- !u!114 &126148627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1755,7 +1803,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.4486365
+      m_AnimationSpeed: 2.967206
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: -12, z: 0}
@@ -1770,7 +1818,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.7737625
+      m_AnimationSpeed: 2.7958922
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -2379,11 +2427,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: RespawnPoint (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9059270926388705805, guid: 3ba9f79cbc400a041b06931886c74e19, type: 3}
+      propertyPath: respawnPointId
+      value: Near Npc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ba9f79cbc400a041b06931886c74e19, type: 3}
+--- !u!114 &374884543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9059270926388705805, guid: 3ba9f79cbc400a041b06931886c74e19, type: 3}
+  m_PrefabInstance: {fileID: 374884542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8e6e13120500e4097151003e6d7528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RespawnPoint
 --- !u!1 &399879499
 GameObject:
   m_ObjectHideFlags: 0
@@ -11766,6 +11829,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 3097369310244994201, guid: 548766c3fc8d4fe418d7ca656e29ee28, type: 3}
   m_PrefabInstance: {fileID: 4592210467440579128}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &1421948403 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6909457487797275750, guid: d3fe3a1aaac41c74ca4d54db46f28e55, type: 3}
+  m_PrefabInstance: {fileID: 444574819785017854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1427630704
 GameObject:
   m_ObjectHideFlags: 0
@@ -11813,8 +11881,10 @@ MonoBehaviour:
   respawnPoint: {fileID: 1135898396}
   message: {fileID: 675377012}
   countdown: 3
-  defaultRespawnPoint: {fileID: 0}
-  respawnPoints: []
+  defaultRespawnPoint: {fileID: 1135898396}
+  respawnPoints:
+  - {fileID: 1135898396}
+  - {fileID: 374884543}
 --- !u!1 &1526266243
 GameObject:
   m_ObjectHideFlags: 0
@@ -12246,7 +12316,7 @@ Tilemap:
       - {fileID: -8604352155094888535, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
       - {fileID: 219539661368650802, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
       - {fileID: -8376323821268461911, guid: d0fc9e2a579ca334cb86c0beb00bc1aa, type: 3}
-      m_AnimationSpeed: 4.4847865
+      m_AnimationSpeed: 2.1356668
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 10, y: 1, z: 0}
@@ -12261,7 +12331,7 @@ Tilemap:
       - {fileID: 9050774589780060452, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
       - {fileID: -4024382073413787549, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
       - {fileID: 8143098205146776124, guid: 4c541616be24b114e8dbb378e4494ffc, type: 3}
-      m_AnimationSpeed: 4.066815
+      m_AnimationSpeed: 5.453576
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 14, y: 4, z: 0}
@@ -12276,7 +12346,7 @@ Tilemap:
       - {fileID: 5002216177705252053, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
       - {fileID: -5242237701343363396, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
       - {fileID: -1336393745153393164, guid: a28afaacf196bab4b8319779e1bf77de, type: 3}
-      m_AnimationSpeed: 3.329807
+      m_AnimationSpeed: 2.7116966
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -15265,6 +15335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RespawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 9059270926388705805, guid: 3ba9f79cbc400a041b06931886c74e19, type: 3}
+      propertyPath: respawnPointId
+      value: Default
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15455,7 +15529,7 @@ PrefabInstance:
     - target: {fileID: 5395674213991143302, guid: f7376cd0d4fd1394096a627cdfae24a3, type: 3}
       propertyPath: BoundingShape2D
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1421948403}
     - target: {fileID: 6471337717530429815, guid: f7376cd0d4fd1394096a627cdfae24a3, type: 3}
       propertyPath: Lens.OrthographicSize
       value: 7

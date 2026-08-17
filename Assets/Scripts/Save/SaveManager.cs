@@ -34,80 +34,92 @@ public class SaveManager : MonoBehaviour
         savePath = Path.Combine(Application.persistentDataPath, "Saves");
     }
 
-    public void SaveGame()
+    public bool SaveGame()
     {
-        SaveData data = new SaveData();
-
-        DateTime now = DateTime.Now;
-        data.timestamp = now.ToString("yyyy-MM-dd HH:mm:ss");
-
-        data.gold = InventoryManager.Instance.gold;
-        data.warriorStancePoint = StanceManager.Instance.GetPointsForRespectiveStance(SkillCategory.Combat);
-        data.archeryStancePoint = StanceManager.Instance.GetPointsForRespectiveStance(SkillCategory.Archery);
-        data.currentArrowCount = ArrowQuantityManager.Instance.GetQuantity();
-        data.maxArrowCount = ArrowQuantityManager.Instance.GetMaxArrowCount();
-        data.currentHealth = StatsManager.Instance.currentHealth;
-        data.maxHealth = StatsManager.Instance.maxHealth;
-        data.maxGuardHit = StatsManager.Instance.maxGuardHitNegate;
-        data.lastRespawnPoint = RespawnPointManager.Instance.GetCurrentRespawnPointId();
-
-        Dictionary<string, float> archeryData = LevelSystem.Instance.GetValuesFromSystem(PlayerStance.Archer);
-        data.archeryData = new ExpData
+        try
         {
-            lvl = (int)archeryData["level"],
-            currentExp = (int)archeryData["currentExp"],
-            expToLevel = (int)archeryData["expToLevel"],
-            expGrowthMultiplier = archeryData["expGrowthMultiplier"]
-        };
+            SaveData data = new SaveData();
 
-        Dictionary<string, float> warriorData = LevelSystem.Instance.GetValuesFromSystem(PlayerStance.Warrior);
-        data.warriorData = new ExpData
-        {
-            lvl = (int)warriorData["level"],
-            currentExp = (int)warriorData["currentExp"],
-            expToLevel = (int)warriorData["expToLevel"],
-            expGrowthMultiplier = warriorData["expGrowthMultiplier"]
-        };
+            DateTime now = DateTime.Now;
+            data.timestamp = now.ToString("yyyy-MM-dd HH:mm:ss");
 
-        foreach (InventorySlot slot in InventoryManager.Instance.inventorySlots)
-        {
-            if (slot.itemSO == null) continue;
-            data.inventory.Add(new InventorySlotData { itemName = slot.itemSO.itemName, quantity = slot.quantity });
-        }
+            data.gold = InventoryManager.Instance.gold;
+            data.warriorStancePoint = StanceManager.Instance.GetPointsForRespectiveStance(SkillCategory.Combat);
+            data.archeryStancePoint = StanceManager.Instance.GetPointsForRespectiveStance(SkillCategory.Archery);
+            data.currentArrowCount = ArrowQuantityManager.Instance.GetQuantity();
+            data.maxArrowCount = ArrowQuantityManager.Instance.GetMaxArrowCount();
+            data.currentHealth = StatsManager.Instance.currentHealth;
+            data.maxHealth = StatsManager.Instance.maxHealth;
+            data.maxGuardHit = StatsManager.Instance.maxGuardHitNegate;
+            data.lastRespawnPoint = RespawnPointManager.Instance.GetCurrentRespawnPointId();
 
-        foreach (QuestSO questSO in QuestManager.Instance.quests)
-        {
-            QuestData entry = new QuestData { questName = questSO.label, questState = questSO.questState };
-            entry.killCounts = new List<int>();
-
-            foreach (EnemyRequirement enemyRequirement in questSO.enemyRequirements)
+            Dictionary<string, float> archeryData = LevelSystem.Instance.GetValuesFromSystem(PlayerStance.Archer);
+            data.archeryData = new ExpData
             {
-                entry.killCounts.Add(enemyRequirement.killCount);
+                lvl = (int)archeryData["level"],
+                currentExp = (int)archeryData["currentExp"],
+                expToLevel = (int)archeryData["expToLevel"],
+                expGrowthMultiplier = archeryData["expGrowthMultiplier"]
+            };
+
+            Dictionary<string, float> warriorData = LevelSystem.Instance.GetValuesFromSystem(PlayerStance.Warrior);
+            data.warriorData = new ExpData
+            {
+                lvl = (int)warriorData["level"],
+                currentExp = (int)warriorData["currentExp"],
+                expToLevel = (int)warriorData["expToLevel"],
+                expGrowthMultiplier = warriorData["expGrowthMultiplier"]
+            };
+
+            foreach (InventorySlot slot in InventoryManager.Instance.inventorySlots)
+            {
+                if (slot.itemSO == null) continue;
+                data.inventory.Add(new InventorySlotData { itemName = slot.itemSO.itemName, quantity = slot.quantity });
             }
 
-            data.quests.Add(entry);
-        }
+            foreach (QuestSO questSO in QuestManager.Instance.quests)
+            {
+                QuestData entry = new QuestData { questName = questSO.label, questState = questSO.questState };
+                entry.killCounts = new List<int>();
 
-        foreach (var skill in SkillTreeManager.Instance.GetAllSkills())
-        {
-            data.skills.Add(
-                new SkillData
+                foreach (EnemyRequirement enemyRequirement in questSO.enemyRequirements)
                 {
-                    skillName = skill.Value.skillSO.skillName,
-                    isUnlocked = skill.Value.isUnlocked,
-                    lvl = skill.Value.currentLevel
+                    entry.killCounts.Add(enemyRequirement.killCount);
                 }
-            );
+
+                data.quests.Add(entry);
+            }
+
+            foreach (var skill in SkillTreeManager.Instance.GetAllSkills())
+            {
+                data.skills.Add(
+                    new SkillData
+                    {
+                        skillName = skill.Value.skillSO.skillName,
+                        isUnlocked = skill.Value.isUnlocked,
+                        lvl = skill.Value.currentLevel
+                    }
+                );
+            }
+
+            data.talkedNpcs = DialogHistoryTracker.Instance.GetTalkedNPCNames();
+
+            string json = JsonUtility.ToJson(data, true);
+
+            string fileName = $"save_{now:yyyyMMdd_HHmmss_fff}.json";
+            string fullPath = Path.Combine(savePath, fileName);
+
+            File.WriteAllText(fullPath, json);
+
+            return true;
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+            return false;
         }
 
-        data.talkedNpcs = DialogHistoryTracker.Instance.GetTalkedNPCNames();
-
-        string json = JsonUtility.ToJson(data, true);
-
-        string fileName = $"save_{now:yyyyMMdd_HHmmss_fff}.json";
-        string fullPath = Path.Combine(savePath, fileName);
-
-        File.WriteAllText(fullPath, json);
     }
 
     public List<string> GetAllSaves()
@@ -184,8 +196,9 @@ public class SaveManager : MonoBehaviour
         StanceManager.Instance.SetPointsToStance(SkillCategory.Combat, data.warriorStancePoint);
         StanceManager.Instance.SetPointsToStance(SkillCategory.Archery, data.archeryStancePoint);
         ArrowQuantityManager.Instance.SetArrowData(data.currentArrowCount, data.maxArrowCount);
-        StatsManager.Instance.SetSaveData(data.currentHealth, data.maxHealth, data.maxGuardHit);
         RespawnPointManager.Instance.SetRespawnPoint(data.lastRespawnPoint);
+        DeathCanvasScript.Instance.SpawnAtCheckPoint();
+        StatsManager.Instance.SetSaveData(data.currentHealth, data.maxHealth, data.maxGuardHit);
 
         foreach (InventorySlotData slotData in data.inventory)
         {

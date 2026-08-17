@@ -15,12 +15,14 @@ public class MessageManager : MonoBehaviour
         ShopManager.Message += HandleMessage;
         ArrowQuantityManager.Message += HandleMessage;
         QuestManager.Message += HandleMessage;
+        PauseMenu.Message += HandleMessage;
     }
     private void OnDisable()
     {
         ShopManager.Message -= HandleMessage;
         ArrowQuantityManager.Message -= HandleMessage;
         QuestManager.Message -= HandleMessage;
+        PauseMenu.Message -= HandleMessage;
     }
 
     private void HandleMessage(string text, int timer)
@@ -62,6 +64,8 @@ public class MessageManager : MonoBehaviour
 
             float progress = elapsed / timer;
 
+            // Debug.Log(progress);
+
             // Debug.Log(elapsed);
 
             message.alpha = Mathf.Lerp(1f, 0f, progress);
@@ -70,7 +74,7 @@ public class MessageManager : MonoBehaviour
         }
 
         queue.Dequeue();
-
+        // Debug.Log("Message time over");
         message.gameObject.SetActive(false);
         isDisplaying = false;
     }

@@ -39,15 +39,18 @@ public class RespawnPointManager : MonoBehaviour
 
     public void SetRespawnPoint(string id)
     {
-        foreach(RespawnPoint respawnPoint in respawnPoints)
+        foreach (RespawnPoint respawnPoint in respawnPoints)
         {
-            if(respawnPoint.respawnPointId == id)
+            if (respawnPoint.respawnPointId == id)
             {
                 this.respawnPoint = respawnPoint;
                 return;
             }
-        }
+            Debug.Log(id);
+            Debug.Log(respawnPoint.respawnPointId);
 
+        }
+        Debug.Log(defaultRespawnPoint.respawnPointId);
         respawnPoint = defaultRespawnPoint;
     }
 
@@ -59,7 +62,7 @@ public class RespawnPointManager : MonoBehaviour
     private IEnumerator DisableMessage()
     {
         message.gameObject.SetActive(true);
-        yield return new WaitForSeconds(countdown);
+        yield return new WaitForSecondsRealtime(countdown);
         message.gameObject.SetActive(false);
     }
 }
