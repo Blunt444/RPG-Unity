@@ -52,6 +52,11 @@ public class InventoryManager : MonoBehaviour
             goldText.text = gold.ToString();
             return;
         }
+        if (itemSO.isArrow)
+        {
+            ArrowQuantityManager.Instance.SetQuantity(quantity);
+            return;
+        }
 
         foreach (InventorySlot slot in inventorySlots)
         {
@@ -107,7 +112,7 @@ public class InventoryManager : MonoBehaviour
     private void DropLoot(ItemSO itemSO, int quantity)
     {
         Loot loot = Instantiate(lootPrefab, playerTransform.position, Quaternion.identity).GetComponent<Loot>();
-        loot.Initialize(itemSO, quantity);
+        loot.Initialize(itemSO, quantity, 2f);
     }
 
     public void DropItem(InventorySlot inventorySlot)

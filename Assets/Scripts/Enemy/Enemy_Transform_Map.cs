@@ -6,6 +6,7 @@ using UnityEngine;
 public struct EnemyTransform
 {
     public LayerMask playerLayer;
+    public GameObject LootPrefab;
 }
 
 [Serializable]

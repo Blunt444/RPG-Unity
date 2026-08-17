@@ -47,6 +47,24 @@ public class Enemy_Health : MonoBehaviour, Damageable
         OnMonsterDefeated?.Invoke(manager.expReward);
         OnEnemyKilled?.Invoke(manager.enemyType);
 
+        int len = UnityEngine.Random.Range(manager.minDrop, manager.maxDrop + 1);
+
+        for (int i = 0; i < len; i++)
+        {
+            if (manager.loots.Count == 0) break;
+
+            int index = UnityEngine.Random.Range(0, manager.loots.Count);
+            int quantity = UnityEngine.Random.Range(manager.minQuantity, manager.maxQuantity + 1);
+
+            if (quantity <= 0) continue;
+
+            Vector3 spawnPos = transform.position + (Vector3)(UnityEngine.Random.insideUnitCircle * 2f);
+            Loot loot = Instantiate(manager.LootPrefab, spawnPos, Quaternion.identity).GetComponent<Loot>();
+            loot.Initialize(manager.loots[index], quantity);
+
+            manager.loots.RemoveAt(index);
+        }
+
         Death death = Instantiate(manager.deathPrefab, transform.position, Quaternion.identity);
         death.Setup(timeToDecay);
 

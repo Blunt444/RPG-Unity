@@ -15,23 +15,43 @@ public class Loot : MonoBehaviour
         if (itemSO == null) return;
         UpdateAppearnace();
     }
+
+    private void EnablePickUp()
+    {
+        canBePickedup = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && canBePickedup)
         {
+            canBePickedup = false;
+
             anim.Play("LootPickup");
             OnItemLooted?.Invoke(itemSO, quantity);
             Destroy(gameObject, 0.5f);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && canBePickedup)
         {
-            canBePickedup = true;
+            canBePickedup = false;
+
+            anim.Play("LootPickup");
+            OnItemLooted?.Invoke(itemSO, quantity);
+            Destroy(gameObject, 0.5f);
         }
     }
+
+    // private void OnTriggerExit2D(Collider2D collision)
+    // {
+    //     if (collision.CompareTag("Player"))
+    //     {
+    //         canBePickedup = true;
+    //     }
+    // }
 
     private void UpdateAppearnace()
     {
@@ -45,6 +65,18 @@ public class Loot : MonoBehaviour
         this.quantity = quantity;
         canBePickedup = false;
         UpdateAppearnace();
+
+        Invoke(nameof(EnablePickUp), 0.25f);
+    }
+
+    public void Initialize(ItemSO itemSO, int quantity, float waitTime)
+    {
+        this.itemSO = itemSO;
+        this.quantity = quantity;
+        canBePickedup = false;
+        UpdateAppearnace();
+
+        Invoke(nameof(EnablePickUp), waitTime);
     }
 
     public void DropWoodAnimation()

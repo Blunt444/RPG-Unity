@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Manager : MonoBehaviour
@@ -22,6 +23,12 @@ public class Enemy_Manager : MonoBehaviour
    public float knockBackTimeResistance;
    public float stuntResistance;
    public int guardDamage;
+   public int minDrop;
+   public int maxDrop;
+   public int minQuantity;
+   public int maxQuantity;
+   public List<ItemSO> loots;
+   public GameObject LootPrefab;
 
    public Spawner_Spawn spawnerHut;
 
@@ -101,11 +108,17 @@ public class Enemy_Manager : MonoBehaviour
       knockBackTimeResistance = stats.knockBackTimeResistance;
       stuntResistance = stats.stuntResistance;
       guardDamage = stats.guardDamage;
+      minDrop = stats.minDrop;
+      maxDrop = stats.maxDrop;
+      minQuantity = stats.minQuantity;
+      maxQuantity = stats.maxQuantity;
+      loots = new List<ItemSO>(stats.loots);
    }
    public void SetTransform()
    {
       EnemyTransform transforms = Enemy_Transform_Map.Instance.GetTransform(enemyType);
       playerLayer = transforms.playerLayer;
+      LootPrefab = transforms.LootPrefab;
    }
 
 }

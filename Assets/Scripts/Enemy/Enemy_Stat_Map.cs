@@ -26,6 +26,13 @@ public struct EnemyStatStruct
     public float knockBackTimeResistance;
     public float stuntResistance;
 
+    [Header("Loot")]
+    public int minDrop;
+    public int maxDrop;
+    public int minQuantity;
+    public int maxQuantity;
+    public List<ItemSO> loots;
+
 }
 
 [Serializable]
