@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
+    public List<ItemSO> allItemSO = new List<ItemSO>();
     public InventorySlot[] inventorySlots;
     public UseItem useItem;
     public int gold;
@@ -87,6 +89,18 @@ public class InventoryManager : MonoBehaviour
         if (quantity > 0)
         {
             DropLoot(itemSO, quantity);
+        }
+    }
+
+    public void AddItem(string itemName, int quantity)
+    {
+        foreach (ItemSO itemSO in allItemSO)
+        {
+            if (itemSO.itemName == itemName)
+            {
+                AddItem(itemSO, quantity);
+                return;
+            }
         }
     }
 

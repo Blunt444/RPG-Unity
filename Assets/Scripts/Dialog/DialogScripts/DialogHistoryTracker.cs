@@ -4,6 +4,7 @@ using UnityEngine;
 public class DialogHistoryTracker : MonoBehaviour
 {
     public static DialogHistoryTracker Instance;
+    public List<ActorSO> allActorSo = new List<ActorSO>();
 
     private HashSet<ActorSO> talkedNpcs = new HashSet<ActorSO>();
 
@@ -57,5 +58,17 @@ public class DialogHistoryTracker : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void AddToTalkedNpc(string actorName)
+    {
+        foreach(ActorSO actorSO in allActorSo)
+        {
+            if(actorSO.actorName == actorName)
+            {
+                AddToTalkedNpc(actorSO);
+                return;
+            }
+        }
     }
 }

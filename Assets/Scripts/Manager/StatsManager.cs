@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class StatsManager : MonoBehaviour
@@ -51,6 +50,13 @@ public class StatsManager : MonoBehaviour
       Gizmos.color = Color.green;
       Gizmos.DrawWireCube(combat.attackPoint.position, attackBoxSize);
     }
+  }
+
+  public void SetSaveData(int currentHealth, int maxHealth, int maxGuardHitNegate)
+  {
+    this.currentHealth = currentHealth;
+    this.maxHealth = maxHealth;
+    this.maxGuardHitNegate = maxGuardHitNegate;
   }
 
 }

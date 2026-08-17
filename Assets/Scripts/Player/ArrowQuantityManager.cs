@@ -71,6 +71,12 @@ public class ArrowQuantityManager : MonoBehaviour
         return isArrowAdded;
     }
 
+    public void SetArrowData(int currAmount, int maxAmount)
+    {
+        currentAmount = currAmount;
+        this.maxAmount = maxAmount;
+    }
+
     private void UpdateQuantityText()
     {
         quantityText.text = "x " + (currentAmount < 0 ? 0 : currentAmount);

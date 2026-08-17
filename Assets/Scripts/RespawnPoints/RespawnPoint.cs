@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RespawnPoint : MonoBehaviour
 {
-    [SerializeField] private string respawnPointId;
+    public string respawnPointId;
     private bool isPlayerInRange = false;
 
 

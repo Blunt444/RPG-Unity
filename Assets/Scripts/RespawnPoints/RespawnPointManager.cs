@@ -9,6 +9,7 @@ public class RespawnPointManager : MonoBehaviour
     public RespawnPoint respawnPoint;
     public TMP_Text message;
     public int countdown = 3;
+    public RespawnPoint defaultRespawnPoint;
 
     [SerializeField] private List<RespawnPoint> respawnPoints = new List<RespawnPoint>();
 
@@ -34,6 +35,20 @@ public class RespawnPointManager : MonoBehaviour
         if (respawnPoint == this.respawnPoint) return;
         this.respawnPoint = respawnPoint;
         TriggerAcknowledgement();
+    }
+
+    public void SetRespawnPoint(string id)
+    {
+        foreach(RespawnPoint respawnPoint in respawnPoints)
+        {
+            if(respawnPoint.respawnPointId == id)
+            {
+                this.respawnPoint = respawnPoint;
+                return;
+            }
+        }
+
+        respawnPoint = defaultRespawnPoint;
     }
 
     private void TriggerAcknowledgement()

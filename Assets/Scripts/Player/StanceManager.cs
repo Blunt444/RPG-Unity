@@ -120,6 +120,12 @@ public class StanceManager : MonoBehaviour
             archeryStancePoint += amount;
         }
     }
+
+    public void SetPointsToStance(SkillCategory type, int amount)
+    {
+        if (type == SkillCategory.Combat) warriorStancePoint = amount;
+        else archeryStancePoint = amount;
+    }
 }
 
 public enum PlayerStance

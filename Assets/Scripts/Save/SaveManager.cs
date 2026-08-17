@@ -165,12 +165,24 @@ public class SaveManager : MonoBehaviour
         string path = Path.Combine(savePath, fileName);
 
         string json = File.ReadAllText(path);
-        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
 
+        InventoryManager.Instance.gold = data.gold;
+        StanceManager.Instance.SetPointsToStance(SkillCategory.Combat, data.warriorStancePoint);
+        StanceManager.Instance.SetPointsToStance(SkillCategory.Archery, data.archeryStancePoint);
+        ArrowQuantityManager.Instance.SetArrowData(data.currentArrowCount, data.maxArrowCount);
+        StatsManager.Instance.SetSaveData(data.currentHealth, data.maxHealth, data.maxGuardHit);
+        RespawnPointManager.Instance.SetRespawnPoint(data.lastRespawnPoint);
 
-        
+        foreach (InventorySlotData slotData in data.inventory)
+        {
+            InventoryManager.Instance.AddItem(slotData.itemName, slotData.quantity);
+        }
 
-
+        foreach (string actorName in data.talkedNpcs)
+        {
+            DialogHistoryTracker.Instance.AddToTalkedNpc(actorName);
+        }
 
         SceneManager.LoadScene(sceneName);
     }
