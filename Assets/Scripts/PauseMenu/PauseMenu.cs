@@ -83,6 +83,7 @@ public class PauseMenu : MonoBehaviour
     private IEnumerator SaveCoroutine(PauseButton pauseButton)
     {
         isSaveClicked = true;
+        SaveManager.Instance.isNewGame = false;
 
         pauseButton.textBox.text = "Saving..";
 

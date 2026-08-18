@@ -14,10 +14,24 @@ public class QuestManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            if (SaveManager.Instance.isNewGame)
+                ResetAllQuestSOs();
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void ResetAllQuestSOs()
+    {
+        foreach (QuestSO questSO in quests)
+        {
+            questSO.questState = QuestState.None;
+            foreach(EnemyRequirement enemyRequirement in questSO.enemyRequirements)
+            {
+                enemyRequirement.killCount = 0;
+            }
         }
     }
 
@@ -28,7 +42,7 @@ public class QuestManager : MonoBehaviour
             if (questSO.label == questData.questName)
             {
                 questSO.questState = questData.questState;
-                
+
                 int len = Mathf.Min(questData.killCounts.Count, questSO.enemyRequirements.Count);
                 for (int i = 0; i < len; i++)
                 {

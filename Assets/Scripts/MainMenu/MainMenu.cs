@@ -68,6 +68,7 @@ public class MainMenu : MonoBehaviour
                 QuitGame();
                 return;
             case ButtonAction.NewGame:
+                SaveManager.Instance.isNewGame = true;
                 SceneManager.LoadScene(newScene);
                 return;
             case ButtonAction.LoadGame:

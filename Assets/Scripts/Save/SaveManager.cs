@@ -12,6 +12,7 @@ public class SaveManager : MonoBehaviour
     public string savePath;
     public static event Action<string, LoadButtonAction, bool> buttonResponse;
     private SaveData data;
+    public bool isNewGame = false;
 
 
     private void Awake()
@@ -193,6 +194,7 @@ public class SaveManager : MonoBehaviour
 
     public void ApplySaveData(SaveData data)
     {
+        isNewGame = false;
         InventoryManager.Instance.gold = data.gold;
         StanceManager.Instance.SetPointsToStance(SkillCategory.Combat, data.warriorStancePoint);
         StanceManager.Instance.SetPointsToStance(SkillCategory.Archery, data.archeryStancePoint);

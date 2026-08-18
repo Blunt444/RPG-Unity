@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject topicItem;
     public Transform topicBox;
     public NPC_Talk npc;
+    public List<DialogSO> dialogSOs = new List<DialogSO>();
 
 
     public CanvasGroup dialogCanvas;
@@ -22,6 +23,8 @@ public class DialogueManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            if (SaveManager.Instance.isNewGame)
+                ResetAllDialogSOs();
         }
         else
         {
@@ -48,6 +51,14 @@ public class DialogueManager : MonoBehaviour
             isOpened = true;
         }
         // Debug.Log("Canvas state : " + isOpened);
+    }
+
+    private void ResetAllDialogSOs()
+    {
+        foreach (DialogSO dialogSO in dialogSOs)
+        {
+            dialogSO.returnStartIndex = 0;
+        }
     }
 
     public int GetStartIndex(DialogSO dialogSO)

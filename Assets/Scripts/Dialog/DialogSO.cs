@@ -34,16 +34,16 @@ public class DialogueTopic
     public int nextLineIndex = -1;
 }
 
-[Serializable]
-public class DialogueChoice
-{
-    public string label;
-    public int nextLineIndex;
-    public ChoiceOutcome choiceOutcome = ChoiceOutcome.None;
-    // public 
-}
+// [Serializable]
+// public class DialogueChoice
+// {
+//     public string label;
+//     public int nextLineIndex;
+//     public ChoiceOutcome choiceOutcome = ChoiceOutcome.None;
+//     // public 
+// }
 
-public enum ChoiceOutcome { None, Started, Completed, Declined }
+// public enum ChoiceOutcome { None, Started, Completed, Declined }
 public enum TextFor
 {
     Topic,
