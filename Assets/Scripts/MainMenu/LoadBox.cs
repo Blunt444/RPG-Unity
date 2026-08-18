@@ -28,7 +28,7 @@ public class LoadBox : MonoBehaviour
 
     private void ButtonResponseAction(string fileName, LoadButtonAction action, bool state)
     {
-        if (!state) return;
+        if (!state || fileName != this.fileName) return;
 
         switch (action)
         {

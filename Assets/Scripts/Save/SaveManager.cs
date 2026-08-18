@@ -180,6 +180,7 @@ public class SaveManager : MonoBehaviour
         string json = File.ReadAllText(path);
         data = JsonUtility.FromJson<SaveData>(json);
 
+        SceneManager.sceneLoaded -= OnGameplaySceneLoaded;
         SceneManager.sceneLoaded += OnGameplaySceneLoaded;
         SceneManager.LoadScene(sceneName);
     }
