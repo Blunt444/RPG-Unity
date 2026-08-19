@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public MainMenuButton clickedButton;
     public List<MainMenuButton> allButtons = new List<MainMenuButton>();
 
-    public string newScene = "Scene1";
+    public string newScene = "Story";
 
     public Stack<Transform> stack = new Stack<Transform>();
 
