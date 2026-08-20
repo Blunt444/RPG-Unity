@@ -103,6 +103,23 @@ public class SaveManager : MonoBehaviour
                 );
             }
 
+            foreach (DialogSO dialogSO in DialogueManager.Instance.dialogSOs)
+            {
+                DialogData dialogData = new DialogData { id = dialogSO.id, index = dialogSO.returnStartIndex };
+                data.dialogDatas.Add(dialogData);
+            }
+
+            foreach (var loot in InventoryManager.Instance.loots)
+            {
+                data.loots.Add(new LootData { id = loot.Key, lootInfo = loot.Value });
+            }
+
+            foreach (TreeScript tree in TreeManager.Instance.trees)
+            {
+                TreeData treeData = new TreeData { id = tree.id, isDead = tree.isDead };
+                data.treeDatas.Add(treeData);
+            }
+
             data.talkedNpcs = DialogHistoryTracker.Instance.GetTalkedNPCNames();
 
             string json = JsonUtility.ToJson(data, true);
@@ -218,6 +235,21 @@ public class SaveManager : MonoBehaviour
             QuestManager.Instance.SetQuestData(questData);
         }
 
+        foreach (DialogData dialogData in data.dialogDatas)
+        {
+            DialogueManager.Instance.SetSaveDialogData(dialogData);
+        }
+
+        foreach (TreeData treeData in data.treeDatas)
+        {
+            TreeManager.Instance.SetSaveTreeData(treeData);
+        }
+
+        foreach (LootData lootData in data.loots)
+        {
+            InventoryManager.Instance.AddLootData(lootData);
+        }
+
         foreach (SkillData skillData in data.skills)
         {
             SkillTreeManager.Instance.SetSKillData(skillData);
@@ -264,6 +296,9 @@ public class SaveData
     public List<QuestData> quests = new();
     public List<SkillData> skills = new();
     public List<string> talkedNpcs = new();
+    public List<DialogData> dialogDatas = new();
+    public List<TreeData> treeDatas = new();
+    public List<LootData> loots = new();
 }
 
 [Serializable]
@@ -271,6 +306,27 @@ public class InventorySlotData
 {
     public string itemName;
     public int quantity;
+}
+
+[Serializable]
+public class DialogData
+{
+    public string id;
+    public int index;
+}
+
+[Serializable]
+public class LootData
+{
+    public string id;
+    public LootInfo lootInfo;
+}
+
+[Serializable]
+public class TreeData
+{
+    public string id;
+    public bool isDead;
 }
 
 [Serializable]

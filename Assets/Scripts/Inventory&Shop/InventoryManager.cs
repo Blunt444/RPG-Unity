@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,6 +7,7 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     public List<ItemSO> allItemSO = new List<ItemSO>();
+    public Dictionary<string, LootInfo> loots = new Dictionary<string, LootInfo>();
     public InventorySlot[] inventorySlots;
     public UseItem useItem;
     public int gold;
@@ -111,8 +111,15 @@ public class InventoryManager : MonoBehaviour
 
     private void DropLoot(ItemSO itemSO, int quantity)
     {
-        Loot loot = Instantiate(lootPrefab, playerTransform.position, Quaternion.identity).GetComponent<Loot>();
+        Loot loot = Instantiate(lootPrefab, playerTransform.position + (Vector3)UnityEngine.Random.insideUnitCircle * 1.3f, Quaternion.identity).GetComponent<Loot>();
         loot.Initialize(itemSO, quantity, 2f);
+        loots[loot.id] = new LootInfo { isDestroyed = false, pos = loot.transform.position };
+    }
+
+    public void AddLootData(LootData lootData)
+    {
+        if (!lootData.lootInfo.isDestroyed)
+            loots[lootData.id] = lootData.lootInfo;
     }
 
     public void DropItem(InventorySlot inventorySlot)

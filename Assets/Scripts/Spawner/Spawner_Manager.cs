@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Spawner_Manager : MonoBehaviour
@@ -13,6 +12,7 @@ public class Spawner_Manager : MonoBehaviour
     public float maxSec;
     public float shakeDuration;
     public float shakeForce;
+    public string id;
 
     public bool isDead = false;
 
@@ -21,6 +21,11 @@ public class Spawner_Manager : MonoBehaviour
         type = Spawner_Difficulty.Instance.GetRandomDifficulty();
         GetAndSetStat();
         GetSpawnPoints();
+    }
+
+    private void Start()
+    {
+        id = Id.CreateId(transform.position);
     }
 
     private void GetAndSetStat()

@@ -14,7 +14,8 @@ public class TreeScript : MonoBehaviour, Damageable
     private PolygonCollider2D polygonCollider2D;
     private Vector3 localPos;
     private bool isShaking = false;
-    private bool isDead = false;
+    public bool isDead = false;
+    public string id;
 
     private void Start()
     {
@@ -37,6 +38,15 @@ public class TreeScript : MonoBehaviour, Damageable
 
         anim.Play("TreeSway", -1, Random.Range(0f, 1f));
         anim.speed = Random.Range(0.85f, 1.15f);
+
+        id = Id.CreateId(transform.position);
+
+        TreeManager.Instance.trees.Add(this);
+
+        if (isDead)
+        {
+            Die();
+        }
     }
 
     private void LateUpdate()
@@ -50,8 +60,8 @@ public class TreeScript : MonoBehaviour, Damageable
 
     public void TakeDamage(int damageAmount, Transform attacker)
     {
-        if(isDead) return;
-        
+        if (isDead) return;
+
         currentHit++;
         Shake();
         if (currentHit >= MaxHit)
@@ -65,7 +75,8 @@ public class TreeScript : MonoBehaviour, Damageable
         anim.enabled = false;
         sr.sprite = stump;
 
-        TreeManager.Instance.DropWood(transform);
+        if (!isDead)
+            TreeManager.Instance.DropWood(transform);
 
         if (polygonCollider2D == null)
         {

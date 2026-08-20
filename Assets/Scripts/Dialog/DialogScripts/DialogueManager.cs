@@ -61,6 +61,18 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void SetSaveDialogData(DialogData data)
+    {
+        foreach (DialogSO dialogSO in dialogSOs)
+        {
+            if (dialogSO.id == data.id)
+            {
+                dialogSO.returnStartIndex = data.index;
+                return;
+            }
+        }
+    }
+
     public int GetStartIndex(DialogSO dialogSO)
     {
         return dialogSO.returnStartIndex;

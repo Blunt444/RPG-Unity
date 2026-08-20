@@ -10,8 +10,7 @@ public class RespawnPointManager : MonoBehaviour
     public TMP_Text message;
     public int countdown = 3;
     public RespawnPoint defaultRespawnPoint;
-
-    [SerializeField] private List<RespawnPoint> respawnPoints = new List<RespawnPoint>();
+    public List<RespawnPoint> respawnPoints = new List<RespawnPoint>();
 
     public string GetCurrentRespawnPointId()
     {
@@ -23,6 +22,7 @@ public class RespawnPointManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            respawnPoints.Clear();
         }
         else
         {

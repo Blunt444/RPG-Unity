@@ -12,6 +12,15 @@ public class Spawner_Destroyed : MonoBehaviour
         spawnerHutContainer = transform.root.gameObject;
         healthCanvas = transform.root.Find("Health").gameObject;
     }
+
+    private void Start()
+    {
+        if (gameObject.GetComponent<Spawner_Manager>().isDead)
+        {
+            OnDestroyed();
+        }
+    }
+
     public void OnDestroyed()
     {
         if (destroyedSprite == null)

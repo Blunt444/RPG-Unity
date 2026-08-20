@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DialogSO")]
 public class DialogSO : ScriptableObject
 {
+    public string id;
     public DialogueLine[] lines;
     public int returnStartIndex = 0;
 }

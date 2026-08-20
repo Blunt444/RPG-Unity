@@ -8,7 +8,26 @@ public class Loot : MonoBehaviour
     public Animator anim;
     public int quantity;
     public bool canBePickedup = true;
+    public string id;
     public static event Action<ItemSO, int> OnItemLooted;
+
+    private void Start()
+    {
+        if (id == null || id == "")
+        {
+            id = Id.CreateId(transform.position);
+        }
+        if (InventoryManager.Instance.loots.ContainsKey(id))
+        {
+            if (InventoryManager.Instance.loots[id].isDestroyed)
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
+            InventoryManager.Instance.loots[id] = new LootInfo { isDestroyed = false, pos = transform.position };
+    }
+
 
     private void OnValidate()
     {
@@ -29,6 +48,7 @@ public class Loot : MonoBehaviour
 
             anim.Play("LootPickup");
             OnItemLooted?.Invoke(itemSO, quantity);
+            SetIsDestroyed();
             Destroy(gameObject, 0.5f);
         }
     }
@@ -41,8 +61,14 @@ public class Loot : MonoBehaviour
 
             anim.Play("LootPickup");
             OnItemLooted?.Invoke(itemSO, quantity);
+            SetIsDestroyed();
             Destroy(gameObject, 0.5f);
         }
+    }
+
+    private void SetIsDestroyed()
+    {
+        InventoryManager.Instance.loots[id].isDestroyed = true;
     }
 
     // private void OnTriggerExit2D(Collider2D collision)
@@ -66,6 +92,8 @@ public class Loot : MonoBehaviour
         canBePickedup = false;
         UpdateAppearnace();
 
+        id = Id.CreateId(transform.position);
+
         Invoke(nameof(EnablePickUp), 0.25f);
     }
 
@@ -83,4 +111,11 @@ public class Loot : MonoBehaviour
     {
         anim.Play("DropWood");
     }
+}
+
+[Serializable]
+public class LootInfo
+{
+    public bool isDestroyed;
+    public Vector3 pos;
 }

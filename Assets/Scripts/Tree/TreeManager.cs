@@ -22,6 +22,7 @@ public class TreeManager : MonoBehaviour
     public float shakeMagnitude = 0.3f;
     public GameObject lootPrefab;
     public ItemSO itemSO;
+    public List<TreeScript> trees = new List<TreeScript>();
 
     [SerializeField]
     private int minWoodDrop;
@@ -37,6 +38,18 @@ public class TreeManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void SetSaveTreeData(TreeData treeData)
+    {
+        foreach(TreeScript tree in trees)
+        {
+            if(tree.id == treeData.id)
+            {
+                tree.isDead = treeData.isDead;
+                return;
+            }
         }
     }
 

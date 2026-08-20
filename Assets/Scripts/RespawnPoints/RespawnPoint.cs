@@ -5,6 +5,11 @@ public class RespawnPoint : MonoBehaviour
     public string respawnPointId;
     private bool isPlayerInRange = false;
 
+    private void Start()
+    {
+        respawnPointId = Id.CreateId(transform.position);
+        RespawnPointManager.Instance.respawnPoints.Add(this);
+    }
 
     public string GetRespawnPointId()
     {
