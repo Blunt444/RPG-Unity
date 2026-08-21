@@ -74,7 +74,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     {
         if (quantity <= 0)
         {
-            itemSO = null;
+            ResetSlot();
         }
         if (itemSO == null)
         {

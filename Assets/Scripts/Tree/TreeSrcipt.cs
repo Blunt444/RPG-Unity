@@ -17,6 +17,12 @@ public class TreeScript : MonoBehaviour, Damageable
     public bool isDead = false;
     public string id;
 
+    private void Awake()
+    {
+        id = Id.CreateId(transform.position);
+        TreeManager.Instance.trees.Add(this);
+    }
+
     private void Start()
     {
         if (TreeManager.Instance == null)
@@ -38,10 +44,6 @@ public class TreeScript : MonoBehaviour, Damageable
 
         anim.Play("TreeSway", -1, Random.Range(0f, 1f));
         anim.speed = Random.Range(0.85f, 1.15f);
-
-        id = Id.CreateId(transform.position);
-
-        TreeManager.Instance.trees.Add(this);
 
         if (isDead)
         {
@@ -70,8 +72,9 @@ public class TreeScript : MonoBehaviour, Damageable
         }
     }
 
-    private void Die()
+    public void Die()
     {
+        // Debug.Log("Tree died" + id);
         anim.enabled = false;
         sr.sprite = stump;
 

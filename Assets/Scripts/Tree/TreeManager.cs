@@ -48,6 +48,8 @@ public class TreeManager : MonoBehaviour
             if(tree.id == treeData.id)
             {
                 tree.isDead = treeData.isDead;
+                tree.Die();
+                // Debug.Log(tree.id);
                 return;
             }
         }

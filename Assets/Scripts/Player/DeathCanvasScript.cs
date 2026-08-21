@@ -44,6 +44,7 @@ public class DeathCanvasScript : MonoBehaviour
 
     public void SpawnAtCheckPoint()
     {
+        Debug.Log("checkpoint");
         playerTransform.position = RespawnPointManager.Instance.respawnPoint.transform.position;
         playerTransform.gameObject.SetActive(true);
 

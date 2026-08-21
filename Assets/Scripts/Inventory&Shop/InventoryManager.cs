@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GLTFast.Schema;
 using TMPro;
 using UnityEngine;
 
@@ -44,6 +45,12 @@ public class InventoryManager : MonoBehaviour
         Loot.OnItemLooted -= AddItem;
     }
 
+    public void SetGold(int amount)
+    {
+        gold = amount;
+        goldText.text = gold.ToString();
+    }
+
     public void AddItem(ItemSO itemSO, int quantity)
     {
         if (itemSO.isGold)
@@ -57,6 +64,9 @@ public class InventoryManager : MonoBehaviour
             ArrowQuantityManager.Instance.SetQuantity(quantity);
             return;
         }
+
+        // Debug.Log(itemSO.itemName);
+        // Debug.Log(quantity);
 
         foreach (InventorySlot slot in inventorySlots)
         {
@@ -109,17 +119,63 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void ClearInventory()
+    {
+        foreach (InventorySlot slot in inventorySlots)
+        {
+            slot.ResetSlot();
+        }
+    }
+
     private void DropLoot(ItemSO itemSO, int quantity)
     {
         Loot loot = Instantiate(lootPrefab, playerTransform.position + (Vector3)UnityEngine.Random.insideUnitCircle * 1.3f, Quaternion.identity).GetComponent<Loot>();
         loot.Initialize(itemSO, quantity, 2f);
-        loots[loot.id] = new LootInfo { isDestroyed = false, pos = loot.transform.position };
+        loots[loot.id] = new LootInfo { isDestroyed = false, pos = loot.transform.position, itemName = itemSO.itemName, quantity = quantity };
     }
 
     public void AddLootData(LootData lootData)
     {
-        if (!lootData.lootInfo.isDestroyed)
-            loots[lootData.id] = lootData.lootInfo;
+        loots[lootData.id] = lootData.lootInfo;
+
+        ItemSO item = null;
+
+        Loot[] sceneLoots = GameObject.FindObjectsByType<Loot>(FindObjectsSortMode.None);
+        Loot existing = null;
+
+        foreach (Loot l in sceneLoots)
+        {
+            if (l.id == lootData.id)
+            {
+                existing = l;
+                break;
+            }
+        }
+
+        if (lootData.lootInfo.isDestroyed)
+        {
+            if (existing != null)
+            {
+                Destroy(existing.gameObject);
+            }
+            return;
+        }
+
+        if (existing != null) return;
+
+        foreach (ItemSO itemSO in allItemSO)
+        {
+            if (itemSO.itemName == lootData.lootInfo.itemName)
+            {
+                item = itemSO;
+            }
+        }
+
+        if (item == null) return;
+
+        Loot loot = Instantiate(lootPrefab, lootData.lootInfo.pos, Quaternion.identity).GetComponent<Loot>();
+        loot.id = lootData.id;
+        loot.Initialize(item, lootData.lootInfo.quantity, 2.0f);
     }
 
     public void DropItem(InventorySlot inventorySlot)

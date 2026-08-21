@@ -11,12 +11,10 @@ public class Loot : MonoBehaviour
     public string id;
     public static event Action<ItemSO, int> OnItemLooted;
 
-    private void Start()
+    private void Awake()
     {
-        if (id == null || id == "")
-        {
-            id = Id.CreateId(transform.position);
-        }
+        id = Id.CreateId(transform.position);
+
         if (InventoryManager.Instance.loots.ContainsKey(id))
         {
             if (InventoryManager.Instance.loots[id].isDestroyed)
@@ -25,7 +23,18 @@ public class Loot : MonoBehaviour
             }
         }
         else
-            InventoryManager.Instance.loots[id] = new LootInfo { isDestroyed = false, pos = transform.position };
+            InventoryManager.Instance.loots[id] = new LootInfo { isDestroyed = false, pos = transform.position, itemName = itemSO.itemName, quantity = quantity };
+
+        canBePickedup = false;
+        Invoke(nameof(EnablePickUp), 2.0f);
+    }
+
+    private void Start()
+    {
+        if (id == null || id == "")
+        {
+            id = Id.CreateId(transform.position);
+        }
     }
 
 
@@ -83,7 +92,6 @@ public class Loot : MonoBehaviour
     {
         sr.sprite = itemSO.icon;
         this.name = itemSO.itemName;
-
     }
     public void Initialize(ItemSO itemSO, int quantity)
     {
@@ -92,7 +100,8 @@ public class Loot : MonoBehaviour
         canBePickedup = false;
         UpdateAppearnace();
 
-        id = Id.CreateId(transform.position);
+        if (id == null || id == "")
+            id = Id.CreateId(transform.position);
 
         Invoke(nameof(EnablePickUp), 0.25f);
     }
@@ -118,4 +127,6 @@ public class LootInfo
 {
     public bool isDestroyed;
     public Vector3 pos;
+    public string itemName;
+    public int quantity;
 }

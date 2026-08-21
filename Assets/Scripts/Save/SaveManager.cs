@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -206,22 +207,29 @@ public class SaveManager : MonoBehaviour
     private void OnGameplaySceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= OnGameplaySceneLoaded;
+        StartCoroutine(DelayApplySaveData());
+    }
+
+    private IEnumerator DelayApplySaveData()
+    {
+        yield return null;
         ApplySaveData(data);
     }
 
     public void ApplySaveData(SaveData data)
     {
         isNewGame = false;
-        InventoryManager.Instance.gold = data.gold;
+        InventoryManager.Instance.SetGold(data.gold);
         StanceManager.Instance.SetPointsToStance(SkillCategory.Combat, data.warriorStancePoint);
         StanceManager.Instance.SetPointsToStance(SkillCategory.Archery, data.archeryStancePoint);
         ArrowQuantityManager.Instance.SetArrowData(data.currentArrowCount, data.maxArrowCount);
         RespawnPointManager.Instance.SetRespawnPoint(data.lastRespawnPoint);
-        DeathCanvasScript.Instance.SpawnAtCheckPoint();
         StatsManager.Instance.SetSaveData(data.currentHealth, data.maxHealth, data.maxGuardHit);
+        DeathCanvasScript.Instance.SpawnAtCheckPoint();
 
         foreach (InventorySlotData slotData in data.inventory)
         {
+            Debug.Log($"{slotData.itemName} x{slotData.quantity}");
             InventoryManager.Instance.AddItem(slotData.itemName, slotData.quantity);
         }
 
