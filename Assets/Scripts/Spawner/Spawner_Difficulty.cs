@@ -31,6 +31,7 @@ public struct Spawner_Stat_Difficulty_Map
 public class Spawner_Difficulty : MonoBehaviour
 {
     public static Spawner_Difficulty Instance;
+    public List<Spawner_Manager> spawners = new List<Spawner_Manager>(); // i am keeeping it here since i don't want to create a separate file.
 
 
     [SerializeField]
@@ -51,6 +52,18 @@ public class Spawner_Difficulty : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void SetSpawnerSaveData(SpawnerData spawnerData)
+    {
+        foreach(Spawner_Manager spawner in spawners)
+        {
+            if(spawner.id == spawnerData.id)
+            {
+                
+                return;
+            }
         }
     }
 

@@ -229,7 +229,7 @@ public class SaveManager : MonoBehaviour
 
         foreach (InventorySlotData slotData in data.inventory)
         {
-            Debug.Log($"{slotData.itemName} x{slotData.quantity}");
+            // Debug.Log($"{slotData.itemName} x{slotData.quantity}");
             InventoryManager.Instance.AddItem(slotData.itemName, slotData.quantity);
         }
 
@@ -321,6 +321,13 @@ public class DialogData
 {
     public string id;
     public int index;
+}
+
+[Serializable]
+public class SpawnerData
+{
+    public string id;
+    public bool isDestroyed;
 }
 
 [Serializable]

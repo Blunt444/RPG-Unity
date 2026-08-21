@@ -15,6 +15,15 @@ public class Loot : MonoBehaviour
     {
         id = Id.CreateId(transform.position);
 
+    }
+
+    private void Start()
+    {
+        if (id == null || id == "")
+        {
+            id = Id.CreateId(transform.position);
+        }
+
         if (InventoryManager.Instance.loots.ContainsKey(id))
         {
             if (InventoryManager.Instance.loots[id].isDestroyed)
@@ -28,15 +37,6 @@ public class Loot : MonoBehaviour
         canBePickedup = false;
         Invoke(nameof(EnablePickUp), 2.0f);
     }
-
-    private void Start()
-    {
-        if (id == null || id == "")
-        {
-            id = Id.CreateId(transform.position);
-        }
-    }
-
 
     private void OnValidate()
     {
