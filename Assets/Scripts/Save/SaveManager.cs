@@ -121,6 +121,14 @@ public class SaveManager : MonoBehaviour
                 data.treeDatas.Add(treeData);
             }
 
+            foreach (Spawner_Manager spawner in Spawner_Difficulty.Instance.spawners)
+            {
+                // Debug.Log(spawner.currentHealth);
+                data.spawners.Add(
+                    new SpawnerData { id = spawner.id, isDestroyed = spawner.isDead, type = spawner.type, currentHealth = spawner.currentHealth}
+                );
+            }
+
             data.talkedNpcs = DialogHistoryTracker.Instance.GetTalkedNPCNames();
 
             string json = JsonUtility.ToJson(data, true);
@@ -258,6 +266,11 @@ public class SaveManager : MonoBehaviour
             InventoryManager.Instance.AddLootData(lootData);
         }
 
+        foreach(SpawnerData spawnerData in data.spawners)
+        {
+            Spawner_Difficulty.Instance.SetSpawnerSaveData(spawnerData);
+        }
+
         foreach (SkillData skillData in data.skills)
         {
             SkillTreeManager.Instance.SetSKillData(skillData);
@@ -307,6 +320,7 @@ public class SaveData
     public List<DialogData> dialogDatas = new();
     public List<TreeData> treeDatas = new();
     public List<LootData> loots = new();
+    public List<SpawnerData> spawners = new();
 }
 
 [Serializable]
@@ -328,6 +342,8 @@ public class SpawnerData
 {
     public string id;
     public bool isDestroyed;
+    public Spawner_Difficulty_Type type;
+    public int currentHealth;
 }
 
 [Serializable]

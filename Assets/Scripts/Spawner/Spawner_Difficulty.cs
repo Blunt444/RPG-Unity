@@ -57,11 +57,21 @@ public class Spawner_Difficulty : MonoBehaviour
 
     public void SetSpawnerSaveData(SpawnerData spawnerData)
     {
-        foreach(Spawner_Manager spawner in spawners)
+        foreach (Spawner_Manager spawner in spawners)
         {
-            if(spawner.id == spawnerData.id)
+            if (spawner.id == spawnerData.id)
             {
-                
+                spawner.type = spawnerData.type;
+                spawner.GetAndSetStat();
+                spawner.currentHealth = spawnerData.currentHealth;
+                spawner.gameObject.GetComponent<Spawner_Health>().UpdateHealthUI();
+                // Debug.Log(spawner.currentHealth + "set");
+                spawner.isDead = spawnerData.isDestroyed;
+
+                if (spawnerData.isDestroyed)
+                {
+                    spawner.gameObject.GetComponent<Spawner_Destroyed>().OnDestroyed();
+                }
                 return;
             }
         }

@@ -43,12 +43,13 @@ public class TreeManager : MonoBehaviour
 
     public void SetSaveTreeData(TreeData treeData)
     {
-        foreach(TreeScript tree in trees)
+        foreach (TreeScript tree in trees)
         {
-            if(tree.id == treeData.id)
+            if (tree.id == treeData.id)
             {
                 tree.isDead = treeData.isDead;
-                tree.Die();
+                if (treeData.isDead)
+                    tree.Die();
                 // Debug.Log(tree.id);
                 return;
             }

@@ -42,7 +42,7 @@ public class Spawner_Health : MonoBehaviour, Damageable
         manager.isDead = true;
     }
 
-    private void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         fillImage.fillAmount = (float)manager.currentHealth / manager.maxHealth;
     }

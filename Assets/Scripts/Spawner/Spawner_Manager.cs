@@ -22,6 +22,7 @@ public class Spawner_Manager : MonoBehaviour
         id = Id.CreateId(transform.position);
         GetAndSetStat();
         GetSpawnPoints();
+        Spawner_Difficulty.Instance.spawners.Add(this);
     }
 
     private void Start()
@@ -29,7 +30,7 @@ public class Spawner_Manager : MonoBehaviour
 
     }
 
-    private void GetAndSetStat()
+    public void GetAndSetStat()
     {
         Spawner_Stat stat = Spawner_Difficulty.Instance.GetStat(type);
 
