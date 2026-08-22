@@ -16,7 +16,7 @@ public class TreeManager : MonoBehaviour
     public static TreeManager Instance;
 
     [SerializeField]
-    List<TreeOverrides> list = new List<TreeOverrides>();
+    public List<TreeOverrides> list = new List<TreeOverrides>();
 
     public float maxShakeTime = 0f;
     public float shakeMagnitude = 0.3f;
@@ -48,6 +48,7 @@ public class TreeManager : MonoBehaviour
             if (tree.id == treeData.id)
             {
                 tree.isDead = treeData.isDead;
+                tree.SetTree(treeData);
                 if (treeData.isDead)
                     tree.Die();
                 // Debug.Log(tree.id);

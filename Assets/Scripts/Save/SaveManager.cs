@@ -117,7 +117,7 @@ public class SaveManager : MonoBehaviour
 
             foreach (TreeScript tree in TreeManager.Instance.trees)
             {
-                TreeData treeData = new TreeData { id = tree.id, isDead = tree.isDead };
+                TreeData treeData = new TreeData { id = tree.id, isDead = tree.isDead, treeIndex = tree.treeIndex, stumpIndex = tree.stumpIndex };
                 data.treeDatas.Add(treeData);
             }
 
@@ -125,7 +125,7 @@ public class SaveManager : MonoBehaviour
             {
                 // Debug.Log(spawner.currentHealth);
                 data.spawners.Add(
-                    new SpawnerData { id = spawner.id, isDestroyed = spawner.isDead, type = spawner.type, currentHealth = spawner.currentHealth}
+                    new SpawnerData { id = spawner.id, isDestroyed = spawner.isDead, type = spawner.type, currentHealth = spawner.currentHealth }
                 );
             }
 
@@ -266,7 +266,7 @@ public class SaveManager : MonoBehaviour
             InventoryManager.Instance.AddLootData(lootData);
         }
 
-        foreach(SpawnerData spawnerData in data.spawners)
+        foreach (SpawnerData spawnerData in data.spawners)
         {
             Spawner_Difficulty.Instance.SetSpawnerSaveData(spawnerData);
         }
@@ -358,6 +358,8 @@ public class TreeData
 {
     public string id;
     public bool isDead;
+    public int treeIndex;
+    public int stumpIndex;
 }
 
 [Serializable]

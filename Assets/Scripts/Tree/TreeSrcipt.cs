@@ -8,6 +8,8 @@ public class TreeScript : MonoBehaviour, Damageable
     public int MaxHit = 0;
 
     private Sprite latestSprite;
+    public int treeIndex;
+    public int stumpIndex;
     private Sprite stump;
     private Animator anim;
     private SpriteRenderer sr;
@@ -36,11 +38,13 @@ public class TreeScript : MonoBehaviour, Damageable
         polygonCollider2D = GetComponent<PolygonCollider2D>();
 
         TreeOverrides tree = TreeManager.Instance.RandomTreeVariant();
+        treeIndex = TreeManager.Instance.list.IndexOf(tree);
 
-        stump = tree.choppedSprite[Random.Range(0, tree.choppedSprite.Length)];
+        stumpIndex = Random.Range(0, tree.choppedSprite.Length);
+        stump = tree.choppedSprite[stumpIndex];
+
         anim.runtimeAnimatorController = tree.overrider;
         localPos = transform.localPosition;
-
 
         anim.Play("TreeSway", -1, Random.Range(0f, 1f));
         anim.speed = Random.Range(0.85f, 1.15f);
@@ -49,6 +53,18 @@ public class TreeScript : MonoBehaviour, Damageable
         {
             Die();
         }
+    }
+
+    public void SetTree(TreeData treeData)
+    {
+        treeIndex = treeData.treeIndex;
+        stumpIndex = treeData.stumpIndex;
+
+        TreeOverrides tree = TreeManager.Instance.list[treeIndex];
+        stump = tree.choppedSprite[stumpIndex];
+
+        anim.Play("TreeSway", -1, Random.Range(0f, 1f));
+        anim.speed = Random.Range(0.85f, 1.15f);
     }
 
     private void LateUpdate()
