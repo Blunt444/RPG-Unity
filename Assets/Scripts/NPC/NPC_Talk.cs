@@ -87,6 +87,16 @@ public class NPC_Talk : MonoBehaviour
                         Physics2D.SyncTransforms();
                         GameObject.FindFirstObjectByType<NavMeshSurface>().BuildNavMesh();
                     }
+                    else if (questSO.label == "Collect me 10 wood logs.")
+                    {
+                        StanceManager.Instance.UnlockArcherStance();
+                    }
+
+                    foreach (Reward reward in questSO.rewards)
+                    {
+                        InventoryManager.Instance.AddItem(reward.itemSO, reward.quantity);
+                    }
+
                     questSO = null;
                 }
 

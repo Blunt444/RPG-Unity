@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4331542420072555124}
   - component: {fileID: 8793176745485982940}
   - component: {fileID: 3492726994332551819}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HealthFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6699150092912882010}
   - component: {fileID: 849801790802756657}
   - component: {fileID: 8350698957124864370}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 745948087662526626}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpawnerHutContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 2780402345553729546}
   - component: {fileID: 4297390510817668891}
   - component: {fileID: 2539686060884344737}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HealthBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

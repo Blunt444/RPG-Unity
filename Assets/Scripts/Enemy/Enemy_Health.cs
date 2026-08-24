@@ -8,7 +8,7 @@ public class Enemy_Health : MonoBehaviour, Damageable
     public delegate void MonsterDefeated(int exp);
     public static event MonsterDefeated OnMonsterDefeated;
     public GameObject enemyContainer;
-    public static event Action<Enemy_Type> OnEnemyKilled;
+    public static event Action<Enemy_Type, string> OnEnemyKilled;
 
 
     [SerializeField]
@@ -45,7 +45,8 @@ public class Enemy_Health : MonoBehaviour, Damageable
     private void Die()
     {
         OnMonsterDefeated?.Invoke(manager.expReward);
-        OnEnemyKilled?.Invoke(manager.enemyType);
+        if (manager.spawnerHut == null)
+            OnEnemyKilled?.Invoke(manager.enemyType, manager.id);
 
         int len = UnityEngine.Random.Range(manager.minDrop, manager.maxDrop + 1);
 

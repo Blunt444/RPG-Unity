@@ -1,31 +1,25 @@
 fileFormatVersion: 2
-guid: 0b0c2057344643248940170995fd45e8
+guid: c40f111a31eb8854280bd8e1e478d600
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7384290322352760091
-    second: Warrior_Idle_0
+      213: 795891312035176729
+    second: Lancer_Up_Defence_0
   - first:
-      213: 5558041129755138300
-    second: Warrior_Idle_1
+      213: -358498109835498265
+    second: Lancer_Up_Defence_1
   - first:
-      213: 5494728702781700201
-    second: Warrior_Idle_2
+      213: -7698015283643107414
+    second: Lancer_Up_Defence_2
   - first:
-      213: 855971943943930739
-    second: Warrior_Idle_3
+      213: 2644622635304193626
+    second: Lancer_Up_Defence_3
   - first:
-      213: 8590257050535953886
-    second: Warrior_Idle_4
+      213: 4504585348463487024
+    second: Lancer_Up_Defence_4
   - first:
-      213: -1175184007495930954
-    second: Warrior_Idle_5
-  - first:
-      213: -4675935811743254547
-    second: Warrior_Idle_6
-  - first:
-      213: 1839488653993705794
-    second: Warrior_Idle_7
+      213: -2440862431390142415
+    second: Lancer_Up_Defence_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +89,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -134,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Warrior_Idle_0
+      name: Lancer_Up_Defence_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 54
-        width: 81
-        height: 91
+        x: 122
+        y: 124
+        width: 53
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b15e03eace44a7660800000000000000
-      internalID: 7384290322352760091
+      spriteID: 9112da57ee29b0b00800000000000000
+      internalID: 795891312035176729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_1
+      name: Lancer_Up_Defence_1
       rect:
         serializedVersion: 2
-        x: 253
-        y: 54
-        width: 81
-        height: 91
+        x: 442
+        y: 123
+        width: 53
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf8d012b5f0222d40800000000000000
-      internalID: 5558041129755138300
+      spriteID: 7ec2b965edb560bf0800000000000000
+      internalID: -358498109835498265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_2
+      name: Lancer_Up_Defence_2
       rect:
         serializedVersion: 2
-        x: 445
-        y: 54
-        width: 81
-        height: 90
+        x: 762
+        y: 122
+        width: 53
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 968327294a2314c40800000000000000
-      internalID: 5494728702781700201
+      spriteID: aa7bce6a2e72b2590800000000000000
+      internalID: -7698015283643107414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_3
+      name: Lancer_Up_Defence_3
       rect:
         serializedVersion: 2
-        x: 635
-        y: 54
-        width: 83
-        height: 88
+        x: 1082
+        y: 121
+        width: 53
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3738a78a2f501eb00800000000000000
-      internalID: 855971943943930739
+      spriteID: a5e8346664693b420800000000000000
+      internalID: 2644622635304193626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_4
+      name: Lancer_Up_Defence_4
       rect:
         serializedVersion: 2
-        x: 826
-        y: 54
-        width: 85
-        height: 87
+        x: 1402
+        y: 123
+        width: 53
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed58d7a3649b63770800000000000000
-      internalID: 8590257050535953886
+      spriteID: 03868931280838e30800000000000000
+      internalID: 4504585348463487024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warrior_Idle_5
+      name: Lancer_Up_Defence_5
       rect:
         serializedVersion: 2
-        x: 1019
-        y: 54
-        width: 85
-        height: 87
+        x: 1722
+        y: 124
+        width: 53
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,52 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6bb2c7f1f58e0bfe0800000000000000
-      internalID: -1175184007495930954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior_Idle_6
-      rect:
-        serializedVersion: 2
-        x: 1211
-        y: 54
-        width: 84
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: de7f384472dbb1fb0800000000000000
-      internalID: -4675935811743254547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warrior_Idle_7
-      rect:
-        serializedVersion: 2
-        x: 1404
-        y: 54
-        width: 82
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 24108ad4f2d278910800000000000000
-      internalID: 1839488653993705794
+      spriteID: 130f4670d80502ed0800000000000000
+      internalID: -2440862431390142415
       vertices: []
       indices: 
       edges: []
@@ -323,14 +273,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Warrior_Idle_0: 7384290322352760091
-      Warrior_Idle_1: 5558041129755138300
-      Warrior_Idle_2: 5494728702781700201
-      Warrior_Idle_3: 855971943943930739
-      Warrior_Idle_4: 8590257050535953886
-      Warrior_Idle_5: -1175184007495930954
-      Warrior_Idle_6: -4675935811743254547
-      Warrior_Idle_7: 1839488653993705794
+      Lancer_Up_Defence_0: 795891312035176729
+      Lancer_Up_Defence_1: -358498109835498265
+      Lancer_Up_Defence_2: -7698015283643107414
+      Lancer_Up_Defence_3: 2644622635304193626
+      Lancer_Up_Defence_4: 4504585348463487024
+      Lancer_Up_Defence_5: -2440862431390142415
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

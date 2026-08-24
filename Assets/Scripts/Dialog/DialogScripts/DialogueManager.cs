@@ -186,6 +186,7 @@ public class DialogueManager : MonoBehaviour
                 Physics2D.SyncTransforms();
                 GameObject.FindFirstObjectByType<NavMeshSurface>().BuildNavMesh();
             }
+            QuestManager.Instance.HandleKilled(npc.questSO);
         }
 
         Debug.Log(npc.dialogSO.lines[currentIndex].quest.questState);

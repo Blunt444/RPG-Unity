@@ -19,7 +19,8 @@ public class Spawner_Manager : MonoBehaviour
     private void Awake()
     {
         type = Spawner_Difficulty.Instance.GetRandomDifficulty();
-        id = Id.CreateId(transform.position);
+        if (id == null || id == "")
+            id = Id.CreateId(transform.position);
         GetAndSetStat();
         GetSpawnPoints();
         Spawner_Difficulty.Instance.spawners.Add(this);

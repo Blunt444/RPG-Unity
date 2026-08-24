@@ -37,7 +37,7 @@ public class QuestSO : ScriptableObject
     {
         int total = enemyRequirements.Count + collectableRequirements.Count + talkToActors.Count;
 
-        if(total == 0) return 1f;
+        if (total == 0) return 1f;
 
         float progress = 0;
 
@@ -66,10 +66,10 @@ public class QuestSO : ScriptableObject
 
         questState = QuestState.Completed;
 
-        foreach (Reward reward in rewards)
-        {
-            InventoryManager.Instance.AddItem(reward.itemSO, reward.quantity);
-        }
+        // foreach (Reward reward in rewards)
+        // {
+        //     InventoryManager.Instance.AddItem(reward.itemSO, reward.quantity);
+        // }
     }
 }
 
@@ -91,6 +91,7 @@ public class EnemyRequirement : QuestRequirement
     public int count;
     public int killCount;
     public string label;
+    public string[] ids;
 
     public override bool IsComplete()
     {

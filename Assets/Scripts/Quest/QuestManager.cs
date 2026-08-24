@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
@@ -8,6 +9,12 @@ public class QuestManager : MonoBehaviour
     public List<QuestSO> quests = new List<QuestSO>();
     public static event Action<string, int> Message;
     public int messageTimer = 5;
+    public Sprite activeMine;
+    public SpriteRenderer mine1;
+    public SpriteRenderer mine2;
+    public SpriteRenderer mine3;
+
+    public Dictionary<string, bool> killedIds = new Dictionary<string, bool>();
 
     private void Awake()
     {
@@ -28,7 +35,7 @@ public class QuestManager : MonoBehaviour
         foreach (QuestSO questSO in quests)
         {
             questSO.questState = QuestState.None;
-            foreach(EnemyRequirement enemyRequirement in questSO.enemyRequirements)
+            foreach (EnemyRequirement enemyRequirement in questSO.enemyRequirements)
             {
                 enemyRequirement.killCount = 0;
             }
@@ -63,8 +70,44 @@ public class QuestManager : MonoBehaviour
         Enemy_Health.OnEnemyKilled -= HandleKilled;
     }
 
-    private void HandleKilled(Enemy_Type type)
+    public void HandleKilled(QuestSO questSO)
     {
+        bool changeHappened = false;
+        int count = 0;
+
+        foreach (EnemyRequirement requirement in questSO.enemyRequirements)
+        {
+            if (requirement.ids == null || requirement.ids.Length == 0) continue;
+
+            foreach (string id in requirement.ids)
+            {
+                if (killedIds.TryGetValue(id, out bool alreadyCounted) && !alreadyCounted)
+                {
+                    requirement.Progress();
+                    killedIds[id] = true;
+                    changeHappened = true;
+                    count++;
+                }
+            }
+        }
+
+        if (changeHappened)
+        {
+            bool questCompletion = questSO.IsQuestCompleted();
+            if (questCompletion)
+            {
+                if (questSO.label == "Reclaim the mine 1.")
+                    mine1.sprite = activeMine;
+                questSO.MarkQuestCompleted();
+                string text = $"{count} Quest Task Completed";
+                Message?.Invoke(text, messageTimer);
+            }
+        }
+    }
+
+    private void HandleKilled(Enemy_Type type, string id)
+    {
+        if (id != null && id != "" && !killedIds.ContainsKey(id)) killedIds[id] = false;
         foreach (QuestSO questSO in quests)
         {
             if (questSO.questState == QuestState.Accepted)
@@ -73,20 +116,32 @@ public class QuestManager : MonoBehaviour
                 int count = 0;
                 foreach (EnemyRequirement requirement in questSO.enemyRequirements)
                 {
-                    if (requirement.type == type)
+                    bool isThereId = requirement.ids != null && requirement.ids.Length > 0;
+                    bool idMatch = requirement.type == type && (!isThereId || requirement.ids.Contains(id));
+
+                    if (!idMatch) continue;
+
+
+                    if (isThereId)
                     {
-                        requirement.Progress();
-                        changeHappened = true;
-                        count++;
+                        if (killedIds.TryGetValue(id, out bool alreadyCounted) && alreadyCounted) continue;
+                        killedIds[id] = true;
                     }
+
+                    requirement.Progress();
+                    changeHappened = true;
+                    count++;
+
                 }
                 if (changeHappened)
                 {
                     bool questCompletion = questSO.IsQuestCompleted();
                     if (questCompletion)
                     {
+                        if (questSO.label == "Reclaim the mine 1.")
+                            mine1.sprite = activeMine;
                         questSO.MarkQuestCompleted();
-                        string text = $"{count} Quest Completed";
+                        string text = $"{count} Quest Task Completed";
                         Message?.Invoke(text, messageTimer);
                     }
                 }

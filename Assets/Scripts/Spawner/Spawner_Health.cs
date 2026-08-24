@@ -8,6 +8,7 @@ public class Spawner_Health : MonoBehaviour, Damageable
     private Spawner_Manager manager;
     private Vector3 originalLocalPos;
     private Coroutine shakeCoroutine;
+    public static event Action<Enemy_Type, string> OnHutDestroyed;
 
     [SerializeField]
     private Image fillImage;
@@ -38,6 +39,7 @@ public class Spawner_Health : MonoBehaviour, Damageable
 
     public void Die()
     {
+        OnHutDestroyed?.Invoke(Enemy_Type.SpawnerHut, manager.id);
         GetComponent<Spawner_Destroyed>().OnDestroyed();
         manager.isDead = true;
     }

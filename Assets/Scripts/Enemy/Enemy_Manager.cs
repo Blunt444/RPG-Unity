@@ -6,6 +6,7 @@ public class Enemy_Manager : MonoBehaviour
    public Enemy_Type enemyType;
    public Enemy_Color enemyColor;
    public Enemy_Difficulty enemyDiffculty;
+   public string id;
 
    public bool isManuallySpawned = false;
 
@@ -43,6 +44,10 @@ public class Enemy_Manager : MonoBehaviour
 
    public void Awake()
    {
+
+      if (id == null || id == "")
+         id = Id.CreateId(transform.position);
+
       anim = GetComponent<Animator>();
       if (!isManuallySpawned)
       {
