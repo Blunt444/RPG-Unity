@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using NavMeshPlus.Components;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -174,7 +176,17 @@ public class DialogueManager : MonoBehaviour
 
         npc.dialogSO.lines[currentIndex].quest.questState = questState;
 
-        if (questState == QuestState.Accepted) npc.questSO = npc.dialogSO.lines[currentIndex].quest;
+        if (questState == QuestState.Accepted)
+        {
+            npc.questSO = npc.dialogSO.lines[currentIndex].quest;
+            if (npc.questSO.label == "Clear the road up ahead.")
+            {
+                GameObject.FindGameObjectWithTag("Quest1Lock").GetComponent<TilemapCollider2D>().enabled = false;
+                GameObject.FindGameObjectWithTag("Quest1Lock").GetComponent<NavMeshModifier>().enabled = false;
+                Physics2D.SyncTransforms();
+                GameObject.FindFirstObjectByType<NavMeshSurface>().BuildNavMesh();
+            }
+        }
 
         Debug.Log(npc.dialogSO.lines[currentIndex].quest.questState);
 

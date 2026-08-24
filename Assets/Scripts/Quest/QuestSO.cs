@@ -36,6 +36,9 @@ public class QuestSO : ScriptableObject
     public float Progress()
     {
         int total = enemyRequirements.Count + collectableRequirements.Count + talkToActors.Count;
+
+        if(total == 0) return 1f;
+
         float progress = 0;
 
         foreach (EnemyRequirement enemyRequirement in enemyRequirements)

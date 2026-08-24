@@ -17,7 +17,7 @@ public class QuestRetrunClickButton : MonoBehaviour, IPointerDownHandler, IPoint
     public void OnReturnClicked()
     {
         QuestDisplay questDisplay = QuestDisplay.Instance;
-        if (questDisplay.questContainer == null || questDisplay == null) return;
+        if (questDisplay == null || questDisplay.questContainer == null) return;
 
         questDisplay.questContainer.gameObject.SetActive(true);
         questDisplay.questInfoContainer.gameObject.SetActive(false);

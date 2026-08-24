@@ -235,6 +235,8 @@ public class SaveManager : MonoBehaviour
         StatsManager.Instance.SetSaveData(data.currentHealth, data.maxHealth, data.maxGuardHit);
         DeathCanvasScript.Instance.SpawnAtCheckPoint();
 
+        InventoryManager.Instance.ClearInventory();
+
         foreach (InventorySlotData slotData in data.inventory)
         {
             // Debug.Log($"{slotData.itemName} x{slotData.quantity}");

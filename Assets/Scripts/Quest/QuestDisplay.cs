@@ -76,7 +76,7 @@ public class QuestDisplay : MonoBehaviour
 
         foreach (QuestSO questSO in QuestManager.Instance.quests)
         {
-            if (questSO.questState == QuestState.Accepted || questSO.questState == QuestState.Completed)
+            if (questSO != null && (questSO.questState == QuestState.Accepted || questSO.questState == QuestState.Completed))
             {
                 QuestBox box = Instantiate(questPrefab, questBox).GetComponent<QuestBox>();
                 box.Setup(questSO, OnQuestClick);

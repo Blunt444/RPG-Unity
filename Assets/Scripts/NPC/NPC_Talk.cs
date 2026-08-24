@@ -1,6 +1,7 @@
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
+using UnityEngine.Tilemaps;
+using NavMeshPlus.Components;
 public class NPC_Talk : MonoBehaviour
 {
     public DialogSO dialogSO;
@@ -79,6 +80,7 @@ public class NPC_Talk : MonoBehaviour
                 if (questSO != null && questSO.questState == QuestState.Completed)
                 {
                     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+
                     questSO = null;
                 }
 
@@ -89,6 +91,7 @@ public class NPC_Talk : MonoBehaviour
             }
         }
         rb.linearVelocity = Vector2.zero;
+        anim.SetBool("isWalking", false);
     }
 
     public void SetLineIndex(int index)

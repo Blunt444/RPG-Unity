@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
+  m_Name: CaptainRenna-FirstMeet
+  m_EditorClassIdentifier: Assembly-CSharp::DialogSO
+  id: 
+  lines:
+  - speaker: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
+    text: You are the one the king sent to fight off the threats.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: 1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
+    text: You look like a clown.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
+    text: Jokes aside. You need to kill the enemies in the path and report to me!
+    topics: []
+    quest: {fileID: 11400000, guid: 18c7fbdaf252e754ea3f9715191941de, type: 2}
+    requiredActors: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 4
+    questDeclineNextLineIndex: 5
+    checkpointIndex: 2
+  - speaker: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
+    text: Wow i take my words back but not completely from my mind.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: 6
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 3
+  - speaker: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
+    text: Clear the road and report to me!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: 3
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 4
+  - speaker: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
+    text: Coward! you dont have a choice do as i say!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
+    text: Futher east, my army led by aldric got into trouble could you go there
+      and help them!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: 7
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 6
+  - speaker: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
+    text: 'Hold on to your life while you travel. '
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  returnStartIndex: 4

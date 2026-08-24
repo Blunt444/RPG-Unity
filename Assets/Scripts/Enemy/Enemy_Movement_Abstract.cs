@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public abstract class Enemy_Movement_Abstract : MonoBehaviour
 {
-    public EnemyState enemyState;
+    public EnemyState enemyState = EnemyState.None;
     public Transform player;
     public bool isChasingUncontrolled;
     public Enemy_Manager manager;
@@ -184,4 +184,5 @@ public enum EnemyState
     Chasing,
     Attacking,
     Knockback,
+    None
 }

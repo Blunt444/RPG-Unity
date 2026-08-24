@@ -9,6 +9,7 @@ TagManager:
   - StatsPanel
   - Torch
   - ShopInfoPanel
+  - Quest1Lock
   layers:
   - Default
   - TransparentFX
