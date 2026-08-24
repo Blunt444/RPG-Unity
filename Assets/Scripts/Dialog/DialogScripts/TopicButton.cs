@@ -1,7 +1,5 @@
 using System;
 using TMPro;
-using Unity.Multiplayer.PlayMode;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

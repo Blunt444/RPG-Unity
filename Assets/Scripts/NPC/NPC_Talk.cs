@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using NavMeshPlus.Components;
@@ -81,6 +80,13 @@ public class NPC_Talk : MonoBehaviour
                 {
                     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
 
+                    if (questSO.label == "Clear the road up ahead.")
+                    {
+                        GameObject.FindGameObjectWithTag("Quest2AfterStartLock").GetComponent<TilemapCollider2D>().enabled = false;
+                        GameObject.FindGameObjectWithTag("Quest2AfterStartLock").GetComponent<NavMeshModifier>().enabled = false;
+                        Physics2D.SyncTransforms();
+                        GameObject.FindFirstObjectByType<NavMeshSurface>().BuildNavMesh();
+                    }
                     questSO = null;
                 }
 

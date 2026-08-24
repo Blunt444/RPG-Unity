@@ -106,8 +106,8 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ef70e0f8589d7bf4896abaa231b8adb8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
+  m_CullingMode: 2
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -131,6 +131,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tree
   currentHit: 0
   MaxHit: 5
+  treeIndex: 0
+  stumpIndex: 0
+  isDead: 0
+  id: 
 --- !u!60 &4545668141776911260
 PolygonCollider2D:
   m_ObjectHideFlags: 0
