@@ -60,6 +60,11 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public void SetKilledEnemyData(KilledEnemy killedEnemy)
+    {
+        killedIds[killedEnemy.id] = killedEnemy.alreadyCounted;
+    }
+
     private void OnEnable()
     {
         Enemy_Health.OnEnemyKilled += HandleKilled;

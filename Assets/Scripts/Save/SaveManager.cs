@@ -115,6 +115,11 @@ public class SaveManager : MonoBehaviour
                 data.loots.Add(new LootData { id = loot.Key, lootInfo = loot.Value });
             }
 
+            foreach (var killedEnemy in QuestManager.Instance.killedIds)
+            {
+                data.killedEnemies.Add(new KilledEnemy { id = killedEnemy.Key, alreadyCounted = killedEnemy.Value });
+            }
+
             foreach (TreeScript tree in TreeManager.Instance.trees)
             {
                 TreeData treeData = new TreeData { id = tree.id, isDead = tree.isDead, treeIndex = tree.treeIndex, stumpIndex = tree.stumpIndex };
@@ -273,6 +278,11 @@ public class SaveManager : MonoBehaviour
             Spawner_Difficulty.Instance.SetSpawnerSaveData(spawnerData);
         }
 
+        foreach(KilledEnemy killedEnemy in data.killedEnemies)
+        {
+            QuestManager.Instance.SetKilledEnemyData(killedEnemy);
+        }
+
         foreach (SkillData skillData in data.skills)
         {
             SkillTreeManager.Instance.SetSKillData(skillData);
@@ -323,6 +333,7 @@ public class SaveData
     public List<TreeData> treeDatas = new();
     public List<LootData> loots = new();
     public List<SpawnerData> spawners = new();
+    public List<KilledEnemy> killedEnemies = new();
 }
 
 [Serializable]
@@ -330,6 +341,13 @@ public class InventorySlotData
 {
     public string itemName;
     public int quantity;
+}
+
+[Serializable]
+public class KilledEnemy
+{
+    public string id;
+    public bool alreadyCounted;
 }
 
 [Serializable]
