@@ -19,8 +19,11 @@ public class DialogueLine
     public List<DialogueTopic> topics = new List<DialogueTopic>();
     public QuestSO quest;
     public List<ActorSO> requiredActors = new List<ActorSO>();
+    public List<Reward> rewards = new List<Reward>();
+    // public ActorSO changeCurrentActorSO;
 
     public int nextLineIndex = -1;
+    // public int requiredActorNextLine = -1;
     public int questAcceptNextLineIndex = -1;
     public int questDeclineNextLineIndex = -1;
     // public bool spokeToRequiredActor = true;  //default to true so can advance it will be set to false in inspector so canTalkToNPC can change its value

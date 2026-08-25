@@ -5,7 +5,6 @@ public class NPC_Talk : MonoBehaviour
 {
     public DialogSO dialogSO;
     public int currentIndex;
-    public ActorSO actorSO;
     public QuestSO questSO;
 
     private Rigidbody2D rb;
@@ -58,6 +57,10 @@ public class NPC_Talk : MonoBehaviour
                 else
                     currentIndex = DialogueManager.Instance.EndConversation(dialogSO);
 
+                while (currentIndex != -1 && dialogSO.lines[currentIndex].requiredActors.Count > 0 && DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]))
+                {
+                    currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+                }
 
                 if (currentIndex == -1)
                 {
@@ -65,16 +68,38 @@ public class NPC_Talk : MonoBehaviour
                 }
                 else
                 {
+                    // if(dialogSO.lines[currentIndex].changeCurrentActorSO != null)
+                    // {
+                    //     dialogSO.lines[c];
+                    // }
                     DialogueManager.Instance.DisplayDialogue(dialogSO, currentIndex);
                 }
+
+                DialogHistoryTracker.Instance.AddToTalkedNpc(dialogSO.lines[currentIndex].speaker);
             }
             else if (!DialogueManager.Instance.isOpened)
             {
                 currentIndex = DialogueManager.Instance.GetStartIndex(dialogSO);
                 DialogueManager.Instance.npc = this;
 
-                if (dialogSO.lines[currentIndex].requiredActors.Count > 0 && DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]))
+                if (currentIndex != -1 && dialogSO.lines[currentIndex].rewards.Count > 0)
+                {
+                    foreach (Reward reward in dialogSO.lines[currentIndex].rewards)
+                    {
+                        InventoryManager.Instance.AddItem(reward.itemSO, reward.quantity);
+                    }
+                }
+
+                // if (dialogSO.lines[currentIndex].requiredActors.Count > 0 && DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]))
+                //     // if (dialogSO.lines[currentIndex].requiredActorNextLine != -1)
+                //     //     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+                //     // else
+                //     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+
+                while (currentIndex != -1 && dialogSO.lines[currentIndex].requiredActors.Count > 0 && DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]))
+                {
                     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+                }
 
                 if (questSO != null && questSO.questState == QuestState.Completed)
                 {
@@ -103,7 +128,7 @@ public class NPC_Talk : MonoBehaviour
                 DialogueManager.Instance.DisplayDialogue(dialogSO, currentIndex);
 
                 DialogueManager.Instance.ToggleVisibility();
-                DialogHistoryTracker.Instance.AddToTalkedNpc(actorSO);
+                DialogHistoryTracker.Instance.AddToTalkedNpc(dialogSO.lines[currentIndex].speaker);
             }
         }
         rb.linearVelocity = Vector2.zero;
