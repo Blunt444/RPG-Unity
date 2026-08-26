@@ -110,24 +110,16 @@ public class DialogueManager : MonoBehaviour
 
         ClearTopicInstance();
 
+        topicBox.gameObject.SetActive(isThereTopics || line.quest != null);
+
         if (isThereTopics)
         {
-            topicBox.gameObject.SetActive(true);
             CreateTopicInstance(line.topics);
-        }
-        else
-        {
-            topicBox.gameObject.SetActive(false);
         }
 
         if (line.quest != null)
         {
-            topicBox.gameObject.SetActive(true);
             CreateQuestAcceptReject(line.questAcceptNextLineIndex, line.questDeclineNextLineIndex, currentIndex);
-        }
-        else
-        {
-            topicBox.gameObject.SetActive(false);
         }
 
         dialogSO.returnStartIndex = line.checkpointIndex;

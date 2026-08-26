@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d428a103555a7fc4ba74abef33352824, type: 3}
   m_Name: HungryMan
   m_EditorClassIdentifier: Assembly-CSharp::QuestSO
-  label: 
-  about: 
+  label: Feed The Hungry Man.
+  about: 'The hungry man is at risk of dying due to starvation. Feed and save him. '
   questState: 0
   rewards: []
   enemyRequirements: []
-  collectableRequirements: []
+  collectableRequirements:
+  - itemSO: {fileID: 11400000, guid: 421dde164514960428efe69cb10cfb5f, type: 2}
+    count: 2
+    label: 
   talkToActors: []

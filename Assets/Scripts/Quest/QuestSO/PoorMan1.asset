@@ -12,10 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d428a103555a7fc4ba74abef33352824, type: 3}
   m_Name: PoorMan1
   m_EditorClassIdentifier: Assembly-CSharp::QuestSO
-  label: 
-  about: 
+  label: Eliminate the threat!
+  about: Goblins who camped south-east threatened me to pay them 50 gold else i will
+    be killed.
   questState: 0
-  rewards: []
-  enemyRequirements: []
+  rewards:
+  - quantity: 20
+    itemSO: {fileID: 11400000, guid: 5659d0b4f9cd3cc4591f4370bda7766f, type: 2}
+  enemyRequirements:
+  - type: 2
+    count: 1
+    killCount: 0
+    label: 
+    ids:
+    - 16
   collectableRequirements: []
   talkToActors: []

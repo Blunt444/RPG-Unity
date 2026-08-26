@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ada8ce47e7f4ac458e2209f884cd7c2, type: 3}
   m_Name: IGotLost-WithName
   m_EditorClassIdentifier: Assembly-CSharp::ActorSO
-  actorName: 
-  portrait: {fileID: 0}
+  actorName: Frank
+  portrait: {fileID: -4395808749404051810, guid: c8a27441f9c5d9440880028bd0633a74, type: 3}

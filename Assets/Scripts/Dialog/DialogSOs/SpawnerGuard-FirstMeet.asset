@@ -12,6 +12,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: SpawnerGuard-FirstMeet
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  id: 
-  lines: []
+  id: SpawnerGuard-FirstMeet
+  lines:
+  - speaker: {fileID: 11400000, guid: 1366b4682df3e4b49b9fe8a47ad8bee6, type: 2}
+    text: Hi, I am the one protecting these spawn points.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 1366b4682df3e4b49b9fe8a47ad8bee6, type: 2}
+    text: My name is Spawner Guard.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 1366b4682df3e4b49b9fe8a47ad8bee6, type: 2}
+    text: See, these bone looking post is your spawn point after you die.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 3
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 1366b4682df3e4b49b9fe8a47ad8bee6, type: 2}
+    text: Once dead, you automatically spawn back here.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 4
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 1366b4682df3e4b49b9fe8a47ad8bee6, type: 2}
+    text: You can set another spawn point by standing close to it and hitting 'Enter'
+      button.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 5
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 1366b4682df3e4b49b9fe8a47ad8bee6, type: 2}
+    text: That is it. See ya!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
   returnStartIndex: 0

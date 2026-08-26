@@ -12,6 +12,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: Aldric-FirstMeet
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  id: 
-  lines: []
+  id: Aldric-FirstMeet
+  lines:
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: Never in my life i got defeated. But here i am.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: You are the one the crown send?
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: The enemy is conquered our mine 1. Our economy is crippling down.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 3
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: Clear the area and reclaim our mine.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 4
+    questDeclineNextLineIndex: 5
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: Still the mine isn't claimed.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 6
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: The crown will hunt you down if you don't help me out.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: Good. The mine 1 is operational now! Now move towards South and eventually
+      you will find the Mine 2 near the river bank.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
   returnStartIndex: 0

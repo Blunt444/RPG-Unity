@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d428a103555a7fc4ba74abef33352824, type: 3}
   m_Name: ArcherStance
   m_EditorClassIdentifier: Assembly-CSharp::QuestSO
-  label: 
-  about: 
+  label: Collect me 10 wood logs.
+  about: Help me to collect 10 wood logs to unlock a special skill! i kept from others.
   questState: 0
   rewards: []
   enemyRequirements: []
-  collectableRequirements: []
+  collectableRequirements:
+  - itemSO: {fileID: 11400000, guid: 1ca0c8c1b0e41c94faae314bfc08e19c, type: 2}
+    count: 30
+    label: 
   talkToActors: []

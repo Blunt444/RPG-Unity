@@ -12,6 +12,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: PoorMan1
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  id: 
-  lines: []
+  id: PoorMan1
+  lines:
+  - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    text: Why i am running in circles?
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 0
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 1
+  - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    text: Because i don't know what to do.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    text: Yesterday night, A goblin came and threatned me to give them 50 golds.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 3
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    text: I don't have that much.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 4
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    text: 'Can you help me! They are camping south-east! '
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 5
+    questDeclineNextLineIndex: 8
+    checkpointIndex: 2
+  - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    text: Is the threat gone!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 6
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 5
+  - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    text: pheww! Thanks here take my 20 golds that is what i have.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 7
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    text: You are a hero to me!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 7
+  - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    text: I think they gonna kill me if i don't pay them within time!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
   returnStartIndex: 0

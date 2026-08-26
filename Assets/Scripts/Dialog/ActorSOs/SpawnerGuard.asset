@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ada8ce47e7f4ac458e2209f884cd7c2, type: 3}
   m_Name: SpawnerGuard
   m_EditorClassIdentifier: Assembly-CSharp::ActorSO
-  actorName: 
-  portrait: {fileID: 0}
+  actorName: Spawner Guard
+  portrait: {fileID: -2526443156231494169, guid: e4593637ad6e6744a96d06733dd621ba, type: 3}

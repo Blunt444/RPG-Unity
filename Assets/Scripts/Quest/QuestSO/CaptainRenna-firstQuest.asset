@@ -19,8 +19,16 @@ MonoBehaviour:
   rewards: []
   enemyRequirements:
   - type: 0
-    count: 5
+    count: 7
     killCount: 2
     label: Kill torch
+    ids:
+    - 1
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 13
   collectableRequirements: []
   talkToActors: []

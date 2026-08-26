@@ -12,6 +12,96 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: OldMan-ArcherStance
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  id: 
-  lines: []
+  id: OldMan-ArcherStance
+  lines:
+  - speaker: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
+    text: Hello young man.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
+    text: Due to old age, i can't gather enough wood for my home.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
+    text: Can you collect the rest of the wood for me!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 3
+    questDeclineNextLineIndex: 7
+    checkpointIndex: 2
+  - speaker: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
+    text: Help me to gather necessary wood logs.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 4
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 3
+  - speaker: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
+    text: Thank you my friend.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 5
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
+    text: To honour your help. I will teach you Archery.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 6
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
+    text: Wow you learned it at a short period of time.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 7
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
+    text: You can help me anytime. You get something in return.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 0}
+    text: Use your new learned stance wisely. Press 'Q' to change stance.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 8
   returnStartIndex: 0

@@ -10,6 +10,7 @@ TagManager:
   - Torch
   - ShopInfoPanel
   - Quest1Lock
+  - Quest1AfterStartLock
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Arrow
   - Destroyable
   - Barrel
-  - 
+  - Troop
   - 
   - 
   - 

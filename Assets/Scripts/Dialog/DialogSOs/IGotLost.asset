@@ -12,6 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: IGotLost
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  id: 
-  lines: []
-  returnStartIndex: 0
+  id: IGotLost
+  lines:
+  - speaker: {fileID: 11400000, guid: 1bc8ec8064a16164cb2bfd960a451764, type: 2}
+    text: Did you see my Brother Tony.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 1bc8ec8064a16164cb2bfd960a451764, type: 2}
+    text: No! Okay...
+    topics: []
+    quest: {fileID: 0}
+    requiredActors:
+    - {fileID: 11400000, guid: 12f25f1d96117864989291e5ec64d2b8, type: 2}
+    rewards: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: e58537cf7b2e59b468dd20e95e3558b9, type: 2}
+    text: Ohh he is at home. Inform him i am safe. i will see him later today.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 3
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: e58537cf7b2e59b468dd20e95e3558b9, type: 2}
+    text: Thank You for your help.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 3
+  returnStartIndex: 3

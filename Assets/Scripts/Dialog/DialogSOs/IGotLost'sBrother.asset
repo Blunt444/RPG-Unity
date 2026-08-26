@@ -12,6 +12,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: IGotLost'sBrother
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  id: 
-  lines: []
-  returnStartIndex: 0
+  id: IGotLost'sBrother
+  lines:
+  - speaker: {fileID: 11400000, guid: 12f25f1d96117864989291e5ec64d2b8, type: 2}
+    text: Hey! Did you by any chance you stumbled across a lost person
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 12f25f1d96117864989291e5ec64d2b8, type: 2}
+    text: I lost my brother when the goblin raided our house. He fled and i couldn't
+      find him.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 12f25f1d96117864989291e5ec64d2b8, type: 2}
+    text: He is a shy person he will not say his name. Say i met your brother Tony
+      and he is very worried.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 3
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 12f25f1d96117864989291e5ec64d2b8, type: 2}
+    text: Find my brother Frank! and meet me.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors:
+    - {fileID: 11400000, guid: 1bc8ec8064a16164cb2bfd960a451764, type: 2}
+    - {fileID: 11400000, guid: e58537cf7b2e59b468dd20e95e3558b9, type: 2}
+    rewards: []
+    nextLineIndex: 4
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 3
+  - speaker: {fileID: 11400000, guid: 12f25f1d96117864989291e5ec64d2b8, type: 2}
+    text: For your help have this, I stole it from the goblins.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 5
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 12f25f1d96117864989291e5ec64d2b8, type: 2}
+    text: Thank you so much for help once again.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards:
+    - quantity: 5
+      itemSO: {fileID: 11400000, guid: 5d42c41d87998dd4c8fc84ecaabec365, type: 2}
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  returnStartIndex: 3

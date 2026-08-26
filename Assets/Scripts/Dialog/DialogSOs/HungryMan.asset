@@ -12,6 +12,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
   m_Name: HungryMan
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  id: 
-  lines: []
+  id: HungryMan
+  lines:
+  - speaker: {fileID: 11400000, guid: 9b3db1fc3116b21449dbf013cba613bb, type: 2}
+    text: Isn't the lake beautiful.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 9b3db1fc3116b21449dbf013cba613bb, type: 2}
+    text: Do you have meat to eat.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 9b3db1fc3116b21449dbf013cba613bb, type: 2}
+    text: If so, Can you give some, I am really hungry.
+    topics: []
+    quest: {fileID: 11400000, guid: 180d184612c696c4f97abbab50fcd64e, type: 2}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 3
+    questDeclineNextLineIndex: 5
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 9b3db1fc3116b21449dbf013cba613bb, type: 2}
+    text: I will wait.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 4
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 3
+  - speaker: {fileID: 11400000, guid: 9b3db1fc3116b21449dbf013cba613bb, type: 2}
+    text: Thank You. I am so blessed.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 4
+  - speaker: {fileID: 11400000, guid: 9b3db1fc3116b21449dbf013cba613bb, type: 2}
+    text: Nature will claim me with in a day or so.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
   returnStartIndex: 0
