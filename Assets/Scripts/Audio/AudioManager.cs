@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public Coroutine musicCoroutine;
     public float timeForNewMusic = 0f;
     public float maxTimeFornewMusic = 200f;
+    public AudioClip CurrentAudioClip;
 
     private void Awake()
     {
@@ -38,8 +40,13 @@ public class AudioManager : MonoBehaviour
         timeForNewMusic += Time.unscaledDeltaTime;
         if (timeForNewMusic > maxTimeFornewMusic)
         {
-            PlayMusic(bgMusic[Random.Range(0, bgMusic.Length)]);
+            PlayRandomMusic();
         }
+    }
+
+    public void PlayRandomMusic()
+    {
+        PlayMusic(bgMusic[UnityEngine.Random.Range(0, bgMusic.Length)]);
     }
 
     private void OnValidate()
@@ -50,9 +57,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip audioClip, bool loop = true)
     {
+        Debug.Log(audioClip.ToString());
         timeForNewMusic = 0f;
-        if (musicSource.clip == audioClip && musicSource.isPlaying) return;
+        if (CurrentAudioClip == audioClip) return;
 
+        CurrentAudioClip = audioClip;
         musicSource.loop = loop;
         if (musicCoroutine != null)
         {

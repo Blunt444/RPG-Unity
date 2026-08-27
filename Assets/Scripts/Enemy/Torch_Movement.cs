@@ -16,10 +16,17 @@ public class Enemy_Movement : Enemy_Movement_Abstract
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(manager.detectionPoint.position, manager.playerDetectionRange, manager.playerLayer);
 
+        if (hits.Length > 0)
+        {
+            AudioManager.Instance.PlayMusic(enemyBgMusic);
+        }
+        else
+        {
+            AudioManager.Instance.PlayRandomMusic();
+        }
+
         if (hits.Length > 0 || isChasingUncontrolled)
         {
-
-            AudioManager.Instance.PlayMusic(enemyBgMusic);
 
             if (attackCooldownTimer > 0)
             {
