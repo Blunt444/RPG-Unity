@@ -548,6 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7909835bfcbd347a3834531d82b700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
+  timeToDecay: 7
   enemyContainer: {fileID: 2194162454719023362}
   fillImage: {fileID: 4947535387912556430}
 --- !u!114 &9042792219248765905
@@ -565,6 +566,7 @@ MonoBehaviour:
   enemyType: 1
   enemyColor: 0
   enemyDiffculty: 0
+  id: 
   isManuallySpawned: 1
   speed: 0
   attackCooldownBuffer: 0
@@ -580,12 +582,19 @@ MonoBehaviour:
   knockBackTimeResistance: 0
   stuntResistance: 0
   guardDamage: 0
+  minDrop: 0
+  maxDrop: 0
+  minQuantity: 0
+  maxQuantity: 0
+  loots: []
+  LootPrefab: {fileID: 0}
   spawnerHut: {fileID: 0}
   detectionPoint: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
   attackPoint: {fileID: 0}
+  deathPrefab: {fileID: 0}
 --- !u!114 &9106919311564113638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,6 +615,7 @@ MonoBehaviour:
   attackCooldownTimer: 0
   healthCanvas: {fileID: 1799016281573533652}
   healthCanvasOffset: {x: -3.2, y: 4, z: 0}
+  enemyBgMusic: {fileID: 8300000, guid: 36f12c3a893fe4b46b579cb98e8477a2, type: 3}
   safeDistance: 0
   maxTimeToFindSafeDistance: 0
 --- !u!114 &937020938352850502

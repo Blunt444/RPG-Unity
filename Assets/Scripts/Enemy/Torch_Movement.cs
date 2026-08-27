@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Enemy_Movement : Enemy_Movement_Abstract
 {
@@ -19,6 +18,8 @@ public class Enemy_Movement : Enemy_Movement_Abstract
 
         if (hits.Length > 0 || isChasingUncontrolled)
         {
+
+            AudioManager.Instance.PlayMusic(enemyBgMusic);
 
             if (attackCooldownTimer > 0)
             {

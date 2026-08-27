@@ -295,6 +295,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1622568693130899917}
     m_Modifications:
     - target: {fileID: 196728852620218429, guid: 02f929eb730d17e43bc724c9bafe013b, type: 3}
+      propertyPath: enemyBgMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 36f12c3a893fe4b46b579cb98e8477a2, type: 3}
+    - target: {fileID: 196728852620218429, guid: 02f929eb730d17e43bc724c9bafe013b, type: 3}
       propertyPath: healthCanvas
       value: 
       objectReference: {fileID: 3395696114142092836}

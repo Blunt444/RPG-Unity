@@ -23,6 +23,7 @@ public class Tnt_Movement : Enemy_Movement_Abstract
 
         if (hits.Length > 0 || isChasingUncontrolled)
         {
+            AudioManager.Instance.PlayMusic(enemyBgMusic);
 
             if (attackCooldownTimer > 0)
             {
@@ -63,7 +64,7 @@ public class Tnt_Movement : Enemy_Movement_Abstract
 
             if (hits.Length > 0)
             {
-                
+
             }
             else
             {

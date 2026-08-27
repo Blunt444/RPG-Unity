@@ -13,5 +13,48 @@ MonoBehaviour:
   m_Name: Nathan
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
   id: 
-  lines: []
-  returnStartIndex: 0
+  lines:
+  - speaker: {fileID: 11400000, guid: bc5d8759b719c49489802909e6abb2e1, type: 2}
+    text: A lot of people know me as Notaroomba.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: bc5d8759b719c49489802909e6abb2e1, type: 2}
+    text: It feels sad leaving you guys!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 2
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: bc5d8759b719c49489802909e6abb2e1, type: 2}
+    text: 'But hey don''t worry. I will always be part. '
+    topics:
+    - label: MIT
+      textFor: 0
+      nextLineIndex: 3
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 2
+  - speaker: {fileID: 11400000, guid: bc5d8759b719c49489802909e6abb2e1, type: 2}
+    text: I am going to MIT now. JASDFJASDJF
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 2
+  returnStartIndex: 2

@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerCombat.Attack();
         }
-        else if (Input.GetButtonDown("Guard") && !isGuarding && currentGuardCooldown <= 0)
+        else if (Input.GetButtonDown("Guard") && !isGuarding && currentGuardCooldown <= 0 && playerCombat.enabled)
         {
             ActivateGuard();
         }

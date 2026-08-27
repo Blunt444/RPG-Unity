@@ -18,6 +18,8 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
     [SerializeField]
     protected Vector3 healthCanvasOffset;
     protected bool isFindingASafeDistance = false;
+    [SerializeField]
+    protected AudioClip enemyBgMusic;
 
 
     protected virtual void Awake()
