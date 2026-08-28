@@ -28,21 +28,26 @@ The game offers you these :
 *Note* to be in shield/guard mode the player must keep holding the left shift button for however long he wishes. If the player let it go before the slash damage is negleted the player gets **damaged**. You can only withstand 3 hits normally after getting hit for 3 times the guard mode gets locked temporarily until the cooldown is finished for it. You can upgrade the number of hits the shield can withstand in the skill tree(if i add one in the skill tree).
 
 # Enemies
+The game features **two** types of enemies so far. So there isn't a big challenge once you get used to their attack patterns. 
 
 ## Enemy Type - I(Torch)
+The Torch is just a goblin holding a fire torch he just comes close to you and attacks you with his fire torch. There are 3 difficuly levels available just increase in the stats alone, no physical changes. You can dodge the attack if you run from the attack range quick enough.
 
 ## Enemy Type - II(TNT)
+The Tnt is a enemy who just throws dynamite. Two phases of the attack, the first phase where the Tnt throws a dynamite which will reach the player position where the player is when the attack is initiated. The second phase is just the dynamite will starts to blow there will be countdown meaning the red pingpong animation gets intense/fast when the dynamite is about to explode, the region is marked by the red color if you leave the region fast enough you will not get damaged. *Note* Guard/shield doesn't deflect explosive damage. This enemy type too features 3 dificulty level just stats difference, no physical changes. 
 
 # Destroyables
-
-## Tree
-
-## TNT Barrels
+The object which can be destroyed are called Destroyables. The Destroyables includes **Trees** and **Barrels** so far.
+When hitting the tree for multiple times you will eventually chop the tree down and get logs as loot. The Barrel is used for combat you hit the barrel to trigger the countdown and lure the enemies into the blast damage to Deal damages to the masses. *Note* in the luring process if the player is in the blast zone and the barrel explodes, he might too get hurt/damaged.
 
 # Effects when an Item is used
+Some Inventory items will be eatable/usable which increases the stats of the player temporarily or permanently like speed, damage and so on.
 
 # How to run locally
 
 # Bug or Improvements
+If there is any Bugs or improvements in the code, feel free to raise a **PR** or contact me(**bluntoriginal444@gmail.com**). 
+*psss* There will be a lot of improvements needed so uhh i need your help.
 
 # Credits to the art person
+The Art i am using is sourced from **https://pixelfrog-assets.itch.io/**. A huge shoutout to him/her for providing the art for free.
