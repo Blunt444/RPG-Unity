@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.AppUI.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -20,6 +19,7 @@ public class MainMenu : MonoBehaviour
     public Transform GuidePanel;
     public Transform PlayPanel;
     public Transform LoadPanel;
+    public Transform settingPanel;
     public Transform LoadContent;
     public Transform LoadNoContent;
     public LoadBox LoadBoxPrefab;
@@ -78,6 +78,9 @@ public class MainMenu : MonoBehaviour
             case ButtonAction.Back:
                 Back();
                 return;
+            case ButtonAction.Setting:
+                OpenPanel(settingPanel);
+                return;
             default:
                 return;
         }
@@ -115,6 +118,7 @@ public class MainMenu : MonoBehaviour
         GuidePanel.gameObject.SetActive(paneltoShow == GuidePanel);
         PlayPanel.gameObject.SetActive(paneltoShow == PlayPanel);
         LoadPanel.gameObject.SetActive(paneltoShow == LoadPanel);
+        settingPanel.gameObject.SetActive(paneltoShow == settingPanel);
     }
 
     private void OpenPanel(Transform panelToShow)
@@ -159,5 +163,6 @@ public enum ButtonAction
     Exit,
     NewGame,
     LoadGame,
+    Setting,
     Back
 }
