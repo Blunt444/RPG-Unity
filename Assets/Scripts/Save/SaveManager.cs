@@ -55,6 +55,8 @@ public class SaveManager : MonoBehaviour
             data.maxGuardHit = StatsManager.Instance.maxGuardHitNegate;
             data.lastRespawnPoint = RespawnPointManager.Instance.GetCurrentRespawnPointId();
 
+            data.volumeData = new VolumeData { musicVolume = AudioManager.Instance.musicVolume, sfxVolume = AudioManager.Instance.sfxVolume };
+
             Dictionary<string, float> archeryData = LevelSystem.Instance.GetValuesFromSystem(PlayerStance.Archer);
             data.archeryData = new ExpData
             {
@@ -239,6 +241,8 @@ public class SaveManager : MonoBehaviour
         RespawnPointManager.Instance.SetRespawnPoint(data.lastRespawnPoint);
         StatsManager.Instance.SetSaveData(data.currentHealth, data.maxHealth, data.maxGuardHit);
         DeathCanvasScript.Instance.SpawnAtCheckPoint();
+        AudioManager.Instance.musicVolume = data.volumeData.musicVolume;
+        AudioManager.Instance.sfxVolume = data.volumeData.sfxVolume;
 
         InventoryManager.Instance.ClearInventory();
 
@@ -278,7 +282,7 @@ public class SaveManager : MonoBehaviour
             Spawner_Difficulty.Instance.SetSpawnerSaveData(spawnerData);
         }
 
-        foreach(KilledEnemy killedEnemy in data.killedEnemies)
+        foreach (KilledEnemy killedEnemy in data.killedEnemies)
         {
             QuestManager.Instance.SetKilledEnemyData(killedEnemy);
         }
@@ -325,6 +329,7 @@ public class SaveData
     public int maxHealth;
     public int maxGuardHit;
     public string lastRespawnPoint;
+    public VolumeData volumeData;
     public List<InventorySlotData> inventory = new();
     public List<QuestData> quests = new();
     public List<SkillData> skills = new();
@@ -348,6 +353,13 @@ public class KilledEnemy
 {
     public string id;
     public bool alreadyCounted;
+}
+
+[Serializable]
+public class VolumeData
+{
+    public float musicVolume = 1f;
+    public float sfxVolume = 1f;
 }
 
 [Serializable]

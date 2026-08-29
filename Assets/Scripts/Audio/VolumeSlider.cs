@@ -11,6 +11,7 @@ public class VolumeSlider : MonoBehaviour
     private void OnEnable()
     {
         slider.onValueChanged.AddListener(GetAndSetSliderValue);
+        slider.value = sliderType == SliderType.Music ? AudioManager.Instance.musicVolume : AudioManager.Instance.sfxVolume;
         GetAndSetSliderValue(sliderType == SliderType.Music ? AudioManager.Instance.musicVolume : AudioManager.Instance.sfxVolume);
     }
 
