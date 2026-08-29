@@ -126,5 +126,6 @@ public enum PauseButtonAction
 {
     Resume,
     Save,
-    Exit
+    Exit,
+    Setting
 }
