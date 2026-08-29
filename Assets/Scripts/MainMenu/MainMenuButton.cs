@@ -10,6 +10,7 @@ public class MainMenuButton : MonoBehaviour, IPointerClickHandler, IPointerEnter
     {
         Debug.Log("Clicked button");
         MainMenu.Instance.ButtonClicked(this);
+        text.alpha = 1f;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
