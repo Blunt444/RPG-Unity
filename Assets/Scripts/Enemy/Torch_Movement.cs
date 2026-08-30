@@ -18,11 +18,13 @@ public class Enemy_Movement : Enemy_Movement_Abstract
 
         if (hits.Length > 0)
         {
-            AudioManager.Instance.PlayMusic(enemyBgMusic);
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayMusic(enemyBgMusic);
         }
         else
         {
-            AudioManager.Instance.PlayRandomMusic();
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayRandomMusic();
         }
 
         if (hits.Length > 0 || isChasingUncontrolled)

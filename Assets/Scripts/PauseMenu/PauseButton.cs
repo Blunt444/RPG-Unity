@@ -12,6 +12,7 @@ public class PauseButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public void OnPointerClick(PointerEventData eventData)
     {
         onClick?.Invoke(action, this);
+        textBox.alpha = 1.0f;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

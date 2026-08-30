@@ -10,10 +10,18 @@ public class PauseMenu : MonoBehaviour
     public CanvasGroup canvas;
     public bool isSaveClicked = false;
     public int messageTime = 4;
+    public Transform settingPanel;
+    public Transform buttonsPanel;
     public static event Action<string, int> Message;
     private void OnEnable()
     {
         PauseButton.onClick += Response;
+    }
+
+    private void Start()
+    {
+        settingPanel.gameObject.SetActive(false);
+        buttonsPanel.gameObject.SetActive(true);
     }
 
     private void OnDisable()
@@ -75,6 +83,20 @@ public class PauseMenu : MonoBehaviour
                 // isSaveClicked = false;
                 StartCoroutine(SaveCoroutine(pauseButton));
                 return;
+            case PauseButtonAction.Setting:
+                if(settingPanel != null)
+                {
+                    settingPanel.gameObject.SetActive(true);
+                    buttonsPanel.gameObject.SetActive(false);
+                }
+                return;
+            case PauseButtonAction.Back:
+                if(settingPanel != null)
+                {
+                    settingPanel.gameObject.SetActive(false);           // I didn't want to implement stack cause there is only a single back button so far
+                    buttonsPanel.gameObject.SetActive(true);            // In future if there is 2 or more back i will implement stack
+                }
+                return;
             default:
                 return;
         }
@@ -127,5 +149,6 @@ public enum PauseButtonAction
     Resume,
     Save,
     Exit,
-    Setting
+    Setting,
+    Back
 }

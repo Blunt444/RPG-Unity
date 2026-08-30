@@ -3742,6 +3742,8 @@ MonoBehaviour:
   canvas: {fileID: 8216849385843885972}
   isSaveClicked: 0
   messageTime: 4
+  settingPanel: {fileID: 4058424287180724997}
+  buttonsPanel: {fileID: 5569101330909907822}
 --- !u!225 &8216849385843885972
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10976,6 +10978,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 1533852317993079844, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1549048769942958114, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -11016,13 +11022,17 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 1794556678259018624, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1934493870200310778, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -23
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 1934493870200310778, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -11.5
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2980623118694022341, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
       propertyPath: m_SizeDelta.x
@@ -11454,22 +11464,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9011005403182551501, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -23
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 9011005403182551501, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -11.5
+      value: -10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4070939862583603077, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1049343452166058893, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5907103873569668535}
   m_SourcePrefab: {fileID: 100100000, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
+--- !u!114 &1012353584940471175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5795760602988340387, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
+  m_PrefabInstance: {fileID: 6801059648031602468}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832781607653065897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &4058424287180724997 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7363487457965452321, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
   m_PrefabInstance: {fileID: 6801059648031602468}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5832781607653065897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1049343452166058893, guid: 302e6ef001dc62b44b1bc830410b8da0, type: 3}
+  m_PrefabInstance: {fileID: 6801059648031602468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5907103873569668535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832781607653065897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77859bbb974f784393158986d9589d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseButton
+  textBox: {fileID: 1012353584940471175}
+  action: 4
 --- !u!1001 &6833075787036166080
 PrefabInstance:
   m_ObjectHideFlags: 0
