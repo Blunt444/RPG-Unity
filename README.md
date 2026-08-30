@@ -45,6 +45,25 @@ Some Inventory items will be eatable/usable which increases the stats of the pla
 
 # How to run locally
 
+## Prerequisites
+- **Unity Hub** if not download from this link -> **https://unity.com/download**
+- Make sure the **unity version is above 6**. If the version if lower than 6 some Mechanism won't work properly.
+
+## Steps for Cloning and Running
+- Clone the repository:
+```bash
+   git clone https://github.com/Blunt444/RPG-Unity.git
+```
+- Open the unity hub.
+- Click the **Add** button located at top right corner.
+- You will see two options click the **Add project from disk**.
+- Point the folder location and click.
+- You will see the folder now in the unity hub.
+- Click the project in the unity hub and it will load essential imports.
+- Once in the unity editor click the **Play Icon** to play the game.
+
+**Note :** if the scene doesn't load properly try to navigate to **Scenes** folder in the asset folder and click the **MainMenu** scene to launch the scene.
+
 # Bug or Improvements
 If there is any Bugs or improvements in the code, feel free to raise a **PR** or contact me(**bluntoriginal444@gmail.com**). 
 *psss* There will be a lot of improvements needed so uhh i need your help.
