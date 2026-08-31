@@ -21,7 +21,7 @@ public class Enemy_Health : MonoBehaviour, Damageable
 
         if (enemyContainer == null)
         {
-            enemyContainer = transform.root.gameObject;
+            enemyContainer = transform.parent.gameObject;
         }
     }
 

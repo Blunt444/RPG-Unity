@@ -17,10 +17,11 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ddefe0813720d05438ae46ba9bdd2907, type: 3}
   stackSize: 64
   uiOffset: {x: 0, y: 35}
-  shopUIOffset: {x: 0, y: 0}
-  shopUIItemSize: {x: 120, y: 120}
+  shopUIOffset: {x: 0, y: 20}
+  shopUIItemSize: {x: 140, y: 140}
   isGold: 0
   isUsable: 0
+  isArrow: 0
   currentHealth: 0
   maxHealth: 0
   speed: 0

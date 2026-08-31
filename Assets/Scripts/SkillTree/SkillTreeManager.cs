@@ -39,10 +39,19 @@ public class SkillTreeManager : MonoBehaviour
 
     public void SetSKillData(SkillData skillData)
     {
-        if(skillSlotDictionary.TryGetValue(skillData.skillName, out SkillSlot slot))
+        if (skillSlotDictionary.TryGetValue(skillData.skillName, out SkillSlot slot))
         {
-            slot.currentLevel = skillData.lvl;
             slot.isUnlocked = skillData.isUnlocked;
+
+            int targetLevel = skillData.lvl;
+            slot.currentLevel = 0;
+
+            for (int i = 0; i < targetLevel; i++)
+            {
+                slot.currentLevel++;
+                SkillManager.Instance.HandleSkillUpgrade(slot);
+            }
+
             slot.UpdateUI();
         }
     }

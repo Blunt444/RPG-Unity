@@ -873,7 +873,6 @@ GameObject:
   - component: {fileID: 1691134157}
   - component: {fileID: 1691134158}
   - component: {fileID: 1691134160}
-  - component: {fileID: 1691134159}
   m_Layer: 5
   m_Name: Bg
   m_TagString: Untagged
@@ -909,29 +908,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691134156}
   m_CullTransparentMesh: 1
---- !u!114 &1691134159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691134156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9aa1b80b7cfd3d4db2ba3b87c19bb9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Story
-  storyContent:
-    lines:
-    - line: Life feels good when nothing happens but there are alwaays uncertainity
-      writer: 
-    - line: 'So this is how it happened '
-      writer: '- Vikram'
-  textBox: {fileID: 338182536}
-  writerBox: {fileID: 839512900}
-  index: 0
-  canBeSkipped: 1
-  isTyping: 0
 --- !u!114 &1691134160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,17 +1059,39 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978702812}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9aa1b80b7cfd3d4db2ba3b87c19bb9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Story
   storyContent:
     lines:
-    - line: Life feels good when nothing happens but there are alwaays uncertainity
+    - line: Ashen Reach had nothing for years just rocks everywhere until one day
+        when a village elder found gold in it. Since then the Ashen reach produces
+        gold for the Kingdown
       writer: 
-    - line: 'So this is how it happened '
-      writer: '- Vikram'
+    - line: The Ashen reach has three mines which produces gold actively. One day
+        the wagons and the miners never returned home.
+      writer: 
+    - line: The council thought there was a blockage which is stopping the movement.
+        Days passed no tracks and nothing.
+      writer: 
+    - line: Council lost it's patience and send Captian Renna and Aldric to inspect
+        what is going on
+      writer: 
+    - line: To their surprise the Ashen reach was captured by enemies. They returned
+        to get more forces to clear up the path.
+      writer: 
+    - line: Days went, many soldiers fall to the ground. But no progress on Ashen
+        reach. So the Council had enough
+      writer: 
+    - line: The Job is simple for you. Meet Captain Renna and Make the mine operate
+        as usual.
+      writer: 
+    - line: 'Caution For Reviewer : The main thing i changed in the filesystem was
+        renaming UnsavedScene to Scene1. If any tiny problem reach me out on Slack
+        @blunt'
+      writer: 
   textBox: {fileID: 338182536}
   writerBox: {fileID: 839512900}
   index: 0

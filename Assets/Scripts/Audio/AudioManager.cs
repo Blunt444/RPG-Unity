@@ -57,7 +57,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip audioClip, bool loop = true)
     {
-        Debug.Log(audioClip.ToString());
+        // Debug.Log(audioClip.ToString());
         timeForNewMusic = 0f;
         if (CurrentAudioClip == audioClip) return;
 

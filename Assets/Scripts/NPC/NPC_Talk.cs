@@ -15,11 +15,44 @@ public class NPC_Talk : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
+
+        if (questSO.label == "Clear the road up ahead." && questSO.questState == QuestState.Accepted)
+        {
+            GameObject.FindGameObjectWithTag("Quest1Lock").GetComponent<TilemapCollider2D>().enabled = false;
+            GameObject.FindGameObjectWithTag("Quest1Lock").GetComponent<NavMeshModifier>().enabled = false;
+            Physics2D.SyncTransforms();
+            GameObject.FindFirstObjectByType<NavMeshSurface>().BuildNavMesh();
+        }
+
     }
 
     private void Start()
     {
         currentIndex = dialogSO.returnStartIndex;
+
+        if (questSO != null && questSO.questState == QuestState.Completed)
+        {
+            currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
+
+            if (questSO.label == "Clear the road up ahead.")
+            {
+                GameObject.FindGameObjectWithTag("Quest2AfterStartLock").GetComponent<TilemapCollider2D>().enabled = false;
+                GameObject.FindGameObjectWithTag("Quest2AfterStartLock").GetComponent<NavMeshModifier>().enabled = false;
+                Physics2D.SyncTransforms();
+                GameObject.FindFirstObjectByType<NavMeshSurface>().BuildNavMesh();
+            }
+            else if (questSO.label == "Collect me 10 wood logs.")
+            {
+                StanceManager.Instance.UnlockArcherStance();
+            }
+
+            foreach (Reward reward in questSO.rewards)
+            {
+                InventoryManager.Instance.AddItem(reward.itemSO, reward.quantity);
+            }
+
+            questSO = null;
+        }
     }
 
     private void OnEnable()
@@ -52,7 +85,7 @@ public class NPC_Talk : MonoBehaviour
             {
                 // Debug.Log("Advance");
 
-                if (DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]) && (questSO == null || questSO.questState == QuestState.Completed))
+                if (DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]) && (questSO == null || questSO.questState == QuestState.Completed || questSO.questState == QuestState.None || questSO.questState == QuestState.Declined))
                     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
                 else
                     currentIndex = DialogueManager.Instance.EndConversation(dialogSO);
@@ -98,6 +131,7 @@ public class NPC_Talk : MonoBehaviour
 
                 while (currentIndex != -1 && dialogSO.lines[currentIndex].requiredActors.Count > 0 && DialogHistoryTracker.Instance.CanShowNextLine(dialogSO.lines[currentIndex]))
                 {
+                    Debug.Log(currentIndex);
                     currentIndex = DialogueManager.Instance.nextLineIndex(dialogSO, currentIndex);
                 }
 
