@@ -23,13 +23,21 @@ public class SkillManager : MonoBehaviour
     {
         string name = slot.skillSO.skillName;
 
-        switch (name)
+        foreach(SkillEffect effect in slot.skillSO.skillEffects[slot.currentLevel - 1].effects)
         {
-            case "Max Health Booster":
-                playerStatsUpgrade.UpdateMaxHealth(1);
-                break;
+            ApplyEffect(effect);
+        }
+    }
+
+    private void ApplyEffect(SkillEffect effect)
+    {
+        switch (effect.type)
+        {
+            case SkillEffectType.MaxHealth:
+                playerStatsUpgrade.UpdateMaxHealth(effect.amount);
+                return;
             default:
-                break;
+                return;
         }
     }
 }

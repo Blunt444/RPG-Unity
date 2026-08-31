@@ -95,7 +95,7 @@ public class SkillInfo : MonoBehaviour
         foreach (SkillEffect effect in skillEffects)
         {
             GameObject effectBox = Instantiate(effectBoxPrefab, effectTransform);
-            effectBox.GetComponent<TMP_Text>().text = effect.amount >= 0 ? "+" : "-" + effect.amount.ToString();
+            effectBox.GetComponent<TMP_Text>().text = (effect.amount >= 0 ? "+" : "-") + effect.amount.ToString() + (effect.isPercentage ? "%" : "");
             effectBox.GetComponent<Image>().sprite = effect.icon;
         }
     }

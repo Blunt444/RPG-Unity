@@ -118,7 +118,7 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (isUnlocked)
         {
-            SkillInfo.Instance.ShowEffectInfo(skillSO.skillEffects);
+            SkillInfo.Instance.ShowEffectInfo(skillSO.skillEffects[currentLevel].effects);
         }
     }
 

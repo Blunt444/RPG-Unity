@@ -44,6 +44,11 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        facingDirection = (int)transform.localScale.x;
+    }
+
     public virtual void Update()
     {
         if (enemyState == EnemyState.Knockback)

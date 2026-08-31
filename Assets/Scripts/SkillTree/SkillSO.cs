@@ -10,7 +10,7 @@ public class SkillSO : ScriptableObject
     public Sprite skillIcon;
     public SkillCategory category;
     public List<SkillPrerequisite> prerequisites;
-    public List<SkillEffect> skillEffects = new List<SkillEffect>();
+    public List<SkillLevelData> skillEffects = new List<SkillLevelData>();
     public int initialCost;
     public int incrementValue;
 }
@@ -22,10 +22,26 @@ public class SkillPrerequisite
     public SkillSO skillSO;
     public int requiredLevel = 1;
 }
+[System.Serializable]
+public enum SkillEffectType
+{
+    MaxHealth,
+    MoveSpeed,
+    Damage,
+    ArrowCapacity
+}
+
+[System.Serializable]
+public class SkillLevelData
+{
+    public List<SkillEffect> effects = new List<SkillEffect>();
+}
 
 [System.Serializable]
 public class SkillEffect
 {
+    public SkillEffectType type;
     public Sprite icon;
-    public float amount;
+    public int amount;
+    public bool isPercentage = false;
 }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
-  m_Name: Aldric-FirstMeet
+  m_Name: Aldric-thridMeet
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  id: Aldric-FirstMeet
+  id: Aldric-thridMeet
   lines:
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Never in my life i got defeated. But here i am.
+    text: You reached safe. Sounds good.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -25,7 +25,8 @@ MonoBehaviour:
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: You are the one the crown send?
+    text: Okay let we talk abou the position right now. The enemy build the wall
+      and only has a small entrance as you can see.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -35,7 +36,7 @@ MonoBehaviour:
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: The enemy is conquered our mine 1. Our economy is crippling down.
+    text: 'My troops sneaked in yesterday night and found the mine swarmed with enemies. '
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -45,27 +46,28 @@ MonoBehaviour:
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Clear the area and reclaim our mine.
+    text: I don't want to send my man to death. So you got to go in alone.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 4
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: Defeat the enemies!
     topics: []
     quest: {fileID: 0}
     requiredActors: []
     rewards: []
     nextLineIndex: -1
-    questAcceptNextLineIndex: 4
+    questAcceptNextLineIndex: 6
     questDeclineNextLineIndex: 5
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Still the mine isn't claimed.
-    topics: []
-    quest: {fileID: 0}
-    requiredActors: []
-    rewards: []
-    nextLineIndex: 6
-    questAcceptNextLineIndex: 0
-    questDeclineNextLineIndex: 0
-    checkpointIndex: 0
-  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: The crown will hunt you down if you don't help me out.
+    text: As i said you can escape from me but not from the crown. They will hunt
+      you down.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -75,8 +77,7 @@ MonoBehaviour:
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Good. The mine 1 is operational now! Now move towards South and eventually
-      you will find the Mine 2 near the river bank.
+    text: Good, the mine 3 will eventually start to produce gold once again.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -84,15 +85,5 @@ MonoBehaviour:
     nextLineIndex: -1
     questAcceptNextLineIndex: 0
     questDeclineNextLineIndex: 0
-    checkpointIndex: 7
-  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Mine 1 is safe!
-    topics: []
-    quest: {fileID: 0}
-    requiredActors: []
-    rewards: []
-    nextLineIndex: -1
-    questAcceptNextLineIndex: 0
-    questDeclineNextLineIndex: 0
-    checkpointIndex: 7
+    checkpointIndex: 0
   returnStartIndex: 0

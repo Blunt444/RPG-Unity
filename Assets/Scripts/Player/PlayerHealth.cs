@@ -43,6 +43,12 @@ public class PlayerHealth : MonoBehaviour, Damageable
         gameObject.SetActive(false);
         InventoryManager.Instance.PlayerDied(transform.position);
         DeathCanvasScript.Instance.OnDie();
+
+        if (DialogueManager.Instance != null && DialogueManager.Instance.isOpened)
+        {
+            DialogueManager.Instance.isOpened = false;
+            DialogueManager.Instance.npc = null;
+        }
     }
 
     public void UpdateHealthUI()

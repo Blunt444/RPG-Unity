@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48668727c484f3447a2b1dd41e64bf52, type: 3}
-  m_Name: Aldric-FirstMeet
+  m_Name: Aldric-SecondMeet
   m_EditorClassIdentifier: Assembly-CSharp::DialogSO
-  id: Aldric-FirstMeet
+  id: Aldric-SecondMeet
   lines:
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Never in my life i got defeated. But here i am.
+    text: Good that you have Survived the path leading here.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -25,7 +25,7 @@ MonoBehaviour:
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: You are the one the crown send?
+    text: The enemies count is higher than we have expected.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -35,7 +35,8 @@ MonoBehaviour:
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: The enemy is conquered our mine 1. Our economy is crippling down.
+    text: You have to be more careful when fighting enemies as they can overwhelm
+      you by the count.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -45,27 +46,43 @@ MonoBehaviour:
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Clear the area and reclaim our mine.
+    text: From my side all i can do is give you some supplies
     topics: []
     quest: {fileID: 0}
     requiredActors: []
-    rewards: []
-    nextLineIndex: -1
-    questAcceptNextLineIndex: 4
-    questDeclineNextLineIndex: 5
-    checkpointIndex: 0
-  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Still the mine isn't claimed.
-    topics: []
-    quest: {fileID: 0}
-    requiredActors: []
-    rewards: []
-    nextLineIndex: 6
+    rewards:
+    - quantity: 5
+      itemSO: {fileID: 11400000, guid: 421dde164514960428efe69cb10cfb5f, type: 2}
+    - quantity: 100
+      itemSO: {fileID: 11400000, guid: 5659d0b4f9cd3cc4591f4370bda7766f, type: 2}
+    - quantity: 7
+      itemSO: {fileID: 11400000, guid: 5d42c41d87998dd4c8fc84ecaabec365, type: 2}
+    nextLineIndex: 4
     questAcceptNextLineIndex: 0
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: The crown will hunt you down if you don't help me out.
+    text: Fight and conquer the Gold Mine.
+    topics: []
+    quest: {fileID: 11400000, guid: fbeae4504d4c8ec469a9bdbdb030233c, type: 2}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 5
+    questDeclineNextLineIndex: 6
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: Is the mine conquered?
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 7
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: I can leave you but the crown won't. Keep in mind.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -75,18 +92,28 @@ MonoBehaviour:
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Good. The mine 1 is operational now! Now move towards South and eventually
-      you will find the Mine 2 near the river bank.
+    text: Good, The mine will start to produce gold like usual.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
     rewards: []
-    nextLineIndex: -1
+    nextLineIndex: 8
     questAcceptNextLineIndex: 0
     questDeclineNextLineIndex: 0
-    checkpointIndex: 7
+    checkpointIndex: 0
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
-    text: Mine 1 is safe!
+    text: Now, the mine 3 is yet to be reclaimed.
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: 1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 0
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: Travel SouthWest for until reach the sea. From there travel North to reach
+      the mine 3.
     topics: []
     quest: {fileID: 0}
     requiredActors: []
@@ -94,5 +121,15 @@ MonoBehaviour:
     nextLineIndex: -1
     questAcceptNextLineIndex: 0
     questDeclineNextLineIndex: 0
-    checkpointIndex: 7
+    checkpointIndex: 10
+  - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    text: Mine 2 is safe!
+    topics: []
+    quest: {fileID: 0}
+    requiredActors: []
+    rewards: []
+    nextLineIndex: -1
+    questAcceptNextLineIndex: 0
+    questDeclineNextLineIndex: 0
+    checkpointIndex: 10
   returnStartIndex: 0

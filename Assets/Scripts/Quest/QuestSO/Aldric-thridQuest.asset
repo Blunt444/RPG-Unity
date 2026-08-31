@@ -10,35 +10,46 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d428a103555a7fc4ba74abef33352824, type: 3}
-  m_Name: Aldric-firstQuest
+  m_Name: Aldric-thridQuest
   m_EditorClassIdentifier: Assembly-CSharp::QuestSO
-  label: Reclaim the mine 1.
+  label: Reclaim the mine 2.
   about: The mine is conquired by the enemy. Defeat them and reclaim the mine, so
     it produces gold again.
   questState: 0
   rewards:
-  - quantity: 100
+  - quantity: 200
     itemSO: {fileID: 11400000, guid: 5659d0b4f9cd3cc4591f4370bda7766f, type: 2}
-  - quantity: 5
-    itemSO: {fileID: 11400000, guid: 421dde164514960428efe69cb10cfb5f, type: 2}
+  - quantity: 10
+    itemSO: {fileID: 11400000, guid: 5d42c41d87998dd4c8fc84ecaabec365, type: 2}
   enemyRequirements:
-  - type: 2
-    count: 2
-    killCount: 0
-    label: 
-    ids:
-    - 14
-    - 15
   - type: 0
-    count: 6
+    count: 7
     killCount: 0
     label: 
     ids:
-    - 2
-    - 3
-    - 4
-    - 5
-    - 6
-    - 7
+    - 20
+    - 21
+    - 22
+    - 23
+    - 24
+    - 25
+    - 26
+  - type: 1
+    count: 3
+    killCount: 0
+    label: 
+    ids:
+    - 17
+    - 18
+    - 19
+  - type: 2
+    count: 4
+    killCount: 0
+    label: 
+    ids:
+    - 30
+    - 29
+    - 28
+    - 27
   collectableRequirements: []
   talkToActors: []
