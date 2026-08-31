@@ -12,11 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071add304b7dfdc4eb1306be13caab77, type: 3}
   m_Name: ArcherDamageDeflect
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: 
-  maxLevel: 0
-  skillIcon: {fileID: 0}
-  category: 0
+  skillName: Archer Damage Deflect
+  maxLevel: 3
+  skillIcon: {fileID: 21300000, guid: 2c156a9085ee1964db34726282f0c5c4, type: 3}
+  category: 1
   prerequisites: []
-  skillEffects: []
-  initialCost: 0
-  incrementValue: 0
+  skillEffects:
+  - effects:
+    - type: 11
+      icon: {fileID: 21300000, guid: 2c156a9085ee1964db34726282f0c5c4, type: 3}
+      amount: 5
+      isPercentage: 1
+  - effects:
+    - type: 11
+      icon: {fileID: 21300000, guid: 2c156a9085ee1964db34726282f0c5c4, type: 3}
+      amount: 7
+      isPercentage: 1
+  - effects:
+    - type: 11
+      icon: {fileID: 21300000, guid: 2c156a9085ee1964db34726282f0c5c4, type: 3}
+      amount: 10
+      isPercentage: 1
+  initialCost: 5
+  incrementValue: 2

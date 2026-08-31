@@ -55,7 +55,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: -10
+  m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -346,8 +346,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillTreeManager
   allSkillSOs:
+  - {fileID: 11400000, guid: 1ae2d930fc524aa49a006bda71150a98, type: 2}
+  - {fileID: 11400000, guid: d242638a2eddec940ad4fab079aff5d3, type: 2}
+  - {fileID: 11400000, guid: 544139ac42be4824ebc952ed26247c7c, type: 2}
+  - {fileID: 11400000, guid: 6386216bd6fe9b341a19996e1a0b059d, type: 2}
+  - {fileID: 11400000, guid: b466b5e4a30d5c34fb72952c54e2a213, type: 2}
+  - {fileID: 11400000, guid: b9bb64d7d43c09e47be0789fee85ef9a, type: 2}
+  - {fileID: 11400000, guid: d215e9bd8e16cac4396089831b051954, type: 2}
+  - {fileID: 11400000, guid: b86ea637a52d4d745851cb4d576c5b33, type: 2}
   - {fileID: 11400000, guid: 518c675bd89f7c94ab8d3c963fe7e338, type: 2}
-  - {fileID: 11400000, guid: 6e2afcc5b8a921b4886fdc8505c8b331, type: 2}
+  - {fileID: 11400000, guid: 971845cd703e13545ba0f0032507eaa8, type: 2}
+  - {fileID: 11400000, guid: 0cc78350690c8a94b8e71aeb65092e05, type: 2}
+  - {fileID: 11400000, guid: 0d70de347ff45754f8a981b2828e29f0, type: 2}
   skillSlotPrefab: {fileID: 2671616377979676925, guid: f5c614c1c836b0a4bb22fc1624f089b8, type: 3}
   combatPanel: {fileID: 8034976227532037598}
   archeryPanel: {fileID: 8811993052282720571}
@@ -5342,7 +5352,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 50}
+  m_CellSize: {x: 130, y: 50}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -11672,6 +11682,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7451944760148636851}
     - target: {fileID: 1040199141371091587, guid: 4e9b249ed655b9d4eaa8f68464ce2632, type: 3}
+      propertyPath: effectBoxPrefab
+      value: 
+      objectReference: {fileID: 8178578941970801230, guid: f31a1c21e5b30a64da8296e247cea7f2, type: 3}
+    - target: {fileID: 1040199141371091587, guid: 4e9b249ed655b9d4eaa8f68464ce2632, type: 3}
+      propertyPath: effectTransform
+      value: 
+      objectReference: {fileID: 6554076166425327070}
+    - target: {fileID: 1040199141371091587, guid: 4e9b249ed655b9d4eaa8f68464ce2632, type: 3}
       propertyPath: prerequestPanel
       value: 
       objectReference: {fileID: 1691630468757143137}
@@ -11725,11 +11743,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1465904790790480576, guid: 4e9b249ed655b9d4eaa8f68464ce2632, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1465904790790480576, guid: 4e9b249ed655b9d4eaa8f68464ce2632, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1465904790790480576, guid: 4e9b249ed655b9d4eaa8f68464ce2632, type: 3}
       propertyPath: m_LocalPosition.x

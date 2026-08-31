@@ -12,11 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071add304b7dfdc4eb1306be13caab77, type: 3}
   m_Name: ArrowCapacity
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: 
-  maxLevel: 0
-  skillIcon: {fileID: 0}
-  category: 0
+  skillName: Arrow Capacity
+  maxLevel: 5
+  skillIcon: {fileID: -4346244404228752641, guid: 1b1419c3a3ea911439a7f0741630c5f3, type: 3}
+  category: 1
   prerequisites: []
-  skillEffects: []
-  initialCost: 0
-  incrementValue: 0
+  skillEffects:
+  - effects:
+    - type: 4
+      icon: {fileID: -4346244404228752641, guid: 1b1419c3a3ea911439a7f0741630c5f3, type: 3}
+      amount: 1
+      isPercentage: 0
+  - effects:
+    - type: 4
+      icon: {fileID: -4346244404228752641, guid: 1b1419c3a3ea911439a7f0741630c5f3, type: 3}
+      amount: 1
+      isPercentage: 0
+  - effects:
+    - type: 4
+      icon: {fileID: -4346244404228752641, guid: 1b1419c3a3ea911439a7f0741630c5f3, type: 3}
+      amount: 1
+      isPercentage: 0
+  - effects:
+    - type: 4
+      icon: {fileID: -4346244404228752641, guid: 1b1419c3a3ea911439a7f0741630c5f3, type: 3}
+      amount: 1
+      isPercentage: 0
+  - effects:
+    - type: 4
+      icon: {fileID: -4346244404228752641, guid: 1b1419c3a3ea911439a7f0741630c5f3, type: 3}
+      amount: 2
+      isPercentage: 0
+  initialCost: 5
+  incrementValue: 2

@@ -14,24 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
   skillName: Guard Strength
   maxLevel: 3
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: c662131e7ec51ca4db12feb30403c311, type: 3}
   category: 0
   prerequisites:
   - skillSO: {fileID: 11400000, guid: 518c675bd89f7c94ab8d3c963fe7e338, type: 2}
     requiredLevel: 2
   skillEffects:
   - effects:
-    - type: 4
+    - type: 5
       icon: {fileID: 21300000, guid: c662131e7ec51ca4db12feb30403c311, type: 3}
       amount: 1
       isPercentage: 0
   - effects:
-    - type: 4
+    - type: 5
       icon: {fileID: 21300000, guid: c662131e7ec51ca4db12feb30403c311, type: 3}
       amount: 1
       isPercentage: 0
   - effects:
-    - type: 4
+    - type: 5
       icon: {fileID: 21300000, guid: c662131e7ec51ca4db12feb30403c311, type: 3}
       amount: 2
       isPercentage: 0

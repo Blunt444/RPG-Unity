@@ -12,11 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071add304b7dfdc4eb1306be13caab77, type: 3}
   m_Name: StunTime
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: 
-  maxLevel: 0
-  skillIcon: {fileID: 0}
+  skillName: Enemy Stun Time
+  maxLevel: 2
+  skillIcon: {fileID: 21300000, guid: bf1149f8942d8e848b86fb64b15056c6, type: 3}
   category: 0
   prerequisites: []
-  skillEffects: []
-  initialCost: 0
-  incrementValue: 0
+  skillEffects:
+  - effects:
+    - type: 9
+      icon: {fileID: 21300000, guid: bf1149f8942d8e848b86fb64b15056c6, type: 3}
+      amount: 5
+      isPercentage: 1
+  - effects:
+    - type: 9
+      icon: {fileID: 21300000, guid: bf1149f8942d8e848b86fb64b15056c6, type: 3}
+      amount: 10
+      isPercentage: 1
+  initialCost: 6
+  incrementValue: 4

@@ -145,6 +145,10 @@ public class QuestManager : MonoBehaviour
                     {
                         if (questSO.label == "Reclaim the mine 1.")
                             mine1.sprite = activeMine;
+                        else if (questSO.label == "Reclaim the mine 2.")
+                            mine2.sprite = activeMine;
+                        else if (questSO.label == "Reclaim the mine 3.")
+                            mine3.sprite = activeMine;
                         questSO.MarkQuestCompleted();
                         string text = $"{count} Quest Task Completed";
                         Message?.Invoke(text, messageTimer);

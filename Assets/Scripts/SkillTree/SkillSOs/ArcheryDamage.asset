@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071add304b7dfdc4eb1306be13caab77, type: 3}
   m_Name: ArcheryDamage
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: Combat Damage
+  skillName: Arrow Damage
   maxLevel: 2
   skillIcon: {fileID: 21300000, guid: 29ee9d7191f801f45a060a50d2c9e69d, type: 3}
-  category: 0
+  category: 1
   prerequisites:
   - skillSO: {fileID: 11400000, guid: b86ea637a52d4d745851cb4d576c5b33, type: 2}
     requiredLevel: 1
@@ -23,12 +23,12 @@ MonoBehaviour:
     requiredLevel: 3
   skillEffects:
   - effects:
-    - type: 2
+    - type: 3
       icon: {fileID: 21300000, guid: 29ee9d7191f801f45a060a50d2c9e69d, type: 3}
       amount: 1
       isPercentage: 0
   - effects:
-    - type: 2
+    - type: 3
       icon: {fileID: 21300000, guid: 29ee9d7191f801f45a060a50d2c9e69d, type: 3}
       amount: 1
       isPercentage: 0

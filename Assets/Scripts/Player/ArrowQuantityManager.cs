@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class ArrowQuantityManager : MonoBehaviour
 {
     public static ArrowQuantityManager Instance;
-    private int maxAmount;
+    public int maxAmount;
     private int currentAmount;
     public TMP_Text quantityText;
     public CanvasGroup canvas;

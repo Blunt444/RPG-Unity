@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
   skillName: Combat Attack Cooldown
   maxLevel: 3
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: b2023a16b2d038447b0ab6ce4f0d61fb, type: 3}
   category: 1
   prerequisites:
   - skillSO: {fileID: 11400000, guid: 971845cd703e13545ba0f0032507eaa8, type: 2}
@@ -23,17 +23,17 @@ MonoBehaviour:
   - effects:
     - type: 5
       icon: {fileID: 21300000, guid: b2023a16b2d038447b0ab6ce4f0d61fb, type: 3}
-      amount: 5
+      amount: -5
       isPercentage: 1
   - effects:
     - type: 5
       icon: {fileID: 21300000, guid: b2023a16b2d038447b0ab6ce4f0d61fb, type: 3}
-      amount: 6
+      amount: -6
       isPercentage: 1
   - effects:
     - type: 5
       icon: {fileID: 21300000, guid: b2023a16b2d038447b0ab6ce4f0d61fb, type: 3}
-      amount: 9
+      amount: -9
       isPercentage: 1
   initialCost: 10
   incrementValue: 6

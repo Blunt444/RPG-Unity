@@ -12,11 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071add304b7dfdc4eb1306be13caab77, type: 3}
   m_Name: ArcherSpeedDamp
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: 
-  maxLevel: 0
-  skillIcon: {fileID: 0}
-  category: 0
-  prerequisites: []
-  skillEffects: []
-  initialCost: 0
-  incrementValue: 0
+  skillName: Archery Speed Damp
+  maxLevel: 1
+  skillIcon: {fileID: 21300000, guid: a16387b88a055614b98af3358422ffa1, type: 3}
+  category: 1
+  prerequisites:
+  - skillSO: {fileID: 11400000, guid: 971845cd703e13545ba0f0032507eaa8, type: 2}
+    requiredLevel: 2
+  skillEffects:
+  - effects:
+    - type: 10
+      icon: {fileID: 21300000, guid: a16387b88a055614b98af3358422ffa1, type: 3}
+      amount: -10
+      isPercentage: 1
+  - effects:
+    - type: 10
+      icon: {fileID: 21300000, guid: a16387b88a055614b98af3358422ffa1, type: 3}
+      amount: -12
+      isPercentage: 1
+  initialCost: 10
+  incrementValue: 4

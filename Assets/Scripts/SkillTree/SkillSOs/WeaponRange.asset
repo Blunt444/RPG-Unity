@@ -12,11 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071add304b7dfdc4eb1306be13caab77, type: 3}
   m_Name: WeaponRange
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: 
-  maxLevel: 0
-  skillIcon: {fileID: 0}
+  skillName: Weapon Range
+  maxLevel: 2
+  skillIcon: {fileID: 21300000, guid: 600bfc9aaff574240b23c3186f967bf5, type: 3}
   category: 0
-  prerequisites: []
-  skillEffects: []
-  initialCost: 0
-  incrementValue: 0
+  prerequisites:
+  - skillSO: {fileID: 11400000, guid: 518c675bd89f7c94ab8d3c963fe7e338, type: 2}
+    requiredLevel: 5
+  skillEffects:
+  - effects:
+    - type: 8
+      icon: {fileID: 21300000, guid: 600bfc9aaff574240b23c3186f967bf5, type: 3}
+      amount: 5
+      isPercentage: 1
+  - effects:
+    - type: 8
+      icon: {fileID: 21300000, guid: 600bfc9aaff574240b23c3186f967bf5, type: 3}
+      amount: 7
+      isPercentage: 1
+  initialCost: 10
+  incrementValue: 8
