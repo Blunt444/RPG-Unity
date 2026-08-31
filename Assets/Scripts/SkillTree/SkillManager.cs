@@ -43,22 +43,28 @@ public class SkillManager : MonoBehaviour
                 playerStatsUpgrade.UpdateSpeed(effect.amount);
                 return;
             case SkillEffectType.CombatAttackCooldown:
-                playerStatsUpgrade.UpdateAttackCooldown(effect.amount, effect.type);
+                playerStatsUpgrade.UpdateAttackCooldown(-effect.amount, effect.type);
                 return;
             case SkillEffectType.ArcheryAttackCooldown:
-                playerStatsUpgrade.UpdateAttackCooldown(effect.amount, effect.type);
+                playerStatsUpgrade.UpdateAttackCooldown(-effect.amount, effect.type);
                 return;
             case SkillEffectType.StunTime:
                 playerStatsUpgrade.UpdateStunTimer(effect.amount);
                 return;
-            case SkillEffectType.Damage:
-                playerStatsUpgrade.UpdateDamage(effect.amount);
+            case SkillEffectType.CombatDamage:
+                playerStatsUpgrade.UpdateDamage(effect.amount, effect.type);
                 return;
             case SkillEffectType.ArrowCapacity:
                 ArrowQuantityManager.Instance.IncreaseCapacity(effect.amount);
                 return;
             case SkillEffectType.SpeedDamp:
-                playerStatsUpgrade.UpdateSpeedDamp(effect.amount);
+                playerStatsUpgrade.UpdateSpeedDamp(-effect.amount);
+                return;
+            case SkillEffectType.WeaponRange:
+                playerStatsUpgrade.UpdateWeaponRange(effect.amount);
+                return;
+            case SkillEffectType.ArcherDamageDeflect:
+                playerStatsUpgrade.UpdateArcherDamageDeflect(effect.amount);
                 return;
             default:
                 return;

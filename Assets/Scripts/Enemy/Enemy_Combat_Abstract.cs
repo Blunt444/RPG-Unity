@@ -13,7 +13,7 @@ public abstract class Enemy_Combat_Abstract : MonoBehaviour
     public virtual void Attack()
     {
 
-        Enemy_Movement_Abstract  movement = GetComponent<Enemy_Movement_Abstract >();
+        Enemy_Movement_Abstract movement = GetComponent<Enemy_Movement_Abstract>();
         if (movement.enemyState == EnemyState.Knockback)
         {
             return;
@@ -28,11 +28,18 @@ public abstract class Enemy_Combat_Abstract : MonoBehaviour
             }
             else
             {
-                hits[0].GetComponent<PlayerHealth>().ChangeHealth(-manager.damage);
-                hits[0].GetComponent<PlayerMovement>().Knockback(transform, manager.knockbackForce, manager.knockBackTime);
+
+                bool isArcherMode = StanceManager.Instance.playerStance == PlayerStance.Archer;
+                bool isDamageDeflected = isArcherMode && Random.Range(0f, 100f) < StatsManager.Instance.archerDamageDeflect;
+
+                if (!isDamageDeflected)
+                {
+                    hits[0].GetComponent<PlayerHealth>().ChangeHealth(-manager.damage);
+                    hits[0].GetComponent<PlayerMovement>().Knockback(transform, manager.knockbackForce, manager.knockBackTime);
+                }
             }
 
-            GetComponent<Enemy_Movement_Abstract>().attackCooldownTimer = manager.attackCooldownBuffer; 
+            GetComponent<Enemy_Movement_Abstract>().attackCooldownTimer = manager.attackCooldownBuffer;
         }
     }
 

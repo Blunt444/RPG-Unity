@@ -7,7 +7,6 @@ public class Arrow : MonoBehaviour
     public Vector2 direction = Vector2.right;
     public float lifeSpawn;
     public float speed;
-    public int damage;
     public float knockBackForce;
     public float knockBackTime;
     public float stunTime;
@@ -104,7 +103,7 @@ public class Arrow : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent<Damageable>(out Damageable target))
             {
-                target.TakeDamage(damage, transform);
+                target.TakeDamage(StatsManager.Instance.arrowDamage, transform);
             }
             AttachToTarget(collision.gameObject.transform);
         }

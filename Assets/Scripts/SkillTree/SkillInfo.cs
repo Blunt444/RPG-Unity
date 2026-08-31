@@ -92,11 +92,21 @@ public class SkillInfo : MonoBehaviour
 
     public void ShowEffectInfo(List<SkillEffect> skillEffects)
     {
+        ClearEffectPanel();
         foreach (SkillEffect effect in skillEffects)
         {
+            Debug.Log(effect.icon.ToString());
             GameObject effectBox = Instantiate(effectBoxPrefab, effectTransform);
-            effectBox.GetComponent<TMP_Text>().text = (effect.amount >= 0 ? "+" : "-") + effect.amount.ToString() + (effect.isPercentage ? "%" : "");
-            effectBox.GetComponent<Image>().sprite = effect.icon;
+            effectBox.GetComponentInChildren<TMP_Text>().text = (effect.amount >= 0 ? "+" : "-") + effect.amount.ToString() + (effect.isPercentage ? "%" : "");
+            effectBox.GetComponentInChildren<Image>().sprite = effect.icon;
+        }
+    }
+
+    public void ClearEffectPanel()
+    {
+        foreach (Transform child in effectTransform)
+        {
+            Destroy(child.gameObject);
         }
     }
 

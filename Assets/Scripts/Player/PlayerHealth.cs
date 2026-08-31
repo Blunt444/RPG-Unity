@@ -60,6 +60,12 @@ public class PlayerHealth : MonoBehaviour, Damageable
     {
         //this inteface only serves one purpose which is
         //when multiple area/volume damage is dealth it is easier to use this.
+
+        bool isArcherMode = StanceManager.Instance.playerStance == PlayerStance.Archer;
+        bool isDamageDeflected = isArcherMode && UnityEngine.Random.Range(0f, 100f) < StatsManager.Instance.archerDamageDeflect;
+
+        if (isDamageDeflected) return;
+
         ChangeHealth(-damageAmount);
 
         if (attacker == null) return;

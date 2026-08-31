@@ -29,6 +29,9 @@ public class StatsManager : MonoBehaviour
   [Header("Archer Stats")]
   public float speedDamp;
   public float baseSpeedDamp;
+  public float baseArcherDamageDeflect;
+  public float archerDamageDeflect = 0f;
+  public int arrowDamage;
 
   [Header("Health Stats")]
   public int maxHealth;

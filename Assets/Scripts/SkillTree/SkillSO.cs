@@ -27,14 +27,16 @@ public enum SkillEffectType
 {
     MaxHealth,
     MoveSpeed,
-    Damage,
+    CombatDamage,
+    ArrowDamage,
     ArrowCapacity,
     GuardNegate,
     CombatAttackCooldown,
     ArcheryAttackCooldown,
-    weaponRange,
+    WeaponRange,
     StunTime,
     SpeedDamp,
+    ArcherDamageDeflect,
 }
 
 [System.Serializable]

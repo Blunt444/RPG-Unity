@@ -66,6 +66,19 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
             return;
         }
 
+        if(player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if(playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+            else
+            {
+                return;
+            }
+        }
+
         if (attackCooldownTimer > 0)
         {
             attackCooldownTimer -= Time.deltaTime;

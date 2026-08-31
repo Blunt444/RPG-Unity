@@ -32,9 +32,12 @@ public class PlayerStatsUpgrade : MonoBehaviour
         statsManager.speedDamp -= statsManager.baseSpeedDamp * (amount / 100.0f);
     }
 
-    public void UpdateDamage(int amount)
+    public void UpdateDamage(int amount, SkillEffectType type)
     {
-        statsManager.damage += amount;
+        if (type == SkillEffectType.CombatDamage)
+            statsManager.damage += amount;
+        else if (type == SkillEffectType.ArrowDamage)
+            statsManager.arrowDamage += amount;
     }
 
     public void UpdateAttackCooldown(int amount, SkillEffectType type)
@@ -54,6 +57,11 @@ public class PlayerStatsUpgrade : MonoBehaviour
     {
         statsManager.speed += statsManager.baseSpeed * (amount / 100.0f);
         StatsUI.Instance.UpdateAllStats();
+    }
+
+    public void UpdateArcherDamageDeflect(int amount)
+    {
+        statsManager.archerDamageDeflect += statsManager.baseArcherDamageDeflect * (amount / 100.0f);
     }
 
     public void UpdateGuardHitNegate(int amount)

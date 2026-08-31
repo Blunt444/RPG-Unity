@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
   skillName: Base Speed
   maxLevel: 4
-  skillIcon: {fileID: 0}
+  skillIcon: {fileID: 21300000, guid: a16387b88a055614b98af3358422ffa1, type: 3}
   category: 0
   prerequisites:
   - skillSO: {fileID: 11400000, guid: 518c675bd89f7c94ab8d3c963fe7e338, type: 2}

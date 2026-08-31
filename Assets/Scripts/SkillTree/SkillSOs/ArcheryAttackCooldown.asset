@@ -15,7 +15,7 @@ MonoBehaviour:
   skillName: Combat Attack Cooldown
   maxLevel: 3
   skillIcon: {fileID: 0}
-  category: 0
+  category: 1
   prerequisites:
   - skillSO: {fileID: 11400000, guid: 971845cd703e13545ba0f0032507eaa8, type: 2}
     requiredLevel: 1

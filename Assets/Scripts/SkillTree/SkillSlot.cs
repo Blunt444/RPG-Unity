@@ -129,11 +129,13 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         SkillInfo.Instance.SetCostYPos(isUnlocked);
         SkillInfo.Instance.SetCostText(ReturnCurrentSkillCost(), skillSO.category);
         ShowPrerequestOnHoverIfNotUnlocked();
+        ShowEffectInfo();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         SkillInfo.Instance.SetPanelState(false);
         SkillInfo.Instance.ClearPrerequestOnExitHover();
+        SkillInfo.Instance.ClearEffectPanel();
     }
 }

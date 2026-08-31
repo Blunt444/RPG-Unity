@@ -10,7 +10,7 @@ public class StanceManager : MonoBehaviour
     private Player_Combat playerWarrior;
     private Player_Bow playerArcher;
     private GameObject bowObject;
-    private PlayerStance playerStance = PlayerStance.Warrior;
+    public PlayerStance playerStance = PlayerStance.Warrior;
     private bool isArcherStanceUnlocked = true;
     private bool isStanceChangerBlocked = false;
 
