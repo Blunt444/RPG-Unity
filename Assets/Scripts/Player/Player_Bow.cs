@@ -7,7 +7,6 @@ public class Player_Bow : MonoBehaviour
     public Transform launchPoint;
     public GameObject arrowPrefab;
     public Vector2 aimDirection;
-    public float shootCooldown;
     public Animator anim;
     public Animator bowAnim;
     public PlayerMovement playerMovement;
@@ -58,7 +57,7 @@ public class Player_Bow : MonoBehaviour
         {
             arrow = Instantiate(arrowPrefab, launchPoint.position, Quaternion.identity).GetComponent<Arrow>();
             arrow.Launch(aimDirection);
-            shootTimer = shootCooldown;
+            shootTimer = StatsManager.Instance.archeryAttackCooldown;
 
             ArrowQuantityManager.Instance.SetQuantity(-1);
         }

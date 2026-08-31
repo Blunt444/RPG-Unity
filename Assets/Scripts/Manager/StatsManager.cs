@@ -8,20 +8,27 @@ public class StatsManager : MonoBehaviour
   public int damage;
   public Vector2 attackBoxSize = new Vector2(1.5f, 2.5f);
   public float weaponRange;
+  public float baseWeaponRange;
   public float knockbackForce;
   public float knockbackTime;
   public float stunTime;
-  public float attackCooldown;
+  public float baseStunTime;
+  public float baseCombatAttackCooldown;
+  public float baseArcheryAttackCooldown;
+  public float combatAttackCooldown;
+  public float archeryAttackCooldown;
   public float attackCooldownTimer;
   public int currentGuardHit;
   public int maxGuardHitNegate;
   public float maxGuardCooldown;
 
   [Header("Movement Stats")]
-  public int speed;
+  public float baseSpeed;
+  public float speed;
 
   [Header("Archer Stats")]
   public float speedDamp;
+  public float baseSpeedDamp;
 
   [Header("Health Stats")]
   public int maxHealth;

@@ -24,7 +24,7 @@ public class Player_Combat : MonoBehaviour
 
         playerMovement.SetPlayerSpeedToZero();
 
-        StatsManager.Instance.attackCooldownTimer = StatsManager.Instance.attackCooldown;
+        StatsManager.Instance.attackCooldownTimer = StatsManager.Instance.combatAttackCooldown;
 
     }
 

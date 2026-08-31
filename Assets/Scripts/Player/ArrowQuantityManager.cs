@@ -71,6 +71,11 @@ public class ArrowQuantityManager : MonoBehaviour
         return isArrowAdded;
     }
 
+    public void IncreaseCapacity(int amount)
+    {
+        maxAmount += amount;
+    }
+
     public void SetArrowData(int currAmount, int maxAmount)
     {
         currentAmount = currAmount;

@@ -58,7 +58,7 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
     text: Defeat the enemies!
     topics: []
-    quest: {fileID: 0}
+    quest: {fileID: 11400000, guid: 943f3d83b7a8673429d0301b69c999eb, type: 2}
     requiredActors: []
     rewards: []
     nextLineIndex: -1
