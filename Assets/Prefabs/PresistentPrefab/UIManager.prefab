@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x 5
+  m_text: x 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f6475bcfce324f478ca82f9c1b26521, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: ff42a10c7ef84c14a85b8a9b1ab1a808, type: 2}
@@ -2212,7 +2212,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2691,7 +2691,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3052,7 +3052,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3708,12 +3708,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -4844,12 +4844,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -6409,7 +6409,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -8768,12 +8768,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -9395,7 +9395,7 @@ RectTransform:
   m_GameObject: {fileID: 8757073012583114471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5569101330909907822}
@@ -10335,6 +10335,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: allActorSo.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 81a93b9e6150e9b4ba9f9d4248a27284, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b3db1fc3116b21449dbf013cba613bb, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 12f25f1d96117864989291e5ec64d2b8, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1bc8ec8064a16164cb2bfd960a451764, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e58537cf7b2e59b468dd20e95e3558b9, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bc5d8759b719c49489802909e6abb2e1, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a01093144aa4f634e8d2c6404f8f8a9b, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1366b4682df3e4b49b9fe8a47ad8bee6, type: 2}
+    - target: {fileID: 1503118372563112505, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'allActorSo.Array.data[12]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0228198c5abb4d944952359a75e3a890, type: 2}
     - target: {fileID: 1681189742462688441, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
       propertyPath: m_SizeDelta.x
       value: -70.895
@@ -10359,6 +10415,66 @@ PrefabInstance:
       propertyPath: topicItem
       value: 
       objectReference: {fileID: 5071981592379691869, guid: b786fc0d08e2b594bae5e933d1fb7288, type: 3}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: dialogSOs.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e4e249c12ac46f47b5a00a07f485ce3, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0198c1e9504f97c4b803437c6b26ef05, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 236012cc3872ef149a1ef316954f3f22, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f44846e8f72af4a4fad37a5bf92a1c15, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f92f2fa4d3275e44e9bb8645a5e72f14, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c98e857a891a7a240a1a86ea0474a0a8, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d2b76d7c7593cf4a8916d12e34a4914, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ebc91040dd72594d8e8d3ac0222c14a, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 98fe6102297fee34f81267c76b2f730b, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 85433c20279922e4dab373fc9a41c195, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8dc1319c8e903f3458ba74d5b7cc980f, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 40da1d385505f0442b29c537d1960616, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[12]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 276c54499afd9a048a60915d2f08e436, type: 2}
+    - target: {fileID: 4531641086259434409, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: 'dialogSOs.Array.data[13]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f3bdea2308e55048b2ef277bca01c56, type: 2}
     - target: {fileID: 4825408647294104041, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
       propertyPath: m_Alpha
       value: 0
@@ -10450,6 +10566,10 @@ PrefabInstance:
     - target: {fileID: 8111126287803766236, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717233301398602071, guid: 5a5980676c5f42c4ea630aea6e1247ca, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

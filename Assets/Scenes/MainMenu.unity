@@ -8672,7 +8672,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.968359
+      m_AnimationSpeed: 2.7399106
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: 0, z: 0}
@@ -8687,7 +8687,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.0216618
+      m_AnimationSpeed: 2.023462
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 8, y: 3, z: 0}
@@ -8702,7 +8702,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.4548001
+      m_AnimationSpeed: 3.5844111
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -9545,7 +9545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &359992282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10007,7 +10007,10 @@ MonoBehaviour:
     by leveling up your Warrior or Archer stance. Spend them\r\nin the Skill Tree
     by pressing '<b>2 Button</b>' to upgrade the skill.\r\n\r\n<b>SHOPS</b>\r\nVisit
     shopkeepers to buy supplies, arrows, and equipment using gold.\r\nGold is earned
-    by defeating enemies and completing quests.\r\n\r\n<b>CHECKPOINTS</b>\r\nInteract
+    by defeating enemies and completing quests.\nAdditionally you can sell items
+    to the shop by opening the shop canvas by interacting with the shop keeper by
+    pressing '3 Button' and right click on the inventory slot to sell the one. Note
+    : buying price will be higher than selling price.\r\n\r\n<b>CHECKPOINTS</b>\r\nInteract
     with checkpoints by pressing '<b>Enter Button</b>' to set your respawn point.
     If you die, you'll return here.\r\n\r\n<b>SAVING</b>\r\nSave your progress anytime
     from the menu. You can keep multiple saves and\r\nload any of them from the Load
@@ -11651,7 +11654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12194,7 +12197,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 489.975, y: 0}
-  m_SizeDelta: {x: 979.95, y: 100}
+  m_SizeDelta: {x: 979.95, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1829088255
 MonoBehaviour:
@@ -12250,15 +12253,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3997787483588851935, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3997787483588851935, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3997787483588851935, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 939.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3997787483588851935, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -12266,11 +12269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3997787483588851935, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 489.975
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3997787483588851935, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4602094463694038963, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -12286,7 +12289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4602094463694038963, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4602094463694038963, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -12298,15 +12301,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5354931524515819416, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5354931524515819416, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5354931524515819416, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 939.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5354931524515819416, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -12314,11 +12317,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5354931524515819416, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 489.975
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5354931524515819416, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -54.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984016501411899851, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_Pivot.x
@@ -12334,7 +12337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5984016501411899851, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984016501411899851, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -12342,11 +12345,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5984016501411899851, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984016501411899851, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 979.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984016501411899851, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_SizeDelta.y
@@ -12382,11 +12385,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5984016501411899851, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 489.975
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984016501411899851, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5984016501411899851, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12414,7 +12417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8531046529265424422, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8531046529265424422, guid: 72311a9f1ec928249ba5fe51f436933a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -12558,7 +12561,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.00012207, y: 100}
+  m_SizeDelta: {x: -0.00012207, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1892415245
 MonoBehaviour:

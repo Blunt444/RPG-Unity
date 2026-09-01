@@ -88,7 +88,7 @@ public class Story : MonoBehaviour, IPointerClickHandler
             writerBox.alpha = 0;
         }
 
-        while (elapsed < 2f)
+        while (elapsed < 0.8f)
         {
             if (cursorTime >= cursorBlinkRate)
             {
@@ -114,7 +114,7 @@ public class Story : MonoBehaviour, IPointerClickHandler
             }
             revealed += c;
             textBox.text = revealed + "|";
-            yield return new WaitForSecondsRealtime(0.2f);
+            yield return new WaitForSecondsRealtime(0.05f);
         }
 
         isTyping = false;

@@ -12,15 +12,15 @@ public class ClickDebugger : MonoBehaviour
             var results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerData, results);
 
-            // if (results.Count == 0)
-            // {
-            //     Debug.Log("NOTHING was hit by raycast at click position.");
-            // }
+            if (results.Count == 0)
+            {
+                Debug.Log("NOTHING was hit by raycast at click position.");
+            }
 
-            // foreach (var result in results)
-            // {
-            //     Debug.Log("Hit: " + result.gameObject.name + " | Depth: " + result.depth + " | SortingLayer: " + result.sortingLayer);
-            // }
+            foreach (var result in results)
+            {
+                Debug.Log("Hit: " + result.gameObject.name + " | Depth: " + result.depth + " | SortingLayer: " + result.sortingLayer);
+            }
         }
     }
 }
