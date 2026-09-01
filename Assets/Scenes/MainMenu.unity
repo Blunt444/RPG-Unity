@@ -8672,7 +8672,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.2886336
+      m_AnimationSpeed: 3.968359
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: 0, z: 0}
@@ -8687,7 +8687,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.8914206
+      m_AnimationSpeed: 3.0216618
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 8, y: 3, z: 0}
@@ -8702,7 +8702,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.4185257
+      m_AnimationSpeed: 2.4548001
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -9785,10 +9785,10 @@ RectTransform:
   - {fileID: 246385017}
   m_Father: {fileID: 1638181959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 197.66, y: -317.28}
-  m_SizeDelta: {x: 395.32, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377827502
 MonoBehaviour:
@@ -9991,19 +9991,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<size=140%><b>HOW TO PLAY</b></size>\r\n\r\n<b>MOVEMENT</b>\r\nUse <b>WASD</b>
-    to move.\r\n\r\n<b>COMBAT</b>\r\nYou can fight as a '<b>Warrior</b>' or switch
-    to '<b>Archer</b>' stance at any time.\r\nPress '<b>Left Mouse Button</b>' to
-    attack with your sword.\r\nPress '<b>Left Shift Button</b>' to block incoming
-    attacks and negate damage.\r\nPress '<b>Left Mouse Button</b>' while in Archer
-    stance to fire an arrow \u2014 aim with your mouse.\r\nWhen Aiming so opposite
-    direction 'Slows' down the player so point your cursor in the direction of moving.\n\r\n<b>SWITCHING
-    STANCES</b>\r\nPress the '<b>Q Button'</b>  to swap between Warrior and Archer.\r\nEach
-    stance levels up separately, so both play mode grow the more you use them to
-    kill enemies.\r\n\r\n<b>QUESTS</b>\r\nTalk to NPCs to accept quests. Defeat enemies,
-    collect items, or speak with\r\ncertain characters to complete them. Open your
-    Quest Log by pressing '<b>4 Button(Not the numpad one)</b>' to track progress.\r\n\r\n<b>SKILLS</b>\r\nEarn
-    skill points by leveling up your Warrior or Archer stance. Spend them\r\nin the
-    Skill Tree by pressing '<b>2 Button</b>' to upgrade the skill.\r\n\r\n<b>SHOPS</b>\r\nVisit
+    to move.\n\n<b>Pause Menu</b>\nClick 'Tab' to pause to game. This was made so
+    it doesn't affect the fullscreen mode in the itch.io page.\r\n\r\n<b>COMBAT</b>\r\nYou
+    can fight as a '<b>Warrior</b>' or switch to '<b>Archer</b>' stance at any time.\r\nPress
+    '<b>Left Mouse Button</b>' to attack with your sword.\r\nPress '<b>Left Shift
+    Button</b>' to block incoming attacks and negate damage.\r\nPress '<b>Left Mouse
+    Button</b>' while in Archer stance to fire an arrow \u2014 aim with your mouse.\r\nWhen
+    Aiming so opposite direction 'Slows' down the player so point your cursor in
+    the direction of moving.\n\r\n<b>SWITCHING STANCES</b>\r\nPress the '<b>Q Button'</b> 
+    to swap between Warrior and Archer.\r\nEach stance levels up separately, so both
+    play mode grow the more you use them to kill enemies.\r\n\r\n<b>QUESTS</b>\r\nTalk
+    to NPCs to accept quests. Defeat enemies, collect items, or speak with\r\ncertain
+    characters to complete them. Open your Quest Log by pressing '<b>4 Button(Not
+    the numpad one)</b>' to track progress.\r\n\r\n<b>SKILLS</b>\r\nEarn skill points
+    by leveling up your Warrior or Archer stance. Spend them\r\nin the Skill Tree
+    by pressing '<b>2 Button</b>' to upgrade the skill.\r\n\r\n<b>SHOPS</b>\r\nVisit
     shopkeepers to buy supplies, arrows, and equipment using gold.\r\nGold is earned
     by defeating enemies and completing quests.\r\n\r\n<b>CHECKPOINTS</b>\r\nInteract
     with checkpoints by pressing '<b>Enter Button</b>' to set your respawn point.
@@ -10708,8 +10710,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000667572, y: -53}
-  m_SizeDelta: {x: 395.32, y: 453.289}
+  m_AnchoredPosition: {x: 0.00000667572, y: -11.4003}
+  m_SizeDelta: {x: 395.32, y: 370.0895}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &828175804
 MonoBehaviour:
@@ -10729,7 +10731,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: -20
+  m_Spacing: 40
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -10771,10 +10773,10 @@ RectTransform:
   - {fileID: 1751963444}
   m_Father: {fileID: 1638181959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 197.66, y: -183.64}
-  m_SizeDelta: {x: 395.32, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1053494947
 MonoBehaviour:
@@ -11783,7 +11785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1638181959
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11804,8 +11806,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000002861023, y: 0.00037765503}
-  m_SizeDelta: {x: 395.32, y: 504.56}
+  m_AnchoredPosition: {x: -0.000002861023, y: -21.2653}
+  m_SizeDelta: {x: 395.32, y: 389.8146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1638181960
 MonoBehaviour:
@@ -12461,10 +12463,10 @@ RectTransform:
   - {fileID: 1118986049}
   m_Father: {fileID: 1638181959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 197.66, y: -50}
-  m_SizeDelta: {x: 395.32, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870609367
 MonoBehaviour:

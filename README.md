@@ -47,7 +47,7 @@ Some Inventory items will be eatable/usable which increases the stats of the pla
 
 ## Prerequisites
 - **Unity Hub** if not download from this link -> **https://unity.com/download**
-- Make sure the **unity version is above 6**. If the version if lower than 6 some Mechanism won't work properly.
+- Make sure the **   unity version is above 6**. If the version if lower than 6 some Mechanism won't work properly.
 
 ## Steps for Cloning and Running
 - Clone the repository:

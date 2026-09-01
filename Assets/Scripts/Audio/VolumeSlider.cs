@@ -26,10 +26,10 @@ public class VolumeSlider : MonoBehaviour
         switch (sliderType)
         {
             case SliderType.Music:
-                AudioManager.Instance.musicVolume = value;
+                AudioManager.Instance.SetMusicVolume(value);
                 return;
             case SliderType.SFX:
-                AudioManager.Instance.sfxVolume = value;
+                AudioManager.Instance.SetSFXVolume(value);
                 return;
             default:
                 return;

@@ -100,6 +100,21 @@ public class AudioManager : MonoBehaviour
         musicCoroutine = null;
     }
 
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        if (musicCoroutine == null)
+        {
+            musicSource.volume = volume;
+        }
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxVolume = volume;
+        sfxSource.volume = volume;
+    }
+
     public void PlaySFX(AudioClip audioClip, float volumeScale)
     {
         if (audioClip == null) return;

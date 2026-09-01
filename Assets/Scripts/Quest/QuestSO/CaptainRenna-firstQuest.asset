@@ -20,7 +20,7 @@ MonoBehaviour:
   enemyRequirements:
   - type: 0
     count: 7
-    killCount: 2
+    killCount: 0
     label: Kill torch
     ids:
     - 1

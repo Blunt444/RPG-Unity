@@ -95,4 +95,4 @@ MonoBehaviour:
     questAcceptNextLineIndex: 0
     questDeclineNextLineIndex: 0
     checkpointIndex: 0
-  returnStartIndex: 2
+  returnStartIndex: 4
