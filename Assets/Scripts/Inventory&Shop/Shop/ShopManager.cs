@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour
     public Transform shopBox;
     public Transform emptyMessage;
     public int messageTimer = 4;
+    public AudioClip sound;
     public static event Action<string, int> Message;
 
     [SerializeField] private List<ShopSlot> shopSlots = new List<ShopSlot>();
@@ -67,6 +68,7 @@ public class ShopManager : MonoBehaviour
         {
             if (slot.itemSO == itemSO)
             {
+                AudioManager.Instance.PlaySFX(sound);
                 inventoryManager.gold += slot.price / 2;
                 inventoryManager.goldText.text = inventoryManager.gold.ToString();
                 return;

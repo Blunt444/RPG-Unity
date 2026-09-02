@@ -21,6 +21,8 @@ public class Arrow : MonoBehaviour
     private bool isInAir = false;
     private bool isDestroyedStarted = false;
     private Collider2D collider;
+    public AudioClip arrowHit;
+    public AudioClip arrowRelease;
 
     private void Awake()
     {
@@ -33,6 +35,7 @@ public class Arrow : MonoBehaviour
         direction = dir;
         rb.linearVelocity = direction * speed;
         isInAir = true;
+        AudioManager.Instance.PlaySFX(arrowRelease);
 
         RotateArrow();
     }
@@ -104,6 +107,7 @@ public class Arrow : MonoBehaviour
             if (collision.gameObject.TryGetComponent<Damageable>(out Damageable target))
             {
                 target.TakeDamage(StatsManager.Instance.arrowDamage, transform);
+                AudioManager.Instance.PlaySFX(arrowHit);
             }
             AttachToTarget(collision.gameObject.transform);
         }

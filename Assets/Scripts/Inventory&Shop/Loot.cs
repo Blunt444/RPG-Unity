@@ -10,6 +10,7 @@ public class Loot : MonoBehaviour
     public bool canBePickedup = true;
     public string id;
     public static event Action<ItemSO, int> OnItemLooted;
+    public AudioClip itemSound;
 
     private void Awake()
     {
@@ -53,6 +54,7 @@ public class Loot : MonoBehaviour
     {
         if (collision.CompareTag("Player") && canBePickedup)
         {
+            AudioManager.Instance.PlaySFX(itemSound);
             canBePickedup = false;
 
             anim.Play("LootPickup");
@@ -66,6 +68,7 @@ public class Loot : MonoBehaviour
     {
         if (collision.CompareTag("Player") && canBePickedup)
         {
+            AudioManager.Instance.PlaySFX(itemSound);
             canBePickedup = false;
 
             anim.Play("LootPickup");

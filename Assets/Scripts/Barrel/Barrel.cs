@@ -18,6 +18,7 @@ public class Barrel : MonoBehaviour, Damageable
     public float startBlinkSpeed = 4f;
     public float maxBlinkSpeed = 20f;
     public Animator anim;
+    public AudioClip blastSound;
 
 
     [SerializeField]
@@ -103,7 +104,7 @@ public class Barrel : MonoBehaviour, Damageable
 
 
         }
-
+        AudioManager.Instance.PlaySFX(blastSound);
         CheckForDamageble();
 
     }

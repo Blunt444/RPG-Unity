@@ -227,6 +227,7 @@ MonoBehaviour:
   knockbackTime: 0
   knockbackForce: 0
   anim: {fileID: 2691563077968721461}
+  explosion: {fileID: 8300000, guid: 8127bb3114c2e084583bd34f703591fc, type: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 256

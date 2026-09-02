@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour, Damageable
     public Animator healthTextAnim;
     [SerializeField]
     private Image fillImage;
+    public AudioClip playerHurt;
 
     public static event Action OnPlayerDeath;
 
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour, Damageable
     public void ChangeHealth(int amount)
     {
         StatsManager.Instance.currentHealth += amount;
+        AudioManager.Instance.PlaySFX(playerHurt);
 
         if (StatsManager.Instance.currentHealth > StatsManager.Instance.maxHealth)
         {

@@ -183,7 +183,6 @@ MonoBehaviour:
   direction: {x: 1, y: 0}
   lifeSpawn: 3
   speed: 20
-  damage: 1
   knockBackForce: 9
   knockBackTime: 0.15
   stunTime: 0.1
@@ -199,3 +198,5 @@ MonoBehaviour:
   gravity: 4
   stopThreshold: 0.2
   tiltAngle: 0.001
+  arrowHit: {fileID: 8300000, guid: 8e0b7b98880fe2b4394da13e2d8db4d5, type: 3}
+  arrowRelease: {fileID: 8300000, guid: cffa72a2d46871e40acb30cbf4a855bd, type: 3}

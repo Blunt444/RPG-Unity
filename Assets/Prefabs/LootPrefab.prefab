@@ -109,6 +109,9 @@ MonoBehaviour:
   sr: {fileID: 3997112110581631807}
   anim: {fileID: 3219603000838725865}
   quantity: 0
+  canBePickedup: 1
+  id: 
+  itemSound: {fileID: 8300000, guid: 105b8600e5d687a4592c73e97fb5a445, type: 3}
 --- !u!1 &4177162781075107284
 GameObject:
   m_ObjectHideFlags: 0

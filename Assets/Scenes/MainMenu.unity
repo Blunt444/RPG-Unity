@@ -8672,7 +8672,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.7399106
+      m_AnimationSpeed: 2.3479118
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: 0, z: 0}
@@ -8687,7 +8687,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.023462
+      m_AnimationSpeed: 3.8952906
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 8, y: 3, z: 0}
@@ -8702,7 +8702,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.5844111
+      m_AnimationSpeed: 2.819326
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -10009,8 +10009,8 @@ MonoBehaviour:
     shopkeepers to buy supplies, arrows, and equipment using gold.\r\nGold is earned
     by defeating enemies and completing quests.\nAdditionally you can sell items
     to the shop by opening the shop canvas by interacting with the shop keeper by
-    pressing '3 Button' and right click on the inventory slot to sell the one. Note
-    : buying price will be higher than selling price.\r\n\r\n<b>CHECKPOINTS</b>\r\nInteract
+    pressing '3 Button' and left click the mouse on the inventory slot to sell the
+    one. Note : buying price will be higher than selling price.\r\n\r\n<b>CHECKPOINTS</b>\r\nInteract
     with checkpoints by pressing '<b>Enter Button</b>' to set your respawn point.
     If you die, you'll return here.\r\n\r\n<b>SAVING</b>\r\nSave your progress anytime
     from the menu. You can keep multiple saves and\r\nload any of them from the Load

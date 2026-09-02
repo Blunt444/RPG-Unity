@@ -20,6 +20,7 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
     protected bool isFindingASafeDistance = false;
     [SerializeField]
     protected AudioClip enemyBgMusic;
+    public AudioClip torchSwing;
 
 
     protected virtual void Awake()
@@ -66,10 +67,10 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
             return;
         }
 
-        if(player == null)
+        if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            if(playerObj != null)
+            if (playerObj != null)
             {
                 player = playerObj.transform;
             }

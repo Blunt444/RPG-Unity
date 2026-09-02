@@ -14,6 +14,7 @@ public class Dynamite : MonoBehaviour
     [HideInInspector]
     public float knockbackForce;
     public Animator anim;
+    public AudioClip explosion;
 
     [SerializeField]
     private LayerMask playerLayer;
@@ -94,7 +95,7 @@ public class Dynamite : MonoBehaviour
 
             yield return null;
         }
-
+        AudioManager.Instance.PlaySFX(explosion);
         CheckPlayerInBlastRadius();
     }
 

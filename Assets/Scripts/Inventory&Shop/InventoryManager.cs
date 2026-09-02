@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
     public TMP_Text goldText;
     public GameObject lootPrefab;
     public Transform playerTransform;
+    public AudioClip[] eatingSound;
 
     private void Awake()
     {
@@ -195,6 +196,7 @@ public class InventoryManager : MonoBehaviour
         {
             useItem.ApplyItemEffects(inventorySlot.itemSO);
             inventorySlot.quantity--;
+            AudioManager.Instance.PlaySFX(eatingSound[Random.Range(0, eatingSound.Length)]);
             if (inventorySlot.quantity <= 0)
             {
                 inventorySlot.itemSO = null;

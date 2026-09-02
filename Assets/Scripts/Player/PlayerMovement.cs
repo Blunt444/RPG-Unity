@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isShooting;
     public bool isGuarding = false;
     public Player_Bow playerBow;
+    public AudioClip[] swordSwing;
 
     private float currentDamp = 1.0f;
     private PlayerState playerState;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Slash") && playerState != PlayerState.Attacking && playerCombat.enabled && !isGuarding)
         {
+            AudioManager.Instance.PlaySFX(swordSwing[Random.Range(0, swordSwing.Length)]);
             playerCombat.Attack();
         }
         else if (Input.GetButtonDown("Guard") && !isGuarding && currentGuardCooldown <= 0 && playerCombat.enabled)

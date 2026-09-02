@@ -9,6 +9,7 @@ public class Enemy_Health : MonoBehaviour, Damageable
     public static event MonsterDefeated OnMonsterDefeated;
     public GameObject enemyContainer;
     public static event Action<Enemy_Type, string> OnEnemyKilled;
+    public AudioClip[] enemyHurt;
 
 
     [SerializeField]
@@ -27,6 +28,7 @@ public class Enemy_Health : MonoBehaviour, Damageable
 
     public void ChangeHealth(int amount)
     {
+        AudioManager.Instance.PlaySFX(EnemySoundEffects.Instance.GetRandomHurt());
         manager.currentHealth += amount;
 
         if (manager.currentHealth > manager.maxHealth)

@@ -167,6 +167,7 @@ MonoBehaviour:
   startBlinkSpeed: 4
   maxBlinkSpeed: 20
   anim: {fileID: 7363081779385067409}
+  blastSound: {fileID: 8300000, guid: 8127bb3114c2e084583bd34f703591fc, type: 3}
   sr: {fileID: 0}
   blastZone: {fileID: 3717650840015726127}
 --- !u!95 &7363081779385067409

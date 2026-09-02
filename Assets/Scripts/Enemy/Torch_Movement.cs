@@ -38,6 +38,7 @@ public class Enemy_Movement : Enemy_Movement_Abstract
 
             if (distanceToPlayer <= manager.attackRange)
             {
+                AudioManager.Instance.PlaySFX(EnemySoundEffects.Instance.GetTrochSwing());
                 //got confused with frame added method this is just for the attack animation
                 ChangeState(EnemyState.Attacking);
             }
