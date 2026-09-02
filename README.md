@@ -5,6 +5,23 @@ Dual Stance is made by the help of Unity Engine. It is a 2D game.
 The game starts off with a letter from the crown saying the 3 mines which supports the economy of the kingdom has been captured.
 As a player you are given the task of reclaming the 3 mines in order to save the crippling economy of the kingdom. The path to the mines are occupied by the enemies and friends. Inorder to reach the mines you need to slay down the enemies.
 
+# Keyboard Bindings / Controls
+
+| Action | Key |
+|---|---|
+| Move | WASD |
+| Attack (Sword) | Left Mouse Button |
+| Fire Arrow (Archery) | Left Mouse Button |
+| Guard / Shield | Left Shift |
+| Switch Stance | q |
+| Interact (NPCs) | e |
+| Quest Log | j |
+| Skill Tree | t |
+| Pause / Menu | p |
+| Inventory Item Use | Left Mosue Button click on the respective slot |
+| Inventory Item Drop | Right Mosue Button click on the respective slot |
+| Selling Items From Inventory | Left Mosue Button click on the respective slot |
+
 # Game Mechanism
 The game offers you these :
 - As suggested by the name two combat modes - **Archery** and **Sword**.

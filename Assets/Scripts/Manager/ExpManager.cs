@@ -50,13 +50,13 @@ public class ExpManager : MonoBehaviour
     {
         UpdateUI();
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            GainExperience(2);
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Return))
+    //     {
+    //         GainExperience(2);
+    //     }
+    // }
 
     private void OnEnable()
     {

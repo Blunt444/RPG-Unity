@@ -8672,7 +8672,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.3479118
+      m_AnimationSpeed: 2.2386258
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: 0, z: 0}
@@ -8687,7 +8687,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.8952906
+      m_AnimationSpeed: 2.987269
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 8, y: 3, z: 0}
@@ -8702,7 +8702,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.819326
+      m_AnimationSpeed: 3.0332818
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -9990,10 +9990,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=140%><b>HOW TO PLAY</b></size>\r\n\r\n<b>MOVEMENT</b>\r\nUse <b>WASD</b>
-    to move.\n\n<b>Pause Menu</b>\nClick 'Tab' to pause to game. This was made so
-    it doesn't affect the fullscreen mode in the itch.io page.\r\n\r\n<b>COMBAT</b>\r\nYou
-    can fight as a '<b>Warrior</b>' or switch to '<b>Archer</b>' stance at any time.\r\nPress
+  m_text: "<size=150%><b>CONTROLS</b></size>\r\n\r\nMovement & Combat\r\n  Move ==
+    WASD\r\n  Attack (Sword) == Left Mouse Button\r\n  Fire Arrow (Archery) == Left
+    Mouse Button\r\n  Guard / Shield == Left Shift\r\n  Switch Stance == Q\r\n\r\nInteraction\r\n 
+    Interact (NPCs) == E\r\n  Quest Log == J\r\n  Skill Tree == T\r\n  Pause / Menu
+    == P\r\n\r\nInventory\r\n  Use Item ......................... Left Click on slot\r\n 
+    Drop Item ........................ Right Click on slot\r\n  Sell Item (in shop)
+    ............. Left Click on slot\n\n<size=140%><b>HOW TO PLAY</b></size>\n\n<b>Pause
+    Menu</b>\nClick 'P' to pause to game. This was made so it doesn't affect the
+    fullscreen mode in the itch.io page.\r\n\r\n<b>COMBAT</b>\r\nYou can fight as
+    a '<b>Warrior</b>' or switch to '<b>Archer</b>' stance at any time.\r\nPress
     '<b>Left Mouse Button</b>' to attack with your sword.\r\nPress '<b>Left Shift
     Button</b>' to block incoming attacks and negate damage.\r\nPress '<b>Left Mouse
     Button</b>' while in Archer stance to fire an arrow \u2014 aim with your mouse.\r\nWhen
@@ -10002,14 +10008,15 @@ MonoBehaviour:
     to swap between Warrior and Archer.\r\nEach stance levels up separately, so both
     play mode grow the more you use them to kill enemies.\r\n\r\n<b>QUESTS</b>\r\nTalk
     to NPCs to accept quests. Defeat enemies, collect items, or speak with\r\ncertain
-    characters to complete them. Open your Quest Log by pressing '<b>4 Button(Not
+    characters to complete them. Open your Quest Log by pressing '<b>J Button(Not
     the numpad one)</b>' to track progress.\r\n\r\n<b>SKILLS</b>\r\nEarn skill points
     by leveling up your Warrior or Archer stance. Spend them\r\nin the Skill Tree
-    by pressing '<b>2 Button</b>' to upgrade the skill.\r\n\r\n<b>SHOPS</b>\r\nVisit
+    by pressing '<b>T Button</b>' to upgrade the skill.\n\n<b>NPC</b>\nTo interact
+    with NPC, press '<b>E button</b>' when the cloud text icon pops over thier head.\r\n\r\n<b>SHOPS</b>\r\nVisit
     shopkeepers to buy supplies, arrows, and equipment using gold.\r\nGold is earned
     by defeating enemies and completing quests.\nAdditionally you can sell items
     to the shop by opening the shop canvas by interacting with the shop keeper by
-    pressing '3 Button' and left click the mouse on the inventory slot to sell the
+    pressing 'E Button' and left click the mouse on the inventory slot to sell the
     one. Note : buying price will be higher than selling price.\r\n\r\n<b>CHECKPOINTS</b>\r\nInteract
     with checkpoints by pressing '<b>Enter Button</b>' to set your respawn point.
     If you die, you'll return here.\r\n\r\n<b>SAVING</b>\r\nSave your progress anytime
