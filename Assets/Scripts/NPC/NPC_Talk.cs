@@ -15,15 +15,6 @@ public class NPC_Talk : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
-
-        if (questSO.label == "Clear the road up ahead." && questSO.questState == QuestState.Accepted)
-        {
-            GameObject.FindGameObjectWithTag("Quest1Lock").GetComponent<TilemapCollider2D>().enabled = false;
-            GameObject.FindGameObjectWithTag("Quest1Lock").GetComponent<NavMeshModifier>().enabled = false;
-            Physics2D.SyncTransforms();
-            GameObject.FindFirstObjectByType<NavMeshSurface>().BuildNavMesh();
-        }
-
     }
 
     private void Start()
@@ -145,6 +136,8 @@ public class NPC_Talk : MonoBehaviour
                         GameObject.FindGameObjectWithTag("Quest2AfterStartLock").GetComponent<NavMeshModifier>().enabled = false;
                         Physics2D.SyncTransforms();
                         GameObject.FindFirstObjectByType<NavMeshSurface>().BuildNavMesh();
+
+                        Enemy_Random_Spawn.Instance.isRandomSpawnAllowed = true;
                     }
                     else if (questSO.label == "Collect me 10 wood logs.")
                     {

@@ -16,6 +16,8 @@ public class MessageManager : MonoBehaviour
         ArrowQuantityManager.Message += HandleMessage;
         QuestManager.Message += HandleMessage;
         PauseMenu.Message += HandleMessage;
+        StanceManager.Message += HandleMessage;
+        QuestLock.Message += HandleMessage;
     }
     private void OnDisable()
     {
@@ -23,6 +25,8 @@ public class MessageManager : MonoBehaviour
         ArrowQuantityManager.Message -= HandleMessage;
         QuestManager.Message -= HandleMessage;
         PauseMenu.Message -= HandleMessage;
+        StanceManager.Message -= HandleMessage;
+        QuestLock.Message -= HandleMessage;
     }
 
     private void HandleMessage(string text, int timer)

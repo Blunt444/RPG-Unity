@@ -14,12 +14,12 @@ public class ClickDebugger : MonoBehaviour
 
             if (results.Count == 0)
             {
-                Debug.Log("NOTHING was hit by raycast at click position.");
+                // Debug.Log("NOTHING was hit by raycast at click position.");
             }
 
             foreach (var result in results)
             {
-                Debug.Log("Hit: " + result.gameObject.name + " | Depth: " + result.depth + " | SortingLayer: " + result.sortingLayer);
+                // Debug.Log("Hit: " + result.gameObject.name + " | Depth: " + result.depth + " | SortingLayer: " + result.sortingLayer);
             }
         }
     }

@@ -2,14 +2,22 @@ using UnityEngine;
 
 public class Enemy_Random_Spawn : MonoBehaviour
 {
+    public static Enemy_Random_Spawn Instance;
     public GameObject[] enemyPrefab;
     public BoxCollider2D spawnBoundary;
     public float minSec;
     public float maxSec;
     public float spawnCooldown;
+    public bool isRandomSpawnAllowed = false;
 
     private float timer = 0;
     private float currentCooldown = 0;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -18,7 +26,7 @@ public class Enemy_Random_Spawn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(GameObject.FindGameObjectWithTag("Player") == null) return;
+        if (GameObject.FindGameObjectWithTag("Player") == null || !isRandomSpawnAllowed) return;
         if (currentCooldown > 0)
         {
             currentCooldown -= Time.fixedDeltaTime;

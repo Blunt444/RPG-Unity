@@ -28,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Slash") && playerState != PlayerState.Attacking && playerCombat.enabled && !isGuarding)
         {
-            AudioManager.Instance.PlaySFX(swordSwing[Random.Range(0, swordSwing.Length)]);
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlaySFX(swordSwing[Random.Range(0, swordSwing.Length)]);
             playerCombat.Attack();
         }
         else if (Input.GetButtonDown("Guard") && !isGuarding && currentGuardCooldown <= 0 && playerCombat.enabled)

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class StanceManager : MonoBehaviour
@@ -11,8 +12,10 @@ public class StanceManager : MonoBehaviour
     private Player_Bow playerArcher;
     private GameObject bowObject;
     public PlayerStance playerStance = PlayerStance.Warrior;
-    private bool isArcherStanceUnlocked = true;
+    private bool isArcherStanceUnlocked = false;
     private bool isStanceChangerBlocked = false;
+    public int messageTimer = 2;
+    public static event Action<string, int> Message;
 
     private void Awake()
     {
@@ -39,8 +42,17 @@ public class StanceManager : MonoBehaviour
 
     public void ChangeStance()
     {
-        if (isStanceChangerBlocked) return;
-        else if (!isArcherStanceUnlocked) return;
+        if (isStanceChangerBlocked)
+        {
+            Message?.Invoke("Switching stance is blocked.", messageTimer);
+            return;
+        }
+        else if (!isArcherStanceUnlocked)
+        {
+            Debug.Log("Archery");
+            Message?.Invoke("Archery stance is yet to be unlocked.", messageTimer);
+            return;
+        }
 
         switch (playerStance)
         {
@@ -67,8 +79,17 @@ public class StanceManager : MonoBehaviour
 
     public bool isSwitchingStanceAllowed()
     {
-        if (isStanceChangerBlocked) return false;
-        else if (!isArcherStanceUnlocked) return false;
+        if (isStanceChangerBlocked)
+        {
+            Message?.Invoke("Switching stance is blocked.", messageTimer);
+            return false;
+        }
+        else if (!isArcherStanceUnlocked)
+        {
+            Debug.Log("Archery");
+            Message?.Invoke("Archery stance is yet to be unlocked.", messageTimer);
+            return false;
+        }
 
         return true;
     }

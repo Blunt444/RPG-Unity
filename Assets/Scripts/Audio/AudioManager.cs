@@ -17,6 +17,8 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        // In AudioManager.Awake()
+        Debug.Log($"AudioManager Awake called. Instance null? {Instance == null}. This object: {gameObject.name}, scene: {gameObject.scene.name}");
         if (Instance == null)
         {
             Instance = this;
@@ -35,7 +37,7 @@ public class AudioManager : MonoBehaviour
         PlayMusic(bgMusic[0]);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         timeForNewMusic += Time.unscaledDeltaTime;
         if (timeForNewMusic > maxTimeFornewMusic)

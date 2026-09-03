@@ -9,6 +9,8 @@ public class Tnt_Movement : Enemy_Movement_Abstract
 
     public override void Chase()
     {
+        if (!agent.isOnNavMesh) return;
+
         agent.speed = manager.speed;
         agent.SetDestination(player.position);
 
@@ -54,7 +56,8 @@ public class Tnt_Movement : Enemy_Movement_Abstract
         }
         else
         {
-            agent.ResetPath();
+            if (agent.isOnNavMesh)
+                agent.ResetPath();
             ChangeState(EnemyState.Idle);
         }
     }

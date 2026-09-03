@@ -14,6 +14,11 @@ public class RespawnPointManager : MonoBehaviour
 
     public string GetCurrentRespawnPointId()
     {
+        if (respawnPoint == null)
+        {
+            return defaultRespawnPoint != null ? defaultRespawnPoint.GetRespawnPointId() : null;
+        }
+
         return respawnPoint.GetRespawnPointId();
     }
 
@@ -23,6 +28,7 @@ public class RespawnPointManager : MonoBehaviour
         {
             Instance = this;
             respawnPoints.Clear();
+            respawnPoint = defaultRespawnPoint;
         }
         else
         {
@@ -32,8 +38,14 @@ public class RespawnPointManager : MonoBehaviour
 
     public void SetRespawnPoint(RespawnPoint respawnPoint)
     {
-        if (respawnPoint == this.respawnPoint) return;
+        if (respawnPoint == this.respawnPoint)
+        {
+            message.text = "Respawn Point Already Set!";
+            TriggerAcknowledgement();
+            return;
+        }
         this.respawnPoint = respawnPoint;
+        message.text = "Respawn Point Set!";
         TriggerAcknowledgement();
     }
 

@@ -9,7 +9,7 @@ As a player you are given the task of reclaming the 3 mines in order to save the
 
 | Action | Key |
 |---|---|
-| Move | WASD |
+| Move | WASD / Arrow Keys |
 | Attack (Sword) | Left Mouse Button |
 | Fire Arrow (Archery) | Left Mouse Button |
 | Guard / Shield | Left Shift |

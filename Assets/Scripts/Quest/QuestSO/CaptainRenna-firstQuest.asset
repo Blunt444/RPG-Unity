@@ -15,7 +15,7 @@ MonoBehaviour:
   label: Clear the road up ahead.
   about: The path is completely drowned in enemies! clear the path so the army can
     advance.
-  questState: 1
+  questState: 0
   rewards: []
   enemyRequirements:
   - type: 0

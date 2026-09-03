@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using NavMeshPlus.Components;
 
 public class QuestManager : MonoBehaviour
 {
@@ -58,6 +60,45 @@ public class QuestManager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void ApplyQuestLocks()
+    {
+        foreach (QuestSO questSO in quests)
+        {
+            if (questSO.label == "Clear the road up ahead.")
+            {
+                if (questSO.questState == QuestState.Accepted || questSO.questState == QuestState.Completed)
+                    SetLockState("Quest1Lock", false);
+
+                if (questSO.questState == QuestState.Completed)
+                {
+                    SetLockState("Quest2AfterStartLock", false);
+                    Enemy_Random_Spawn.Instance.isRandomSpawnAllowed = true;
+                }
+
+            }
+            else if (questSO.label == "Collect me 10 wood logs." && questSO.questState == QuestState.Completed)
+            {
+                StanceManager.Instance.UnlockArcherStance();
+            }
+        }
+
+        NavMeshSurface surface = GameObject.FindFirstObjectByType<NavMeshSurface>();
+        if (surface != null)
+            surface.BuildNavMesh();
+    }
+
+    private void SetLockState(string tag, bool colliderEnabled)
+    {
+        GameObject obj = GameObject.FindGameObjectWithTag(tag);
+        if (obj == null) return;
+
+        var collider = obj.GetComponent<TilemapCollider2D>();
+        if (collider != null) collider.enabled = colliderEnabled;
+
+        var modifier = obj.GetComponent<NavMeshModifier>();
+        if (modifier != null) modifier.enabled = colliderEnabled;
     }
 
     public void SetKilledEnemyData(KilledEnemy killedEnemy)

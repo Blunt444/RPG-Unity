@@ -13,7 +13,7 @@ public class SaveManager : MonoBehaviour
     public string savePath;
     public static event Action<string, LoadButtonAction, bool> buttonResponse;
     private SaveData data;
-    public bool isNewGame = false;
+    public bool isNewGame = true;
 
 
     private void Awake()
@@ -150,7 +150,7 @@ public class SaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log(e.Message);
+            Debug.Log(e);
             return false;
         }
 
@@ -261,6 +261,7 @@ public class SaveManager : MonoBehaviour
         {
             QuestManager.Instance.SetQuestData(questData);
         }
+        QuestManager.Instance.ApplyQuestLocks();
 
         foreach (DialogData dialogData in data.dialogDatas)
         {

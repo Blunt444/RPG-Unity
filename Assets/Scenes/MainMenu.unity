@@ -8672,7 +8672,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.2386258
+      m_AnimationSpeed: 3.599483
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: 0, z: 0}
@@ -8687,7 +8687,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 2.987269
+      m_AnimationSpeed: 3.529468
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 8, y: 3, z: 0}
@@ -8702,7 +8702,7 @@ Tilemap:
       - {fileID: -3089720072195947750, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: 6910502441185169791, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
       - {fileID: -8412000465415408234, guid: 7e16a857aa3290140b86573e87ba8ed1, type: 3}
-      m_AnimationSpeed: 3.0332818
+      m_AnimationSpeed: 3.830046
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -9991,15 +9991,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<size=150%><b>CONTROLS</b></size>\r\n\r\nMovement & Combat\r\n  Move ==
-    WASD\r\n  Attack (Sword) == Left Mouse Button\r\n  Fire Arrow (Archery) == Left
-    Mouse Button\r\n  Guard / Shield == Left Shift\r\n  Switch Stance == Q\r\n\r\nInteraction\r\n 
-    Interact (NPCs) == E\r\n  Quest Log == J\r\n  Skill Tree == T\r\n  Pause / Menu
-    == P\r\n\r\nInventory\r\n  Use Item ......................... Left Click on slot\r\n 
-    Drop Item ........................ Right Click on slot\r\n  Sell Item (in shop)
-    ............. Left Click on slot\n\n<size=140%><b>HOW TO PLAY</b></size>\n\n<b>Pause
-    Menu</b>\nClick 'P' to pause to game. This was made so it doesn't affect the
-    fullscreen mode in the itch.io page.\r\n\r\n<b>COMBAT</b>\r\nYou can fight as
-    a '<b>Warrior</b>' or switch to '<b>Archer</b>' stance at any time.\r\nPress
+    WASD / Arrow Keys\r\n  Attack (Sword) == Left Mouse Button\r\n  Fire Arrow (Archery)
+    == Left Mouse Button\r\n  Guard / Shield == Left Shift\r\n  Switch Stance ==
+    Q\r\n\r\nInteraction\r\n  Interact (NPCs) == E\r\n  Quest Log == J\r\n  Skill
+    Tree == T\r\n  Pause / Menu == P\r\n\r\nInventory\r\n  Use Item .........................
+    Left Click on slot\r\n  Drop Item ........................ Right Click on slot\r\n 
+    Sell Item (in shop) ............. Left Click on slot\n\n<size=140%><b>HOW TO
+    PLAY</b></size>\n\n<b>Pause Menu</b>\nClick 'P' to pause to game. This was made
+    so it doesn't affect the fullscreen mode in the itch.io page.\r\n\r\n<b>COMBAT</b>\r\nYou
+    can fight as a '<b>Warrior</b>' or switch to '<b>Archer</b>' stance at any time.\r\nPress
     '<b>Left Mouse Button</b>' to attack with your sword.\r\nPress '<b>Left Shift
     Button</b>' to block incoming attacks and negate damage.\r\nPress '<b>Left Mouse
     Button</b>' while in Archer stance to fire an arrow \u2014 aim with your mouse.\r\nWhen
@@ -13321,9 +13321,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7194440045309694186}
     - target: {fileID: 3431075401940951213, guid: 64c28fc35a6740741adb70eaf753a5d7, type: 3}
+      propertyPath: sfxVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431075401940951213, guid: 64c28fc35a6740741adb70eaf753a5d7, type: 3}
       propertyPath: musicSource
       value: 
       objectReference: {fileID: 7194440045309694185}
+    - target: {fileID: 3431075401940951213, guid: 64c28fc35a6740741adb70eaf753a5d7, type: 3}
+      propertyPath: musicVolume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3431075401940951213, guid: 64c28fc35a6740741adb70eaf753a5d7, type: 3}
       propertyPath: bgMusic.Array.size
       value: 2
@@ -13336,6 +13344,14 @@ PrefabInstance:
       propertyPath: 'bgMusic.Array.data[1]'
       value: 
       objectReference: {fileID: 8300000, guid: 82a34dde553aadc4ba1060ef17a6092c, type: 3}
+    - target: {fileID: 7382032541869103948, guid: 64c28fc35a6740741adb70eaf753a5d7, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116427113903034820, guid: 64c28fc35a6740741adb70eaf753a5d7, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

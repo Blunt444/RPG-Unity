@@ -61,7 +61,8 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
         {
             if (enemyState != EnemyState.Idle)
             {
-                agent.ResetPath();
+                if (agent.isOnNavMesh)
+                    agent.ResetPath();
                 ChangeState(EnemyState.Idle);
             }
             return;
@@ -92,7 +93,8 @@ public abstract class Enemy_Movement_Abstract : MonoBehaviour
 
         if (enemyState == EnemyState.Attacking || enemyState == EnemyState.Idle)
         {
-            agent.ResetPath();
+            if (agent.isOnNavMesh)
+                agent.ResetPath();
         }
         else if (enemyState == EnemyState.Chasing || !isFindingASafeDistance)
         {
