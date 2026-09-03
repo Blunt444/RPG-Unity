@@ -288,6 +288,15 @@ public class SaveManager : MonoBehaviour
             QuestManager.Instance.SetKilledEnemyData(killedEnemy);
         }
 
+        Enemy_Manager[] enemies = FindObjectsByType<Enemy_Manager>(FindObjectsSortMode.None);
+        foreach (Enemy_Manager enemy in enemies)
+        {
+            if (QuestManager.Instance.killedIds.ContainsKey(enemy.id))
+            {
+                Destroy(enemy.transform.parent.gameObject);
+            }
+        }
+
         foreach (SkillData skillData in data.skills)
         {
             SkillTreeManager.Instance.SetSKillData(skillData);

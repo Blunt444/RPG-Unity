@@ -5,6 +5,9 @@ Dual Stance is made by the help of Unity Engine. It is a 2D game.
 The game starts off with a letter from the crown saying the 3 mines which supports the economy of the kingdom has been captured.
 As a player you are given the task of reclaming the 3 mines in order to save the crippling economy of the kingdom. The path to the mines are occupied by the enemies and friends. Inorder to reach the mines you need to slay down the enemies.
 
+**Note** : There will be two hiccups when accpeting and completing the first quest Because i rebake the navmesh for agents.
+**Note** : Saving will only work for the **exe** file not for the browser one. You can technically save and load the game in browser but the load will be lost once the page gets reloaded.
+
 # Keyboard Bindings / Controls
 
 | Action | Key |

@@ -73,7 +73,7 @@ public class QuestManager : MonoBehaviour
 
                 if (questSO.questState == QuestState.Completed)
                 {
-                    SetLockState("Quest2AfterStartLock", false);
+                    SetLockState("Quest1AfterStartLock", false);
                     Enemy_Random_Spawn.Instance.isRandomSpawnAllowed = true;
                 }
 

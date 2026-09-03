@@ -70,10 +70,10 @@ MonoBehaviour:
     quest: {fileID: 0}
     requiredActors: []
     rewards: []
-    nextLineIndex: 2
+    nextLineIndex: -1
     questAcceptNextLineIndex: 0
     questDeclineNextLineIndex: 0
-    checkpointIndex: 0
+    checkpointIndex: 2
   - speaker: {fileID: 11400000, guid: f47ca4e4a39a1164a9eb7f58733efd57, type: 2}
     text: Futher east, my army led by aldric got into trouble could you go there
       and help them!
@@ -94,5 +94,5 @@ MonoBehaviour:
     nextLineIndex: -1
     questAcceptNextLineIndex: 0
     questDeclineNextLineIndex: 0
-    checkpointIndex: 0
-  returnStartIndex: 0
+    checkpointIndex: 6
+  returnStartIndex: 4

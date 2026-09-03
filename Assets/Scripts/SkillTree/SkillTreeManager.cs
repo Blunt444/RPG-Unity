@@ -166,7 +166,7 @@ public class SkillTreeManager : MonoBehaviour
         return type == SkillCategory.Combat ? Instantiate(skillSlotPrefab, combatPanel) : Instantiate(skillSlotPrefab, archeryPanel);
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         ShowSkills(SkillCategory.Combat);
         UpdatePointsUI();

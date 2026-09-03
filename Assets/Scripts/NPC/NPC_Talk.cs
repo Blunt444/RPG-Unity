@@ -132,8 +132,8 @@ public class NPC_Talk : MonoBehaviour
 
                     if (questSO.label == "Clear the road up ahead.")
                     {
-                        GameObject.FindGameObjectWithTag("Quest2AfterStartLock").GetComponent<TilemapCollider2D>().enabled = false;
-                        GameObject.FindGameObjectWithTag("Quest2AfterStartLock").GetComponent<NavMeshModifier>().enabled = false;
+                        GameObject.FindGameObjectWithTag("Quest1AfterStartLock").GetComponent<TilemapCollider2D>().enabled = false;
+                        GameObject.FindGameObjectWithTag("Quest1AfterStartLock").GetComponent<NavMeshModifier>().enabled = false;
                         Physics2D.SyncTransforms();
                         GameObject.FindFirstObjectByType<NavMeshSurface>().BuildNavMesh();
 

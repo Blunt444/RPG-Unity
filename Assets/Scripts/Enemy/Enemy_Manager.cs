@@ -48,6 +48,12 @@ public class Enemy_Manager : MonoBehaviour
       if (id == null || id == "")
          id = Id.CreateId(transform.position);
 
+      if (QuestManager.Instance != null && QuestManager.Instance.killedIds.ContainsKey(id))
+      {
+         Destroy(gameObject);
+         return;
+      }
+
       anim = GetComponent<Animator>();
       if (!isManuallySpawned)
       {
