@@ -57,7 +57,7 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 8e62bcb5a13f9074988d6ef09c39005f, type: 2}
     text: 'Can you help me! They are camping south-east! '
     topics: []
-    quest: {fileID: 0}
+    quest: {fileID: 11400000, guid: 7567b4ec57508844b921167042fe88d3, type: 2}
     requiredActors: []
     rewards: []
     nextLineIndex: -1

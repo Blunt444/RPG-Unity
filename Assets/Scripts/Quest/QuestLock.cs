@@ -29,6 +29,9 @@ public class QuestLock : MonoBehaviour
             case QuestState.Declined:
                 text = "You need to accept this quest to pass.";
                 break;
+            case QuestState.Completed:
+                text = "Speak to the quest assigned NPC.";
+                break;
             default:
                 break;
         }

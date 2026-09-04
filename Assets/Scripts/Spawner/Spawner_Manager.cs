@@ -26,11 +26,6 @@ public class Spawner_Manager : MonoBehaviour
         Spawner_Difficulty.Instance.spawners.Add(this);
     }
 
-    private void Start()
-    {
-
-    }
-
     public void GetAndSetStat()
     {
         Spawner_Stat stat = Spawner_Difficulty.Instance.GetStat(type);

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,7 +27,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Slash") && playerState != PlayerState.Attacking && playerCombat.enabled && !isGuarding)
+        bool isOverUi = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+
+        if (Input.GetButtonDown("Slash") && !isOverUi && playerState != PlayerState.Attacking && playerCombat.enabled && !isGuarding)
         {
             if (AudioManager.Instance != null)
                 AudioManager.Instance.PlaySFX(swordSwing[Random.Range(0, swordSwing.Length)]);

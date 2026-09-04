@@ -5,12 +5,14 @@ public class SkillManager : MonoBehaviour
     public static SkillManager Instance;
     private PlayerStatsUpgrade playerStatsUpgrade;
 
+    private PlayerStatsUpgrade PlayerUpgrade =>
+    playerStatsUpgrade ??= GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerStatsUpgrade>();
+
     private void Awake()
     {
 
         if (Instance == null)
         {
-            playerStatsUpgrade = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatsUpgrade>();
             Instance = this;
         }
         else
@@ -31,43 +33,49 @@ public class SkillManager : MonoBehaviour
 
     private void ApplyEffect(SkillEffect effect)
     {
+        if(PlayerUpgrade == null)
+        {
+            Debug.Log("Player Upgrade not yet init");
+            return;
+        }
         switch (effect.type)
         {
             case SkillEffectType.MaxHealth:
-                playerStatsUpgrade.UpdateMaxHealth(effect.amount);
+                PlayerUpgrade.UpdateMaxHealth(effect.amount);
                 return;
             case SkillEffectType.GuardNegate:
-                playerStatsUpgrade.UpdateGuardHitNegate(effect.amount);
+                PlayerUpgrade.UpdateGuardHitNegate(effect.amount);
                 return;
             case SkillEffectType.MoveSpeed:
-                playerStatsUpgrade.UpdateSpeed(effect.amount);
+                PlayerUpgrade.UpdateSpeed(effect.amount);
                 return;
             case SkillEffectType.CombatAttackCooldown:
-                playerStatsUpgrade.UpdateAttackCooldown(-effect.amount, effect.type);
+                PlayerUpgrade.UpdateAttackCooldown(-effect.amount, effect.type);
                 return;
             case SkillEffectType.ArcheryAttackCooldown:
-                playerStatsUpgrade.UpdateAttackCooldown(-effect.amount, effect.type);
+                PlayerUpgrade.UpdateAttackCooldown(-effect.amount, effect.type);
                 return;
             case SkillEffectType.StunTime:
-                playerStatsUpgrade.UpdateStunTimer(effect.amount);
+                PlayerUpgrade.UpdateStunTimer(effect.amount);
                 return;
             case SkillEffectType.CombatDamage:
-                playerStatsUpgrade.UpdateDamage(effect.amount, effect.type);
+                PlayerUpgrade.UpdateDamage(effect.amount, effect.type);
                 return;
             case SkillEffectType.ArrowCapacity:
                 ArrowQuantityManager.Instance.IncreaseCapacity(effect.amount);
                 return;
             case SkillEffectType.SpeedDamp:
-                playerStatsUpgrade.UpdateSpeedDamp(-effect.amount);
+                PlayerUpgrade.UpdateSpeedDamp(-effect.amount);
                 return;
             case SkillEffectType.WeaponRange:
-                playerStatsUpgrade.UpdateWeaponRange(effect.amount);
+                PlayerUpgrade.UpdateWeaponRange(effect.amount);
                 return;
             case SkillEffectType.ArcherDamageDeflect:
-                playerStatsUpgrade.UpdateArcherDamageDeflect(effect.amount);
+                PlayerUpgrade.UpdateArcherDamageDeflect(effect.amount);
                 return;
             default:
                 return;
         }
     }
+
 }

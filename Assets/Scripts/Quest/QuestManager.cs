@@ -109,11 +109,13 @@ public class QuestManager : MonoBehaviour
     private void OnEnable()
     {
         Enemy_Health.OnEnemyKilled += HandleKilled;
+        Spawner_Health.OnHutDestroyed += HandleKilled;
     }
 
     private void OnDisable()
     {
         Enemy_Health.OnEnemyKilled -= HandleKilled;
+        Spawner_Health.OnHutDestroyed -= HandleKilled;
     }
 
     public void HandleKilled(QuestSO questSO)

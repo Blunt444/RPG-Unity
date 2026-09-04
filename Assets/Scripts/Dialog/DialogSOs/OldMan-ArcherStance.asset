@@ -37,7 +37,7 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: cf7e19b34b403444d905ab82e2ecb48e, type: 2}
     text: Can you collect the rest of the wood for me!
     topics: []
-    quest: {fileID: 0}
+    quest: {fileID: 11400000, guid: 23405ef790e99dc4ea49da240de38e68, type: 2}
     requiredActors: []
     rewards: []
     nextLineIndex: -1

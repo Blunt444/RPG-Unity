@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlot : MonoBehaviour, IPointerDownHandler
 {
     public ItemSO itemSO;
     public int quantity;
@@ -108,18 +108,18 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
         textRect.anchoredPosition = new Vector2(-10f, -5f);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (itemSO == null) return;
-        SlotItemInfoManager.Instance.SetItemDesc(itemSO.itemDescription);
-        SlotItemInfoManager.Instance.CreateEffectSlots(itemSO);
-        SlotItemInfoManager.Instance.SetInfoPanelVisibleState(true);
-        SlotItemInfoManager.Instance.SetPanelPos(eventData.position);
-    }
+    // public void OnPointerEnter(PointerEventData eventData)
+    // {
+    //     if (itemSO == null) return;
+    //     // SlotItemInfoManager.Instance.SetItemDesc(itemSO.itemDescription);
+    //     SlotItemInfoManager.Instance.CreateEffectSlots(itemSO);
+    //     // SlotItemInfoManager.Instance.SetInfoPanelVisibleState(true);
+    //     // SlotItemInfoManager.Instance.SetPanelPos(eventData.position);
+    // }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        SlotItemInfoManager.Instance.SetInfoPanelVisibleState(false);
-        SlotItemInfoManager.Instance.ClearEffectSlotsAndDesc();
-    }
+    // public void OnPointerExit(PointerEventData eventData)
+    // {
+    //     SlotItemInfoManager.Instance.SetInfoPanelVisibleState(false);
+    //     SlotItemInfoManager.Instance.ClearEffectSlotsAndDesc();
+    // }
 }

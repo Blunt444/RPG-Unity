@@ -13,6 +13,8 @@ public abstract class Enemy_Combat_Abstract : MonoBehaviour
     public virtual void Attack()
     {
 
+        AudioManager.Instance.PlaySFX(EnemySoundEffects.Instance.GetTrochSwing());
+
         Enemy_Movement_Abstract movement = GetComponent<Enemy_Movement_Abstract>();
         if (movement.enemyState == EnemyState.Knockback)
         {

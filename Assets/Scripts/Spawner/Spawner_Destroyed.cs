@@ -9,8 +9,8 @@ public class Spawner_Destroyed : MonoBehaviour
 
     private void Awake()
     {
-        spawnerHutContainer = transform.root.gameObject;
-        healthCanvas = transform.root.Find("Health").gameObject;
+        spawnerHutContainer = transform.parent.gameObject;
+        healthCanvas = transform.parent.Find("Health").gameObject;
     }
 
     private void Start()

@@ -47,7 +47,7 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 5a514978306f4b2409d70370a8d0ee24, type: 2}
     text: Clear the area and reclaim our mine.
     topics: []
-    quest: {fileID: 0}
+    quest: {fileID: 11400000, guid: 65f1a3f06cf754649a6997bd3b5aca2f, type: 2}
     requiredActors: []
     rewards: []
     nextLineIndex: -1
